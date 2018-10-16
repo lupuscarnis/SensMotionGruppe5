@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Sens Motion Gruppe 5</string>
+    <string name="title_activity_login">Log Ind</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Indtast email</string>
+    <string name="prompt_password">Indtast adgangskode</string>
+    <string name="action_sign_in">Log ind / Registrér</string>
+    <string name="action_sign_in_short">Log ind</string>
+    <string name="error_invalid_email">Email ugyldig</string>
+    <string name="error_invalid_password">Adgangskoden er for kort</string>
+    <string name="error_incorrect_password">Adgangskoden er ugyldig</string>
+    <string name="error_field_required">Felt påkrævet</string>
 </resources>
