@@ -9,36 +9,62 @@
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/help_textbox"
         android:layout_width="194dp"
-        android:layout_height="73dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
         android:text="Her Skal du intaste"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="319dp" />
+        app:layout_constraintBottom_toTopOf="@+id/help_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_input" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/help_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="95dp"
         android:text="Næste"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="424dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_textbox" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="287dp"
-        android:layout_height="93dp"
-        app:srcCompat="@drawable/Sens-logo"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="77dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="34dp"
+        app:layout_constraintBottom_toTopOf="@+id/help_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_read"
+        app:srcCompat="@drawable/Sens-logo" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/help_input"
         android:layout_width="wrap_content"
-        android:layout_height="73dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="41dp"
         android:ems="10"
         android:hint="Brugernavn "
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="212dp" />
+        app:layout_constraintBottom_toTopOf="@+id/help_textbox"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageButton
+        android:id="@+id/help_read"
+        android:layout_width="88dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/Sound Image" />
 </android.support.constraint.ConstraintLayout>
