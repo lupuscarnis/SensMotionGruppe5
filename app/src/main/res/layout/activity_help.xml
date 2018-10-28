@@ -4,28 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#666FA5  "
     tools:context=".Help"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="194dp"
-        android:layout_height="98dp"
-        android:layout_marginBottom="132dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="73dp"
+        android:text="Her Skal du intaste"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="319dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Næste"
+        tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="424dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="287dp"
+        android:layout_height="93dp"
+        app:srcCompat="@drawable/Sens-logo"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="77dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="73dp"
+        android:ems="10"
+        android:hint="Brugernavn "
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="212dp" />
 </android.support.constraint.ConstraintLayout>
