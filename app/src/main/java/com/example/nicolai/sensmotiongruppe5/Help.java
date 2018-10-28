@@ -27,7 +27,7 @@ public class Help extends AppCompatActivity implements View.OnClickListener {
         read = findViewById(R.id.help_read);
         writtenText = findViewById(R.id.help_textbox);
         input = findViewById(R.id.help_input);
-        
+
 
 
 
@@ -41,6 +41,13 @@ public class Help extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        if(v == read){
+            read.setVisibility(View.INVISIBLE);
+
+
+        }
+
 
     }
 }

@@ -10,9 +10,8 @@
 
     <TextView
         android:id="@+id/help_textbox"
-        android:layout_width="194dp"
+        android:layout_width="214dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
         android:text="Her Skal du intaste"
         app:layout_constraintBottom_toTopOf="@+id/help_next"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,50 +20,75 @@
 
     <Button
         android:id="@+id/help_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="95dp"
+        android:layout_width="131dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="29dp"
         android:text="Næste"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/help_textbox"
         app:layout_constraintTop_toBottomOf="@+id/help_textbox" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
+        android:layout_width="288dp"
         android:layout_height="0dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="34dp"
-        app:layout_constraintBottom_toTopOf="@+id/help_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="356dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/help_input"
         app:layout_constraintTop_toBottomOf="@+id/help_read"
         app:srcCompat="@drawable/Sens-logo" />
 
     <EditText
         android:id="@+id/help_input"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="78dp"
         android:ems="10"
         android:hint="Brugernavn "
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/help_textbox"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageButton
-        android:id="@+id/help_read"
-        android:layout_width="88dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="18dp"
+        android:id="@+id/help_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Sound Image" />
+        app:layout_constraintVertical_bias="0.79"
+        app:srcCompat="@drawable/pausebutton" />
+
+    <ImageButton
+        android:id="@+id/help_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/help_pause"
+        app:layout_constraintTop_toTopOf="@+id/help_pause"
+        app:srcCompat="@drawable/playbutton" />
+
+    <ImageButton
+        android:id="@+id/help_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/help_pause"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/help_pause"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/soundimage" />
 </android.support.constraint.ConstraintLayout>
