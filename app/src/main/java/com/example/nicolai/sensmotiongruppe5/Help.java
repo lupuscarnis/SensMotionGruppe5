@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Help extends AppCompatActivity implements View.OnClickListener {
+public class Help extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
 
     TextView writtenText ;
     ImageButton play,pause,read;
@@ -27,7 +27,8 @@ public class Help extends AppCompatActivity implements View.OnClickListener {
         read = findViewById(R.id.help_read);
         writtenText = findViewById(R.id.help_textbox);
         input = findViewById(R.id.help_input);
-
+        mp =  MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
+        mp.setOnCompletionListener(this);
 
 
 
@@ -43,10 +44,34 @@ public class Help extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
 
         if(v == read){
-            read.setVisibility(View.INVISIBLE);
+            read.setVisibility(View.GONE);
+            pause.setVisibility(View.VISIBLE);
+            mp.start();
+
 
 
         }
+        if(v == pause)
+        {
+            play.setVisibility(View.VISIBLE);
+            pause.setVisibility(View.GONE);
+            mp.pause();
+        }
+        if(v == play)
+        {
+            play.setVisibility(View.GONE);
+            pause.setVisibility(View.VISIBLE);
+
+        }
+
+
+    }
+    public void onCompletion(MediaPlayer arg0)
+    {
+
+        mp.reset();
+        read.setVisibility(View.VISIBLE);
+        pause.setVisibility(View.GONE);
 
 
     }
