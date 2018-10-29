@@ -40,6 +40,26 @@ public class Help extends AppCompatActivity implements View.OnClickListener, Med
 
 
     }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(mp != null){
+            mp.release();
+        }
+
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        if(mp != null){
+            mp.release();
+        }
+
+
+
+    }
+
 
 
     @Override
