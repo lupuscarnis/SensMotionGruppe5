@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/help_input"
         app:layout_constraintTop_toBottomOf="@+id/help_read"
-        app:srcCompat="@drawable/Sens-logo" />
+        app:srcCompat="@drawable/sens_logo" />
 
     <EditText
         android:id="@+id/help_input"

@@ -17,7 +17,8 @@
         android:id="@+id/sensLogo"
         android:layout_width="300dp"
         android:layout_height="150dp"
-        app:srcCompat="@drawable/senslogogreybg" />
+        app:srcCompat="@drawable/senslogogreybg"
+        android:contentDescription="TODO" />
 
     <ProgressBar
         android:id="@+id/login_progress"

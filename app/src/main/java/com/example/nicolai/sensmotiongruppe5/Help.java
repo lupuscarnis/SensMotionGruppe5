@@ -19,6 +19,8 @@ public class Help extends AppCompatActivity implements View.OnClickListener, Med
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
