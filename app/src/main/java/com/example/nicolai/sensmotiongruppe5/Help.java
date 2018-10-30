@@ -33,7 +33,13 @@ import android.widget.TextView;
         mp.setOnCompletionListener(this);
 
 
+        
 
+        read.setOnClickListener(this);
+        read.setOnClickListener(this);
+        pause.setOnClickListener(this);
+        play.setOnClickListener(this);
+        next.setOnClickListener(this);
 
 
 
@@ -67,7 +73,7 @@ import android.widget.TextView;
     public void onClick(View v) {
         if(v == next){
 
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_login);
 
     }
 
