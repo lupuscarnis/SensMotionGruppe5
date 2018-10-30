@@ -97,9 +97,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
 
-                /*Intent i = new Intent(getApplicationContext(), Help.class);
-                startActivity(i);*/
-                setContentView(R.layout.activity_help);
+                startActivity(new Intent(view.getContext(), Help.class));
+
+                /*setContentView(R.layout.activity_help);*/
 
             }
         });
