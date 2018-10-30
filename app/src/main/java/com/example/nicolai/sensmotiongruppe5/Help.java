@@ -33,9 +33,8 @@ import android.widget.TextView;
         mp.setOnCompletionListener(this);
 
 
-        
 
-        read.setOnClickListener(this);
+
         read.setOnClickListener(this);
         pause.setOnClickListener(this);
         play.setOnClickListener(this);
