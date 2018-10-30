@@ -143,7 +143,7 @@
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/star1" />
+        app:srcCompat="@drawable/star2" />
 
     <Button
         android:id="@+id/button2"
@@ -152,7 +152,6 @@
         android:text="Hjælp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         tools:text="Hjælp" />
 
     <ImageButton
