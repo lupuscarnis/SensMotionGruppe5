@@ -111,4 +111,17 @@
         android:background="@drawable/misc"
         android:text="@string/action_sign_in_short"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:text="@string/text_help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:text="Hjælp" />
+
 </LinearLayout>
