@@ -17,7 +17,6 @@ import android.widget.TextView;
     Button next;
     MediaPlayer mp;
     EditText input;
-    ImageButton setting;
 
 
 
@@ -33,7 +32,7 @@ import android.widget.TextView;
         input = findViewById(R.id.help_input);
         mp =  MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
         mp.setOnCompletionListener(this);
-        setting.findViewById(R.id.indstillinger);
+
 
 
 
@@ -102,8 +101,7 @@ import android.widget.TextView;
 
         }
         
-        Intent i = new Intent(getApplicationContext(), SettingActivity.class);
-        startActivity(i);
+
 
 
     }
