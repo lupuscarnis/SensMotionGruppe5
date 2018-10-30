@@ -17,7 +17,6 @@ public class Forside extends AppCompatActivity {
 
         // Launch Login Activity. Use "@" in email to get past it.
         startActivity(new Intent(Forside.this, LoginActivity.class));
-
         //Alan
 
     }
