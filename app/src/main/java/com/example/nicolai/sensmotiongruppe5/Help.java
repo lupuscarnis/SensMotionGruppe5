@@ -1,5 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.TextView;
     Button next;
     MediaPlayer mp;
     EditText input;
+    ImageButton setting;
 
 
 
@@ -31,9 +33,15 @@ import android.widget.TextView;
         input = findViewById(R.id.help_input);
         mp =  MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
         mp.setOnCompletionListener(this);
+        setting.findViewById(R.id.indstillinger);
 
 
 
+
+        read.setOnClickListener(this);
+        pause.setOnClickListener(this);
+        play.setOnClickListener(this);
+        next.setOnClickListener(this);
 
 
 
@@ -64,10 +72,12 @@ import android.widget.TextView;
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+
+    {
         if(v == next){
 
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_login);
 
     }
 
@@ -91,6 +101,9 @@ import android.widget.TextView;
             pause.setVisibility(View.VISIBLE);
 
         }
+        
+        Intent i = new Intent(getApplicationContext(), SettingActivity.class);
+        startActivity(i);
 
 
     }
