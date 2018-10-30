@@ -12,4 +12,5 @@
     <string name="error_invalid_password">Adgangskoden er for kort</string>
     <string name="error_incorrect_password">Adgangskoden er ugyldig</string>
     <string name="error_field_required">Felt påkrævet</string>
+    <string name="text_help">Hjælp</string>
 </resources>
