@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#666FA5  "
-    tools:context=".Help"
+    tools:context=".HelpActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageButton
