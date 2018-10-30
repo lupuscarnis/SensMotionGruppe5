@@ -126,7 +126,7 @@
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:srcCompat="@drawable/diagram" />
+        app:srcCompat="@drawable/stickman" />
 
     <ImageView
         android:id="@+id/imageView3"
