@@ -38,6 +38,11 @@ import android.widget.TextView;
 
 
 
+        read.setOnClickListener(this);
+        pause.setOnClickListener(this);
+        play.setOnClickListener(this);
+        next.setOnClickListener(this);
+
 
 
 
@@ -72,7 +77,7 @@ import android.widget.TextView;
     {
         if(v == next){
 
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_login);
 
     }
 

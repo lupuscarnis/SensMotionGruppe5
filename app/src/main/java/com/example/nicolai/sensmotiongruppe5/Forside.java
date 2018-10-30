@@ -10,10 +10,17 @@ import static android.support.v4.content.ContextCompat.startActivity;
 
 public class Forside extends AppCompatActivity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_forside);
 
+        // Launch Login Activity. Use "@" in email to get past it.
+        startActivity(new Intent(Forside.this, LoginActivity.class));
 
+        //Alan
 
-
+    }
 
 
 
