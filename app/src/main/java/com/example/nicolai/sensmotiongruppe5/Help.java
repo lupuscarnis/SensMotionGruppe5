@@ -19,6 +19,8 @@ public class Help extends AppCompatActivity implements View.OnClickListener, Med
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class Help extends AppCompatActivity implements View.OnClickListener, Med
         read = findViewById(R.id.help_read);
         writtenText = findViewById(R.id.help_textbox);
         input = findViewById(R.id.help_input);
-        mp =  MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
+       // mp =  MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
         mp.setOnCompletionListener(this);
 
 
@@ -38,6 +40,26 @@ public class Help extends AppCompatActivity implements View.OnClickListener, Med
 
 
     }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(mp != null){
+            mp.release();
+        }
+
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        if(mp != null){
+            mp.release();
+        }
+
+
+
+    }
+
 
 
     @Override
