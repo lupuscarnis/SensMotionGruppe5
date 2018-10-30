@@ -30,7 +30,7 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        // finds all the Elements that can be manipulateted
+        // Finds all the Elements that can be manipulateted
         next = findViewById(R.id.help_next);
         read = findViewById(R.id.help_read);
         pause = findViewById(R.id.help_pause);
@@ -39,6 +39,11 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         input = findViewById(R.id.help_input);
         mp =  MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
         setting = findViewById(R.id.indstillinger);
+
+        //Sets the Text on screen
+        writtenText.setText(R.string.text_user_login_help);
+        next.setText(R.string.text_user_login_help_button);
+
 
         //Sets all the Listnerens For this activity
         read.setOnClickListener(this);

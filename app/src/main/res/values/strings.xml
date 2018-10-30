@@ -13,4 +13,6 @@
     <string name="error_incorrect_password">Adgangskoden er ugyldig</string>
     <string name="error_field_required">Felt påkrævet</string>
     <string name="text_help">Hjælp</string>
+    <string name="text_user_login_help">Her skal du intaste det bruger navn som du var tildelt af din terapeut</string>
+    <string name="text_user_login_help_button">Næste </string>
 </resources>
