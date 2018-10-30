@@ -12,14 +12,14 @@ import android.widget.TextView;
 import android.content.Intent;
 
 
-public class HelpActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
+public class Help_Username_Activity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
 
-    TextView writtenText ;
-    ImageButton play,pause,read;
-    Button next;
-    MediaPlayer mp;
-    EditText input;
-    ImageButton setting;
+    private TextView writtenText ;
+    private ImageButton play,pause,read;
+    private Button next;
+    private MediaPlayer mp;
+    private EditText input;
+    private ImageButton setting;
 
 
 
@@ -28,7 +28,7 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
+        setContentView(R.layout.activity_help_username);
 
         // Finds all the Elements that can be manipulateted
         next = findViewById(R.id.help_next);
@@ -84,12 +84,12 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         // enters the settings menu
         if(v == setting)
         {
-            Intent i = new Intent(HelpActivity.this,SettingActivity.class);
+            Intent i = new Intent(Help_Username_Activity.this,SettingActivity.class);
             startActivity(i);
          }
          // goes to the next screen or returns to login
         if(v == next){
-            Intent i = new Intent(HelpActivity.this, LoginActivity.class);
+            Intent i = new Intent(Help_Username_Activity.this, LoginActivity.class);
             startActivity(i);
             }
     //starts the Mp3 file

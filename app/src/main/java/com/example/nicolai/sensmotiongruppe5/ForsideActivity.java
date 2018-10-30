@@ -36,7 +36,7 @@ public class ForsideActivity extends AppCompatActivity {
 
 
 public void helped(View v){
-     Intent   i = new Intent(this, HelpActivity.class);
+     Intent   i = new Intent(this, Help_Username_Activity.class);
 
  startActivity(i);
 
