@@ -55,7 +55,6 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStop() {
         super.onStop();
-        mp.stop();
         if(mp != null){
             mp.release();
         }
@@ -65,7 +64,6 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        mp.stop();
         if(mp != null){
             mp.release();
         }
@@ -91,7 +89,7 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
             }
     //starts the Mp3 file
         if(v == read){
-            read.setVisibility(View.GONE);
+            read.setVisibility(View.INVISIBLE);
             pause.setVisibility(View.VISIBLE);
             mp.start();
 
@@ -102,14 +100,14 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         if(v == pause)
         {
             play.setVisibility(View.VISIBLE);
-            pause.setVisibility(View.GONE);
+            pause.setVisibility(View.INVISIBLE);
             mp.pause();
         }
         // Resumes the MP3 song
         if(v == play)
         {
             mp.start();
-            play.setVisibility(View.GONE);
+            play.setVisibility(View.INVISIBLE);
             pause.setVisibility(View.VISIBLE);
 
         }
@@ -122,10 +120,9 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
     public void onCompletion(MediaPlayer arg0)
     {
 
-        mp.reset();
         read.setVisibility(View.VISIBLE);
-        pause.setVisibility(View.GONE);
-        play.setVisibility(View.GONE);
+        pause.setVisibility(View.INVISIBLE);
+        play.setVisibility(View.INVISIBLE);
 
 
     }
