@@ -24,7 +24,7 @@
         <activity
             android:name=".ForsideActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Help_Username_Activity" />
+        <activity android:name=".Help_Activity" />
         <activity android:name=".SettingActivity" />
     </application>
 

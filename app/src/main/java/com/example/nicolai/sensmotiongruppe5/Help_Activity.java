@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.content.Intent;
 
 
-public class Help_Username_Activity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
+public class Help_Activity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
 
     private TextView writtenText;
     private ImageButton play, pause, read;
@@ -64,7 +64,7 @@ public class Help_Username_Activity extends AppCompatActivity implements View.On
         if (mp != null) {
             mp.release();
         }
-        this.finish(); 
+        this.finish();
 
     }
 
@@ -84,7 +84,7 @@ public class Help_Username_Activity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         // enters the settings menu
         if (v == setting) {
-            Intent i = new Intent(Help_Username_Activity.this, SettingActivity.class);
+            Intent i = new Intent(Help_Activity.this, SettingActivity.class);
             startActivity(i);
         }
         // goes to the next screen or returns to login
@@ -108,7 +108,7 @@ public class Help_Username_Activity extends AppCompatActivity implements View.On
         }
         //After password has been inserted return.
         if (v == help_return) {
-            Intent i = new Intent(Help_Username_Activity.this, LoginActivity.class);
+            Intent i = new Intent(Help_Activity.this, LoginActivity.class);
             startActivity(i);
 
         }

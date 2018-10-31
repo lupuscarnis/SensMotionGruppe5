@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(view.getContext(), Help_Username_Activity.class));
+                startActivity(new Intent(view.getContext(), Help_Activity.class));
 
                 /*setContentView(R.layout.activity_help_username);*/
 

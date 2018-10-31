@@ -32,7 +32,7 @@ public class ForsideActivity extends AppCompatActivity {
 
 
 public void helped(View v){
-     Intent   i = new Intent(this, Help_Username_Activity.class);
+     Intent   i = new Intent(this, Help_Activity.class);
 
  startActivity(i);
 

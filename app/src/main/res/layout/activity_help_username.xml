@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Help_Username_Activity"
+    tools:context=".Help_Activity"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageButton
