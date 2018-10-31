@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.content.Intent;
-
+import android.support.v4.app.DialogFragment;
 
 public class Help_Activity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
 
@@ -52,6 +52,7 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
         next.setOnClickListener(this);
         setting.setOnClickListener(this);
         mp.setOnCompletionListener(this);
+
 
 
     }
