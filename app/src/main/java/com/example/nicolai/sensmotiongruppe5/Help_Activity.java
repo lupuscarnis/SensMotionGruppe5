@@ -1,7 +1,9 @@
 package com.example.nicolai.sensmotiongruppe5;
 
 
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -84,16 +86,17 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         // enters the settings menu
         if (v == setting) {
-            Intent i = new Intent(Help_Activity.this, SettingActivity.class);
-            startActivity(i);
+            openSetting(v);
+
+            //Intent i = new Intent(Help_Activity.this, SettingActivity.class);
+            //startActivity(i);
         }
         // goes to the next screen or returns to login
         if (v == next) {
             if (input.getText().toString().isEmpty()) {
                 input.setHint("Du skal skrive et brugernavn");
             } else {
-                if(mp != null)
-                {
+                if (mp != null) {
                     mp.release();
                 }
                 mp = MediaPlayer.create(getApplicationContext(), R.raw.plan_with_man);
@@ -139,14 +142,34 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
 
     }
 
-        public void onCompletion (MediaPlayer arg0)
-        {
+    public void onCompletion(MediaPlayer arg0) {
 
-            read.setVisibility(View.VISIBLE);
-            pause.setVisibility(View.INVISIBLE);
-            play.setVisibility(View.INVISIBLE);
+        read.setVisibility(View.VISIBLE);
+        pause.setVisibility(View.INVISIBLE);
+        play.setVisibility(View.INVISIBLE);
 
-
-        }
 
     }
+
+    public void openSetting(View view) {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Settings");
+        alertDialogBuilder.setMessage("Settings go right here");
+        alertDialogBuilder.setPositiveButton("Gæm",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+                });
+        alertDialogBuilder.setNegativeButton("Anuller", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+}
