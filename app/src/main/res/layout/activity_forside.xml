@@ -154,8 +154,9 @@
 
     <ImageButton
         android:id="@+id/forside_ind"
-        android:layout_width="60dp"
-        android:layout_height="53dp"
+        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="22dp"
         android:onClick="onClick"

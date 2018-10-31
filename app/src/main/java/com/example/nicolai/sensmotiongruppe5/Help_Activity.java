@@ -101,6 +101,7 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
                     mp.release();
                 }
                 mp = MediaPlayer.create(getApplicationContext(), R.raw.plan_with_man);
+                mp.setOnCompletionListener(this);
                 writtenText.setText(R.string.text_user_password);
                 //input.getText().toString();
                 input.setText("", TextView.BufferType.EDITABLE);
