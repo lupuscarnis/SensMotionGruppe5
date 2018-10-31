@@ -15,10 +15,6 @@ public class ForsideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forside);
 
-        // Launch Login Activity. Use "@" in email to get past it.
-        startActivity(new Intent(ForsideActivity.this, LoginActivity.class));
-
-
         indstil = findViewById(R.id.forside_ind);
         indstil.setOnClickListener(new View.OnClickListener() {
             @Override
