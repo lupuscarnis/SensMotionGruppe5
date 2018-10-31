@@ -26,7 +26,6 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".Help_Username_Activity" />
         <activity android:name=".SettingActivity" />
-        <activity android:name=".Help_Password_Activity"></activity>
     </application>
 
 </manifest>
