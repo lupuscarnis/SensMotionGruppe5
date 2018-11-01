@@ -2,18 +2,18 @@
     <string name="app_name">Sens Motion Gruppe 5</string>
     <string name="title_activity_login">Log Ind</string>
     <!-- Strings related to login -->
-    <string name="text_username">Brugernavn</string>
+    <string name="text_username">Bruger id</string>
     <string name="text_password">Adgangskode</string>
-    <string name="prompt_email">Indtast email</string>
+    <string name="prompt_email">Indtast id (Ex. 12345)</string>
     <string name="prompt_password">Indtast adgangskode</string>
     <string name="action_sign_in">Log ind / Registrér</string>
     <string name="action_sign_in_short">Log ind</string>
-    <string name="error_invalid_email">Email ugyldig</string>
+    <string name="error_invalid_email">Bruger id ugyldig</string>
     <string name="error_invalid_password">Adgangskoden er for kort</string>
     <string name="error_incorrect_password">Adgangskoden er ugyldig</string>
     <string name="error_field_required">Felt påkrævet</string>
     <string name="text_help">Hjælp</string>
-    <string name="text_user_login_help">Her skal du intaste det brugernavn som du var tildelt af din terapeut</string>
+    <string name="text_user_login_help">Her skal du intaste det bruger id som du var tildelt af din terapeut</string>
     <string name="text_user_login_help_button">Næste</string>
     <string name="text_user_return_button">Tilbage til login</string>
     <string name="text_user_password">Her skal du skrive det password som du lavede sammen med terapeuten</string>
