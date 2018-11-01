@@ -20,7 +20,7 @@
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:contentDescription="Sens Motion Logo"
-        app:srcCompat="@drawable/senslogogreybg" />
+        app:srcCompat="@drawable/sens_logo" />
 
     <ProgressBar
         android:id="@+id/login_progress"
