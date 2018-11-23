@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class ForsideActivity extends AppCompatActivity {
-
+//Sophus
     ImageButton indstil;
 
     @Override
