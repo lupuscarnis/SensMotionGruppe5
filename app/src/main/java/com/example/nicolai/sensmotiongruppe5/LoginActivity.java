@@ -3,9 +3,7 @@ package com.example.nicolai.sensmotiongruppe5;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -19,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,8 +30,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
@@ -82,6 +79,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button helpButton = (Button) findViewById(R.id.helpBtn);
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,10 +88,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+
+        helpButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(view.getContext(), Help_Activity.class));
+
+                /*setContentView(R.layout.activity_help_username);*/
+
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -148,7 +158,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        //return email.contains("@");
+        return email.length() > 4;
     }
 
     private boolean isPasswordValid(String password) {
@@ -289,8 +300,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Log.d("Login", "Login Succesful");
+                Intent i = new Intent(LoginActivity.this,ForsideActivity.class);
                 finish();
+                startActivity(i);
             } else {
+                Log.d("Login", "Login not Succesful");
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
@@ -302,5 +317,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+
+
 }
 

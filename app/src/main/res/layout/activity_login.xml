@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E6E7E9"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -12,9 +14,33 @@
     tools:context=".LoginActivity">
 
     <!-- Login progress -->
+
+    <ImageButton
+        android:id="@+id/forside_ind"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:scaleType="fitStart"
+        android:background="@android:color/transparent"
+        android:contentDescription="TODO"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar2"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/setting" />
+
+    <ImageView
+        android:id="@+id/sensLogo"
+        android:layout_width="300dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="Sens Motion Logo"
+        app:srcCompat="@drawable/sens_logo" />
+
     <ProgressBar
         android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
+        style="android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -23,13 +49,24 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/text_username"
+                android:textStyle="bold" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -39,12 +76,25 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/text_password"
+                android:textStyle="bold" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -54,6 +104,8 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -64,16 +116,36 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/Button_Large"
-                android:text="@string/action_sign_in_short"
-                android:textStyle="bold" />
-
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/email_sign_in_button"
+        style="android:textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/misc"
+        android:text="@string/action_sign_in_short"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/helpBtn"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:text="@string/text_help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:text="Hjælp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:text="@string/group_members" />
+
 </LinearLayout>
