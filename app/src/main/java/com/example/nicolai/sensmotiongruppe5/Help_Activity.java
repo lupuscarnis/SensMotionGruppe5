@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.content.Intent;
-import android.support.v4.app.DialogFragment;
 
 public class Help_Activity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
 
@@ -89,7 +88,7 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
         if (v == setting) {
             openSetting(v);
 
-            //Intent i = new Intent(Help_Activity.this, SettingActivity.class);
+            //Intent i = new Intent(Help_Activity.this, Setting_Activity.class);
             //startActivity(i);
         }
         // goes to the next screen or returns to login
@@ -113,7 +112,7 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
         }
         //After password has been inserted return.
         if (v == help_return) {
-            Intent i = new Intent(Help_Activity.this, LoginActivity.class);
+            Intent i = new Intent(Help_Activity.this, Login_Activity.class);
             startActivity(i);
 
         }

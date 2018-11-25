@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
 
-public class ForsideActivity extends AppCompatActivity {
+public class Min_Side_Activity extends AppCompatActivity {
 
     ImageButton indstil;
 
@@ -34,7 +34,7 @@ public class ForsideActivity extends AppCompatActivity {
     }
 
     public void openSettingActivity(){
-        Intent intent = new Intent(this, SettingActivity.class);
+        Intent intent = new Intent(this, Setting_Activity.class);
                 startActivity(intent);
     }
 
@@ -49,7 +49,7 @@ public class ForsideActivity extends AppCompatActivity {
         protected void onPreExecute() {
 
             super.onPreExecute();
-            Toast.makeText(ForsideActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+            Toast.makeText(Min_Side_Activity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
 
         }
 
