@@ -1,14 +1,12 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 import android.util.Log;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DAO  {
 
     private static final String TAG = DAO.class.getSimpleName();
-    ArrayList<HashMap<String, String>> dataList;
 
+    // For future use
     public String patient_key;
     public String project_key;
 
