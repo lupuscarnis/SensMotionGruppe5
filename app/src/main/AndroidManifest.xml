@@ -28,7 +28,8 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".Help_Activity" />
         <activity android:name=".Setting_Activity" />
-        <activity android:name=".Min_Data_Activity"></activity>
+        <activity android:name=".Min_Data_Activity" />
+        <activity android:name=".Screen_Slider_Page_Activity"></activity>
     </application>
 
 </manifest>
