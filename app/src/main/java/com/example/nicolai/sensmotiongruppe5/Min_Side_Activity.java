@@ -5,15 +5,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
 
-public class Min_Side_Activity extends AppCompatActivity {
+public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
-
+     Button help;
     // DAO singleton instance object
     DAO userDAO = DAO.getInstance();
 
@@ -23,7 +24,8 @@ public class Min_Side_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_forside);
 
         new GetJSON().execute();
-
+        help = findViewById(R.id.Min_side_help);
+        help.setOnClickListener(this);
         indstil = findViewById(R.id.forside_ind);
         indstil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +33,7 @@ public class Min_Side_Activity extends AppCompatActivity {
                 openSettingActivity();
             }
         });
+
     }
 
     public void openSettingActivity(){
@@ -60,23 +63,11 @@ public class Min_Side_Activity extends AppCompatActivity {
 
         }
     }
-
-
-
-    public void helped(View v){
-     Intent   i = new Intent(this, Help_Activity.class);
-
- startActivity(i);
-
+public void onClick(View v){
+    Intent   i = new Intent(this, Min_Data_Activity.class);
+    startActivity(i);
 
 }
-
-
-
-
-
-
-
 
 
 
