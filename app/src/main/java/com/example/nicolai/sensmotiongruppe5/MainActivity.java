@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Launch Login Activity. Use "@" in email to get past it.
+        // Launch Login Activity.
         startActivity(new Intent(MainActivity.this, Login_Activity.class));
 
         //Alan
