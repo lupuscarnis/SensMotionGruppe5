@@ -58,11 +58,10 @@ public class Date_Slider_frag extends Fragment {
 
 
         //initialize the data for X-Axis.
-        String[] xData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
-                "Oct", "Nov", "Dec"};
+        String[] xData = {"Siddende", "Gående", "I bevegelse", "liggende"};
 
         //initialize the data for Y-Axis.
-        int[] yData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 80, 18};
+        int[] yData = {50, 20, 15, 30};
 
         //declare List
         List y = new ArrayList();
