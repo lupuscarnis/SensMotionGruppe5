@@ -14,32 +14,22 @@ import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
-     Button help;
+    Button help;
     // DAO singleton instance object
     DAO userDAO = DAO.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forside);
+        setContentView(R.layout.activity_min_side);
 
         new GetJSON().execute();
         help = findViewById(R.id.Min_side_help);
         help.setOnClickListener(this);
-        indstil = findViewById(R.id.forside_ind);
-        indstil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSettingActivity();
-            }
-        });
+
 
     }
 
-    public void openSettingActivity(){
-        Intent intent = new Intent(this, Setting_Activity.class);
-                startActivity(intent);
-    }
 
     /**
      * Download JSON as ASYNCTASK

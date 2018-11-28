@@ -21,16 +21,16 @@ import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.view.LineChartView;
 
 
-
-public class Date_Slider_frag extends Fragment {
+public class Line_chart_frag extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private LineChartView lineChartView;
-    public Date_Slider_frag() {
+
+    public Line_chart_frag() {
 
     }
 
-    public static Date_Slider_frag newInstance(String message) {
-        Date_Slider_frag fragment = new Date_Slider_frag();
+    public static Line_chart_frag newInstance(String message) {
+        Line_chart_frag fragment = new Line_chart_frag();
         Bundle args = new Bundle();
         args.putString(EXTRA_MESSAGE, message);
         fragment.setArguments(args);
@@ -47,7 +47,7 @@ public class Date_Slider_frag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_date__slider_frag, container, false);
+        return inflater.inflate(R.layout.fragment_line_chart, container, false);
     }
 
 
@@ -71,14 +71,12 @@ public class Date_Slider_frag extends Fragment {
         Line line = new Line(y).setColor(Color.parseColor("#9C27B0"));
 
 
-
-
         //add x and y data inside yValues and xValues lists.
-        for(int i = 0; i < xData.length; i++){
+        for (int i = 0; i < xData.length; i++) {
             x.add(i, new AxisValue(i).setLabel(xData[i]));
         }
 
-        for (int i = 0; i < yData.length; i++){
+        for (int i = 0; i < yData.length; i++) {
             y.add(new PointValue(i, yData[i]));
         }
 
@@ -98,7 +96,6 @@ public class Date_Slider_frag extends Fragment {
         axis.setValues(x);
         data.setAxisXBottom(axis);
         axis.setTextColor(Color.parseColor("#03A9F4"));
-
 
 
         //Show y values in the line chart graph.
