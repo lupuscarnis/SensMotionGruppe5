@@ -17,12 +17,15 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
 
+import java.util.List;
+
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
      Button help;
     // DAO singleton instance object
     DAO userDAO = DAO.getInstance();
+    List<List<String>> valuesArray; // For storing the values from JSON
 
     private DrawerLayout mDrawerLayout;
 
@@ -114,12 +117,19 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
             Toast.makeText(Min_Side_Activity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
 
         }
-
+        @Override
         protected Void doInBackground(Void... arg0) {
 
-            userDAO.getData();
+            //userDAO.getData();
+            valuesArray = userDAO.getData();
             return null;
 
+        }
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Toast when done downloading/parsing JSON
+            Toast.makeText(Min_Side_Activity.this,"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
         }
     }
 public void onClick(View v){
