@@ -12,7 +12,7 @@
         tools:context=".Min_Side_Activity" >
 
 
-        <include layout="@layout/activity_forside" />
+        <include layout="@layout/activity_min_side" />
 
 
         <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
