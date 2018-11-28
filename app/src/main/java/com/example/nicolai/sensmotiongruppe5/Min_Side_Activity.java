@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
 
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
-//Sophus
+
     ImageButton indstil;
      Button help;
     // DAO singleton instance object
