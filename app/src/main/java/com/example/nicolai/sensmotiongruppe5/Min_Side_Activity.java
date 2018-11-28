@@ -30,6 +30,8 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
     List<List<String>> valuesArray; // For storing the values from JSON
 
     private DrawerLayout mDrawerLayout;
+    public int helpCounter = 0;
+    String dialogueMessage = "here is some nice help";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,22 +151,47 @@ public void onClick(View v){
 
 }
 
-    public void onHelp (View view){
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+    public void onHelp (final View view){
 
 
-            }
-        };
-        alertDialogBuilder.setMessage("here is some nice help");
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+
+        alertDialogBuilder.setMessage(dialogueMessage);
         alertDialogBuilder.setPositiveButton( "next",
-                listener);
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        switch (helpCounter){
+                            case 0:
+                            dialogueMessage = " hjaelp nummer 2";
+                                onHelp(view);
+                            break;
+
+                            case 1:
+                                dialogueMessage = "hjaelp nummer 3 ";
+                                onHelp(view);
+                                break;
+
+                            case 2:
+
+                        }
+
+                        helpCounter++;
+
+                    }
+                });
+
+
+
         alertDialogBuilder.setNegativeButton("Cancel",
-                listener);
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+                });
 
         alertDialogBuilder.show();
 

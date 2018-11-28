@@ -127,4 +127,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Hjælp" />
 
+    <Button
+        android:id="@+id/HelpBut"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="107dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/Min_side_help"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
