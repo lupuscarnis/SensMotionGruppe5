@@ -17,17 +17,17 @@ import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
 
 
-public class Min_Data_frag extends Fragment {
+public class Pie_chart_frag extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private PieChartView pieChartView;
 
-    public Min_Data_frag() {
+    public Pie_chart_frag() {
 
     }
 
 
-    public static Min_Data_frag newInstance(String message) {
-        Min_Data_frag fragment = new Min_Data_frag();
+    public static Pie_chart_frag newInstance(String message) {
+        Pie_chart_frag fragment = new Pie_chart_frag();
         Bundle args = new Bundle();
         args.putString(EXTRA_MESSAGE, message);
         fragment.setArguments(args);
@@ -46,7 +46,7 @@ public class Min_Data_frag extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        return inflater.inflate(R.layout.fragment_min__data_frag, container, false);
+        return inflater.inflate(R.layout.fragment_pie_chart, container, false);
 
 
     }
