@@ -49,7 +49,7 @@ public class DAO  {
                 JSONObject jsonObject = new JSONObject(jsonStr);
                 JSONArray jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
 
-                // Loop to get all json entries from data json array
+                // Loop to get all json objects from data json array
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     // Adds new row to List
@@ -118,6 +118,7 @@ public class DAO  {
 
             // Just an example of accessing the values from the arrays
             Log.e("finalValuesArray Output","Get index 0, start time (0): "+finalValuesArray.get(0).get(0));
+
 
         }
 
