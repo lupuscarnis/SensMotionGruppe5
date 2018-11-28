@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
-
+//Sophus
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
