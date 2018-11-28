@@ -8,9 +8,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-
 import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
+import com.example.nicolai.sensmotiongruppe5.Interface.IData;
+import com.example.nicolai.sensmotiongruppe5.Tests.testForSlider;
 import com.jaygoo.widget.RangeSeekBar;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class Min_Data_Activity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-            String[] haha = {"20:20","10:10","5:5","10:2"};
+
+        IData s = new testForSlider();
 
         setContentView(R.layout.activity_min__data);
         List<Fragment> fragments = getFragments();
@@ -38,7 +40,7 @@ public class Min_Data_Activity extends FragmentActivity {
         ViewPager pager = findViewById(R.id.min_data_fragment_pager);
         bar.setRange(1,10);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
-        bar.setTickMarkTextArray(haha);
+        bar.setTickMarkTextArray(s.getAllDates());
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
         pager.setAdapter(pageAdapter);
 
