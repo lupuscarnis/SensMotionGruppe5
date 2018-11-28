@@ -61,7 +61,7 @@ public class Pie_chart_frag extends Fragment {
 
         pieData.add(new SliceValue(15, Color.BLUE).setLabel("Siddende"));
         pieData.add(new SliceValue(25, Color.GRAY).setLabel("Gående"));
-        pieData.add(new SliceValue(10, Color.RED).setLabel("I bevegelse"));
+        pieData.add(new SliceValue(10, Color.RED).setLabel("I bevægelse"));
         pieData.add(new SliceValue(60, Color.MAGENTA).setLabel(" Liggende"));
 
 

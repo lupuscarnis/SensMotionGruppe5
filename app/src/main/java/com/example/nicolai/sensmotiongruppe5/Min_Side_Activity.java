@@ -1,14 +1,17 @@
 package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,13 +19,19 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
-//Sophus
+
+import java.util.List;
+
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
      Button help;
     // DAO singleton instance object
     DAO userDAO = DAO.getInstance();
+    // For storing the values from JSON
+    List<List<String>> valuesArray;
 
     private DrawerLayout mDrawerLayout;
 
@@ -114,12 +123,29 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
             Toast.makeText(Min_Side_Activity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
 
         }
-
+        @Override
         protected Void doInBackground(Void... arg0) {
 
-            userDAO.getData();
+            //userDAO.getData();
+            valuesArray = userDAO.getData();
             return null;
 
+        }
+        @Override
+        protected void onPostExecute(Void result) {
+
+            super.onPostExecute(result);
+
+            // Save JSON_STRING to phone
+            SharedPreferences.Editor prefEditor = getDefaultSharedPreferences(Min_Side_Activity.this).edit();
+            prefEditor.putString("JSON_STRING", valuesArray.toString()).apply();
+
+            // Retrieve JSON_STRING from phone
+            //String jsonString = PreferenceManager.getDefaultSharedPreferences(Min_Side_Activity.this).getString("JSON_STRING", "DefaultStringIfNULL");
+            //Log.d("Debug SharedPreferences",""+jsonString);
+
+            // Toast when done downloading/parsing JSON
+            Toast.makeText(Min_Side_Activity.this,"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
         }
     }
 public void onClick(View v){
