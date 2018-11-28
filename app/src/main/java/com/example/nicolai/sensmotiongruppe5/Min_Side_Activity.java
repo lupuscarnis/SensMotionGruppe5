@@ -1,5 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -22,7 +24,7 @@ import java.util.List;
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
-     Button help;
+     Button help, actualHelp;
     // DAO singleton instance object
     DAO userDAO = DAO.getInstance();
     List<List<String>> valuesArray; // For storing the values from JSON
@@ -84,6 +86,14 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         help = findViewById(R.id.Min_side_help);
         help.setOnClickListener(this);
 
+        actualHelp = findViewById(R.id.HelpBut);
+        actualHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                onHelp(view);
+            }
+        });
 
     }
             @Override
@@ -133,10 +143,34 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         }
     }
 public void onClick(View v){
+
     Intent   i = new Intent(this, Min_Data_Activity.class);
     startActivity(i);
 
 }
+
+    public void onHelp (View view){
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+
+            }
+        };
+        alertDialogBuilder.setMessage("here is some nice help");
+        alertDialogBuilder.setPositiveButton( "next",
+                listener);
+        alertDialogBuilder.setNegativeButton("Cancel",
+                listener);
+
+        alertDialogBuilder.show();
+
+    }
+
+
 
 
 
