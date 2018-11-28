@@ -1,7 +1,7 @@
 package com.example.nicolai.sensmotiongruppe5;
 
 
-import android.content.DialogInterface;
+import  android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
