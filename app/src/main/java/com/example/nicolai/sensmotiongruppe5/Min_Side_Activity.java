@@ -11,10 +11,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
@@ -32,6 +34,8 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
     private DrawerLayout mDrawerLayout;
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
+    int dialogImage = R.drawable.setting;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,28 +158,90 @@ public void onClick(View v){
     public void onHelp (final View view){
 
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(Min_Side_Activity.this);
+        View view1;    view1 = LayoutInflater.from(Min_Side_Activity.this).inflate(R.layout.activity_dialog_picture, null);
+        TextView title = (TextView) view1.findViewById(R.id.title);
+        ImageButton imageButton = (ImageButton) view1.findViewById(R.id.image);
+        title.setText("i'm here to help ");
+        builder.setMessage(dialogueMessage);
+        view1.findViewById(R.id.dialogTv);
+        imageButton.setImageResource(dialogImage);
+        builder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
+            @Override        public void onClick(DialogInterface dialogInterface, int i) {
+                //Toast.makeText(Min_Side_Activity.this, "Next", Toast.LENGTH_SHORT).show();
+
+                View vew = view;
+
+                switch (helpCounter){
+                    case 0:
+                        dialogueMessage = " hjaelp nummer 2";
+                        dialogImage = R.drawable.star2;
+                        onHelp(vew);
+                        helpCounter = -1;
+                        break;
+
+                    case 1:
+                        dialogueMessage = "hjaelp nummer 3 ";
+
+                        onHelp(vew);
+                        helpCounter = 2;
+                        break;
+
+                    case 2:
+                        onHelp(vew);
+                        helpCounter = -0;
+                }
+
+
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override        public void onClick(DialogInterface dialogInterface, int i) {
+              //  Toast.makeText(Min_Side_Activity.this, "Cancel", Toast.LENGTH_SHORT).show();
+                helpCounter = 0;
+            }
+        });
+        builder.setView(view1);    builder.show();
+
+
+
+/*
+
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+        ImageButton imageButton = (ImageButton) view.findViewById(R.id.image);
+        imageButton.setImageResource(R.drawable.setting);
+        imageButton.setImageResource(R.drawable.diagram);
 
         alertDialogBuilder.setMessage(dialogueMessage);
+        alertDialogBuilder.setIcon(dialogImage);
         alertDialogBuilder.setPositiveButton( "next",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
+                        View vew = view;
 
                         switch (helpCounter){
                             case 0:
                             dialogueMessage = " hjaelp nummer 2";
+                            alertDialogBuilder.setIcon(R.drawable.diagram);
+                                LayoutInflater factory = LayoutInflater.from(Min_Side_Activity.this);
+                                final View view = factory.inflate(R.layout.activity_dialog_picture, null);
+                                alertDialogBuilder.setView(view);
+
+
                                 onHelp(view);
                             break;
 
                             case 1:
                                 dialogueMessage = "hjaelp nummer 3 ";
-                                onHelp(view);
+                                onHelp(vew);
                                 break;
 
                             case 2:
-
+                                onHelp(vew);
+                                helpCounter = -1;
                         }
 
                         helpCounter++;
@@ -189,12 +255,12 @@ public void onClick(View v){
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-
+                    helpCounter = 0;
                     }
                 });
 
         alertDialogBuilder.show();
-
+        */
     }
 
 
