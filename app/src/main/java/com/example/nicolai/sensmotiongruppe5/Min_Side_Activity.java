@@ -41,7 +41,6 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         navigationView.setNavigationItemSelectedListener(
 
 
-
             new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -94,13 +93,6 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
                 return super.onOptionsItemSelected(item);
 
             }
-
-
-
-
-
-
-
 
 
     public void openSettingActivity(){
