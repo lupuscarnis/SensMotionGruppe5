@@ -1,39 +1,90 @@
 package com.example.nicolai.sensmotiongruppe5;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+
+import com.example.nicolai.sensmotiongruppe5.Fragments.Date_Slider_frag;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Min_Data_frag;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lecho.lib.hellocharts.model.PieChartData;
-import lecho.lib.hellocharts.model.SliceValue;
-import lecho.lib.hellocharts.view.PieChartView;
 
-public class Min_Data_Activity extends AppCompatActivity {
+public class Min_Data_Activity extends FragmentActivity {
+
+    MyPageAdapter pageAdapter;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+
+    public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_min__data);
-        PieChartView pieChartView = findViewById(R.id.chart);
-
-        List<SliceValue> pieData = new ArrayList<>();
+        List<Fragment> fragments = getFragments();
 
 
+        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
+
+        ViewPager pager = findViewById(R.id.min_data_fragment_pager);
 
 
-        pieData.add(new SliceValue(15, Color.BLUE).setLabel("Q1: $10"));
-        pieData.add(new SliceValue(25, Color.GRAY).setLabel("Q2: $4"));
-        pieData.add(new SliceValue(10, Color.RED).setLabel("Q3: $18"));
-        pieData.add(new SliceValue(60, Color.MAGENTA).setLabel("Q4: $28"));
+        pager.setAdapter(pageAdapter);
 
 
-
-
-        PieChartData pieChartData = new PieChartData(pieData);
-        pieChartData.setHasLabels(true);
-        pieChartView.setPieChartData(pieChartData);
     }
+
+    private List<Fragment> getFragments() {
+
+        List<Fragment> fList = new ArrayList<>();
+
+
+        fList.add(Min_Data_frag.newInstance("Fragment 1"));
+        fList.add(Date_Slider_frag.newInstance("Fragment 2"));
+
+
+        return fList;
+
+    }
+
+
 }
+
+class MyPageAdapter extends FragmentPagerAdapter {
+
+    private List<Fragment> fragments;
+
+
+    public MyPageAdapter(FragmentManager fm, List<Fragment> fragments) {
+
+        super(fm);
+
+        this.fragments = fragments;
+
+    }
+
+    @Override
+
+    public Fragment getItem(int position) {
+
+        return this.fragments.get(position);
+
+    }
+
+
+    @Override
+
+    public int getCount() {
+
+        return this.fragments.size();
+
+    }
+
+
+}
+
