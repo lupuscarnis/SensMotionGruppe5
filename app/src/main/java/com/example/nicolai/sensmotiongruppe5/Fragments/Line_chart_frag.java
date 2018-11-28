@@ -97,7 +97,6 @@ public class Line_chart_frag extends Fragment {
         data.setAxisXBottom(axis);
         axis.setTextColor(Color.parseColor("#03A9F4"));
 
-
         //Show y values in the line chart graph.
         Axis yAxis = new Axis();
         data.setAxisYLeft(yAxis);
