@@ -7,8 +7,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.example.nicolai.sensmotiongruppe5.Fragments.Date_Slider_frag;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Min_Data_frag;
+
+import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +45,8 @@ public class Min_Data_Activity extends FragmentActivity {
         List<Fragment> fList = new ArrayList<>();
 
 
-        fList.add(Min_Data_frag.newInstance("Fragment 1"));
-        fList.add(Date_Slider_frag.newInstance("Fragment 2"));
+        fList.add(Line_chart_frag.newInstance("Fragment 1"));
+        fList.add(Pie_chart_frag.newInstance("Fragment 2"));
 
 
         return fList;
