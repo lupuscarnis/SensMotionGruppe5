@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:title="Achievements" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:title="Settings" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:title="whatever" />
+        <item
+            android:id="@+id/nav_manage"
+            android:title="whatever" />
+    </group>
+
+    <item android:title="anden kategori">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:title="Log ud" />
+            <item
+                android:id="@+id/nav_send"
+                android:title="Log ud " />
+        </menu>
+    </item>
+
+</menu>
