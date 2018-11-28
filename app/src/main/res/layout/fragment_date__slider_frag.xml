@@ -6,7 +6,8 @@
     tools:context=".Fragments.Date_Slider_frag">
 
     <lecho.lib.hellocharts.view.LineChartView
-        android:id="@+id/lineChart"
+        android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </FrameLayout>

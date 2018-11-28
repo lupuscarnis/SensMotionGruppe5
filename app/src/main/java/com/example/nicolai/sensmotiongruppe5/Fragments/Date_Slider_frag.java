@@ -13,6 +13,8 @@ import com.example.nicolai.sensmotiongruppe5.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
@@ -52,22 +54,58 @@ public class Date_Slider_frag extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        lineChartView = getView().findViewById(R.id.lineChart);
-
-        List<PointValue> scatter = new ArrayList<>();
+        lineChartView = getView().findViewById(R.id.chart);
 
 
-        scatter.add(new PointValue(13, 14));
-        scatter.add(new PointValue(15, 14));
-        scatter.add(new PointValue(16, 14));
-        scatter.add(new PointValue(17, 14));
+        //initialize the data for X-Axis.
+        String[] xData = {"Siddende", "Gående", "I bevegelse", "liggende"};
 
-        Line line = new Line(scatter).setColor(Color.BLUE).setCubic(true);
-        List<Line> lines = new ArrayList<>(1);
+        //initialize the data for Y-Axis.
+        int[] yData = {50, 20, 15, 30};
+
+        //declare List
+        List y = new ArrayList();
+        List x = new ArrayList();
+
+        //Declare and initialize y line
+        Line line = new Line(y).setColor(Color.parseColor("#9C27B0"));
+
+
+
+
+        //add x and y data inside yValues and xValues lists.
+        for(int i = 0; i < xData.length; i++){
+            x.add(i, new AxisValue(i).setLabel(xData[i]));
+        }
+
+        for (int i = 0; i < yData.length; i++){
+            y.add(new PointValue(i, yData[i]));
+        }
+
+        //This list will hold the line of the graph chart.
+        List lines = new ArrayList();
         lines.add(line);
-        LineChartData data = new LineChartData(lines);
+
+
+        //add graph line to the overall data chart.
+        LineChartData data = new LineChartData();
+        data.setLines(lines);
 
         lineChartView.setLineChartData(data);
+
+        //Show x values in the line chart graph.
+        Axis axis = new Axis();
+        axis.setValues(x);
+        data.setAxisXBottom(axis);
+        axis.setTextColor(Color.parseColor("#03A9F4"));
+
+
+
+        //Show y values in the line chart graph.
+        Axis yAxis = new Axis();
+        data.setAxisYLeft(yAxis);
+        yAxis.setTextColor(Color.parseColor("#03A9F4"));
+        yAxis.setTextSize(16);
 
 
     }
