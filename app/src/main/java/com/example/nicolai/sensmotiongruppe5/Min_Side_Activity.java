@@ -59,7 +59,7 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
 
 
             new NavigationView.OnNavigationItemSelectedListener() {
-
+//sophus
                 @SuppressWarnings("StatementWithEmptyBody")
                 @Override
                 public boolean onNavigationItemSelected(MenuItem item) {
