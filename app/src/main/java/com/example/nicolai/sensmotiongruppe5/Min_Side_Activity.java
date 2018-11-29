@@ -2,8 +2,10 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,13 +26,16 @@ import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
 
 import java.util.List;
 
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
      Button help, actualHelp;
     // DAO singleton instance object
     DAO userDAO = DAO.getInstance();
-    List<List<String>> valuesArray; // For storing the values from JSON
+    // For storing the values from JSON
+    List<List<String>> valuesArray;
 
     private DrawerLayout mDrawerLayout;
     public int helpCounter = 0;
@@ -53,17 +59,43 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
 
 
             new NavigationView.OnNavigationItemSelectedListener() {
+
+                @SuppressWarnings("StatementWithEmptyBody")
                 @Override
-                public boolean onNavigationItemSelected(MenuItem menuItem) {
-                    // set item as selected to persist highlight
-                    menuItem.setChecked(true);
-                    // close drawer when item is tapped
+                public boolean onNavigationItemSelected(MenuItem item) {
+// Handle navigation view item clicks here.
+                    int id = item.getItemId();
+                    if (id == R.id.nav_achi) {
+                        Intent intent1 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent1);
+                    }
+                    else if (id == R.id.nav_set) {
+                        Intent intent2 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent2);
+                    }
+                    else if (id == R.id.nav_test1) {
+                        Intent intent3 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent3);
+                    }
+                    else if (id == R.id.nav_test2) {
+                        Intent intent4 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent4);
+                    }
+
+                    else if (id == R.id.nav_logud) {
+                        Intent intent5 = new Intent(Min_Side_Activity.this, Login_Activity.class);
+                        startActivity(intent5);
+
+                    }
                     mDrawerLayout.closeDrawers();
 
                     // Add code here to update the UI based on the item selected
                     // For example, swap UI fragments here
                     return true;
-                }});
+
+                }
+
+              });
 
         mDrawerLayout.addDrawerListener(
                 new DrawerLayout.DrawerListener() {
@@ -113,11 +145,11 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
 
             }
 
-
     public void openSettingActivity(){
         Intent intent = new Intent(this, Setting_Activity.class);
-                startActivity(intent);
+        startActivity(intent);
     }
+
 
     /*
      * Download JSON as ASYNCTASK
@@ -143,7 +175,17 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         }
         @Override
         protected void onPostExecute(Void result) {
+
             super.onPostExecute(result);
+
+            // Save JSON_STRING to phone
+            SharedPreferences.Editor prefEditor = getDefaultSharedPreferences(Min_Side_Activity.this).edit();
+            prefEditor.putString("JSON_STRING", valuesArray.toString()).apply();
+
+            // Retrieve JSON_STRING from phone
+            //String jsonString = PreferenceManager.getDefaultSharedPreferences(Min_Side_Activity.this).getString("JSON_STRING", "DefaultStringIfNULL");
+            //Log.d("Debug SharedPreferences",""+jsonString);
+
             // Toast when done downloading/parsing JSON
             Toast.makeText(Min_Side_Activity.this,"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
         }

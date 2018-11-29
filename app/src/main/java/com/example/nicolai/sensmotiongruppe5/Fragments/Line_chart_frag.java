@@ -58,7 +58,7 @@ public class Line_chart_frag extends Fragment {
 
 
         //initialize the data for X-Axis.
-        String[] xData = {"Siddende", "Gående", "I bevegelse", "liggende"};
+        String[] xData = {"Siddende", "Gående", "I bevægelse", "liggende"};
 
         //initialize the data for Y-Axis.
         int[] yData = {50, 20, 15, 30};
@@ -96,7 +96,6 @@ public class Line_chart_frag extends Fragment {
         axis.setValues(x);
         data.setAxisXBottom(axis);
         axis.setTextColor(Color.parseColor("#03A9F4"));
-
 
         //Show y values in the line chart graph.
         Axis yAxis = new Axis();
