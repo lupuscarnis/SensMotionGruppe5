@@ -5,6 +5,8 @@ public interface IData {
 
     void setCurretData(String startData, String endDate);
 
+    /*
+     */
     String[] getAllDates();
 
 

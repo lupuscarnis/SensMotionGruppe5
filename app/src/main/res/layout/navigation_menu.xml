@@ -32,7 +32,12 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:elevation="10dp"
-        app:title="Min side" />
+        android:layout_marginTop="20dp"
+        android:elevation="5dp"
+        app:title="Min side"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
 </FrameLayout>
 

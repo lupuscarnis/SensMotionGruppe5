@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6E7E9"
+    android:background="#F9F9F9"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,21 +14,6 @@
     tools:context=".Login_Activity">
 
     <!-- Login progress -->
-
-    <ImageButton
-        android:id="@+id/forside_ind"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:scaleType="fitStart"
-        android:background="@android:color/transparent"
-        android:contentDescription="TODO"
-        android:elevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar2"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/setting" />
 
     <ImageView
         android:id="@+id/sensLogo"
@@ -127,6 +112,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/misc"
         android:text="@string/action_sign_in_short"
+        android:textColor="#FFF"
         android:textStyle="bold" />
 
     <Button

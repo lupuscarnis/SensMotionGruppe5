@@ -5,27 +5,29 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_achi"
             android:title="Achievements" />
         <item
-            android:id="@+id/nav_gallery"
-            android:title="Settings" />
+            android:id="@+id/nav_set"
+            android:title="Indstillinger" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:title="whatever" />
+            android:id="@+id/nav_side"
+            android:title="Min side" />
         <item
-            android:id="@+id/nav_manage"
-            android:title="whatever" />
+            android:id="@+id/nav_data"
+            android:title="Min data" />
     </group>
 
-    <item android:title="anden kategori">
+    <item android:title="andet">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:title="Log ud" />
+                android:id="@+id/nav_help"
+                android:title="Hjælp" />
+
             <item
-                android:id="@+id/nav_send"
-                android:title="Log ud " />
+                android:id="@+id/nav_logud"
+                android:title="Log ud" />
+
         </menu>
     </item>
 
