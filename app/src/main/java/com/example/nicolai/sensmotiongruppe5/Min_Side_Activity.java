@@ -44,7 +44,7 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -87,8 +87,10 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
                         startActivity(intent5);
                         }
                     else if (id == R.id.nav_help) {
-                        Intent intent5 = new Intent(Min_Side_Activity.this, Help_Activity.class);
-                        startActivity(intent5);
+                        //Intent intent5 = new Intent(Min_Side_Activity.this, Help_Activity.class);
+                        //startActivity(intent5);
+                        onHelp();
+
 
                     }
                     mDrawerLayout.closeDrawers();
@@ -127,15 +129,6 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         new GetJSON().execute();
         help = findViewById(R.id.Min_side_help);
         help.setOnClickListener(this);
-
-        actualHelp = findViewById(R.id.HelpBut);
-        actualHelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                onHelp(view);
-            }
-        });
 
     }
             @Override
@@ -201,7 +194,7 @@ public void onClick(View v){
 
 }
 
-    public void onHelp (final View view){
+    public void onHelp (){
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Min_Side_Activity.this);
@@ -216,25 +209,25 @@ public void onClick(View v){
             @Override        public void onClick(DialogInterface dialogInterface, int i) {
                 //Toast.makeText(Min_Side_Activity.this, "Next", Toast.LENGTH_SHORT).show();
 
-                View vew = view;
+
 
                 switch (helpCounter){
                     case 0:
                         dialogueMessage = " hjaelp nummer 2";
                         dialogImage = R.drawable.star2;
-                        onHelp(vew);
+                        onHelp();
                         helpCounter = -1;
                         break;
 
                     case 1:
                         dialogueMessage = "hjaelp nummer 3 ";
 
-                        onHelp(vew);
+                        onHelp();
                         helpCounter = 2;
                         break;
 
                     case 2:
-                        onHelp(vew);
+                        onHelp();
                         helpCounter = -0;
                 }
 
