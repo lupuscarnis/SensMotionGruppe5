@@ -9,17 +9,21 @@
             android:title="Achievements" />
         <item
             android:id="@+id/nav_set"
-            android:title="Settings" />
+            android:title="Indstillinger" />
         <item
-            android:id="@+id/nav_test1"
-            android:title="whatever" />
+            android:id="@+id/nav_side"
+            android:title="Min side" />
         <item
-            android:id="@+id/nav_test2"
-            android:title="whatever" />
+            android:id="@+id/nav_data"
+            android:title="Min data" />
     </group>
 
-    <item android:title="anden kategori">
+    <item android:title="andet">
         <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:title="Hjælp" />
+
             <item
                 android:id="@+id/nav_logud"
                 android:title="Log ud" />
