@@ -13,6 +13,7 @@ import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 import com.example.nicolai.sensmotiongruppe5.Tests.testForSlider;
 import com.jaygoo.widget.RangeSeekBar;
+import com.jaygoo.widget.SeekBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +36,19 @@ public class Min_Data_Activity extends FragmentActivity {
         List<Fragment> fragments = getFragments();
 
         bar = findViewById(R.id.Min_data_range_silder);
-        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
 
-        ViewPager pager = findViewById(R.id.min_data_fragment_pager);
+
+        SeekBar leftSeekBar = bar.getLeftSeekBar();
+        SeekBar rightSeekBar = bar.getRightSeekBar();
+        leftSeekBar.setThumbDrawableId(R.drawable.smallarrow);
+        rightSeekBar.setThumbDrawableId(R.drawable.smallarrow);
         bar.setRange(1,10);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
         bar.setTickMarkTextArray(s.getAllDates());
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
+        bar.setRange(0, 100, 50);
+        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
+        ViewPager pager = findViewById(R.id.min_data_fragment_pager);
         pager.setAdapter(pageAdapter);
 
 
