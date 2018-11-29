@@ -42,11 +42,14 @@ public class Min_Data_Activity extends FragmentActivity {
         SeekBar rightSeekBar = bar.getRightSeekBar();
         leftSeekBar.setThumbDrawableId(R.drawable.smallarrow);
         rightSeekBar.setThumbDrawableId(R.drawable.smallarrow);
-        bar.setRange(1,10);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
         bar.setTickMarkTextArray(s.getAllDates());
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
-        bar.setRange(0, 100, 50);
+        bar.setRange(0, 6, 1);
+
+
+
+
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
         ViewPager pager = findViewById(R.id.min_data_fragment_pager);
         pager.setAdapter(pageAdapter);
