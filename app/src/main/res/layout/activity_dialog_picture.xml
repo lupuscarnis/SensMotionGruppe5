@@ -9,8 +9,9 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/app_name"
+        android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <RelativeLayout
@@ -39,9 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/image"
             android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="@string/DialogText"
-            android:textColor="#000"
 
-            android:textSize="18sp" />    </RelativeLayout>
+            android:textColor="#000"
+            android:textSize="20sp" />    </RelativeLayout>
 </RelativeLayout>

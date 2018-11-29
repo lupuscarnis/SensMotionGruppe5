@@ -206,61 +206,7 @@ public void onClick(View v){
 
 
 
-/*
 
-        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        ImageButton imageButton = (ImageButton) view.findViewById(R.id.image);
-        imageButton.setImageResource(R.drawable.setting);
-        imageButton.setImageResource(R.drawable.diagram);
-
-        alertDialogBuilder.setMessage(dialogueMessage);
-        alertDialogBuilder.setIcon(dialogImage);
-        alertDialogBuilder.setPositiveButton( "next",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        View vew = view;
-
-                        switch (helpCounter){
-                            case 0:
-                            dialogueMessage = " hjaelp nummer 2";
-                            alertDialogBuilder.setIcon(R.drawable.diagram);
-                                LayoutInflater factory = LayoutInflater.from(Min_Side_Activity.this);
-                                final View view = factory.inflate(R.layout.activity_dialog_picture, null);
-                                alertDialogBuilder.setView(view);
-
-
-                                onHelp(view);
-                            break;
-
-                            case 1:
-                                dialogueMessage = "hjaelp nummer 3 ";
-                                onHelp(vew);
-                                break;
-
-                            case 2:
-                                onHelp(vew);
-                                helpCounter = -1;
-                        }
-
-                        helpCounter++;
-
-                    }
-                });
-
-
-
-        alertDialogBuilder.setNegativeButton("Cancel",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                    helpCounter = 0;
-                    }
-                });
-
-        alertDialogBuilder.show();
-        */
     }
 
 
