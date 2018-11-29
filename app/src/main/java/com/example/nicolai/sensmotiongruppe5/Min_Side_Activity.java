@@ -1,5 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -9,13 +10,16 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
@@ -27,13 +31,17 @@ import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton indstil;
-     Button help;
+     Button help, actualHelp;
     // DAO singleton instance object
     DAO userDAO = DAO.getInstance();
     // For storing the values from JSON
     List<List<String>> valuesArray;
 
     private DrawerLayout mDrawerLayout;
+    public int helpCounter = 0;
+    String dialogueMessage = "here is some nice help";
+    int dialogImage = R.drawable.setting;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +59,7 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
 
 
             new NavigationView.OnNavigationItemSelectedListener() {
-
+//sophus
                 @SuppressWarnings("StatementWithEmptyBody")
                 @Override
                 public boolean onNavigationItemSelected(MenuItem item) {
@@ -65,17 +73,21 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
                         Intent intent2 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
                         startActivity(intent2);
                     }
-                    else if (id == R.id.nav_test1) {
-                        Intent intent3 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                    else if (id == R.id.nav_side) {
+                        Intent intent3 = new Intent(Min_Side_Activity.this, Min_Side_Activity.class);
                         startActivity(intent3);
                     }
-                    else if (id == R.id.nav_test2) {
+                    else if (id == R.id.nav_data) {
                         Intent intent4 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
                         startActivity(intent4);
                     }
 
                     else if (id == R.id.nav_logud) {
                         Intent intent5 = new Intent(Min_Side_Activity.this, Login_Activity.class);
+                        startActivity(intent5);
+                        }
+                    else if (id == R.id.nav_help) {
+                        Intent intent5 = new Intent(Min_Side_Activity.this, Help_Activity.class);
                         startActivity(intent5);
 
                     }
@@ -116,6 +128,14 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         help = findViewById(R.id.Min_side_help);
         help.setOnClickListener(this);
 
+        actualHelp = findViewById(R.id.HelpBut);
+        actualHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                onHelp(view);
+            }
+        });
 
     }
             @Override
@@ -175,10 +195,67 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         }
     }
 public void onClick(View v){
+
     Intent   i = new Intent(this, Min_Data_Activity.class);
     startActivity(i);
 
 }
+
+    public void onHelp (final View view){
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Min_Side_Activity.this);
+        View view1;    view1 = LayoutInflater.from(Min_Side_Activity.this).inflate(R.layout.activity_dialog_picture, null);
+        TextView title = (TextView) view1.findViewById(R.id.title);
+        ImageButton imageButton = (ImageButton) view1.findViewById(R.id.image);
+        title.setText("i'm here to help ");
+        builder.setMessage(dialogueMessage);
+        view1.findViewById(R.id.dialogTv);
+        imageButton.setImageResource(dialogImage);
+        builder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
+            @Override        public void onClick(DialogInterface dialogInterface, int i) {
+                //Toast.makeText(Min_Side_Activity.this, "Next", Toast.LENGTH_SHORT).show();
+
+                View vew = view;
+
+                switch (helpCounter){
+                    case 0:
+                        dialogueMessage = " hjaelp nummer 2";
+                        dialogImage = R.drawable.star2;
+                        onHelp(vew);
+                        helpCounter = -1;
+                        break;
+
+                    case 1:
+                        dialogueMessage = "hjaelp nummer 3 ";
+
+                        onHelp(vew);
+                        helpCounter = 2;
+                        break;
+
+                    case 2:
+                        onHelp(vew);
+                        helpCounter = -0;
+                }
+
+
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override        public void onClick(DialogInterface dialogInterface, int i) {
+              //  Toast.makeText(Min_Side_Activity.this, "Cancel", Toast.LENGTH_SHORT).show();
+                helpCounter = 0;
+            }
+        });
+        builder.setView(view1);    builder.show();
+
+
+
+
+    }
+
+
 
 
 
