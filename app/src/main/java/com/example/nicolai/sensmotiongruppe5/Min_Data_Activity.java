@@ -46,7 +46,7 @@ public class Min_Data_Activity extends FragmentActivity {
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
         bar.setTickMarkTextArray(s.getAllDates());
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
-        bar.setRange(0, 100, 50);
+        bar.setRange(1, 14, 1);
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
         ViewPager pager = findViewById(R.id.min_data_fragment_pager);
         pager.setAdapter(pageAdapter);
