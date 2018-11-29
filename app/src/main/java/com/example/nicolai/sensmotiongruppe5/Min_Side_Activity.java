@@ -51,17 +51,43 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
 
 
             new NavigationView.OnNavigationItemSelectedListener() {
+
+                @SuppressWarnings("StatementWithEmptyBody")
                 @Override
-                public boolean onNavigationItemSelected(MenuItem menuItem) {
-                    // set item as selected to persist highlight
-                    menuItem.setChecked(true);
-                    // close drawer when item is tapped
+                public boolean onNavigationItemSelected(MenuItem item) {
+// Handle navigation view item clicks here.
+                    int id = item.getItemId();
+                    if (id == R.id.nav_achi) {
+                        Intent intent1 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent1);
+                    }
+                    else if (id == R.id.nav_set) {
+                        Intent intent2 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent2);
+                    }
+                    else if (id == R.id.nav_test1) {
+                        Intent intent3 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent3);
+                    }
+                    else if (id == R.id.nav_test2) {
+                        Intent intent4 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                        startActivity(intent4);
+                    }
+
+                    else if (id == R.id.nav_logud) {
+                        Intent intent5 = new Intent(Min_Side_Activity.this, Login_Activity.class);
+                        startActivity(intent5);
+
+                    }
                     mDrawerLayout.closeDrawers();
 
                     // Add code here to update the UI based on the item selected
                     // For example, swap UI fragments here
                     return true;
-                }});
+
+                }
+
+              });
 
         mDrawerLayout.addDrawerListener(
                 new DrawerLayout.DrawerListener() {
@@ -103,11 +129,11 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
 
             }
 
-
     public void openSettingActivity(){
         Intent intent = new Intent(this, Setting_Activity.class);
-                startActivity(intent);
+        startActivity(intent);
     }
+
 
     /*
      * Download JSON as ASYNCTASK
