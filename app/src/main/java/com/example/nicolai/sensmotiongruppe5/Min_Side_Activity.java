@@ -73,17 +73,21 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
                         Intent intent2 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
                         startActivity(intent2);
                     }
-                    else if (id == R.id.nav_test1) {
-                        Intent intent3 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
+                    else if (id == R.id.nav_side) {
+                        Intent intent3 = new Intent(Min_Side_Activity.this, Min_Side_Activity.class);
                         startActivity(intent3);
                     }
-                    else if (id == R.id.nav_test2) {
+                    else if (id == R.id.nav_data) {
                         Intent intent4 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
                         startActivity(intent4);
                     }
 
                     else if (id == R.id.nav_logud) {
                         Intent intent5 = new Intent(Min_Side_Activity.this, Login_Activity.class);
+                        startActivity(intent5);
+                        }
+                    else if (id == R.id.nav_help) {
+                        Intent intent5 = new Intent(Min_Side_Activity.this, Help_Activity.class);
                         startActivity(intent5);
 
                     }
