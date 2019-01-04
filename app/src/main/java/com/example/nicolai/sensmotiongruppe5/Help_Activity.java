@@ -37,7 +37,7 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
         writtenText = findViewById(R.id.help_textbox);
         input = findViewById(R.id.help_input);
         mp = MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
-        setting = findViewById(R.id.indstillinger);
+       
 
         //Sets the Text on screen
         writtenText.setText(R.string.text_user_login_help);

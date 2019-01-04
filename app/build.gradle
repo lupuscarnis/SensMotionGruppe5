@@ -17,6 +17,13 @@ android {
         }
     }
 }
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
