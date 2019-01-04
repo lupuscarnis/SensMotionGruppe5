@@ -36,16 +36,16 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener{
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                          Bundle savedInstanceState) {
-View rootView = inflater.inflate(R.layout.activity_min_side, container, false);
+View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
             // Inflate the layout for this fragment
 
             new GetJSON().execute();
          help = rootView.findViewById(R.id.Min_side_help);
          help.setOnClickListener(this);
 
-         actualHelp = rootView.findViewById(R.id.HelpBut);
+         actualHelp = rootView.findViewById(R.id.Min_side_help);
          actualHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

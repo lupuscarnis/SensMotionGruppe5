@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 public class Setting_Activity extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_setting, container, false);
+        View rootView = inflater.inflate(R.layout.activity_setting, drawer_layout, false);
 return rootView;
     }
 

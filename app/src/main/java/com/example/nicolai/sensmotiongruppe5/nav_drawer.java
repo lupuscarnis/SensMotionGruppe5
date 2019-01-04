@@ -15,7 +15,7 @@ import android.view.View;
 
 public class nav_drawer extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
-    private ActionBar toolbar;
+    private Toolbar toolbar;
 private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener(){
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
@@ -29,7 +29,6 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
             case R.id.nav_set:
                 toolbar.setTitle("Indstillinger");
                 fragment = new Setting_Activity();
-
                 loadFragment(fragment);
                 return true;
             case R.id.nav_data:
@@ -47,7 +46,7 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
