@@ -1,22 +1,15 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.support.v4.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -28,7 +21,7 @@ import java.util.List;
 
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
-public class Min_Side_Activity extends AppCompatActivity implements View.OnClickListener{
+public class Min_Side_Activity extends Fragment implements View.OnClickListener{
 
     ImageButton indstil;
      Button help, actualHelp;
@@ -37,120 +30,34 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
     // For storing the values from JSON
     List<List<String>> valuesArray;
 
-    private DrawerLayout mDrawerLayout;
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
     int dialogImage = R.drawable.setting;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.navigation_menu);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        mDrawerLayout = findViewById(R.id.drawer_layout);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                         Bundle savedInstanceState) {
+View rootView = inflater.inflate(R.layout.activity_min_side, container, false);
+            // Inflate the layout for this fragment
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
+            new GetJSON().execute();
+         help = rootView.findViewById(R.id.Min_side_help);
+         help.setOnClickListener(this);
 
-
-            new NavigationView.OnNavigationItemSelectedListener() {
-//sophus
-                @SuppressWarnings("StatementWithEmptyBody")
-                @Override
-                public boolean onNavigationItemSelected(MenuItem item) {
-// Handle navigation view item clicks here.
-                    int id = item.getItemId();
-                    if (id == R.id.nav_achi) {
-                        Intent intent1 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
-                        startActivity(intent1);
-                    }
-                    else if (id == R.id.nav_set) {
-                        Intent intent2 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
-                        startActivity(intent2);
-                    }
-                    else if (id == R.id.nav_side) {
-                        Intent intent3 = new Intent(Min_Side_Activity.this, Min_Side_Activity.class);
-                        startActivity(intent3);
-                    }
-                    else if (id == R.id.nav_data) {
-                        Intent intent4 = new Intent(Min_Side_Activity.this, Setting_Activity.class);
-                        startActivity(intent4);
-                    }
-
-                    else if (id == R.id.nav_logud) {
-                        Intent intent5 = new Intent(Min_Side_Activity.this, Login_Activity.class);
-                        startActivity(intent5);
-                        }
-                    else if (id == R.id.nav_help) {
-                        Intent intent5 = new Intent(Min_Side_Activity.this, Help_Activity.class);
-                        startActivity(intent5);
-
-                    }
-                    mDrawerLayout.closeDrawers();
-
-                    // Add code here to update the UI based on the item selected
-                    // For example, swap UI fragments here
-                    return true;
-
-                }
-
-              });
-
-        mDrawerLayout.addDrawerListener(
-                new DrawerLayout.DrawerListener() {
-                    @Override
-                    public void onDrawerSlide(View drawerView, float slideOffset) {
-                        // Respond when the drawer's position changes
-                    }
-
-                    @Override
-                    public void onDrawerOpened(View drawerView) {
-                        // Respond when the drawer is opened
-                    }
-
-                    @Override
-                    public void onDrawerClosed(View drawerView) {
-                        // Respond when the drawer is closed
-                    }
-
-                    @Override
-                    public void onDrawerStateChanged(int newState) {
-                        // Respond when the drawer motion state changes
-                    }});
-
-
-        new GetJSON().execute();
-        help = findViewById(R.id.Min_side_help);
-        help.setOnClickListener(this);
-
-        actualHelp = findViewById(R.id.HelpBut);
-        actualHelp.setOnClickListener(new View.OnClickListener() {
+         actualHelp = rootView.findViewById(R.id.HelpBut);
+         actualHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 onHelp(view);
             }
         });
-
+        return rootView;
     }
-            @Override
-            public boolean onOptionsItemSelected(MenuItem item){
-                switch (item.getItemId()) {
-                    case android.R.id.home:
-                        mDrawerLayout.openDrawer(GravityCompat.START);
-                        return true;
-                }
-                return super.onOptionsItemSelected(item);
-
-            }
 
     public void openSettingActivity(){
-        Intent intent = new Intent(this, Setting_Activity.class);
+        Intent intent = new Intent(getActivity(), Setting_Activity.class);
         startActivity(intent);
     }
 
@@ -166,7 +73,7 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
         protected void onPreExecute() {
 
             super.onPreExecute();
-            Toast.makeText(Min_Side_Activity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"Json Data is downloading",Toast.LENGTH_LONG).show();
 
         }
         @Override
@@ -183,7 +90,7 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
             super.onPostExecute(result);
 
             // Save JSON_STRING to phone
-            SharedPreferences.Editor prefEditor = getDefaultSharedPreferences(Min_Side_Activity.this).edit();
+            SharedPreferences.Editor prefEditor = getDefaultSharedPreferences(getActivity()).edit();
             prefEditor.putString("JSON_STRING", valuesArray.toString()).apply();
 
             // Retrieve JSON_STRING from phone
@@ -191,12 +98,12 @@ public class Min_Side_Activity extends AppCompatActivity implements View.OnClick
             //Log.d("Debug SharedPreferences",""+jsonString);
 
             // Toast when done downloading/parsing JSON
-            Toast.makeText(Min_Side_Activity.this,"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
         }
     }
 public void onClick(View v){
 
-    Intent   i = new Intent(this, Min_Data_Activity.class);
+    Intent   i = new Intent(getActivity(), Min_Data_Activity.class);
     startActivity(i);
 
 }
@@ -204,8 +111,8 @@ public void onClick(View v){
     public void onHelp (final View view){
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(Min_Side_Activity.this);
-        View view1;    view1 = LayoutInflater.from(Min_Side_Activity.this).inflate(R.layout.activity_dialog_picture, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View view1;    view1 = LayoutInflater.from(getActivity()).inflate(R.layout.activity_dialog_picture, null);
         TextView title = (TextView) view1.findViewById(R.id.title);
         ImageButton imageButton = (ImageButton) view1.findViewById(R.id.image);
         title.setText("i'm here to help ");

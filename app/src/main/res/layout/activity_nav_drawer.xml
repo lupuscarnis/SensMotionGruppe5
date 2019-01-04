@@ -9,10 +9,14 @@
         android:paddingTop="?attr/actionBarSize"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".Min_Side_Activity" >
+        tools:context=".nav_drawer" >
 
 
-        <include layout="@layout/activity_min_side" />
+        <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
         <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
@@ -40,4 +44,3 @@
 
 
 </FrameLayout>
-

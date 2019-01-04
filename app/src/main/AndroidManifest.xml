@@ -29,6 +29,7 @@
         <activity android:name=".Help_Activity" />
         <activity android:name=".Setting_Activity" />
         <activity android:name=".Min_Data_Activity" />
+        <activity android:name=".nav_drawer"></activity>
     </application>
 
 </manifest>
