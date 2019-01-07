@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
+import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 
 import java.util.List;
 
@@ -25,10 +25,12 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener{
 
     ImageButton indstil;
      Button help, actualHelp;
-    // DAO singleton instance object
-    DAO userDAO = DAO.getInstance();
+
+    // Sets the default keys for the logged in patient
+    DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
+
     // For storing the values from JSON
-    List<List<String>> valuesArray;
+    public List<List<String>> valuesArray;
 
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
@@ -40,7 +42,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener{
 View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
             // Inflate the layout for this fragment
 
-            new GetJSON().execute();
+         new GetJSON().execute();
          help = rootView.findViewById(R.id.Min_side_help);
          help.setOnClickListener(this);
 
@@ -78,8 +80,10 @@ View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, fals
         @Override
         protected Void doInBackground(Void... arg0) {
 
+            valuesArray = daoHandler.getAllInfo(7);
+
             //userDAO.getData();
-            valuesArray = userDAO.getData();
+            //valuesArray = userDAO.getData();
             return null;
 
         }

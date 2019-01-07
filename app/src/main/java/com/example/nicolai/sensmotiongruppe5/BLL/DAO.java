@@ -5,20 +5,20 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAO  {
+public class DAO {
 
     private static final String TAG = DAO.class.getSimpleName();
 
-    // For future use
-    public String patient_key;
-    public String project_key;
+    // Defaults
+    /*private String project_key = "k5W2uX";
+    private String patient_key = "6rT39u";
+    private int dayCount = 7;*/
 
     // Singleton
-    private static DAO instance ;
+    private static DAO instance;
 
     private DAO() {}
 
@@ -32,19 +32,17 @@ public class DAO  {
 
     }
 
-    public List<List<String>> getData(){
+    public List<List<String>> getData(String project_key, String patient_key, int dayCount){
 
         List<List<String>> finalValuesArray = new ArrayList<List<String>>();
 
-        JSONConnection jsonConnection = new JSONConnection();
-        // Making a request to url and getting response
-        String url = "https://beta.sens.dk/exapi/1.0/patients/data/external/overview?project_key=k5W2uX&patient_key=6rT39u&day_count=7";
-        String jsonStr = jsonConnection.getJSON(url);
-        Log.e(TAG, "Response from url: " + jsonStr);
-
-        // Process JSON String
-        if (jsonStr != null) {
+            // Process JSON data (String)
             try {
+
+                JSONConnection jsonConnection = new JSONConnection();
+                // Making a request to url and getting response
+                String url = "https://beta.sens.dk/exapi/1.0/patients/data/external/overview?project_key="+project_key+"&patient_key="+patient_key+"&day_count="+dayCount+"";
+                String jsonStr = jsonConnection.getJSON(url);
 
                 JSONObject jsonObject = new JSONObject(jsonStr);
                 JSONArray jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
@@ -110,8 +108,10 @@ public class DAO  {
                     }
                 }
 
-            } catch (final JSONException e) {
+            } catch (JSONException e) {
+
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
+
             }
 
             Log.e("finalValuesArray Output",""+finalValuesArray);
@@ -120,10 +120,9 @@ public class DAO  {
             Log.e("finalValuesArray Output","Get index 0, start time (0): "+finalValuesArray.get(0).get(0));
 
 
-        }
-
         return finalValuesArray;
 
     }
+
 
 }
