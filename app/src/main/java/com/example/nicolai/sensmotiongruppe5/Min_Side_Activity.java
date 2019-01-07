@@ -34,7 +34,6 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener{
     String dialogueMessage = "here is some nice help";
     int dialogImage = R.drawable.setting;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                          Bundle savedInstanceState) {
