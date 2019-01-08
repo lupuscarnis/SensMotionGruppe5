@@ -1,5 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -21,9 +22,9 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
         Fragment fragment;
         switch (item.getItemId()) {
-            case R.id.nav_achi:
-                toolbar.setTitle("Min side");
-                fragment = new Min_Side_Activity();
+            case R.id.nav_achie:
+                toolbar.setTitle("Achievements");
+                fragment = new Achieve_Activity();
                 loadFragment(fragment);
                 return true;
             case R.id.nav_set:
@@ -36,6 +37,16 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
                 return true;
+            case R.id.nav_side:
+                toolbar.setTitle("Min Data");
+                fragment = new Min_Side_Activity();
+                loadFragment(fragment);
+                return true;
+
+            case R.id.nav_logud:
+                Intent intentUd = new Intent(nav_drawer.this, Login_Activity.class);
+                startActivity(intentUd);
+
         }
         mDrawerLayout.closeDrawers();
         return false;

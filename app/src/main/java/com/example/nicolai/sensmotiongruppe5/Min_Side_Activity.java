@@ -57,12 +57,6 @@ View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, fals
         return rootView;
     }
 
-    public void openSettingActivity(){
-        Intent intent = new Intent(getActivity(), Setting_Activity.class);
-        startActivity(intent);
-    }
-
-
     /*
      * Download JSON as ASYNCTASK
      * Prompts to screen
