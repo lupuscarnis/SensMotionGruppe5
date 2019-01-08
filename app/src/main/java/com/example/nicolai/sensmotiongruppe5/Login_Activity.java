@@ -134,20 +134,6 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     }
 
 
-    public void createNotification (int id, String title, String text) {
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "Channel_ID123")
-                .setSmallIcon(R.drawable.sens_logo)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(this);
-        notificationManager2.notify(id, mBuilder.build());
-    }
-
-
-
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
