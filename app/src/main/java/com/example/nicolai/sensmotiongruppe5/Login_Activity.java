@@ -3,7 +3,12 @@ package com.example.nicolai.sensmotiongruppe5;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -63,9 +68,10 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        createChannel();
+       //createNotification(1,"hej","hej");
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -103,6 +109,45 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
+
+    public void createChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+       //     CharSequence name = getString(R.string.channel_name);
+          //  String description = getString(R.string.channel_description);
+            String CHANNEL_ID = "Channel_ID123";
+            String description = "123";
+            String name = "123";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.enableVibration(true);
+            channel.enableLights(true);
+            channel.setLightColor(Color.GREEN);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
+    }
+
+
+    public void createNotification (int id, String title, String text) {
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "Channel_ID123")
+                .setSmallIcon(R.drawable.sens_logo)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(this);
+        notificationManager2.notify(id, mBuilder.build());
+    }
+
+
+
+
 
     /**
      * Attempts to sign in or register the account specified by the login form.
