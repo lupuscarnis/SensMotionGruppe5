@@ -1,7 +1,9 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
+
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
-import java.util.List;
+
+import java.util.ArrayList;
 
 public class DAOHandler implements IData {
 
@@ -9,6 +11,8 @@ public class DAOHandler implements IData {
 
     private String project_key;
     private String patient_key;
+
+    //private ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
 
     public DAOHandler(String project_key, String patient_key){
 
@@ -18,50 +22,109 @@ public class DAOHandler implements IData {
     }
 
     /**
-     *  @param startDate
-     * @param endDate
+     *  @param startDate in format [YYYY-MM-DD]
+     * @param endDate in format [YYYY-MM-DD]
      */
     @Override
-    public String[] setCurretData(String startDate, String endDate) {
+    public ArrayList<String> setCurrentData(String startDate, String endDate) {
 
-        return new String[0];
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+
+        ArrayList<String> dataArray = new ArrayList<String>();
+
+        int dateSumStart = Integer.parseInt(startDate.replaceAll("-",""));
+        int dateSumEnd = Integer.parseInt(endDate.replaceAll("-",""));
+
+        // Loop to get all json objects from data json array
+        // Iterate over valuesArray
+        for (int i = 0; i < valuesArray.size(); i++) {
+
+            int dateSumV = Integer.parseInt(valuesArray.get(i).getStartDate().replaceAll("-",""));
+
+                if (dateSumV >= dateSumStart && dateSumV <= dateSumEnd) {
+
+                    dataArray.add(Double.toString(valuesArray.get(i).getResting()));
+
+                }
+
+        }
+
+        return dataArray;
 
     }
 
     /**
-     * Converts a list of lists to string array and "formats" the date
-     * @return all available dates from json
+     * Gets all dates. Converts DAO.jsonArray to string array.
+     * @return all available start_dates from json
      */
     @Override
     public String[] getAllDates() {
 
-        List<List<String>> valuesArray;
+        ArrayList<JSONData> valuesArray;
         valuesArray = userDAO.getData(project_key, patient_key, 7);
 
-        // Create string array
-        String[] datesArray = new String[valuesArray.size()];
+        String[] dataArray = new String[valuesArray.size()];
 
-        // Iterate over string array
+        //Log.d("number of entries", valuesArray.size()+"");
+
+        // Iterate over valuesArray
         for (int i = 0; i < valuesArray.size(); i++) {
-            // Only get the first 10 characters (for a more readable format)
-            datesArray[i] = valuesArray.get(i).get(1).substring(0, 10);
+            dataArray[i] = valuesArray.get(i).getStartDate();
         }
 
-        return datesArray;
+        return dataArray;
+    }
+
+    @Override
+    public ArrayList<JSONData> getAllInfoAsObjects() {
+        return null;
     }
 
     /**
      *
      *
      * @return
-     */
+     *//*
     @Override
-    public List<List<String>> getAllInfo(int dayCount) {
+    public ArrayList<JSONData> getAllInfoAsObjects() {
 
-        List<List<String>> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, dayCount);
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
 
         return valuesArray;
-    }
+    }*/
+
+    /**
+     *
+     * @param date (format: YYYY-MM-DD)
+     * @return
+     *//*
+    public ArrayList<Double> getActivitiesByDate(String date) {
+
+        ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
+
+        // Create string array
+        ArrayList<Double> dataArray = new ArrayList<>();
+
+        // Iterate over valuesArray
+        for (int i = 0; i < valuesArray.size(); i++) {
+
+            if (valuesArray.get(i).getStartDate() == date) {
+
+                dataArray.add(valuesArray.get(i).getResting());
+                dataArray.add(valuesArray.get(i).getStanding());
+                dataArray.add(valuesArray.get(i).getWalking());
+                dataArray.add(valuesArray.get(i).getCycling());
+                dataArray.add(valuesArray.get(i).getExercise());
+                dataArray.add(valuesArray.get(i).getOtherd());
+                dataArray.add(valuesArray.get(i).getSteps());
+
+            }
+        }
+
+        return dataArray;
+
+    }*/
 
 }

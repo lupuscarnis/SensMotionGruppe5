@@ -128,7 +128,7 @@ public void onClick(View v){
         view1.findViewById(R.id.dialogTv);
         imageButton.setImageResource(dialogImage);
         builder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-            @Override        public void onClick(DialogInterface dialogInterface, int i) {
+            @Override public void onClick(DialogInterface dialogInterface, int i) {
                 //Toast.makeText(Min_Side_Activity.this, "Next", Toast.LENGTH_SHORT).show();
 
                 View vew = view;

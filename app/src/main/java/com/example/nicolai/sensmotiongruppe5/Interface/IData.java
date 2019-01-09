@@ -1,6 +1,8 @@
 package com.example.nicolai.sensmotiongruppe5.Interface;
 
-import java.util.List;
+import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
+
+import java.util.ArrayList;
 
 public interface IData {
 
@@ -10,7 +12,7 @@ public interface IData {
      * @param endDate
      * @return all available data in date range as a String array
      */
-    String[] setCurretData(String startDate, String endDate);
+    ArrayList<String> setCurrentData(String startDate, String endDate);
 
     /**
      *
@@ -19,9 +21,9 @@ public interface IData {
     String[] getAllDates();
 
     /**
-     * @param dayCount
+     *
      * @return all information
      */
-    List<List<String>> getAllInfo(int dayCount);
+    ArrayList<JSONData> getAllInfoAsObjects();
 
 }
