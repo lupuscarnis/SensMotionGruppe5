@@ -6,22 +6,22 @@ public interface IData {
 
     /**
      *
-     * @param startData
+     * @param startDate
      * @param endDate
+     * @return all available data in date range as a String array
      */
-    void setCurretData(String startData, String endDate);
+    String[] setCurretData(String startDate, String endDate);
 
     /**
      *
-     * @return
+     * @return all available dates as a String array
      */
     String[] getAllDates();
 
     /**
-     *
-     * @return
+     * @param dayCount
+     * @return all information
      */
-
     List<List<String>> getAllInfo(int dayCount);
 
 }

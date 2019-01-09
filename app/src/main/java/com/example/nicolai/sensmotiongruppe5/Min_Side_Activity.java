@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
@@ -24,13 +25,14 @@ import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 public class Min_Side_Activity extends Fragment implements View.OnClickListener{
 
     ImageButton indstil;
-     Button help, actualHelp;
+    Button help, actualHelp;
 
     // Sets the default keys for the logged in patient
     DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
 
     // For storing the values from JSON
     public List<List<String>> valuesArray;
+    public String[] allDates;
 
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
@@ -74,10 +76,8 @@ View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, fals
         @Override
         protected Void doInBackground(Void... arg0) {
 
-            valuesArray = daoHandler.getAllInfo(7);
-
-            //userDAO.getData();
-            //valuesArray = userDAO.getData();
+            //valuesArray = daoHandler.getAllInfo(7);
+            allDates = daoHandler.getAllDates();
             return null;
 
         }
@@ -87,15 +87,20 @@ View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, fals
             super.onPostExecute(result);
 
             // Save JSON_STRING to phone
-            SharedPreferences.Editor prefEditor = getDefaultSharedPreferences(getActivity()).edit();
-            prefEditor.putString("JSON_STRING", valuesArray.toString()).apply();
+            //SharedPreferences.Editor prefEditor = getDefaultSharedPreferences(getActivity()).edit();
+            //prefEditor.putString("JSON_STRING", valuesArray.toString()).apply();
 
             // Retrieve JSON_STRING from phone
             //String jsonString = PreferenceManager.getDefaultSharedPreferences(Min_Side_Activity.this).getString("JSON_STRING", "DefaultStringIfNULL");
             //Log.d("Debug SharedPreferences",""+jsonString);
 
             // Toast when done downloading/parsing JSON
-            Toast.makeText(getActivity(),"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(),"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
+
+            // Toast all dates from JSON
+            String datesArr = Arrays.toString(allDates);
+            Toast.makeText(getActivity(),"Json Data example info "+datesArr,Toast.LENGTH_LONG).show();
+
         }
     }
 public void onClick(View v){

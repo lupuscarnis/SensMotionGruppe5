@@ -18,8 +18,9 @@ public class testForSlider implements IData {
 
     }
 
-    public void setCurretData(String startData, String endDate) {
+    public String[] setCurretData(String startData, String endDate) {
 
+        return new String[0];
     }
 
     public String[] getAllDates() {
