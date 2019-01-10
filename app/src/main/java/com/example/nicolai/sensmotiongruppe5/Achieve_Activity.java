@@ -14,6 +14,15 @@ public class Achieve_Activity extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_achieve, drawer_layout, false);
 
 
+
+
+
+
+
+
+
+
+
         return rootView;
 
 
