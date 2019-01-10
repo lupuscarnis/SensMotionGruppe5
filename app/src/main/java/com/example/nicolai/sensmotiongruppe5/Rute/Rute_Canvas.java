@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Rute;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,9 +7,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathDashPathEffect;
+import android.graphics.PathEffect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.nicolai.sensmotiongruppe5.R;
 
 public class Rute_Canvas extends View {
 
@@ -36,14 +40,14 @@ public class Rute_Canvas extends View {
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setStrokeWidth(10f);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
-        /*
+
         PathEffect effect = new PathDashPathEffect(
                 makeConcaveArrow(24.0f, 14.0f),    // "stamp"
                 36.0f,                            // advance, or distance between two stamps
                 0.0f,                             // phase, or offset before the first stamp
                 PathDashPathEffect.Style.ROTATE); //
         mPaint.setPathEffect(effect);
-*/
+
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         canvas = new Canvas(mutableBitmap);
@@ -63,7 +67,6 @@ public class Rute_Canvas extends View {
         return p;
     }
 
-    @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
@@ -72,17 +75,18 @@ public class Rute_Canvas extends View {
 
     }
 
-    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(bitmap, 0, 0, mBitmapPaint);
         canvas.drawPath(path, mPaint);
     }
 
+
     public void clearCanvas() {
         path.reset();
         invalidate();
     }
+
 
     public void Draw(float startX, float startY, float endX, float endY) {
         path.moveTo(startX, startY);
@@ -90,6 +94,7 @@ public class Rute_Canvas extends View {
 
 
     }
+
 
     public void DrawCircle(int h, int k, int r) {
 

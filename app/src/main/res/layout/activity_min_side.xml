@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.example.nicolai.sensmotiongruppe5.Rute_Canvas
+    <com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas
         android:id="@+id/canvas_rute"
         android:layout_width="365dp"
         android:layout_height="300dp"
