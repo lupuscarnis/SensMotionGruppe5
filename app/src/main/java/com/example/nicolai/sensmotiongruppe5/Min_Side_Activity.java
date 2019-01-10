@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +19,7 @@ import java.util.List;
 
 public class Min_Side_Activity extends Fragment {
 
-    ImageButton indstil;
-    Button help, actualHelp;
+    View rootView;
     Rute_Canvas hello;
     // Sets the default keys for the logged in patient
     DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
@@ -37,13 +35,14 @@ public class Min_Side_Activity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                          Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
+
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
+        }
             // Inflate the layout for this fragment
 
          new GetJSON().execute();
         hello = rootView.findViewById(R.id.canvas_rute);
-        Toast.makeText(getActivity(), "" + hello.getScaleX() + ", " + hello.getScaleY(), Toast.LENGTH_LONG).show();
-
         // P
         hello.Draw(50, 50, 50, 300);
         hello.Draw(50, 50, 100, 100);

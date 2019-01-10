@@ -12,13 +12,16 @@ import com.example.nicolai.sensmotiongruppe5.R;
 public class Text_fragment extends Fragment {
 
 
-
+    View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        if (view == null) {
+            view = inflater.inflate(R.layout.text_fragment_layout, container, false);
+        }
 
-        View view = inflater.inflate(R.layout.text_fragment_layout, container,false );
+
 
         return view;
 }
