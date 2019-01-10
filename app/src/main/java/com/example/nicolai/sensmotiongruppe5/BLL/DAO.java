@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DAO {
 
@@ -32,97 +31,65 @@ public class DAO {
 
     }
 
-    public List<List<String>> getData(String project_key, String patient_key, int dayCount){
+    public ArrayList<JSONData> getData(String project_key, String patient_key, int dayCount) {
 
-        List<List<String>> finalValuesArray = new ArrayList<List<String>>();
+        ArrayList<JSONData> jsonData = new ArrayList<JSONData>();
 
-            // Process JSON data (String)
-            try {
+        // Process JSON data (String)
+        try {
 
-                JSONConnection jsonConnection = new JSONConnection();
-                // Making a request to url and getting response
-                String url = "https://beta.sens.dk/exapi/1.0/patients/data/external/overview?project_key="+project_key+"&patient_key="+patient_key+"&day_count="+dayCount+"";
-                String jsonStr = jsonConnection.getJSON(url);
+            JSONConnection jsonConnection = new JSONConnection();
+            // Making a request to url and getting response
+            String url = "https://beta.sens.dk/exapi/1.0/patients/data/external/overview?project_key="+project_key+"&patient_key="+patient_key+"&day_count="+dayCount+"";
 
-                JSONObject jsonObject = new JSONObject(jsonStr);
-                JSONArray jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
+            String jsonStr = jsonConnection.getJSON(url);
 
-                // Loop to get all json objects from data json array
-                for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = new JSONObject(jsonStr);
+            JSONArray jsonArray  = jsonObject.getJSONObject("value").getJSONArray("data");
 
-                    // Adds new row to List
-                    finalValuesArray.add(new ArrayList<String>());
+            // Loop to get all json objects from data json array
+            for (int i = 0; i < jsonArray.length(); i++) {
 
-                    JSONObject e = jsonArray.getJSONObject(i);
+                JSONObject e = jsonArray.getJSONObject(i);
 
-                    String start_time = e.getString("start_time");
-                    String end_time = e.getString("end_time");
+                jsonData.add(new JSONData());
 
-                    // Add start/end time to beginning of the new array
-                    finalValuesArray.get(i).add(start_time);
-                    finalValuesArray.get(i).add(end_time);
+                // start_time
+                jsonData.get(i).setStartDate(e.getString("start_time").substring(0, 10));
 
-                    String values = e.getString("values");
+                // start_time split into yyyy mm dd
+                String[] datesArr = e.getString("start_time").substring(0, 10).split("-");
 
-                    //Split values from string by comma
-                    String[] valuesArray = values.split(",");
+                jsonData.get(i).setYear(Integer.parseInt(datesArr[0]));
+                jsonData.get(i).setMonth(Integer.parseInt(datesArr[1]));
+                jsonData.get(i).setDay(Integer.parseInt(datesArr[2]));
 
-                    for(int j=0;j<valuesArray.length;j++){
+                // values
+                String values = e.getString("values");
 
-                        //remove all non numeric characters
-                        String time = valuesArray[j].replaceAll("[^\\d.]", "");
-                        /*
+                //Split values from string by comma
+                String[] valuesArray = values.split(",");
 
-                        // Just an example of how to split the activities by type.
 
-                        String activity;
-
-                        switch (j) {
-
-                            case 0: activity = "resting";
-                                break;
-                            case 1: activity = "standing";
-                                break;
-                            case 2: activity = "walking";
-                                break;
-                            case 3: activity = "cycling";
-                                break;
-                            case 4: activity = "exercise";
-                                break;
-                            case 5: activity = "other";
-                                break;
-                            case 6: activity = "nodata";
-                                break;
-                            case 7: activity = "steps";
-                                break;
-
-                            default: activity = "";
-                                break;
-
-                        }
-
-                        Log.e(TAG,"Activity: "+activity+" Time: "+time);
-                        */
-
-                        finalValuesArray.get(i).add(time);
-                    }
-                }
-
-            } catch (JSONException e) {
-
-                Log.e(TAG, "Json parsing error: " + e.getMessage());
+                jsonData.get(i).setResting(Double.parseDouble(valuesArray[0].replaceAll("[^0-9.]", "")));
+                jsonData.get(i).setStanding(Double.parseDouble(valuesArray[1].replaceAll("[^0-9.]", "")));
+                jsonData.get(i).setWalking(Double.parseDouble(valuesArray[2].replaceAll("[^0-9.]", "")));
+                jsonData.get(i).setCycling(Double.parseDouble(valuesArray[3].replaceAll("[^0-9.]", "")));
+                jsonData.get(i).setExercise(Double.parseDouble(valuesArray[4].replaceAll("[^0-9.]", "")));
+                jsonData.get(i).setOtherd(Double.parseDouble(valuesArray[5].replaceAll("[^0-9.]", "")));
+                jsonData.get(i).setNodata(Double.parseDouble(valuesArray[6].replaceAll("[^0-9.]", "")));
+                jsonData.get(i).setSteps(Double.parseDouble(valuesArray[7].replaceAll("[^0-9.]", "")));
 
             }
 
-            Log.e("finalValuesArray Output",""+finalValuesArray);
+        } catch (JSONException e) {
 
-            // Just an example of accessing the values from the arrays
-            Log.e("finalValuesArray Output","Get index 0, start time (0): "+finalValuesArray.get(0).get(0));
+            Log.e(TAG, "Json parsing error: " + e.getMessage());
 
+        }
 
-        return finalValuesArray;
+        return jsonData;
 
     }
-
 
 }

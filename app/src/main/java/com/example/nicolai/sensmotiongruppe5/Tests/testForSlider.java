@@ -1,9 +1,10 @@
 package com.example.nicolai.sensmotiongruppe5.Tests;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
+import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class testForSlider implements IData {
 
@@ -18,9 +19,8 @@ public class testForSlider implements IData {
 
     }
 
-    public String[] setCurretData(String startData, String endDate) {
-
-        return new String[0];
+    public ArrayList<String> setCurrentData(String startData, String endDate) {
+        return null;
     }
 
     public String[] getAllDates() {
@@ -31,7 +31,7 @@ public class testForSlider implements IData {
     }
 
     @Override
-    public List<List<String>> getAllInfo(int dayCount) {
+    public ArrayList<JSONData> getAllInfoAsObjects() {
         return null;
     }
 
