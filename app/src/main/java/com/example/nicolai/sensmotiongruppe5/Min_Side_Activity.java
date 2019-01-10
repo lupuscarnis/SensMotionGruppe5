@@ -1,11 +1,9 @@
 package com.example.nicolai.sensmotiongruppe5;
 
-import android.support.v4.app.Fragment;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +18,11 @@ import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import java.util.Arrays;
 import java.util.List;
 
-import static android.preference.PreferenceManager.getDefaultSharedPreferences;
-
-public class Min_Side_Activity extends Fragment implements View.OnClickListener{
+public class Min_Side_Activity extends Fragment {
 
     ImageButton indstil;
     Button help, actualHelp;
-
+    Rute_Canvas hello;
     // Sets the default keys for the logged in patient
     DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
 
@@ -41,23 +37,35 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                          Bundle savedInstanceState) {
-View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
+        View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
             // Inflate the layout for this fragment
 
          new GetJSON().execute();
-         help = rootView.findViewById(R.id.Min_side_help);
-         help.setOnClickListener(this);
+        hello = rootView.findViewById(R.id.canvas_rute);
+        Toast.makeText(getActivity(), "" + hello.getScaleX() + ", " + hello.getScaleY(), Toast.LENGTH_LONG).show();
 
-         actualHelp = rootView.findViewById(R.id.Min_side_help);
-         actualHelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        // P
+        hello.Draw(50, 50, 50, 300);
+        hello.Draw(50, 50, 100, 100);
+        hello.Draw(100, 100, 50, 200);
+        // I
+        hello.Draw(200, 50, 200, 75);
+        hello.Draw(200, 100, 200, 300);
 
-                onHelp(view);
-            }
-        });
+        // K
+        hello.Draw(300, 50, 300, 300);
+        hello.Draw(300, 150, 350, 50);
+        hello.Draw(300, 150, 350, 300);
+
+        //Circle
+
+        hello.DrawCircle(400, 250, 20);
+
         return rootView;
     }
+
+
+
 
     /*
      * Download JSON as ASYNCTASK
@@ -70,7 +78,7 @@ View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, fals
         protected void onPreExecute() {
 
             super.onPreExecute();
-            Toast.makeText(getActivity(),"Json Data is downloading",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(),"Json Data is downloading",Toast.LENGTH_LONG).show();
 
         }
         @Override
@@ -103,12 +111,8 @@ View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, fals
 
         }
     }
-public void onClick(View v){
 
-    Intent   i = new Intent(getActivity(), Min_Data_Activity.class);
-    startActivity(i);
 
-}
 
     public void onHelp (final View view){
 
