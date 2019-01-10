@@ -11,7 +11,7 @@
 
 
     <fragment
-        android:id="@+id/fragment2"
+        android:id="@+id/text_fragment"
         android:name="com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment"
         android:layout_width="361dp"
         android:layout_height="174dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.example.nicolai.sensmotiongruppe5.Rute_Canvas
+    <com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas
         android:id="@+id/canvas_rute"
         android:layout_width="365dp"
         android:layout_height="300dp"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment2"
+        app:layout_constraintTop_toBottomOf="@+id/text_fragment"
         app:layout_constraintVertical_bias="0.53" />
 
 

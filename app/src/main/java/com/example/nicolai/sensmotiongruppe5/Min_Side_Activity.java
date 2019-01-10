@@ -8,21 +8,22 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
+import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
+import com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Min_Side_Activity extends Fragment {
 
-    ImageButton indstil;
-    Button help, actualHelp;
-    Rute_Canvas hello;
+    View rootView;
+    public Rute_Canvas stv;
     // Sets the default keys for the logged in patient
     DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
 
@@ -33,33 +34,36 @@ public class Min_Side_Activity extends Fragment {
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
     int dialogImage = R.drawable.setting;
+    Rute hello;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                          Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
+        ArrayList<ArrayList<Float>> matrix = new ArrayList<>();
+        ArrayList<Float> point = new ArrayList<>();
+        point.add(200f);
+        point.add(200f);
+        point.add(400f);
+        point.add(400f);
+        matrix.add(point);
+        point.clear();
+        point.add(400f);
+        point.add(400f);
+        point.add(600f);
+        point.add(600f);
+        matrix.add(point);
+        int[] values = {0, 0, 1000, 0};
+
+
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
+        }
             // Inflate the layout for this fragment
 
          new GetJSON().execute();
-        hello = rootView.findViewById(R.id.canvas_rute);
-        Toast.makeText(getActivity(), "" + hello.getScaleX() + ", " + hello.getScaleY(), Toast.LENGTH_LONG).show();
 
-        // P
-        hello.Draw(50, 50, 50, 300);
-        hello.Draw(50, 50, 100, 100);
-        hello.Draw(100, 100, 50, 200);
-        // I
-        hello.Draw(200, 50, 200, 75);
-        hello.Draw(200, 100, 200, 300);
-
-        // K
-        hello.Draw(300, 50, 300, 300);
-        hello.Draw(300, 150, 350, 50);
-        hello.Draw(300, 150, 350, 300);
-
-        //Circle
-
-        hello.DrawCircle(400, 250, 20);
+        hello = new Rute(rootView.findViewById(R.id.canvas_rute), matrix);
+        hello.drawRute(values);
 
         return rootView;
     }
