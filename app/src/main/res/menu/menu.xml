@@ -5,17 +5,18 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_achi"
-            android:title="Achievements" />
-        <item
-            android:id="@+id/nav_set"
-            android:title="Indstillinger" />
-        <item
             android:id="@+id/nav_side"
             android:title="Min side" />
         <item
             android:id="@+id/nav_data"
             android:title="Min data" />
+        <item
+            android:id="@+id/nav_achie"
+            android:title="Achievements" />
+        <item
+            android:id="@+id/nav_set"
+            android:title="Indstillinger" />
+
     </group>
 
     <item android:title="andet">

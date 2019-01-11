@@ -117,8 +117,8 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
        //     CharSequence name = getString(R.string.channel_name);
           //  String description = getString(R.string.channel_description);
             String CHANNEL_ID = "Channel_ID123";
-            String description = "123";
-            String name = "123";
+            String description = "Beskrivelse";
+            String name = "android_channel";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.enableVibration(true);
