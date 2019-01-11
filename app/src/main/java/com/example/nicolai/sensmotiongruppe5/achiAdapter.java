@@ -19,6 +19,7 @@ import java.util.ArrayList;
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             ImageView aImage;
             TextView achiName;
+            TextView achiDes;
             RelativeLayout parent_Layout;
 
 
@@ -26,6 +27,7 @@ import java.util.ArrayList;
             public MyViewHolder(View itemView) {
                 super(itemView);
                 achiName = itemView.findViewById(R.id.achiName);
+                achiDes = itemView.findViewById(R.id.desText);
                 aImage = itemView.findViewById(R.id.achiLogo);
                 parent_Layout = itemView.findViewById(R.id.parent_layout);
             }
@@ -51,18 +53,24 @@ import java.util.ArrayList;
         // Replace the contents of a view (invoked by the layout manager)
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
-            if (item.get(position).getCompleted() = true){
+
+
+
+
+
+
+            if (item.get(position).getCompleted()){
                 holder.aImage.setImageResource(R.drawable.achi);
+                holder.achiName.setText(item.get(position).getDoneDes());
             }
-            if (item.get(position).getCompleted() = false){
+            if (!item.get(position).getCompleted()){
                 holder.aImage.setImageResource(R.drawable.achi);
+                holder.achiName.setText(item.get(position).getNotDes());
             }
             holder.achiName.setText(item.get(position).getName());
         }
 
-        // Return the size of your dataset (invoked by the layout manager)
+
         @Override
         public int getItemCount() {
             return item.size();

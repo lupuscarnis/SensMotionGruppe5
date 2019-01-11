@@ -4,13 +4,15 @@ public class Achievements {
 
 private String achiName;
 private boolean completed;
-private String description;
+private String doneDescription;
+private String notDescription;
 
-    public Achievements(String achiName, boolean completed, String description){
+    public Achievements(String achiName, boolean completed, String doneDescription, String notDectription){
 
         this.achiName = achiName;
         this.completed = completed;
-        this.description = description;
+        this.doneDescription = doneDescription;
+        this.notDescription = notDectription;
     }
     public boolean getCompleted() {
 
@@ -19,6 +21,14 @@ private String description;
     public String getName() {
 
         return achiName;
+    }
+    public String getDoneDes() {
+
+        return doneDescription;
+    }
+    public String getNotDes() {
+
+        return notDescription;
     }
 
 

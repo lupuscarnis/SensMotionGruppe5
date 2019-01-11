@@ -25,8 +25,14 @@ public class Achieve_Activity extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         ArrayList<Achievements> data = new ArrayList<>();
-data.add(new Achievements("navn", true, "123"));
-data.add(new Achievements("navn", true, "123"));
+        data.add(new Achievements("navn", true, "123", 321));
+        data.add(new Achievements("navn2", true, "123", 321));
+        data.add(new Achievements("navn", true, "123", 321));
+        data.add(new Achievements("navn2", true, "123", 321));
+        data.add(new Achievements("navn", true, "123", 321));
+        data.add(new Achievements("navn2", true, "123", 321));
+        data.add(new Achievements("navn", true, "123", 321));
+        data.add(new Achievements("navn2", true, "123", 321));
         mAdapter = new achiAdapter(data);
         mRecyclerView.setAdapter(mAdapter);
 
