@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Min_Side_Activity extends Fragment {
+public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
     View rootView;
     public Rute_Canvas stv;
@@ -30,7 +31,7 @@ public class Min_Side_Activity extends Fragment {
     // For storing the values from JSON
     public List<List<String>> valuesArray;
     public String[] allDates;
-
+    private Button walk, run, cycling;
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
     int dialogImage = R.drawable.setting;
@@ -39,20 +40,29 @@ public class Min_Side_Activity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                          Bundle savedInstanceState) {
+
+
+        walk = rootView.findViewById(R.id.button_walk);
+        run = rootView.findViewById(R.id.button_running);
+        cycling = rootView.findViewById(R.id.button_bike);
+        cycling.setOnClickListener(this);
+        run.setOnClickListener(this);
+        walk.setOnClickListener(this);
+
         ArrayList<ArrayList<Float>> matrix = new ArrayList<>();
         ArrayList<Float> point = new ArrayList<>();
+        point.add(100f);
+        point.add(100f);
         point.add(200f);
         point.add(200f);
-        point.add(400f);
-        point.add(400f);
         matrix.add(point);
         point.clear();
-        point.add(400f);
-        point.add(400f);
-        point.add(600f);
-        point.add(600f);
+        point.add(200f);
+        point.add(200f);
+        point.add(300f);
+        point.add(300f);
         matrix.add(point);
-        int[] values = {0, 0, 1000, 0};
+
 
 
         if (rootView == null) {
@@ -63,10 +73,32 @@ public class Min_Side_Activity extends Fragment {
          new GetJSON().execute();
 
         hello = new Rute(rootView.findViewById(R.id.canvas_rute), matrix);
-        hello.drawRute(values);
+
 
         return rootView;
     }
+
+    @Override
+    public void onClick(View v) {
+        int[] values = {0, 0, 0, 0};
+        ;
+        if (v == walk) {
+            values[0] = 10;
+            hello.drawRute(values);
+        }
+        if (v == run) {
+            values[1] = 10;
+            hello.drawRute(values);
+        }
+        if (v == cycling) {
+            values[2] = 10;
+            hello.drawRute(values);
+        }
+
+
+    }
+
+
 
 
 
