@@ -10,9 +10,9 @@ public class Rute {
     private ArrayList highLights;
     private Rute_Canvas canvas;
     private ArrayList<Float> roadDistances;
-    private ArrayList<ArrayList<Float>> cords;
+    private ArrayList<Rutevector> cords;
 
-    public Rute(View ctx, ArrayList<ArrayList<Float>> matrix) {
+    public Rute(View ctx, ArrayList<Rutevector> matrix) {
         canvas = (Rute_Canvas) ctx;
         cords = matrix;
         roadDistances = new ArrayList<>();
@@ -31,37 +31,37 @@ public class Rute {
 
 
             remainder = remainder - roadDistances.get(i);
-
+            if (remainder >= roadDistances.get(i)) {
+                canvas.Draw(cords.get(i).getStartX(), cords.get(i).getStartY(), cords.get(i).getEndX(), cords.get(i).getEndY());
+            }
             i--;
         }
-        for (int d = 0; d < roadDistances.size(); d++) {
-
-            canvas.Draw(cords.get(d).get(0), cords.get(d).get(1), cords.get(d).get(2), cords.get(d).get(3));
 
 
-        }
+
+
 
 
     }
 
-    private void calculateDistance(ArrayList<ArrayList<Float>> matrix) {
-        float resault = 0;
-        for (ArrayList a : matrix) {
+    private void calculateDistance(ArrayList<Rutevector> matrix) {
+        float result = 0;
+        for (Rutevector a : matrix) {
 
             float xstart, ystart, xend, yend;
-            //X Start
-            xstart = (float) a.get(0);
-            //Y Start
-            ystart = (float) a.get(1);
-            //X End
-            xend = (float) a.get(2);
-            //Y End
-            yend = (float) a.get(3);
-            resault += Math.sqrt(Math.pow((xend - xstart), 2) + Math.pow((yend - ystart), 2));
-            roadDistances.add(resault);
+
+            xstart = a.getStartX();
+
+            ystart = a.getStartY();
+
+            xend = a.getEndX();
+
+            yend = a.getEndY();
+            result += Math.sqrt(Math.pow((xend - xstart), 2) + Math.pow((yend - ystart), 2));
+            roadDistances.add(result);
 
         }
-        distance = resault;
+        distance = result;
 
 
     }
@@ -92,6 +92,10 @@ Calculateing the the ammount of meters traversed since we last checked
 
 
         return pixels;
+    }
+
+    public void drawHighLights() {
+
     }
 
 

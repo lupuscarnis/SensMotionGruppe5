@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas;
+import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +42,9 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                          Bundle savedInstanceState) {
 
-
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
+        }
         walk = rootView.findViewById(R.id.button_walk);
         run = rootView.findViewById(R.id.button_running);
         cycling = rootView.findViewById(R.id.button_bike);
@@ -49,30 +52,26 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         run.setOnClickListener(this);
         walk.setOnClickListener(this);
 
-        ArrayList<ArrayList<Float>> matrix = new ArrayList<>();
-        ArrayList<Float> point = new ArrayList<>();
-        point.add(100f);
-        point.add(100f);
-        point.add(200f);
-        point.add(200f);
-        matrix.add(point);
-        point.clear();
-        point.add(200f);
-        point.add(200f);
-        point.add(300f);
-        point.add(300f);
-        matrix.add(point);
+        ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
+        Rutevector ruteVector = new Rutevector();
+
+        ruteVector.setStartX(10);
+        ruteVector.setStartY(10);
+        ruteVector.setEndX(60);
+        ruteVector.setEndY(60);
+        ruteVectorsList.add(ruteVector);
+        ruteVector.setStartX(60);
+        ruteVector.setStartY(60);
+        ruteVector.setEndX(100);
+        ruteVector.setEndY(40);
+        ruteVectorsList.add(ruteVector);
 
 
-
-        if (rootView == null) {
-            rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
-        }
             // Inflate the layout for this fragment
 
          new GetJSON().execute();
 
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), matrix);
+        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
 
 
         return rootView;
