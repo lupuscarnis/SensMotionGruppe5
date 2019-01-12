@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         // Launch Login Activity.
         startActivity(new Intent(MainActivity.this, Login_Activity.class));
 
-        //Alan
+
 
     }
 }
