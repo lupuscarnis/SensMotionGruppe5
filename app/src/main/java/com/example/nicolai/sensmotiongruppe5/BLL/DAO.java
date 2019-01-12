@@ -101,15 +101,15 @@ public class DAO {
 
     /**
      * @param context
-     * @param key     the string to save
-     * @param setId   the set name to save as
+     * @param key     the key name to save as
+     * @param input   the string to save
      */
-    public void saveUserEncode(Context context, String key, String setId) {
+    public void saveUserEncode(Context context, String key, String input) {
 
         try {
-            SharedPreferences preferences = context.getSharedPreferences("some_prefs_name", MODE_PRIVATE);
+            SharedPreferences preferences = context.getSharedPreferences("u_login", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(encrypt("password"), encrypt(key));
+            editor.putString(encrypt(key), encrypt(input));
             editor.apply();
         } catch (Exception e) {
 
@@ -120,14 +120,14 @@ public class DAO {
 
     /**
      * @param context
-     * @param setId   the set name to retrieve
+     * @param key   the key name to retrieve
      * @return
      */
-    public String getUserDecode(Context context, String setId) {
+    public String getUserDecode(Context context, String key) {
 
         try {
-            SharedPreferences preferences = context.getSharedPreferences("some_prefs_name", MODE_PRIVATE);
-            String passEncrypted = preferences.getString(encrypt("password"), encrypt("default"));
+            SharedPreferences preferences = context.getSharedPreferences("u_login", MODE_PRIVATE);
+            String passEncrypted = preferences.getString(encrypt(key), encrypt("default"));
             String pass = decrypt(passEncrypted);
         } catch (Exception e) {
 
