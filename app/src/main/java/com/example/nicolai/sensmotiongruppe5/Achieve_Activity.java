@@ -34,7 +34,7 @@ public class Achieve_Activity extends Fragment {
         data = new ArrayList<>();
         data.add(new Achievements("Velkommen!", true, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
         data.add(new Achievements("test", false, "test", "test"));
-        data.add(new Achievements("test", false, "test", "test"));
+        data.add(new Achievements("test2", false, "test", "test"));
         mAdapter = new achiAdapter(data);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -44,9 +44,9 @@ public class Achieve_Activity extends Fragment {
 
         }
 
-public void completed (int index){
+public void completed (int n){
 
-
+//data.set(n, completed());
 
 }
 
