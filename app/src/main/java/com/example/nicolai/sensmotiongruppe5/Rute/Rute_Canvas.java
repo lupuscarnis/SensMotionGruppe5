@@ -7,8 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PathDashPathEffect;
-import android.graphics.PathEffect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -40,14 +38,14 @@ public class Rute_Canvas extends View {
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setStrokeWidth(10f);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
-
+/*
         PathEffect effect = new PathDashPathEffect(
                 makeConcaveArrow(24.0f, 14.0f),    // "stamp"
                 36.0f,                            // advance, or distance between two stamps
                 0.0f,                             // phase, or offset before the first stamp
                 PathDashPathEffect.Style.ROTATE); //
         mPaint.setPathEffect(effect);
-
+*/
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         canvas = new Canvas(mutableBitmap);
@@ -91,6 +89,7 @@ public class Rute_Canvas extends View {
     public void Draw(float startX, float startY, float endX, float endY) {
         path.moveTo(startX, startY);
         path.lineTo(endX, endY);
+        invalidate();
 
 
     }

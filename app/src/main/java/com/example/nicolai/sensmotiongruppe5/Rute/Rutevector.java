@@ -6,6 +6,7 @@ public class Rutevector {
     private float endX;
     private float endY;
 
+
     public float getStartX() {
         return startX;
     }

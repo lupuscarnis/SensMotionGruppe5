@@ -23,19 +23,36 @@ public class Rute {
 
 
     public void drawRute(int[] movemnt) {
-        int i = roadDistances.size() - 1;
+        int i = 0;
         walked = calculateMovement(movemnt) + walked;
         float remainder = walked;
 
-        while (i >= 0 && roadDistances.get(i) <= remainder) {
+        while (i < roadDistances.size()) {
 
 
-            remainder = remainder - roadDistances.get(i);
-            if (remainder >= roadDistances.get(i)) {
+            if (remainder < roadDistances.get(i) && remainder > 0) {
+                float ratio = remainder / roadDistances.get(i);
+                float startX = cords.get(i).getStartX();
+                float startY = cords.get(i).getStartY();
+                float endX = cords.get(i).getEndX();
+                float endY = cords.get(i).getEndY();
+                float xvector = endX - startX;
+                float yvector = endY - startY;
+                xvector = ratio * xvector;
+                yvector = ratio * yvector;
+                xvector = xvector + startX;
+                yvector = yvector + startY;
+                canvas.Draw(startX, startY, xvector, yvector);
+            }
+
+
+            if (remainder > roadDistances.get(i)) {
                 canvas.Draw(cords.get(i).getStartX(), cords.get(i).getStartY(), cords.get(i).getEndX(), cords.get(i).getEndY());
             }
-            i--;
+            remainder = remainder - roadDistances.get(i);
+            i++;
         }
+
 
 
 
@@ -58,7 +75,8 @@ public class Rute {
 
             yend = a.getEndY();
             result += Math.sqrt(Math.pow((xend - xstart), 2) + Math.pow((yend - ystart), 2));
-            roadDistances.add(result);
+
+            roadDistances.add(movemntToPixels(result));
 
         }
         distance = result;
@@ -88,7 +106,7 @@ Calculateing the the ammount of meters traversed since we last checked
 
     private float movemntToPixels(float movement) {
 
-        float pixels = movement / 200;
+        float pixels = movement * 40;
 
 
         return pixels;

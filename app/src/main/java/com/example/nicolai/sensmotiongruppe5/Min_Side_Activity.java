@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
-import com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import java.util.List;
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
     View rootView;
-    public Rute_Canvas stv;
+
     // Sets the default keys for the logged in patient
     DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
 
@@ -60,11 +59,13 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         ruteVector.setEndX(60);
         ruteVector.setEndY(60);
         ruteVectorsList.add(ruteVector);
-        ruteVector.setStartX(60);
-        ruteVector.setStartY(60);
-        ruteVector.setEndX(100);
-        ruteVector.setEndY(40);
-        ruteVectorsList.add(ruteVector);
+
+        Rutevector steve = new Rutevector();
+        steve.setStartX(60);
+        steve.setStartY(60);
+        steve.setEndX(100);
+        steve.setEndY(40);
+        ruteVectorsList.add(steve);
 
 
             // Inflate the layout for this fragment
@@ -82,7 +83,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         int[] values = {0, 0, 0, 0};
         ;
         if (v == walk) {
-            values[0] = 10;
+            values[0] = 1;
             hello.drawRute(values);
         }
         if (v == run) {
