@@ -64,7 +64,7 @@ import java.util.ArrayList;
                 holder.achiDes.setText(item.get(position).getDoneDes());
             }
             if (!item.get(position).getCompleted()){
-                holder.aImage.setImageResource(R.drawable.achi);
+                holder.aImage.setImageResource(R.drawable.achinot);
                 holder.achiDes.setText(item.get(position).getNotDes());
             }
             holder.achiName.setText(item.get(position).getName());
