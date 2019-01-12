@@ -17,7 +17,17 @@ private String notDescription;
     public boolean getCompleted() {
 
         return completed;
+        }
+
+   public boolean setCompleted(boolean completed) {
+
+       this.completed = completed;
+
+    return true;
     }
+
+
+
     public String getName() {
 
         return achiName;
