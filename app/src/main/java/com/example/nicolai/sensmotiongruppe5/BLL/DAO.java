@@ -1,11 +1,17 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Base64;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class DAO {
 
@@ -19,7 +25,8 @@ public class DAO {
     // Singleton
     private static DAO instance;
 
-    private DAO() {}
+    private DAO() {
+    }
 
     public static DAO getInstance() {
 
@@ -40,12 +47,12 @@ public class DAO {
 
             JSONConnection jsonConnection = new JSONConnection();
             // Making a request to url and getting response
-            String url = "https://beta.sens.dk/exapi/1.0/patients/data/external/overview?project_key="+project_key+"&patient_key="+patient_key+"&day_count="+dayCount+"";
+            String url = "https://beta.sens.dk/exapi/1.0/patients/data/external/overview?project_key=" + project_key + "&patient_key=" + patient_key + "&day_count=" + dayCount + "";
 
             String jsonStr = jsonConnection.getJSON(url);
 
             JSONObject jsonObject = new JSONObject(jsonStr);
-            JSONArray jsonArray  = jsonObject.getJSONObject("value").getJSONArray("data");
+            JSONArray jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
 
             // Loop to get all json objects from data json array
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -90,6 +97,63 @@ public class DAO {
 
         return jsonData;
 
+    }
+
+    /**
+     * @param context
+     * @param key     the string to save
+     * @param setId   the set name to save as
+     */
+    public void saveUserEncode(Context context, String key, String setId) {
+
+        try {
+            SharedPreferences preferences = context.getSharedPreferences("some_prefs_name", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(encrypt("password"), encrypt(key));
+            editor.apply();
+        } catch (Exception e) {
+
+
+        }
+
+    }
+
+    /**
+     * @param context
+     * @param setId   the set name to retrieve
+     * @return
+     */
+    public String getUserDecode(Context context, String setId) {
+
+        try {
+            SharedPreferences preferences = context.getSharedPreferences("some_prefs_name", MODE_PRIVATE);
+            String passEncrypted = preferences.getString(encrypt("password"), encrypt("default"));
+            String pass = decrypt(passEncrypted);
+        } catch (Exception e) {
+
+
+        }
+
+        return null;
+
+    }
+
+    /**
+     * Base64 encode
+     * @param input
+     * @return
+     */
+    public static String encrypt(String input) {
+        return Base64.encodeToString(input.getBytes(), Base64.DEFAULT);
+    }
+
+    /**
+     * Base64 decode
+     * @param input
+     * @return
+     */
+    public static String decrypt(String input) {
+        return new String(Base64.decode(input, Base64.DEFAULT));
     }
 
 }
