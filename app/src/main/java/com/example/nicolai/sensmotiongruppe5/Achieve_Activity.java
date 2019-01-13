@@ -17,7 +17,7 @@ public class Achieve_Activity extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    ArrayList<Achievements> data;
+    static ArrayList<Achievements> data;
     TextView achiView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
@@ -37,7 +37,7 @@ public class Achieve_Activity extends Fragment {
         data.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
         data.add(new Achievements("test", false, "test", "test"));
         data.add(new Achievements("test2", false, "test", "test"));
-         completed(0);
+       //  completed(0);
 
 
         mAdapter = new achiAdapter(data);
@@ -51,7 +51,7 @@ public class Achieve_Activity extends Fragment {
 
         }
 
-public void completed (int n){
+public static void completed (int n){
 /*int n;
 n = -1;
 for (int i = 0 ; 1 < data.size(); i++) {
@@ -65,14 +65,16 @@ for (int i = 0 ; 1 < data.size(); i++) {
         completedachi = data.get(n);
         completedachi.setCompleted(true);
 
-    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity(), "Channel_ID123")
+
+  //Notifikationer
+   /* NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity(), "Channel_ID123")
             .setSmallIcon(R.drawable.achi)
             .setContentTitle("Achivement gennemført!")
             .setContentText("Du har fuldført en ny achievement")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
     NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getActivity());
-    notificationManager2.notify(1, mBuilder.build());
+    notificationManager2.notify(1, mBuilder.build()); */
 
 
 

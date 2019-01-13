@@ -14,7 +14,7 @@ public class Setting_Activity extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_setting, drawer_layout, false);
 
 
-
+Achieve_Activity.completed(0);
         return rootView;
 
 
