@@ -1,6 +1,8 @@
 package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -9,12 +11,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
-public class nav_drawer extends AppCompatActivity {
+import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+
+public class nav_drawer extends AppCompatActivity implements Text_fragment.OnFragmentInteractionListener, Min_Side_Activity.OnFragmentInteractionListener {
     private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
 private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener(){
@@ -33,7 +36,7 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 loadFragment(fragment);
                 return true;
             case R.id.nav_data:
-                toolbar.setTitle("Min Data");
+                toolbar.setTitle("Min Side");
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
                 return true;
@@ -89,6 +92,15 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void messageFromParentFragment(Uri uri) {
+        Log.i("TAG", "received communication from parent fragment");
+    }
+
+
+    public void messageFromChildFragment(Uri uri) {
+        Log.i("TAG", "received communication from child fragment");
     }
 
 

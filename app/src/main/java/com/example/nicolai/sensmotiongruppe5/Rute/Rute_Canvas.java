@@ -16,7 +16,6 @@ import com.example.nicolai.sensmotiongruppe5.R;
 public class Rute_Canvas extends View {
 
     int width;
-
     int hight;
     Context context;
     private Bitmap bitmap;

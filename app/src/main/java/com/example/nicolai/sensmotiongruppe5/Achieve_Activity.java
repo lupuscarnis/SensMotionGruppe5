@@ -1,5 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
@@ -10,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,13 @@ public class Achieve_Activity extends Fragment {
 
         achiView = rootView.findViewById(R.id.achiText);
 
+
+        //facebook share button
+        ShareButton fbShareButton =  rootView.findViewById(R.id.fb_share_button);
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse("http://google.com"))
+                .build();
+        fbShareButton.setShareContent(content);
 
 
         data = new ArrayList<>();
