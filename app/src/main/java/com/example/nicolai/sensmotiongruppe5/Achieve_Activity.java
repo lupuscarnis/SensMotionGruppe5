@@ -83,13 +83,13 @@ for (int i = 0 ; 1 < data.size(); i++) {
     achiAL = getArrayList("key");
 
 
-if (!achiAL.get(n).getCompleted()) {
+if (achiAL.get(n).getCompleted()== false) {
     Achievements completedachi;
     completedachi = achiAL.get(n);
     completedachi.setCompleted(true);
     saveArrayList(achiAL, "key");
-}
-  //Notifikationer
+
+
     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "Channel_ID123")
             .setSmallIcon(R.drawable.achi)
             .setContentTitle("Achivement gennemført!")
@@ -99,7 +99,7 @@ if (!achiAL.get(n).getCompleted()) {
     NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
     notificationManager2.notify(1, mBuilder.build());
 
-
+}
 
 }
 
