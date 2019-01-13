@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
+import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
@@ -24,6 +26,8 @@ import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
@@ -237,8 +241,16 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             //Toast.makeText(getActivity(),"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
 
             // Toast all dates from JSON
-            String datesArr = Arrays.toString(allDates);
-            Toast.makeText(getActivity(), "Json Data example info " + datesArr, Toast.LENGTH_LONG).show();
+            /*String datesArr = Arrays.toString(allDates);
+            Toast.makeText(getActivity(), "Json Data example info " + datesArr, Toast.LENGTH_LONG).show();*/
+
+            String patientKey = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
+            String projectKey = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
+
+            Log.d("Decoded patientKey is: ",patientKey+"");
+            Log.d("Decoded projectKey is: ",projectKey+"");
+
+            Toast.makeText(getActivity(), "Decoded patientKey: " + patientKey + ". Decoded projectKey: " + projectKey +"", Toast.LENGTH_LONG).show();
 
         }
     }

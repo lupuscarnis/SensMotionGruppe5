@@ -34,6 +34,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -398,6 +399,8 @@ public ArrayList<Achievements> getAchivements(){
 
             if (success) {
                 Log.d("Login", "Login Succesful");
+                SharedPrefs.getInstance().saveString(Login_Activity.this,mEmail,"patientKey", true);
+                SharedPrefs.getInstance().saveString(Login_Activity.this,mPassword,"projectKey", true);
                 Intent i = new Intent(Login_Activity.this,nav_drawer.class);
                 finish();
                 startActivity(i);
