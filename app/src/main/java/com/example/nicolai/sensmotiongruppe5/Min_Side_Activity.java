@@ -50,6 +50,9 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
         }
+
+
+
         walk = rootView.findViewById(R.id.button_walk);
         run = rootView.findViewById(R.id.button_running);
         cycling = rootView.findViewById(R.id.button_bike);
@@ -80,7 +83,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
 
-
+        Achieve_Activity.completed(0);
         return rootView;
     }
 
