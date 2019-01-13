@@ -83,6 +83,7 @@ public class Min_Data_Activity extends FragmentActivity {
 
     }
 
+
     private List<Fragment> getFragments() {
 
         List<Fragment> fList = new ArrayList<>();
