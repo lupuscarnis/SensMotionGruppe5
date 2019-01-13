@@ -1,13 +1,19 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
 
 import java.util.ArrayList;
 
@@ -30,21 +36,54 @@ public class Achieve_Activity extends Fragment {
         achiView = rootView.findViewById(R.id.achiText);
 
 
+        //facebook share button
+        ShareButton fbShareButton =  rootView.findViewById(R.id.fb_share_button);
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse("http://google.com"))
+                .build();
+        fbShareButton.setShareContent(content);
+
 
         data = new ArrayList<>();
-        data.add(new Achievements("Velkommen!", true, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
+        data.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
         data.add(new Achievements("test", false, "test", "test"));
-        data.add(new Achievements("test", false, "test", "test"));
+        data.add(new Achievements("test2", false, "test", "test"));
+         completed(0);
+
+
         mAdapter = new achiAdapter(data);
         mRecyclerView.setAdapter(mAdapter);
 
         achiView.setText(completedCount() + "/" + data.size());
 
+
+
         return rootView;
 
         }
 
-public void completed (int index){
+public void completed (int n){
+/*int n;
+n = -1;
+for (int i = 0 ; 1 < data.size(); i++) {
+      if (name.equals(data.get(i).getName())){
+            n = i; }
+      else {
+            n = -1; }}
+*/
+
+        Achievements completedachi;
+        completedachi = data.get(n);
+        completedachi.setCompleted(true);
+
+    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity(), "Channel_ID123")
+            .setSmallIcon(R.drawable.achi)
+            .setContentTitle("Achivement gennemført!")
+            .setContentText("Du har fuldført en ny achievement")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+    NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getActivity());
+    notificationManager2.notify(1, mBuilder.build());
 
 
 
