@@ -99,7 +99,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         });
 
 
-        helpButton.setOnClickListener(new OnClickListener() {
+        /*helpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -107,7 +107,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
 
             }
-        });
+        });*/
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
