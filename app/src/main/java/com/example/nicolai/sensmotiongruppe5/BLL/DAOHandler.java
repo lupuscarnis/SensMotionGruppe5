@@ -93,10 +93,12 @@ public class DAOHandler implements IData {
         return valuesArray;
     }
 
+
     /**
      * @param date (format: YYYY-MM-DD)
      * @return the values of a all activities by specified date
      */
+    @Override
     public ArrayList<String> getAllActivitiesByDate(String date) {
 
         ArrayList<JSONData> valuesArray;
@@ -130,6 +132,7 @@ public class DAOHandler implements IData {
      * @param activity (resting|standing|walking|cycling|exercise|other|steps)
      * @return the value of a given activity by specified date
      */
+    @Override
     public String getActivityByDate(String date, String activity) {
 
         ArrayList<JSONData> valuesArray;
