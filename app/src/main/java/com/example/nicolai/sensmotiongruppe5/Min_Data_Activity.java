@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,12 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Bar_graph_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
-import com.example.nicolai.sensmotiongruppe5.Tests.testForSlider;
 import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 import com.jaygoo.widget.SeekBar;
@@ -43,8 +44,11 @@ public class Min_Data_Activity extends Fragment {
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.activity_min__data, drawer_layout, false);
         }
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-        IData s = new testForSlider();
+        StrictMode.setThreadPolicy(policy);
+
+        IData s = new DAOHandler("k5W2uX", "6rT39u");
 
 
 
@@ -57,7 +61,11 @@ public class Min_Data_Activity extends Fragment {
         leftSeekBar.setThumbDrawableId(R.drawable.blackline);
         rightSeekBar.setThumbDrawableId(R.drawable.blackline);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
+
+        // s.getALLDate() TODO: set that method in a asyncTask
         bar.setTickMarkTextArray(s.getAllDates());
+
+
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
         bar.setRange(0, 6, 1);
         bar.setOnRangeChangedListener(new OnRangeChangedListener() {
