@@ -47,7 +47,12 @@ public class DAO {
             String jsonStr = jsonConnection.getJSON(url);
 
             JSONObject jsonObject = new JSONObject(jsonStr);
+
+            //Insert check for status code here. 0 = "OK", 13 = "Analysis in progress"
             JSONArray jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
+            String jsonStatusCode = jsonObject.getString("status_code");
+
+            Log.d("Status code",jsonStatusCode+"");
 
             // Loop to get all json objects from data json array
             for (int i = 0; i < jsonArray.length(); i++) {

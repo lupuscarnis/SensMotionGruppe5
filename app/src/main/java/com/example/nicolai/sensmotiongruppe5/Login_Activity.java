@@ -101,16 +101,15 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         });
 
 
-        helpButton.setOnClickListener(new OnClickListener() {
+        /*helpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 startActivity(new Intent(view.getContext(), Help_Activity.class));
 
-                /*setContentView(R.layout.activity_help_username);*/
 
             }
-        });
+        });*/
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
