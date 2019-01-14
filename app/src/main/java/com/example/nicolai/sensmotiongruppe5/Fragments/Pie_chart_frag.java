@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.nicolai.sensmotiongruppe5.BLL.PieChart;
+import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
 
@@ -59,15 +61,17 @@ public class Pie_chart_frag extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        pieChartView = view.findViewById(R.id.pieChart);
 
+        pieChartView = view.findViewById(R.id.pieChart);
+        IChart chart = new PieChart();
+        int[] data = chart.getData();
         List<SliceValue> pieData = new ArrayList<>();
 
 
-        pieData.add(new SliceValue(15, Color.BLUE).setLabel("Siddende"));
-        pieData.add(new SliceValue(25, Color.GRAY).setLabel("Gående"));
-        pieData.add(new SliceValue(10, Color.RED).setLabel("I bevægelse"));
-        pieData.add(new SliceValue(60, Color.MAGENTA).setLabel(" Liggende"));
+        pieData.add(new SliceValue(15, Color.BLUE).setLabel("Cyklende"));
+        pieData.add(new SliceValue(20, Color.GRAY).setLabel("Gående"));
+        pieData.add(new SliceValue(10, Color.RED).setLabel("Exercise"));
+        pieData.add(new SliceValue(55, Color.MAGENTA).setLabel("No Data"));
 
 
         PieChartData pieChartData = new PieChartData(pieData);

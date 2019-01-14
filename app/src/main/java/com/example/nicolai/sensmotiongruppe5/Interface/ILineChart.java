@@ -1,6 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5.Interface;
 
-public interface ILineChart {
+public interface ILineChart extends IChart {
 
 
 }
