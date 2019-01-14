@@ -48,7 +48,7 @@ public class Min_Data_Activity extends Fragment {
 
         StrictMode.setThreadPolicy(policy);
 
-        IData s = new DAOHandler("k5W2uX", "6rT39u");
+        IData s = new DAOHandler();
 
 
 

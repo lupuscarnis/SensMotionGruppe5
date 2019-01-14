@@ -4,8 +4,11 @@ package com.example.nicolai.sensmotiongruppe5.BLL;
 import android.util.Log;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
+import com.example.nicolai.sensmotiongruppe5.Login_Activity;
 
 import java.util.ArrayList;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class DAOHandler implements IData {
 
@@ -16,10 +19,12 @@ public class DAOHandler implements IData {
 
     //private ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
 
-    public DAOHandler(String project_key, String patient_key) {
+    public DAOHandler() {
 
-        this.project_key = project_key;
-        this.patient_key = patient_key;
+        this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
+        this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
+        /*this.project_key = project_key;
+        this.patient_key = patient_key;*/
 
     }
 

@@ -17,11 +17,6 @@ public class DAO {
 
     private static final String TAG = DAO.class.getSimpleName();
 
-    // Defaults
-    /*private String project_key = "k5W2uX";
-    private String patient_key = "6rT39u";
-    private int dayCount = 7;*/
-
     // Singleton
     private static DAO instance;
 

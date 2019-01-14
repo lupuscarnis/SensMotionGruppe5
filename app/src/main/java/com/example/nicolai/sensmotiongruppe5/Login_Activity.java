@@ -399,8 +399,8 @@ public ArrayList<Achievements> getAchivements(){
 
             if (success) {
                 Log.d("Login", "Login Succesful");
-                SharedPrefs.getInstance().saveString(Login_Activity.this,mEmail,"patientKey", true);
-                SharedPrefs.getInstance().saveString(Login_Activity.this,mPassword,"projectKey", true);
+                SharedPrefs.getInstance().saveString(Login_Activity.this,"6rT39u","patientKey", true);
+                SharedPrefs.getInstance().saveString(Login_Activity.this,"k5W2uX","projectKey", true);
                 Intent i = new Intent(Login_Activity.this,nav_drawer.class);
                 finish();
                 startActivity(i);
