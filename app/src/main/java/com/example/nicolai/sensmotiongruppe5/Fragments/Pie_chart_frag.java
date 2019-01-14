@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
@@ -23,6 +25,8 @@ public class Pie_chart_frag extends Fragment {
     private PieChartView pieChartView;
     private IChild_OnFragmentInteractionListener mListener;
     private View view;
+
+
     public Pie_chart_frag() {
 
     }
@@ -43,12 +47,19 @@ public class Pie_chart_frag extends Fragment {
 
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_pie_chart, container, false);
+        return view;
+    }
 
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        pieChartView = getView().findViewById(R.id.pieChart);
+        super.onViewCreated(view, savedInstanceState);
+
+        pieChartView = view.findViewById(R.id.pieChart);
 
         List<SliceValue> pieData = new ArrayList<>();
 
