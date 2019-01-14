@@ -165,8 +165,8 @@ public ArrayList<Achievements> getAchivements(){
 
     achi = new ArrayList<>();
     achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
-    achi.add(new Achievements("test", false, "test", "test"));
-    achi.add(new Achievements("test2", false, "test", "test"));
+    achi.add(new Achievements("Rute", false, "test", "test"));
+    achi.add(new Achievements("5 km", false, "test", "test"));
     achi.add(new Achievements("test3", false, "test", "test"));
     achi.add(new Achievements("test4", false, "test", "test"));
     achi.add(new Achievements("test5", false, "test", "test"));

@@ -1,5 +1,7 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -69,18 +71,15 @@ data = getArrayList("key");
         }
 
 public static void completed (int n){
-/*int n;
-n = -1;
-for (int i = 0 ; 1 < data.size(); i++) {
-      if (name.equals(data.get(i).getName())){
-            n = i; }
-      else {
-            n = -1; }}
-*/
-
 
     ArrayList<Achievements> achiAL;
     achiAL = getArrayList("key");
+
+  //  Intent intent = new Intent(getApplicationContext(), Achieve_Activity.class);
+  //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+  //  PendingIntent pendingIntent = PendingIntent.(getApplicationContext(), 0, intent, 0);
+
+
 
 
 if (achiAL.get(n).getCompleted()== false) {
@@ -95,6 +94,7 @@ if (achiAL.get(n).getCompleted()== false) {
             .setContentTitle("Achivement gennemført!")
             .setContentText("Du har fuldført en ny achievement")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+           // .setContentIntent(pendingIntent);
 
     NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
     notificationManager2.notify(1, mBuilder.build());
