@@ -46,7 +46,7 @@ public class Pie_chart_frag extends Fragment {
 
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         pieChartView = getView().findViewById(R.id.pieChart);
 

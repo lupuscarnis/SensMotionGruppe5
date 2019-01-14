@@ -49,7 +49,7 @@ public class Bar_graph_frag extends Fragment {
     BarChart barChart;
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         barChart = getView().findViewById(R.id.bargraph);
