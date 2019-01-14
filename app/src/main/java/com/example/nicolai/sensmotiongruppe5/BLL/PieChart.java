@@ -12,7 +12,7 @@ public class PieChart implements IPieChart {
     public int[] getData() {
 
         int[] array = new int[4];
-        IData data = new DAOHandler("k5W2uX", "6rT39u");
+        IData data = new DAOHandler();
         ArrayList<JSONData> s;
         int sum = 0;
 
