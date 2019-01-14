@@ -38,19 +38,18 @@ public class Achieve_Activity extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_achieve, drawer_layout, false);
 
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.my_recycler_view);
+        mRecyclerView = rootView.findViewById(R.id.my_recycler_view);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         achiView = rootView.findViewById(R.id.achiText);
 
-
         //facebook share button
-        ShareButton fbShareButton =  rootView.findViewById(R.id.fb_share_button);
+        /*ShareButton fbShareButton =  rootView.findViewById(R.id.fb_share_button);
         ShareLinkContent content = new ShareLinkContent.Builder()
                 .setContentUrl(Uri.parse("http://google.com"))
                 .build();
-        fbShareButton.setShareContent(content);
+        fbShareButton.setShareContent(content);*/
 
 
 
