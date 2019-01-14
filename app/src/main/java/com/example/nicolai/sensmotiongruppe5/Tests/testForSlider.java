@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class testForSlider implements IData {
 
     // Sets the default keys for the logged in patient
-    DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
+    DAOHandler daoHandler = new DAOHandler();
 
     public testForSlider() {
 

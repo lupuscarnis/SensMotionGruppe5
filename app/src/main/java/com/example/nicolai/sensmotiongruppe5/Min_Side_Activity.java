@@ -37,7 +37,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
 
     // Sets the default keys for the logged in patient
-    DAOHandler daoHandler = new DAOHandler("k5W2uX", "6rT39u");
+    DAOHandler daoHandler = new DAOHandler();
 
     // For storing the values from JSON
     public List<List<String>> valuesArray;
