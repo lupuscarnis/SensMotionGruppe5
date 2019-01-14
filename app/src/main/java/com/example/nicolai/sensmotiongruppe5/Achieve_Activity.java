@@ -1,5 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,14 +15,20 @@ import android.widget.TextView;
 
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Achieve_Activity extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    ArrayList<Achievements> data;
+    static ArrayList<Achievements> data;
     TextView achiView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
@@ -44,11 +51,10 @@ public class Achieve_Activity extends Fragment {
         fbShareButton.setShareContent(content);
 
 
-        data = new ArrayList<>();
-        data.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
-        data.add(new Achievements("test", false, "test", "test"));
-        data.add(new Achievements("test2", false, "test", "test"));
-         completed(0);
+
+
+data = getArrayList("key");
+
 
 
         mAdapter = new achiAdapter(data);
@@ -62,7 +68,7 @@ public class Achieve_Activity extends Fragment {
 
         }
 
-public void completed (int n){
+public static void completed (int n){
 /*int n;
 n = -1;
 for (int i = 0 ; 1 < data.size(); i++) {
@@ -72,20 +78,28 @@ for (int i = 0 ; 1 < data.size(); i++) {
             n = -1; }}
 */
 
-        Achievements completedachi;
-        completedachi = data.get(n);
-        completedachi.setCompleted(true);
 
-    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity(), "Channel_ID123")
+    ArrayList<Achievements> achiAL;
+    achiAL = getArrayList("key");
+
+
+if (achiAL.get(n).getCompleted()== false) {
+    Achievements completedachi;
+    completedachi = achiAL.get(n);
+    completedachi.setCompleted(true);
+    saveArrayList(achiAL, "key");
+
+
+    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "Channel_ID123")
             .setSmallIcon(R.drawable.achi)
             .setContentTitle("Achivement gennemført!")
             .setContentText("Du har fuldført en ny achievement")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-    NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getActivity());
+    NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
     notificationManager2.notify(1, mBuilder.build());
 
-
+}
 
 }
 
@@ -108,6 +122,24 @@ return count;
 
 }
 
+
+
+    private static ArrayList<Achievements> getArrayList( String key){
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString(key, null);
+        Type type = new TypeToken<ArrayList<Achievements>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
+
+    public static void saveArrayList(ArrayList<Achievements> list, String key){
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString(key, json);
+        editor.apply();     // This line is IMPORTANT !!!
+    }
 
 
 

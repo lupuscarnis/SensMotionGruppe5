@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -33,6 +34,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,14 +69,14 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    ArrayList<Achievements> achi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         createChannel();
-       //createNotification(1,"hej","hej");
-        // Set up the login form.
+        addIfEmty(getAchivements(), "key");
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -132,6 +138,51 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
         }
     }
+    public void saveArrayList(ArrayList<Achievements> list, String key){
+        SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString(key, json);
+        editor.apply();     // This line is IMPORTANT !!!
+    }
+
+
+    private void addIfEmty(ArrayList<Achievements> list, String key){
+        SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString(key, null);
+        Type type = new TypeToken<ArrayList<Achievements>>() {}.getType();
+
+       if (gson.fromJson(json, type) == null){
+
+           saveArrayList(list,key);
+           }
+
+
+}
+public ArrayList<Achievements> getAchivements(){
+
+    achi = new ArrayList<>();
+    achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
+    achi.add(new Achievements("test", false, "test", "test"));
+    achi.add(new Achievements("test2", false, "test", "test"));
+    achi.add(new Achievements("test3", false, "test", "test"));
+    achi.add(new Achievements("test4", false, "test", "test"));
+    achi.add(new Achievements("test5", false, "test", "test"));
+    achi.add(new Achievements("test6", false, "test", "test"));
+
+
+  return achi;
+    }
+
+
+
+
+
+
+
+
 
 
 
@@ -292,6 +343,22 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
@@ -332,6 +399,8 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
             if (success) {
                 Log.d("Login", "Login Succesful");
+                SharedPrefs.getInstance().saveString(Login_Activity.this,mEmail,"patientKey", true);
+                SharedPrefs.getInstance().saveString(Login_Activity.this,mPassword,"projectKey", true);
                 Intent i = new Intent(Login_Activity.this,nav_drawer.class);
                 finish();
                 startActivity(i);
