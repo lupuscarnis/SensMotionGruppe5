@@ -84,9 +84,7 @@ public class JSONData {
         return day;
     }
 
-    public double getResting() {
-        return resting;
-    }
+    public double getResting() { return resting; }
 
     public double getStanding() {
         return standing;

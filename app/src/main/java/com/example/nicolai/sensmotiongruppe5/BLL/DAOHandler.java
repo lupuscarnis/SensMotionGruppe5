@@ -1,6 +1,8 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 
+import android.util.Log;
+
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ public class DAOHandler implements IData {
 
     //private ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
 
-    public DAOHandler(String project_key, String patient_key){
+    public DAOHandler(String project_key, String patient_key) {
 
         this.project_key = project_key;
         this.patient_key = patient_key;
@@ -22,8 +24,8 @@ public class DAOHandler implements IData {
     }
 
     /**
-     *  @param startDate in format [YYYY-MM-DD]
-     * @param endDate in format [YYYY-MM-DD]
+     * @param startDate in format [YYYY-MM-DD]
+     * @param endDate   in format [YYYY-MM-DD]
      */
     @Override
     public ArrayList<String> setCurrentData(String startDate, String endDate) {
@@ -33,20 +35,20 @@ public class DAOHandler implements IData {
 
         ArrayList<String> dataArray = new ArrayList<String>();
 
-        int dateSumStart = Integer.parseInt(startDate.replaceAll("-",""));
-        int dateSumEnd = Integer.parseInt(endDate.replaceAll("-",""));
+        int dateSumStart = Integer.parseInt(startDate.replaceAll("-", ""));
+        int dateSumEnd = Integer.parseInt(endDate.replaceAll("-", ""));
 
         // Loop to get all json objects from data json array
         // Iterate over valuesArray
         for (int i = 0; i < valuesArray.size(); i++) {
 
-            int dateSumV = Integer.parseInt(valuesArray.get(i).getStartDate().replaceAll("-",""));
+            int dateSumV = Integer.parseInt(valuesArray.get(i).getStartDate().replaceAll("-", ""));
 
-                if (dateSumV >= dateSumStart && dateSumV <= dateSumEnd) {
+            if (dateSumV >= dateSumStart && dateSumV <= dateSumEnd) {
 
-                    dataArray.add(Double.toString(valuesArray.get(i).getResting()));
+                dataArray.add(Double.toString(valuesArray.get(i).getResting()));
 
-                }
+            }
 
         }
 
@@ -56,6 +58,7 @@ public class DAOHandler implements IData {
 
     /**
      * Gets all dates. Converts DAO.jsonArray to string array.
+     *
      * @return all available start_dates from json
      */
     @Override
@@ -76,16 +79,11 @@ public class DAOHandler implements IData {
         return dataArray;
     }
 
-    @Override
-    public ArrayList<JSONData> getAllInfoAsObjects() {
-        return null;
-    }
 
     /**
      *
-     *
-     * @return
-     *//*
+     * @return arraylist of all objects from json
+     */
     @Override
     public ArrayList<JSONData> getAllInfoAsObjects() {
 
@@ -93,38 +91,87 @@ public class DAOHandler implements IData {
         valuesArray = userDAO.getData(project_key, patient_key, 7);
 
         return valuesArray;
-    }*/
+    }
 
     /**
-     *
      * @param date (format: YYYY-MM-DD)
-     * @return
-     *//*
-    public ArrayList<Double> getActivitiesByDate(String date) {
+     * @return the values of a all activities by specified date
+     */
+    public ArrayList<String> getAllActivitiesByDate(String date) {
 
-        ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
 
         // Create string array
-        ArrayList<Double> dataArray = new ArrayList<>();
+        ArrayList<String> dataArray = new ArrayList<>();
 
         // Iterate over valuesArray
         for (int i = 0; i < valuesArray.size(); i++) {
 
-            if (valuesArray.get(i).getStartDate() == date) {
+            if (valuesArray.get(i).getStartDate().equals(date)) {
 
-                dataArray.add(valuesArray.get(i).getResting());
-                dataArray.add(valuesArray.get(i).getStanding());
-                dataArray.add(valuesArray.get(i).getWalking());
-                dataArray.add(valuesArray.get(i).getCycling());
-                dataArray.add(valuesArray.get(i).getExercise());
-                dataArray.add(valuesArray.get(i).getOtherd());
-                dataArray.add(valuesArray.get(i).getSteps());
+                dataArray.add(Double.toString(valuesArray.get(i).getResting()));
+                dataArray.add(Double.toString(valuesArray.get(i).getStanding()));
+                dataArray.add(Double.toString(valuesArray.get(i).getWalking()));
+                dataArray.add(Double.toString(valuesArray.get(i).getCycling()));
+                dataArray.add(Double.toString(valuesArray.get(i).getExercise()));
+                dataArray.add(Double.toString(valuesArray.get(i).getOtherd()));
+                dataArray.add(Double.toString(valuesArray.get(i).getSteps()));
 
             }
         }
 
         return dataArray;
 
-    }*/
+    }
+
+    /**
+     * @param date     (format: YYYY-MM-DD)
+     * @param activity (resting|standing|walking|cycling|exercise|other|steps)
+     * @return the value of a given activity by specified date
+     */
+    public String getActivityByDate(String date, String activity) {
+
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+
+        String data = "";
+
+        for (int i = 0; i < valuesArray.size(); i++) {
+
+            if (valuesArray.get(i).getStartDate().equals(date)) {
+
+                switch (activity) {
+                    case "resting":
+                        data = Double.toString(valuesArray.get(i).getResting());
+                        break;
+                    case "standing":
+                        data = Double.toString(valuesArray.get(i).getStanding());
+                        break;
+                    case "walking":
+                        data = Double.toString(valuesArray.get(i).getWalking());
+                        break;
+                    case "cycling":
+                        data = Double.toString(valuesArray.get(i).getCycling());
+                        break;
+                    case "exercise":
+                        data = Double.toString(valuesArray.get(i).getExercise());
+                        break;
+                    case "other":
+                        data = Double.toString(valuesArray.get(i).getOtherd());
+                        break;
+                    case "steps":
+                        data = Double.toString(valuesArray.get(i).getSteps());
+                        break;
+                    default:
+                        data = "Invalid activity or date";
+                }
+
+            }
+        }
+
+        return data;
+
+    }
 
 }
