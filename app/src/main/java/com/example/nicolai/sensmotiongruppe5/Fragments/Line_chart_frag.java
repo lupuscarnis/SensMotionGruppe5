@@ -48,9 +48,9 @@ public class Line_chart_frag extends Fragment {
 
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        lineChartView = getView().findViewById(R.id.chart);
+        lineChartView = view.findViewById(R.id.chart);
 
 
         //initialize the data for X-Axis.
