@@ -25,6 +25,7 @@ import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -41,6 +42,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     // For storing the values from JSON
     public List<List<String>> valuesArray;
     public String[] allDates;
+    public String numSteps;
     private Button walk, run, cycling;
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
@@ -219,6 +221,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             //valuesArray = daoHandler.getAllInfo(7);
             allDates = daoHandler.getAllDates();
+            numSteps = daoHandler.getActivityByDate("2019-01-08", "steps");
             return null;
 
         }
@@ -243,13 +246,15 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             /*String datesArr = Arrays.toString(allDates);
             Toast.makeText(getActivity(), "Json Data example info " + datesArr, Toast.LENGTH_LONG).show();*/
 
-            String patientKey = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
+            /*String patientKey = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
             String projectKey = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
 
             Log.d("Decoded patientKey is: ",patientKey+"");
             Log.d("Decoded projectKey is: ",projectKey+"");
 
-            Toast.makeText(getActivity(), "Decoded patientKey: " + patientKey + ". Decoded projectKey: " + projectKey +"", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Decoded patientKey: " + patientKey + ". Decoded projectKey: " + projectKey +"", Toast.LENGTH_LONG).show();*/
+
+            Toast.makeText(getActivity(), "Steps: " + numSteps +"", Toast.LENGTH_LONG).show();
 
         }
     }
