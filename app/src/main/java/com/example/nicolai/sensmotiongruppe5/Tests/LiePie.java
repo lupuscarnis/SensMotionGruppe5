@@ -10,4 +10,9 @@ public class LiePie implements IPieChart {
         int[] s = {20, 20, 20, 40};
         return s;
     }
+
+    @Override
+    public void update() {
+
+    }
 }

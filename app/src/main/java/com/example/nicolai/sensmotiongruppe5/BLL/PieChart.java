@@ -25,7 +25,7 @@ public class PieChart implements IPieChart {
             array[2] += (int) currentData.getExercise();
             array[3] += (int) currentData.getNodata();
 
-            sum += array[0] + array[1] + array[2] + array[3];
+            sum += 1440;
         }
 
         array[0] = array[0] / sum;
@@ -34,6 +34,11 @@ public class PieChart implements IPieChart {
         array[3] = array[3] / sum;
 
         return array;
+
+    }
+
+    @Override
+    public void update() {
 
     }
 }

@@ -4,5 +4,6 @@ public interface IChart {
 
     int[] getData();
 
+    void update();
 
 }

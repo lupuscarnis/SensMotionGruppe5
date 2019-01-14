@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
-import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
@@ -89,6 +84,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
 
+
         Achieve_Activity.completed(0);
         return rootView;
     }
@@ -111,7 +107,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             hello.drawRute(values);
         }
         if (v == run) {
-            hello.draw();
+            hello.drawRute(values);
         }
         if (v == cycling) {
             values[2] = 10;
