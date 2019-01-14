@@ -35,5 +35,15 @@ public class testForSlider implements IData {
         return null;
     }
 
+    @Override
+    public ArrayList<String> getAllActivitiesByDate(String date) {
+        return null;
+    }
+
+    @Override
+    public String getActivityByDate(String date, String activity) {
+        return null;
+    }
+
 
 }

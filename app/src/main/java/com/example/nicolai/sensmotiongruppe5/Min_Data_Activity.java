@@ -62,8 +62,13 @@ public class Min_Data_Activity extends Fragment {
         rightSeekBar.setThumbDrawableId(R.drawable.blackline);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
 
+
+        String[] Str;
         // s.getALLDate() TODO: set that method in a asyncTask
-        bar.setTickMarkTextArray(s.getAllDates());
+        Str = s.getAllDates();
+
+
+        bar.setTickMarkTextArray(formatString(Str));
 
 
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
@@ -143,6 +148,18 @@ public class Min_Data_Activity extends Fragment {
 
         return fList;
 
+    }
+
+    private String[] formatString(String[] Array) {
+        String[] s = new String[7];
+        for (int i = 0; i < Array.length; i++) {
+
+            s[i] = Array[i].substring(6);
+
+        }
+
+
+        return s;
     }
 
 
