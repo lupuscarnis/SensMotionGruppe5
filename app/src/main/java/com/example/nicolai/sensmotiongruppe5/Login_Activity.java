@@ -3,25 +3,21 @@ package com.example.nicolai.sensmotiongruppe5;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.LoaderManager.LoaderCallbacks;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -70,12 +66,14 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     private View mProgressView;
     private View mLoginFormView;
     ArrayList<Achievements> achi;
-
+    private Button help;
+    private Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         createChannel();
+
         addIfEmty(getAchivements(), "key");
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -107,7 +105,6 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
                 startActivity(new Intent(view.getContext(), Help_Activity.class));
 
-                /*setContentView(R.layout.activity_help_username);*/
 
             }
         });
