@@ -7,7 +7,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -24,6 +26,7 @@ public class Rute_Canvas extends View {
     private Paint mPaint;
     private float mx, my;
     private Paint mBitmapPaint;
+    private Drawable man;
 
     // https://varun.ca/polar-coords/       good for something like this
     public Rute_Canvas(Context context, @Nullable AttributeSet attrs) {
@@ -37,32 +40,13 @@ public class Rute_Canvas extends View {
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setStrokeWidth(10f);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
-/*
-        PathEffect effect = new PathDashPathEffect(
-                makeConcaveArrow(24.0f, 14.0f),    // "stamp"
-                36.0f,                            // advance, or distance between two stamps
-                0.0f,                             // phase, or offset before the first stamp
-                PathDashPathEffect.Style.ROTATE); //
-        mPaint.setPathEffect(effect);
-*/
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
-        Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-        canvas = new Canvas(mutableBitmap);
+        bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        canvas = new Canvas(bitmap);
 
 
     }
 
-    private static Path makeConcaveArrow(float length, float height) {
-        Path p = new Path();
-        p.moveTo(-2.0f, -height / 2.0f);
-        p.lineTo(length - height / 4.0f, -height / 2.0f);
-        p.lineTo(length, 0.0f);
-        p.lineTo(length - height / 4.0f, height / 2.0f);
-        p.lineTo(-2.0f, height / 2.0f);
-        p.lineTo(-2.0f + height / 4.0f, 0.0f);
-        p.close();
-        return p;
-    }
 
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -72,23 +56,22 @@ public class Rute_Canvas extends View {
 
     }
 
+
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(bitmap, 0, 0, mBitmapPaint);
-        canvas.drawPath(path, mPaint);
+
     }
 
 
     public void clearCanvas() {
-        path.reset();
-        invalidate();
+
     }
 
 
     public void Draw(float startX, float startY, float endX, float endY) {
         path.moveTo(startX, startY);
         path.lineTo(endX, endY);
-        invalidate();
 
 
     }
@@ -101,5 +84,33 @@ public class Rute_Canvas extends View {
 
 
     }
+
+    public void drawBitmap(Bitmap bitmap, float x, float y) {
+  /*   Bitmap bitty;
+        bitty = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
+        bitty = bitty.copy(Bitmap.Config.ARGB_8888, true);
+        canvas.setBitmap(bitty);
+*/
+        man = VectorDrawableCompat.create(getContext().getResources(), R.drawable.ic_image2vector, null);
+
+        man.setBounds(0, 0, man.getIntrinsicWidth(), man.getIntrinsicHeight());
+        man.draw(canvas);
+        invalidate();
+
+    }
+
+    public void saveCanvas() {
+        canvas.save();
+
+    }
+
+    public void restoreCanvas() {
+        canvas.restore();
+    }
+
+    public void restoreToCount(int x) {
+        canvas.restoreToCount(x);
+    }
+
 
 }

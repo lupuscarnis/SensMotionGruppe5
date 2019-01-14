@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_menu" />
-                            <entry key="sourceFile" value="C:\Users\Sophus" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_image2vector" />
+                            <entry key="sourceFile" value="C:\Users\Nicolai Barnett\Desktop\image2vector.svg" />
                           </map>
                         </option>
                       </PersistentState>

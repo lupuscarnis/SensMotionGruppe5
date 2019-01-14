@@ -42,7 +42,7 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 return true;
             case R.id.nav_side:
                 toolbar.setTitle("Min Data");
-                fragment = new Min_Side_Activity();
+                fragment = new Min_Data_Activity();
                 loadFragment(fragment);
                 return true;
 

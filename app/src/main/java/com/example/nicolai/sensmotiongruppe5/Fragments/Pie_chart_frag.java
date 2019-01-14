@@ -1,6 +1,8 @@
 package com.example.nicolai.sensmotiongruppe5.Fragments;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,7 +22,8 @@ import lecho.lib.hellocharts.view.PieChartView;
 public class Pie_chart_frag extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private PieChartView pieChartView;
-
+    private Text_fragment.OnFragmentInteractionListener mListener;
+    private View view;
     public Pie_chart_frag() {
 
     }
@@ -42,13 +45,12 @@ public class Pie_chart_frag extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (view == null) {
+            return view = inflater.inflate(R.layout.text_fragment_layout, container, false);
+        }
 
-
-        return inflater.inflate(R.layout.fragment_pie_chart, container, false);
-
-
+        return view;
     }
 
     @Override
@@ -70,6 +72,28 @@ public class Pie_chart_frag extends Fragment {
         pieChartView.setPieChartData(pieChartData);
 
 
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Text_fragment.OnFragmentInteractionListener) {
+            mListener = (Text_fragment.OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void messageFromChildFragment(Uri uri);
     }
 
 

@@ -102,8 +102,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             hello.drawRute(values);
         }
         if (v == run) {
-            values[1] = 10;
-            hello.drawRute(values);
+            hello.draw();
         }
         if (v == cycling) {
             values[2] = 10;

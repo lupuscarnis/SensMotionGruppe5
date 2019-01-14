@@ -1,12 +1,17 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.nicolai.sensmotiongruppe5.Fragments.Bar_graph_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
@@ -21,27 +26,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Min_Data_Activity extends FragmentActivity {
+public class Min_Data_Activity extends Fragment {
 
     MyPageAdapter pageAdapter;
     RangeSeekBar bar;
+    private OnFragmentInteractionListener mListener;
+    private View rootView;
+    private FragmentActivity myContext;
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
+                             Bundle savedInstanceState) {
 
-    public void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.activity_min__data, drawer_layout, false);
+        }
 
         IData s = new testForSlider();
 
-        setContentView(R.layout.activity_min__data);
         List<Fragment> fragments = getFragments();
 
-    // Range Seekerbar start
+        // Range Seekerbar start
 
 
-
-        bar = findViewById(R.id.Min_data_range_silder);
+        bar = rootView.findViewById(R.id.Min_data_range_silder);
         SeekBar leftSeekBar = bar.getLeftSeekBar();
         SeekBar rightSeekBar = bar.getRightSeekBar();
         leftSeekBar.setThumbDrawableId(R.drawable.blackline);
@@ -52,6 +60,7 @@ public class Min_Data_Activity extends FragmentActivity {
         bar.setRange(0, 6, 1);
         bar.setOnRangeChangedListener(new OnRangeChangedListener() {
             float left,right;
+
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
                 left = leftValue;
@@ -72,15 +81,39 @@ public class Min_Data_Activity extends FragmentActivity {
                 bar.setValue(Math.round(left), Math.round(right));
             }
         });
-    // Range Seekerbar end
+        // Range Seekerbar end
 
 
-
-        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
-        ViewPager pager = findViewById(R.id.min_data_fragment_pager);
+        pageAdapter = new MyPageAdapter(myContext.getSupportFragmentManager(), fragments);
+        ViewPager pager = rootView.findViewById(R.id.min_data_fragment_pager);
         pager.setAdapter(pageAdapter);
 
+        return rootView;
 
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        myContext = (FragmentActivity) context;
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void messageFromParentFragment(Uri uri);
     }
 
 
