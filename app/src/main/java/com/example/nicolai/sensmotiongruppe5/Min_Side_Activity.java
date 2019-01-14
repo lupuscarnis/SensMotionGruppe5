@@ -20,11 +20,11 @@ import android.widget.Toast;
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -32,7 +32,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
     View rootView;
-    private OnFragmentInteractionListener mListener;
+    private IParent_OnFragmentInteractionListener mListener;
 
 
     // Sets the default keys for the logged in patient
@@ -184,8 +184,8 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof IParent_OnFragmentInteractionListener) {
+            mListener = (IParent_OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

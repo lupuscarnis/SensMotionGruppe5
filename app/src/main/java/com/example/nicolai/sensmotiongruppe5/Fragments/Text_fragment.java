@@ -1,17 +1,17 @@
 package com.example.nicolai.sensmotiongruppe5.Fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
 
 public class Text_fragment extends android.support.v4.app.Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    private IChild_OnFragmentInteractionListener mListener;
     View view;
 
 
@@ -39,8 +39,8 @@ public class Text_fragment extends android.support.v4.app.Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof IChild_OnFragmentInteractionListener) {
+            mListener = (IChild_OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -53,8 +53,4 @@ public class Text_fragment extends android.support.v4.app.Fragment {
         mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void messageFromChildFragment(Uri uri);
-    }
 }

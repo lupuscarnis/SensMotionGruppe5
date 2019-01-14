@@ -5,10 +5,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 public class Bar_graph_frag extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private View view;
-    private Text_fragment.OnFragmentInteractionListener mListener;
+    private IChild_OnFragmentInteractionListener mListener;
 
 
     public Bar_graph_frag() {
@@ -45,14 +44,7 @@ public class Bar_graph_frag extends Fragment {
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view == null) {
-            return view = inflater.inflate(R.layout.text_fragment_layout, container, false);
-        }
 
-        return view;
-    }
 
     BarChart barChart;
 
@@ -91,8 +83,8 @@ public class Bar_graph_frag extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Text_fragment.OnFragmentInteractionListener) {
-            mListener = (Text_fragment.OnFragmentInteractionListener) context;
+        if (context instanceof IChild_OnFragmentInteractionListener) {
+            mListener = (IChild_OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

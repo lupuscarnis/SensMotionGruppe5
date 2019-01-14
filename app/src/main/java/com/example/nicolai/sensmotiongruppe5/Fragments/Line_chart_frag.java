@@ -6,10 +6,9 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ import lecho.lib.hellocharts.view.LineChartView;
 public class Line_chart_frag extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private LineChartView lineChartView;
-    private Text_fragment.OnFragmentInteractionListener mListener;
+    private IChild_OnFragmentInteractionListener mListener;
     private View view;
     public Line_chart_frag() {
 
@@ -47,14 +46,6 @@ public class Line_chart_frag extends Fragment {
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view == null) {
-            return view = inflater.inflate(R.layout.text_fragment_layout, container, false);
-        }
-
-        return view;
-    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -115,8 +106,8 @@ public class Line_chart_frag extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Text_fragment.OnFragmentInteractionListener) {
-            mListener = (Text_fragment.OnFragmentInteractionListener) context;
+        if (context instanceof IChild_OnFragmentInteractionListener) {
+            mListener = (IChild_OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

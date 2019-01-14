@@ -15,9 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
+import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 
-public class nav_drawer extends AppCompatActivity implements Text_fragment.OnFragmentInteractionListener, Min_Side_Activity.OnFragmentInteractionListener {
+public class nav_drawer extends AppCompatActivity implements IParent_OnFragmentInteractionListener, IChild_OnFragmentInteractionListener {
     private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
 private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener(){
@@ -69,7 +70,7 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         toolbar.setTitle("Min side");
         loadFragment(new Min_Side_Activity());
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

@@ -4,8 +4,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,7 @@ import com.example.nicolai.sensmotiongruppe5.Fragments.Bar_graph_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
+import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Tests.testForSlider;
 import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
@@ -30,9 +32,9 @@ public class Min_Data_Activity extends Fragment {
 
     MyPageAdapter pageAdapter;
     RangeSeekBar bar;
-    private OnFragmentInteractionListener mListener;
+    private IParent_OnFragmentInteractionListener mListener;
     private View rootView;
-    private FragmentActivity myContext;
+    private ViewPager pager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
@@ -44,7 +46,7 @@ public class Min_Data_Activity extends Fragment {
 
         IData s = new testForSlider();
 
-        List<Fragment> fragments = getFragments();
+
 
         // Range Seekerbar start
 
@@ -84,21 +86,26 @@ public class Min_Data_Activity extends Fragment {
         // Range Seekerbar end
 
 
-        pageAdapter = new MyPageAdapter(myContext.getSupportFragmentManager(), fragments);
-        ViewPager pager = rootView.findViewById(R.id.min_data_fragment_pager);
-        pager.setAdapter(pageAdapter);
 
         return rootView;
 
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        List<Fragment> fragments = getFragments();
+        pageAdapter = new MyPageAdapter(getChildFragmentManager(), fragments);
+        pager = rootView.findViewById(R.id.min_data_fragment_pager);
+        pager.setAdapter(pageAdapter);
     }
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        myContext = (FragmentActivity) context;
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof IParent_OnFragmentInteractionListener) {
+            mListener = (IParent_OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -110,7 +117,6 @@ public class Min_Data_Activity extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void messageFromParentFragment(Uri uri);
@@ -134,13 +140,13 @@ public class Min_Data_Activity extends Fragment {
 
 }
 
+
 class MyPageAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragments;
 
 
     public MyPageAdapter(FragmentManager fm, List<Fragment> fragments) {
-
         super(fm);
 
         this.fragments = fragments;
