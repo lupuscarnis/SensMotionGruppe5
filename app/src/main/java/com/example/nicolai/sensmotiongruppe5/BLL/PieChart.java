@@ -1,11 +1,11 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
+import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
-import com.example.nicolai.sensmotiongruppe5.Interface.IPieChart;
 
 import java.util.ArrayList;
 
-public class PieChart implements IPieChart {
+public class PieChart implements IChart {
 
 
     @Override

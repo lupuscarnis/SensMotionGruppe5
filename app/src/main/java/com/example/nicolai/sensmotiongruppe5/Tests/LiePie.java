@@ -1,8 +1,8 @@
 package com.example.nicolai.sensmotiongruppe5.Tests;
 
-import com.example.nicolai.sensmotiongruppe5.Interface.IPieChart;
+import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
 
-public class LiePie implements IPieChart {
+public class LiePie implements IChart {
 
 
     @Override
