@@ -1,13 +1,31 @@
 <resources>
     <string name="app_name">Sens Motion Gruppe 5</string>
+    <string name="facebook_app_id">305895120059354</string>
     <string name="title_activity_login">Log Ind</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Indtast email</string>
-    <string name="prompt_password">Indtast adgangskode</string>
+    <string name="text_username">Patient Nøgle</string>
+    <string name="text_password">Projekt Nøgle</string>
+    <string name="prompt_email">Indtast nøgle (Eks. 6rT39u)</string>
+    <string name="prompt_password">Indtast nøgle</string>
     <string name="action_sign_in">Log ind / Registrér</string>
     <string name="action_sign_in_short">Log ind</string>
-    <string name="error_invalid_email">Email ugyldig</string>
-    <string name="error_invalid_password">Adgangskoden er for kort</string>
-    <string name="error_incorrect_password">Adgangskoden er ugyldig</string>
+    <string name="error_invalid_email">Patient Nøgle ugyldig</string>
+    <string name="error_invalid_password">Projekt Nøgle er for kort</string>
+    <string name="error_incorrect_password">Projekt Nøgle ugyldig</string>
     <string name="error_field_required">Felt påkrævet</string>
+    <string name="text_help">Hjælp</string>
+    <string name="text_user_login_help">Her skal du indtaste Patient Nøgle</string>
+    <string name="text_user_login_help_button">Næste</string>
+    <string name="text_user_return_button">Tilbage til login</string>
+    <string name="text_user_password">Her skal du indtaste Projekt Nøgle</string>
+    <string name="group_members">Grp. 5 | Elias Valdemar Poulsen - s163312 | Nicolai Barnett - s163344 | Alan Jafi - s122417 | Sophus H. B. Weirsøe - s165485 | Kasper Mørk Valente - s163286</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="DialogText">Here is some help</string>
 </resources>
