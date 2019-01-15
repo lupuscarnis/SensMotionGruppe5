@@ -27,13 +27,13 @@ public interface IData {
     ArrayList<JSONData> getAllInfoAsObjects();
 
     /**
-     * @param date (format: YYYY-MM-DD)
+     * @param date (format: DD-MM-YYYY)
      * @return the values of a all activities by specified date
      */
     ArrayList<String> getAllActivitiesByDate(String date);
 
     /**
-     * @param date     (format: YYYY-MM-DD)
+     * @param date     (format: DD-MM-YYYY)
      * @param activity (resting|standing|walking|cycling|exercise|other|steps)
      * @return the value of a given activity by specified date
      */
