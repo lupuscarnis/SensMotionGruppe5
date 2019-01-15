@@ -1,10 +1,7 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 
-import android.util.Log;
-
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
-import com.example.nicolai.sensmotiongruppe5.Login_Activity;
 
 import java.util.ArrayList;
 
@@ -176,6 +173,16 @@ public class DAOHandler implements IData {
         }
 
         return data;
+
+    }
+
+    @Override
+    public ArrayList<JSONData> getCurrentSelectDatesDataAsObject() {
+        return null;
+    }
+
+    @Override
+    public void setCurrentDate(String startDate, String endDate) {
 
     }
 

@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.nicolai.sensmotiongruppe5.BLL.PieChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
+import com.example.nicolai.sensmotiongruppe5.Tests.LiePie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,15 +63,19 @@ public class Pie_chart_frag extends Fragment {
 
 
         pieChartView = view.findViewById(R.id.pieChart);
-        IChart chart = new PieChart();
+        IChart chart = new LiePie();
         int[] data = chart.getData();
         List<SliceValue> pieData = new ArrayList<>();
 
 
-        pieData.add(new SliceValue(data[0], Color.BLUE).setLabel("Cyklende"));
-        pieData.add(new SliceValue(data[1], Color.GRAY).setLabel("Gående"));
-        pieData.add(new SliceValue(data[2], Color.RED).setLabel("Exercise"));
-        pieData.add(new SliceValue(data[3], Color.MAGENTA).setLabel("No Data"));
+        pieData.add(new SliceValue(data[0], Color.BLUE).setLabel("I ro"));
+        pieData.add(new SliceValue(data[1], Color.GRAY).setLabel("Stående"));
+        pieData.add(new SliceValue(data[2], Color.RED).setLabel("Gående"));
+        pieData.add(new SliceValue(data[3], Color.MAGENTA).setLabel("Exercice"));
+        pieData.add(new SliceValue(data[4], Color.YELLOW).setLabel("Cyklende"));
+        pieData.add(new SliceValue(data[5], Color.BLACK).setLabel("Other"));
+        pieData.add(new SliceValue(data[6], Color.LTGRAY).setLabel("Ingen Data"));
+
 
 
         PieChartData pieChartData = new PieChartData(pieData);

@@ -39,4 +39,20 @@ public interface IData {
      */
     String getActivityByDate(String date, String activity);
 
+    /**
+     * Called after setCurrentDate
+     *
+     * @return Returns a list of the Data between the 2 dates.
+     */
+    ArrayList<JSONData> getCurrentSelectDatesDataAsObject();
+
+    /**
+     * Sets A range from wich Data Can be pulled with getCurrentSelectDatesDataAsObject to get stuff inbewtween the dates
+     *
+     * @param startDate
+     * @param endDate
+     */
+    void setCurrentDate(String startDate, String endDate);
+
+
 }

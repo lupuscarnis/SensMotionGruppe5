@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.nicolai.sensmotiongruppe5.BLL.BarGraph;
+import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
 import com.github.mikephil.charting.charts.BarChart;
@@ -60,33 +62,37 @@ public class Bar_graph_frag extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        IChart chart = new BarGraph();
+        int[] data = chart.getData();
         barChart = view.findViewById(R.id.bargraph);
 
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
-        barEntries.add(new BarEntry(44f,0));
-        barEntries.add(new BarEntry(88f,1));
-        barEntries.add(new BarEntry(66f,2));
-        barEntries.add(new BarEntry(12f,3));
+        barEntries.add(new BarEntry((float) data[0], 0));
+        barEntries.add(new BarEntry((float) data[1], 1));
+        barEntries.add(new BarEntry((float) data[2], 2));
+        barEntries.add(new BarEntry((float) data[3], 3));
+        barEntries.add(new BarEntry((float) data[4], 3));
+        barEntries.add(new BarEntry((float) data[5], 3));
+        barEntries.add(new BarEntry((float) data[6], 3));
+
         BarDataSet barDataSet = new BarDataSet (barEntries, "Activity");
 
 
         ArrayList<String> theDates = new ArrayList<>();
-        theDates.add("Liggende");
-        theDates.add("I bævegelse");
+        theDates.add("I ro");
+        theDates.add("Stående");
         theDates.add("Gående");
-        theDates.add("Siddende");
-
+        theDates.add("Exercice");
+        theDates.add("Cyklende");
+        theDates.add("Other");
+        theDates.add("Ingen Data");
 
         BarData theData = new BarData(theDates,barDataSet);
 
 
         barChart.setData(theData);
 
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(true);
 
     }
 
