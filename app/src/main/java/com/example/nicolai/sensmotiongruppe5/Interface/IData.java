@@ -52,7 +52,12 @@ public interface IData {
      * @param startDate
      * @param endDate
      */
-    void setCurrentDate(String startDate, String endDate);
+    void setDAOCurrentDates(String startDate, String endDate);
+
+    /**
+     * Gets dates from DAO
+     */
+    String[] getDAOCurrentDates();
 
     /**
      * Returns dates in interval set in DAO

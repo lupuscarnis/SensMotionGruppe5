@@ -95,7 +95,7 @@ public class Min_Data_Activity extends Fragment {
 
                 bar.setValue(Math.round(left), Math.round(right));
                 DAOHandler s = new DAOHandler();
-                s.setCurrentDate(Str[Math.round(left)], Str[Math.round(right)]);
+                s.setDAOCurrentDates(Str[Math.round(left)], Str[Math.round(right)]);
             }
         });
         // Range Seekerbar end

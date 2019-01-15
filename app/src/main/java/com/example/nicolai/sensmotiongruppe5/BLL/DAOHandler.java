@@ -23,6 +23,8 @@ public class DAOHandler implements IData {
         /*this.project_key = project_key;
         this.patient_key = patient_key;*/
 
+        setDAOCurrentDates("01-01-2019","02-01-2019");
+
     }
 
     /**
@@ -182,9 +184,19 @@ public class DAOHandler implements IData {
     }
 
     @Override
-    public void setCurrentDate(String startDate, String endDate) {
+    public void setDAOCurrentDates(String startDate, String endDate) {
 
+        userDAO.setCurrentStartDate(startDate);
+        userDAO.setCurrentEndDate(endDate);
     }
+
+    @Override
+    public String[] getDAOCurrentDates() {
+
+        String[] dates = {userDAO.getCurrentStartDate(),userDAO.setCurrentEndDate()};
+        return dates;
+    }
+
 
     @Override
     public ArrayList<String> getIntervalDates() {

@@ -1,9 +1,5 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.SystemClock;
-import android.util.Base64;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -12,9 +8,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class DAO {
+
+    // Start and end dates
+    private String currentStartDate;
+    private String currentEndDate;
 
     private static final String TAG = DAO.class.getSimpleName();
 
@@ -32,6 +30,22 @@ public class DAO {
 
         return instance;
 
+    }
+
+    public void setCurrentStartDate(String date) {
+        currentStartDate = date;
+    }
+
+    public void setCurrentEndDate(String date) {
+        currentEndDate = date;
+    }
+
+    public String getCurrentStartDate() {
+        return currentStartDate;
+    }
+
+    public String setCurrentEndDate() {
+        return currentEndDate;
     }
 
     public ArrayList<JSONData> getData(String project_key, String patient_key, int dayCount) {

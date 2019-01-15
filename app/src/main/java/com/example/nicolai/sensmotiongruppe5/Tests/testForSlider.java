@@ -51,8 +51,13 @@ public class testForSlider implements IData {
     }
 
     @Override
-    public void setCurrentDate(String startDate, String endDate) {
+    public void setDAOCurrentDates(String startDate, String endDate) {
 
+    }
+
+    @Override
+    public String[] getDAOCurrentDates() {
+        return new String[0];
     }
 
     @Override

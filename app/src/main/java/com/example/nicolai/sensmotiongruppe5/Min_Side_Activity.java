@@ -231,6 +231,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             // For debugging
             /*Toast.makeText(getActivity(), "Dates: " + Arrays.toString(allDates) +"", Toast.LENGTH_LONG).show();
             Toast.makeText(getActivity(), "Steps: " + numSteps +"", Toast.LENGTH_LONG).show();*/
+            Toast.makeText(getActivity(), "DAO Dates: " + Arrays.toString(daoHandler.getDAOCurrentDates()) +"", Toast.LENGTH_LONG).show();
 
         }
     }
