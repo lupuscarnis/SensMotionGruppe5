@@ -68,19 +68,22 @@ public class Pie_chart_frag extends Fragment {
         List<SliceValue> pieData = new ArrayList<>();
 
 
-        pieData.add(new SliceValue(data[0], Color.BLUE).setLabel("I ro"));
-        pieData.add(new SliceValue(data[1], Color.GRAY).setLabel("Stående"));
-        pieData.add(new SliceValue(data[2], Color.RED).setLabel("Gående"));
-        pieData.add(new SliceValue(data[3], Color.MAGENTA).setLabel("Exercice"));
-        pieData.add(new SliceValue(data[4], Color.YELLOW).setLabel("Cyklende"));
-        pieData.add(new SliceValue(data[5], Color.BLACK).setLabel("Other"));
-        pieData.add(new SliceValue(data[6], Color.LTGRAY).setLabel("Ingen Data"));
+        pieData.add(new SliceValue(data[0], Color.BLUE).setLabel(""));
+        pieData.add(new SliceValue(data[1], Color.GRAY).setLabel(""));
+        pieData.add(new SliceValue(data[2], Color.RED).setLabel(""));
+        pieData.add(new SliceValue(data[3], Color.BLACK).setLabel(""));
+        pieData.add(new SliceValue(data[4], Color.parseColor("#006400")).setLabel(""));
+        pieData.add(new SliceValue(data[5], Color.MAGENTA).setLabel(""));
+        pieData.add(new SliceValue(data[6], Color.parseColor( "#9932CC" )).setLabel(""));
+
 
 
 
         PieChartData pieChartData = new PieChartData(pieData);
+        pieChartData.setHasCenterCircle(true).setCenterText1("SENS motion").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#0097A7"));
         pieChartData.setHasLabels(true);
         pieChartView.setPieChartData(pieChartData);
+
 
 
     }

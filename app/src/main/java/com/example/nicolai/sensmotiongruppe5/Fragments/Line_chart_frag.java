@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
@@ -16,6 +17,8 @@ import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteract
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 import com.example.nicolai.sensmotiongruppe5.R;
 import com.example.nicolai.sensmotiongruppe5.Tests.FakeLinechart;
+import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.components.Legend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,7 @@ public class Line_chart_frag extends Fragment {
     private IChild_OnFragmentInteractionListener mListener;
     private View view;
     public Line_chart_frag() {
+
 
     }
 
@@ -67,6 +71,9 @@ public class Line_chart_frag extends Fragment {
 
         IData ed = new DAOHandler();
         IChart b = new FakeLinechart();
+
+
+
 
 
         //initialize the data for X-Axis.
@@ -109,6 +116,7 @@ public class Line_chart_frag extends Fragment {
         }
 
 
+
         //add x and y data inside yValues and xValues lists.
         for (int i = 0; i < xData.size(); i++) {
             x.add(i, new AxisValue(i).setLabel(xData.get(i)));
@@ -121,19 +129,20 @@ public class Line_chart_frag extends Fragment {
         //This list will hold the line of the graph chart.
         List lines = new ArrayList();
         //resting
-        lines.add(new Line(r).setColor(Color.CYAN));
+        lines.add(new Line(r).setColor(Color.BLUE));
         //standing
-        lines.add(new Line(s).setColor(Color.LTGRAY));
+        lines.add(new Line(s).setColor(Color.GRAY));
         //walking
-        lines.add(new Line(w).setColor(Color.YELLOW));
+        lines.add(new Line(w).setColor(Color.RED));
         //exercise
-        lines.add(new Line(e).setColor(Color.BLUE));
+        lines.add(new Line(e).setColor(Color.MAGENTA));
         //cycling
-        lines.add(new Line(c).setColor(Color.RED));
+        lines.add(new Line(c).setColor(Color.parseColor( "#006400" )));
         //Other
-        lines.add(new Line(o).setColor(Color.DKGRAY));
+        lines.add(new Line(o).setColor(Color.BLACK));
         //no data
-        lines.add(new Line(no).setColor(Color.MAGENTA));
+        lines.add(new Line(no).setColor(Color.parseColor( "#9932CC" )));
+
 
 
 
@@ -156,6 +165,8 @@ public class Line_chart_frag extends Fragment {
         data.setAxisYLeft(yAxis);
         yAxis.setTextColor(Color.parseColor("#03A9F4"));
         yAxis.setTextSize(13);
+
+
 
 
     }

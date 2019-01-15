@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Bar_graph_frag;
@@ -28,6 +29,8 @@ import com.jaygoo.widget.SeekBar;
 import java.util.ArrayList;
 import java.util.List;
 
+import lecho.lib.hellocharts.model.SliceValue;
+
 
 public class Min_Data_Activity extends Fragment {
 
@@ -36,19 +39,50 @@ public class Min_Data_Activity extends Fragment {
     private IParent_OnFragmentInteractionListener mListener;
     private View rootView;
     private ViewPager pager;
+    TextView textView1, textView2, textView3,textView4, textView5,textView6, textView7;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
 
+
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.activity_min__data, drawer_layout, false);
+
+
         }
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
 
         IData s = new DAOHandler();
+
+
+        textView1 = rootView.findViewById( R.id.textView );
+        textView2 =rootView.findViewById( R.id.textView2 );
+        textView3 =rootView.findViewById( R.id.textView3 );
+        textView4 =rootView.findViewById( R.id.textView4);
+        textView5=rootView.findViewById( R.id.textView5 );
+        textView6 =rootView.findViewById( R.id.textView6 );
+        textView7 =rootView.findViewById( R.id.textView7 );
+
+        textView1.setText( "I ro");
+        textView2.setText( "Stående");
+        textView3.setText( "Gående");
+        textView4.setText( "Exercise");
+        textView5.setText( "Cyklende");
+        textView6.setText( "Other");
+        textView7.setText( "Ingen Data");
+
+        textView1.setTextColor(Color.BLUE);
+        textView2.setTextColor(Color.GRAY);
+        textView3.setTextColor(Color.RED);
+        textView4.setTextColor(Color.BLACK);
+        textView5.setTextColor(Color.parseColor( "#006400" ));//GREEN
+        textView6.setTextColor(Color.MAGENTA);
+        textView7.setTextColor(Color.parseColor( "#9932CC" ));//PURPLE
+
+
 
 
 
