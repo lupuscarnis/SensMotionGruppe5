@@ -186,4 +186,9 @@ public class DAOHandler implements IData {
 
     }
 
+    @Override
+    public ArrayList<String> getIntervalDates() {
+        return null;
+    }
+
 }

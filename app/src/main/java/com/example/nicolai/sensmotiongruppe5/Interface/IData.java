@@ -40,7 +40,7 @@ public interface IData {
     String getActivityByDate(String date, String activity);
 
     /**
-     * Called after setCurrentDate
+     * Called after setCurrentDate. Returns the data in interval set in DAO
      *
      * @return Returns a list of the Data between the 2 dates.
      */
@@ -54,5 +54,10 @@ public interface IData {
      */
     void setCurrentDate(String startDate, String endDate);
 
+    /**
+     * Returns dates in interval set in DAO
+     * @return
+     */
+    ArrayList<String> getIntervalDates();
 
 }
