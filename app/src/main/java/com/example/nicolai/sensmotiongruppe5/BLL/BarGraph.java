@@ -12,7 +12,7 @@ public class BarGraph implements IChart {
         int[] array = new int[7];
         IData data = new DAOHandler();
         ArrayList<JSONData> s;
-        s = data.getAllInfoAsObjects();
+        s = data.getCurrentSelectDatesDataAsObject();
 
 
         for (JSONData currentData : s) {
