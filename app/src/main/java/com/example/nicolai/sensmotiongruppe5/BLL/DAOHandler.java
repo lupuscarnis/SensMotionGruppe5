@@ -26,8 +26,8 @@ public class DAOHandler implements IData {
     }
 
     /**
-     * @param startDate in format [YYYY-MM-DD]
-     * @param endDate   in format [YYYY-MM-DD]
+     * @param startDate in format [DD-MM-YYYY]
+     * @param endDate   in format [DD-MM-YYYY]
      */
     @Override
     public ArrayList<String> setCurrentData(String startDate, String endDate) {
@@ -61,7 +61,7 @@ public class DAOHandler implements IData {
     /**
      * Gets all dates. Converts DAO.jsonArray to string array.
      *
-     * @return all available start_dates from json
+     * @return all available start_dates from json in format (DD-MM-YYYY)
      */
     @Override
     public String[] getAllDates() {
@@ -97,7 +97,7 @@ public class DAOHandler implements IData {
 
 
     /**
-     * @param date (format: YYYY-MM-DD)
+     * @param date (format: DD-MM-YYYY)
      * @return the values of a all activities by specified date
      */
     @Override
@@ -130,7 +130,7 @@ public class DAOHandler implements IData {
     }
 
     /**
-     * @param date     (format: YYYY-MM-DD)
+     * @param date     (format: DD-MM-YYYY)
      * @param activity (resting|standing|walking|cycling|exercise|other|steps)
      * @return the value of a given activity by specified date
      */
