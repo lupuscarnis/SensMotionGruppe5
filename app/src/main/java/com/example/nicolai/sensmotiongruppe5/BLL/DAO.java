@@ -2,6 +2,7 @@ package com.example.nicolai.sensmotiongruppe5.BLL;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 import android.util.Base64;
 import android.util.Log;
 
@@ -61,11 +62,13 @@ public class DAO {
 
                 jsonData.add(new JSONData());
 
-                // start_time
-                jsonData.get(i).setStartDate(e.getString("start_time").substring(0, 10));
-
                 // start_time split into yyyy mm dd
                 String[] datesArr = e.getString("start_time").substring(0, 10).split("-");
+
+                // set start_time and reverse order
+                //jsonData.get(i).setStartDate(e.getString("start_time").substring(0, 10));
+                jsonData.get(i).setStartDate(datesArr[2]+"-"+datesArr[1]+"-"+datesArr[0]);
+
 
                 jsonData.get(i).setYear(Integer.parseInt(datesArr[0]));
                 jsonData.get(i).setMonth(Integer.parseInt(datesArr[1]));
