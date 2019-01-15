@@ -7,7 +7,7 @@ public class LiePie implements IChart {
 
     @Override
     public int[] getData() {
-        int[] s = {20, 20, 20, 40};
+        int[] s = {10, 10, 10, 40, 10, 10, 10};
         return s;
     }
 

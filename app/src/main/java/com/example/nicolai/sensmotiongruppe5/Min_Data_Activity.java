@@ -63,7 +63,7 @@ public class Min_Data_Activity extends Fragment {
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
 
 
-        String[] Str;
+        final String[] Str;
         // s.getALLDate() TODO: set that method in a asyncTask
         Str = s.getAllDates();
 
@@ -94,6 +94,8 @@ public class Min_Data_Activity extends Fragment {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {
 
                 bar.setValue(Math.round(left), Math.round(right));
+                DAOHandler s = new DAOHandler();
+                s.setCurrentDate(Str[Math.round(left)], Str[Math.round(right)]);
             }
         });
         // Range Seekerbar end
