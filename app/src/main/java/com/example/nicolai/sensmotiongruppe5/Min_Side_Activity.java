@@ -23,6 +23,7 @@ import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
@@ -217,7 +218,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             //valuesArray = daoHandler.getAllInfo(7);
             allDates = daoHandler.getAllDates();
-            numSteps = daoHandler.getActivityByDate("2019-01-08", "steps");
+            numSteps = daoHandler.getActivityByDate("08-01-2019", "steps");
             return null;
 
         }
@@ -227,30 +228,9 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             super.onPostExecute(result);
 
-            // Save JSON_STRING to phone
-            //SharedPreferences.Editor prefEditor = getDefaultSharedPreferences(getActivity()).edit();
-            //prefEditor.putString("JSON_STRING", valuesArray.toString()).apply();
-
-            // Retrieve JSON_STRING from phone
-            //String jsonString = PreferenceManager.getDefaultSharedPreferences(Min_Side_Activity.this).getString("JSON_STRING", "DefaultStringIfNULL");
-            //Log.d("Debug SharedPreferences",""+jsonString);
-
-            // Toast when done downloading/parsing JSON
-            //Toast.makeText(getActivity(),"Json Data example info "+valuesArray.get(0).get(1),Toast.LENGTH_LONG).show();
-
-            // Toast all dates from JSON
-            /*String datesArr = Arrays.toString(allDates);
-            Toast.makeText(getActivity(), "Json Data example info " + datesArr, Toast.LENGTH_LONG).show();*/
-
-            /*String patientKey = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
-            String projectKey = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
-
-            Log.d("Decoded patientKey is: ",patientKey+"");
-            Log.d("Decoded projectKey is: ",projectKey+"");
-
-            Toast.makeText(getActivity(), "Decoded patientKey: " + patientKey + ". Decoded projectKey: " + projectKey +"", Toast.LENGTH_LONG).show();*/
-
-            Toast.makeText(getActivity(), "Steps: " + numSteps +"", Toast.LENGTH_LONG).show();
+            // For debugging
+            /*Toast.makeText(getActivity(), "Dates: " + Arrays.toString(allDates) +"", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Steps: " + numSteps +"", Toast.LENGTH_LONG).show();*/
 
         }
     }

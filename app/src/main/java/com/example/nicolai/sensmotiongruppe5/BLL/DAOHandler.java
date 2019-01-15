@@ -71,10 +71,7 @@ public class DAOHandler implements IData {
 
         ArrayList<JSONData> valuesArray;
         valuesArray = userDAO.getData(project_key, patient_key, 7);
-
         String[] dataArray = new String[valuesArray.size()];
-
-        //Log.d("number of entries", valuesArray.size()+"");
 
         // Iterate over valuesArray
         for (int i = 0; i < valuesArray.size(); i++) {

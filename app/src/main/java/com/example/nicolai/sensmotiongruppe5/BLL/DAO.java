@@ -69,6 +69,8 @@ public class DAO {
                 //jsonData.get(i).setStartDate(e.getString("start_time").substring(0, 10));
                 jsonData.get(i).setStartDate(datesArr[2]+"-"+datesArr[1]+"-"+datesArr[0]);
 
+                Log.d("TEH DATES",datesArr[2]+"-"+datesArr[1]+"-"+datesArr[0]+"");
+
 
                 jsonData.get(i).setYear(Integer.parseInt(datesArr[0]));
                 jsonData.get(i).setMonth(Integer.parseInt(datesArr[1]));
