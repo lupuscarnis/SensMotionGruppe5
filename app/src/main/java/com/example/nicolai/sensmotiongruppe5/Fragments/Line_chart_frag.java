@@ -103,7 +103,7 @@ public class Line_chart_frag extends Fragment {
         List o = new ArrayList();
         List no = new ArrayList();
         //Declare and initialize y line
-        for (int p = 0; p < valuesOfLines.get(p).length; p++) {
+        for (int p = 0; p < valuesOfLines.get(1).length; p++) {
 
             r.add(new PointValue(p, valuesOfLines.get(0)[p]));
             s.add(new PointValue(p, valuesOfLines.get(1)[p]));

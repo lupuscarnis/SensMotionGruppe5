@@ -16,7 +16,7 @@ public class PieChart implements IChart {
         ArrayList<JSONData> s;
         int sum = 0;
 
-        s = data.getAllInfoAsObjects();
+        s = data.getCurrentSelectDatesDataAsObject();
 
         for (JSONData currentData : s) {
 
