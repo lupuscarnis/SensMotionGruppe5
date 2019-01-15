@@ -115,7 +115,7 @@
         android:textColor="#FFF"
         android:textStyle="bold" />
 
-    <!--<Button
+    <Button
         android:id="@+id/helpBtn"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        tools:text="Hjælp" />-->
+        tools:text="Hjælp" />
 
     <TextView
         android:id="@+id/textView9"

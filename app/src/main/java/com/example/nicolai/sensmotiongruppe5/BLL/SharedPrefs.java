@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 
-
 public class SharedPrefs {
 
     private static SharedPrefs   sharedPreference;
     public static final String PREFS_NAME = "SENS_PREFS";
     public static final String PREFS_KEY = "SENS";
+
+    private static SharedPreferences settings;
+    private static SharedPreferences.Editor editor;
 
     public static SharedPrefs getInstance()
     {
@@ -32,10 +34,7 @@ public class SharedPrefs {
      * @param encode
      */
     public void saveString(Context context, String text , String Key, boolean encode) {
-        SharedPreferences settings;
-        SharedPreferences.Editor editor;
 
-        //settings = PreferenceManager.getDefaultSharedPreferences(context);
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         editor = settings.edit();
 
@@ -59,9 +58,8 @@ public class SharedPrefs {
      * @return
      */
     public String getString(Context context , String Key, boolean decode) {
-        SharedPreferences settings;
-        String text = "";
-        //  settings = PreferenceManager.getDefaultSharedPreferences(context);
+
+        String text;
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
         if (decode) {
@@ -81,10 +79,7 @@ public class SharedPrefs {
      * @param context
      */
     public void clearSharedPreference(Context context) {
-        SharedPreferences settings;
-        SharedPreferences.Editor editor;
 
-        //settings = PreferenceManager.getDefaultSharedPreferences(context);
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         editor = settings.edit();
 
@@ -97,9 +92,7 @@ public class SharedPrefs {
      * @param context
      * @param value
      */
-    public void removeValue(Context context , String value) {
-        SharedPreferences settings;
-        SharedPreferences.Editor editor;
+    public void removeValue(Context context, String value) {
 
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         editor = settings.edit();
