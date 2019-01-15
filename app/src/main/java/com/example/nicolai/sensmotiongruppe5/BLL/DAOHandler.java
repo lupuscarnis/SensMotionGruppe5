@@ -1,9 +1,16 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 
+import android.icu.text.SimpleDateFormat;
+import android.util.Log;
+
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 
+import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -20,10 +27,9 @@ public class DAOHandler implements IData {
 
         this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
         this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
-        /*this.project_key = project_key;
-        this.patient_key = patient_key;*/
 
-        setDAOCurrentDates("01-01-2019","02-01-2019");
+        // Testing
+        setDAOCurrentDates("11-01-2019", "14-01-2019");
 
     }
 
@@ -82,7 +88,6 @@ public class DAOHandler implements IData {
 
 
     /**
-     *
      * @return arraylist of all objects from json
      */
     @Override
@@ -94,6 +99,59 @@ public class DAOHandler implements IData {
         return valuesArray;
     }
 
+    /**
+     *
+     * Note: Not the most elegant solution :-(
+     * @return All json data as object within a given date range
+     */
+    @Override
+    public ArrayList<JSONData> getCurrentSelectDatesDataAsObject() {
+
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+
+        ArrayList<JSONData> dataArray = new ArrayList<JSONData>();
+
+        String[] dates = getDAOCurrentDates();
+
+        Log.d("getDAOCurrentDates", Arrays.toString(dates));
+
+        // Split and reverse order of start date
+        String[] startDate = dates[0].split("-");
+        String sDate = startDate[2]+startDate[1]+startDate[0];
+        //Converts date string to int ex. 2019-01-01 to 20190101
+        int sYMD = Integer.parseInt(sDate);
+
+        // Split and reverse order of end date
+        String[] endDate = dates[1].split("-");
+        String eDate = endDate[2]+endDate[1]+endDate[0];
+        //Converts date string to int ex. 2019-01-01 to 20190101
+        int eYMD = Integer.parseInt(eDate);
+
+        Log.d("startDate ", sYMD+"");
+        Log.d("endDate ", eYMD+"");
+
+        for (int i = 0; i < valuesArray.size(); i++) {
+
+            // Split and reverse order of start date
+            String[] jDateArr = valuesArray.get(i).getStartDate().split("-");
+            String jDate = jDateArr[2]+jDateArr[1]+jDateArr[0];
+            //Converts date string to int ex. 2019-01-01 to 20190101
+            int jYMD = Integer.parseInt(jDate);
+
+            //int j = Integer.parseInt(valuesArray.get(i).getStartDate().replace("-",""));
+
+            if (sYMD >= jYMD | eYMD <= jYMD) {
+
+                Log.d("Condition ", jYMD +">="+ sYMD +"|"+ jYMD +"<="+ eYMD+"");
+
+                dataArray.add(valuesArray.get(i));
+
+            }
+        }
+
+        return dataArray;
+    }
 
     /**
      * @param date (format: DD-MM-YYYY)
@@ -179,11 +237,6 @@ public class DAOHandler implements IData {
     }
 
     @Override
-    public ArrayList<JSONData> getCurrentSelectDatesDataAsObject() {
-        return null;
-    }
-
-    @Override
     public void setDAOCurrentDates(String startDate, String endDate) {
 
         userDAO.setCurrentStartDate(startDate);
@@ -193,7 +246,7 @@ public class DAOHandler implements IData {
     @Override
     public String[] getDAOCurrentDates() {
 
-        String[] dates = {userDAO.getCurrentStartDate(),userDAO.setCurrentEndDate()};
+        String[] dates = {userDAO.getCurrentStartDate(), userDAO.setCurrentEndDate()};
         return dates;
     }
 

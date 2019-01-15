@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
+import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
@@ -36,9 +37,9 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     DAOHandler daoHandler = new DAOHandler();
 
     // For storing the values from JSON
-    public List<List<String>> valuesArray;
     public String[] allDates;
     public String numSteps;
+    ArrayList<JSONData> dataArray = new ArrayList<JSONData>();
     private Button walk, run, cycling;
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
@@ -209,7 +210,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         protected void onPreExecute() {
 
             super.onPreExecute();
-            //Toast.makeText(getActivity(),"Json Data is downloading",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"Updating data...",Toast.LENGTH_LONG).show();
 
         }
 
@@ -217,8 +218,10 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         protected Void doInBackground(Void... arg0) {
 
             //valuesArray = daoHandler.getAllInfo(7);
+            dataArray = daoHandler.getCurrentSelectDatesDataAsObject();
             allDates = daoHandler.getAllDates();
             numSteps = daoHandler.getActivityByDate("08-01-2019", "steps");
+            //dataArray = daoHandler.getCurrentSelectDatesDataAsObject();
             return null;
 
         }
@@ -228,10 +231,16 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             super.onPostExecute(result);
 
+            Toast.makeText(getActivity(),"Update done...",Toast.LENGTH_LONG).show();
+
             // For debugging
-            /*Toast.makeText(getActivity(), "Dates: " + Arrays.toString(allDates) +"", Toast.LENGTH_LONG).show();
-            Toast.makeText(getActivity(), "Steps: " + numSteps +"", Toast.LENGTH_LONG).show();*/
-            Toast.makeText(getActivity(), "DAO Dates: " + Arrays.toString(daoHandler.getDAOCurrentDates()) +"", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "Dates: " + Arrays.toString(allDates) +"", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "Steps: " + numSteps +"", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "DAO Dates: " + Arrays.toString(daoHandler.getDAOCurrentDates()) +"", Toast.LENGTH_LONG).show();
+            //testArray = daoHandler.getCurrentSelectDatesDataAsObject();
+            //Toast.makeText(getActivity(), "DAO interval Data: " + daoHandler.getCurrentSelectDatesDataAsObject().get(0).getStartDate() +"", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "DAO interval Data: " + dataArray.size() +"", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "DAO interval Data: " + dataArray.size() +"", Toast.LENGTH_LONG).show();
 
         }
     }
