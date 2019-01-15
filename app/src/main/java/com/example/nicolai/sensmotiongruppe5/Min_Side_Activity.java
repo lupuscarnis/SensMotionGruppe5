@@ -119,12 +119,6 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
     }
 
-
-
-
-
-
-
     /*
      * Download JSON as ASYNCTASK
      * Prompts to screen
@@ -218,9 +212,9 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         protected Void doInBackground(Void... arg0) {
 
             //valuesArray = daoHandler.getAllInfo(7);
-            dataArray = daoHandler.getCurrentSelectDatesDataAsObject();
+            /*dataArray = daoHandler.getCurrentSelectDatesDataAsObject();
             allDates = daoHandler.getAllDates();
-            numSteps = daoHandler.getActivityByDate("08-01-2019", "steps");
+            numSteps = daoHandler.getActivityByDate("08-01-2019", "steps");*/
             //dataArray = daoHandler.getCurrentSelectDatesDataAsObject();
             return null;
 
@@ -240,7 +234,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             //testArray = daoHandler.getCurrentSelectDatesDataAsObject();
             //Toast.makeText(getActivity(), "DAO interval Data: " + daoHandler.getCurrentSelectDatesDataAsObject().get(0).getStartDate() +"", Toast.LENGTH_LONG).show();
             //Toast.makeText(getActivity(), "DAO interval Data: " + dataArray.size() +"", Toast.LENGTH_LONG).show();
-            Toast.makeText(getActivity(), "DAO interval Data: " + dataArray.size() +"", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "DAO interval Data: " + dataArray.size() +"", Toast.LENGTH_LONG).show();
 
         }
     }

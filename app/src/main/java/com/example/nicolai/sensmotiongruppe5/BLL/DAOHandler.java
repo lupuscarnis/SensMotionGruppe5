@@ -133,18 +133,15 @@ public class DAOHandler implements IData {
 
         for (int i = 0; i < valuesArray.size(); i++) {
 
-            // Split and reverse order of start date
+            // Split and reverse order of date
             String[] jDateArr = valuesArray.get(i).getStartDate().split("-");
             String jDate = jDateArr[2]+jDateArr[1]+jDateArr[0];
             //Converts date string to int ex. 2019-01-01 to 20190101
             int jYMD = Integer.parseInt(jDate);
 
-            //int j = Integer.parseInt(valuesArray.get(i).getStartDate().replace("-",""));
-
             if (sYMD >= jYMD | eYMD <= jYMD) {
 
                 Log.d("Condition ", jYMD +">="+ sYMD +"|"+ jYMD +"<="+ eYMD+"");
-
                 dataArray.add(valuesArray.get(i));
 
             }
@@ -236,6 +233,11 @@ public class DAOHandler implements IData {
 
     }
 
+    /**
+     * Sets the "master" dates in DAO
+     * @param startDate
+     * @param endDate
+     */
     @Override
     public void setDAOCurrentDates(String startDate, String endDate) {
 
@@ -243,6 +245,10 @@ public class DAOHandler implements IData {
         userDAO.setCurrentEndDate(endDate);
     }
 
+    /**
+     * Gets the "master" dates in DAO
+     * @return
+     */
     @Override
     public String[] getDAOCurrentDates() {
 
