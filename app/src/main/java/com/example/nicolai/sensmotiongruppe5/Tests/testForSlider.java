@@ -45,5 +45,25 @@ public class testForSlider implements IData {
         return null;
     }
 
+    @Override
+    public ArrayList<JSONData> getCurrentSelectDatesDataAsObject() {
+        return null;
+    }
+
+    @Override
+    public void setDAOCurrentDates(String startDate, String endDate) {
+
+    }
+
+    @Override
+    public String[] getDAOCurrentDates() {
+        return new String[0];
+    }
+
+    @Override
+    public ArrayList<String> getIntervalDates() {
+        return null;
+    }
+
 
 }

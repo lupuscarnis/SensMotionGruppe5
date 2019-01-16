@@ -1,8 +1,5 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Base64;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -11,9 +8,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class DAO {
+
+    // Start and end dates
+    private String currentStartDate;
+    private String currentEndDate;
 
     private static final String TAG = DAO.class.getSimpleName();
 
@@ -31,6 +30,22 @@ public class DAO {
 
         return instance;
 
+    }
+
+    public void setCurrentStartDate(String date) {
+        currentStartDate = date;
+    }
+
+    public void setCurrentEndDate(String date) {
+        currentEndDate = date;
+    }
+
+    public String getCurrentStartDate() {
+        return currentStartDate;
+    }
+
+    public String setCurrentEndDate() {
+        return currentEndDate;
     }
 
     public ArrayList<JSONData> getData(String project_key, String patient_key, int dayCount) {
@@ -61,11 +76,15 @@ public class DAO {
 
                 jsonData.add(new JSONData());
 
-                // start_time
-                jsonData.get(i).setStartDate(e.getString("start_time").substring(0, 10));
-
                 // start_time split into yyyy mm dd
                 String[] datesArr = e.getString("start_time").substring(0, 10).split("-");
+
+                // set start_time and reverse order
+                //jsonData.get(i).setStartDate(e.getString("start_time").substring(0, 10));
+                jsonData.get(i).setStartDate(datesArr[2]+"-"+datesArr[1]+"-"+datesArr[0]);
+
+                Log.d("TEH DATES",datesArr[2]+"-"+datesArr[1]+"-"+datesArr[0]+"");
+
 
                 jsonData.get(i).setYear(Integer.parseInt(datesArr[0]));
                 jsonData.get(i).setMonth(Integer.parseInt(datesArr[1]));
@@ -97,63 +116,6 @@ public class DAO {
 
         return jsonData;
 
-    }
-
-    /**
-     * @param context
-     * @param key     the key name to save as
-     * @param input   the string to save
-     */
-    public void saveUserEncode(Context context, String key, String input) {
-
-        try {
-            SharedPreferences preferences = context.getSharedPreferences("u_login", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(encrypt(key), encrypt(input));
-            editor.apply();
-        } catch (Exception e) {
-
-
-        }
-
-    }
-
-    /**
-     * @param context
-     * @param key   the key name to retrieve
-     * @return
-     */
-    public String getUserDecode(Context context, String key) {
-
-        try {
-            SharedPreferences preferences = context.getSharedPreferences("u_login", MODE_PRIVATE);
-            String passEncrypted = preferences.getString(encrypt(key), encrypt("default"));
-            String pass = decrypt(passEncrypted);
-        } catch (Exception e) {
-
-
-        }
-
-        return null;
-
-    }
-
-    /**
-     * Base64 encode
-     * @param input
-     * @return
-     */
-    public static String encrypt(String input) {
-        return Base64.encodeToString(input.getBytes(), Base64.DEFAULT);
-    }
-
-    /**
-     * Base64 decode
-     * @param input
-     * @return
-     */
-    public static String decrypt(String input) {
-        return new String(Base64.decode(input, Base64.DEFAULT));
     }
 
 }

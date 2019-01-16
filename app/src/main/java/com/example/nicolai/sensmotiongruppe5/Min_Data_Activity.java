@@ -37,6 +37,7 @@ public class Min_Data_Activity extends Fragment {
     private View rootView;
     private ViewPager pager;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class Min_Data_Activity extends Fragment {
         // Range Seekerbar start
 
 
+
         bar = rootView.findViewById(R.id.Min_data_range_silder);
         SeekBar leftSeekBar = bar.getLeftSeekBar();
         SeekBar rightSeekBar = bar.getRightSeekBar();
@@ -63,16 +65,16 @@ public class Min_Data_Activity extends Fragment {
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
 
 
-        String[] Str;
+        final String[] Str;
         // s.getALLDate() TODO: set that method in a asyncTask
         Str = s.getAllDates();
-
+        s.setDAOCurrentDates(Str[0], Str[6]);
 
         bar.setTickMarkTextArray(formatString(Str));
 
-
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
         bar.setRange(0, 6, 1);
+        bar.setValue(0, 6);
         bar.setOnRangeChangedListener(new OnRangeChangedListener() {
             float left,right;
 
@@ -94,6 +96,8 @@ public class Min_Data_Activity extends Fragment {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {
 
                 bar.setValue(Math.round(left), Math.round(right));
+                IData s = new DAOHandler();
+                s.setDAOCurrentDates(Str[Math.round(left)], Str[Math.round(right)]);
             }
         });
         // Range Seekerbar end
@@ -154,7 +158,7 @@ public class Min_Data_Activity extends Fragment {
         String[] s = new String[7];
         for (int i = 0; i < Array.length; i++) {
 
-            s[i] = Array[i].substring(6);
+            s[i] = Array[i].substring(0, 5);
 
         }
 
