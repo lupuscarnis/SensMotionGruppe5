@@ -1,17 +1,20 @@
+/*package com.example.nicolai.sensmotiongruppe5;
+
+
 import android.app.IntentService;
 import android.content.Intent;
 
-public class RSSPullService extends IntentService {
+import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
+
+public class backgroundService extends IntentService {
+    double walking;
     @Override
     protected void onHandleIntent(Intent workIntent) {
+      walking = JSONData.getWalking();
 
-      String dataString = workIntent.getDataString();
-
-
-
-
-
-
-
-    }
+if (walking >= 60){
+    Achieve_Activity.completed(1);
 }
+
+
+    }}*/
