@@ -16,10 +16,10 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class DAOHandler implements IData {
 
-    DAO userDAO = DAO.getInstance();
+    static DAO userDAO = DAO.getInstance();
 
-    private String project_key;
-    private String patient_key;
+    private static String project_key;
+    private static String patient_key;
 
     //private ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
 

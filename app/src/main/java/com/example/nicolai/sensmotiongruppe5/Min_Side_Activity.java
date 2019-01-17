@@ -2,6 +2,7 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
         }
 
-
+        getActivity().startService(new Intent(getActivity(), backgroundService.class));
         walk = rootView.findViewById(R.id.button_walk);
         run = rootView.findViewById(R.id.button_running);
         cycling = rootView.findViewById(R.id.button_bike);

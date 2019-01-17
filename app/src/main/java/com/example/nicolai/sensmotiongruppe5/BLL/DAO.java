@@ -48,7 +48,7 @@ public class DAO {
         return currentEndDate;
     }
 
-    public ArrayList<JSONData> getData(String project_key, String patient_key, int dayCount) {
+    public static ArrayList<JSONData> getData(String project_key, String patient_key, int dayCount) {
 
         ArrayList<JSONData> jsonData = new ArrayList<JSONData>();
 
