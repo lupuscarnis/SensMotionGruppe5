@@ -65,4 +65,11 @@ public interface IData {
      */
     ArrayList<String> getIntervalDates();
 
+    /**
+     * Returns a sum of a given activity
+     * @param activity
+     * @return
+     */
+    Double getAllActivityByDate(String activity);
+
 }

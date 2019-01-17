@@ -262,4 +262,52 @@ public class DAOHandler implements IData {
         return null;
     }
 
+    /**
+     * Returns a sum of a given activity
+     * @param activity
+     * @return
+     */
+    @Override
+    public Double getAllActivityByDate(String activity) {
+
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+
+        double data = 0;
+
+        for (int i = 0; i < valuesArray.size(); i++) {
+
+                switch (activity) {
+                    case "resting":
+                        data += valuesArray.get(i).getResting();
+                        break;
+                    case "standing":
+                        data += valuesArray.get(i).getStanding();
+                        break;
+                    case "walking":
+                        data += valuesArray.get(i).getWalking();
+                        break;
+                    case "cycling":
+                        data += valuesArray.get(i).getCycling();
+                        break;
+                    case "exercise":
+                        data += valuesArray.get(i).getExercise();
+                        break;
+                    case "other":
+                        data += valuesArray.get(i).getOtherd();
+                        break;
+                    case "steps":
+                        data += valuesArray.get(i).getSteps();
+                        break;
+                    default:
+                        data = 0;
+
+
+            }
+        }
+
+        return data;
+
+    }
+
 }
