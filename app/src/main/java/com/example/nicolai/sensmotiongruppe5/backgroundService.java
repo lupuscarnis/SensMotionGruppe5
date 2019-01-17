@@ -17,6 +17,7 @@ import java.util.TimerTask;
 
 public class backgroundService extends Service {
 private Timer mTimer;
+static DAO userDAO = DAO.getInstance();
 double walking;
 double resting;
 double standing;
@@ -56,7 +57,7 @@ mTimer.schedule(timertask,2000, 2*1000);
 
 
 //Testing purpose
- // Achieve_Activity.notifications("Channel_ID123", Double.toString(walking), Double.toString(walking));
+// Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har gået " + Double.toString(walking));
 
 
                 if (walking >= 60) {
@@ -83,7 +84,7 @@ mTimer.schedule(timertask,2000, 2*1000);
     public static Double getSum(String activity) {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = DAO.getData("k5W2uX", "6rT39u", 7);
+        valuesArray = userDAO.getData("k5W2uX", "6rT39u", 7);
 
         double data = 0;
 
