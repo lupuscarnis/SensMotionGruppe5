@@ -1,6 +1,8 @@
 package com.example.nicolai.sensmotiongruppe5.Rute;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -15,8 +17,10 @@ public class Rute {
     private Rute_Canvas canvas;
     private ArrayList<Float> roadDistances;
     private ArrayList<Rutevector> cords;
-
+    private Context context;
     public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights) {
+
+        context = ctx.getRootView().getContext();
         canvas = (Rute_Canvas) ctx;
         cords = matrix;
         roadDistances = new ArrayList<>();
@@ -59,6 +63,16 @@ public class Rute {
                 yvector = ratio * yvector;
                 xvector = xvector + startX;
                 yvector = yvector + startY;
+                for (Highlight y : highLights) {
+                    if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
+
+                        if (y.isRevealed() == false) {
+                            y.setRevealed(true);
+                            //TODO reveal the highlight........
+                            Log.v("Ahahahahaha", "" + y.getName());
+                        }
+                    }
+                }
                 canvas.drawMan(xvector, yvector);
 
 

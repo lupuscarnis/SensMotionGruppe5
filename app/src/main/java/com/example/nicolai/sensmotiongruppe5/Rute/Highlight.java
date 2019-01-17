@@ -6,6 +6,40 @@ public class Highlight {
     private float y;
     private float radius;
 
+    private String name;
+    private boolean revealed;
+
+    public Highlight(float x, float y, float radius, String name, boolean revealed) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.name = name;
+        this.revealed = revealed;
+    }
+
+    public Highlight(float x, float y, float radius, String name) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.name = name;
+    }
+
+    public boolean isRevealed() {
+        return revealed;
+    }
+
+    public void setRevealed(boolean revealed) {
+        this.revealed = revealed;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Highlight() {
     }
 

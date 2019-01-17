@@ -66,10 +66,13 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         ruteVectorsList.add(ruteVector);
         Rutevector steve = new Rutevector(300, 60, 300, 200);
         ruteVectorsList.add(steve);
+
+        Rutevector dave = new Rutevector(300, 200, 200, 100);
+        ruteVectorsList.add(dave);
         ArrayList<Highlight> highlights = new ArrayList<>();
-        Highlight start = new Highlight(50, 60, 10);
-        Highlight middle = new Highlight(300, 60, 10);
-        Highlight end = new Highlight(300, 200, 10);
+        Highlight start = new Highlight(50, 60, 10, "start", false);
+        Highlight middle = new Highlight(300, 60, 10, "middle", false);
+        Highlight end = new Highlight(300, 200, 10, "end", false);
         highlights.add(start);
         highlights.add(middle);
         highlights.add(end);
