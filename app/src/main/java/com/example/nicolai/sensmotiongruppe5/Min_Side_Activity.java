@@ -61,20 +61,19 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         cycling.setOnClickListener(this);
         run.setOnClickListener(this);
         walk.setOnClickListener(this);
-
         ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
         Rutevector ruteVector = new Rutevector();
 
         ruteVector.setStartX(50);
         ruteVector.setStartY(60);
-        ruteVector.setEndX(400);
+        ruteVector.setEndX(300);
         ruteVector.setEndY(60);
         ruteVectorsList.add(ruteVector);
 
         Rutevector steve = new Rutevector();
-        steve.setStartX(400);
+        steve.setStartX(300);
         steve.setStartY(60);
-        steve.setEndX(400);
+        steve.setEndX(300);
         steve.setEndY(200);
         ruteVectorsList.add(steve);
 
@@ -109,14 +108,14 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         if (v == walk) {
             values[0] = 5;
-            hello.drawRute(values);
+            hello.draw(values);
         }
         if (v == run) {
-            hello.drawRute(values);
+            hello.draw(values);
         }
         if (v == cycling) {
             values[2] = 10;
-            hello.drawRute(values);
+            hello.draw(values);
         }
 
 

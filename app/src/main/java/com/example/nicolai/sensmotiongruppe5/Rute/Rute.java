@@ -2,17 +2,13 @@ package com.example.nicolai.sensmotiongruppe5.Rute;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.View;
-
-import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;
 
 
 public class Rute {
-    Context context;
-    View view;
+
     private float distance;
     private Bitmap bitmap;
     private float walked = 0;
@@ -22,8 +18,6 @@ public class Rute {
     private ArrayList<Rutevector> cords;
 
     public Rute(View ctx, ArrayList<Rutevector> matrix) {
-        view = ctx;
-        context = view.getContext();
         canvas = (Rute_Canvas) ctx;
         cords = matrix;
         roadDistances = new ArrayList<>();
@@ -32,12 +26,13 @@ public class Rute {
 
     }
 
-    public void draw() {
-
-    }
 
 
-    public void drawRute(int[] movemnt) {
+    public void draw(int[] movemnt) {
+        for(Rutevector s: cords)
+        {
+            canvas.drawRute(s.getStartX(),s.getStartY(),s.getEndX(),s.getEndY());
+        }
         int i = 0;
         walked = calculateMovement(movemnt) + walked;
         float remainder = walked;
@@ -58,10 +53,8 @@ public class Rute {
                 yvector = ratio * yvector;
                 xvector = xvector + startX;
                 yvector = yvector + startY;
-                canvas.Draw(startX, startY, xvector, yvector);
+                canvas.drawMan(xvector, yvector);
 
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icons8running480);
-                canvas.drawBitmap(bitmap, xvector, yvector);
 
             }
 
@@ -77,10 +70,6 @@ public class Rute {
     }
 
 
-    public void drawMan() {
-
-
-    }
     private void calculateDistance(ArrayList<Rutevector> matrix) {
         float result = 0;
         for (Rutevector a : matrix) {
@@ -132,9 +121,6 @@ Calculateing the the ammount of meters traversed since we last checked
         return pixels;
     }
 
-    public void drawHighLights() {
-
-    }
 
 
 }
