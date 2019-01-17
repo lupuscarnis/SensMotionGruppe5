@@ -135,7 +135,7 @@ public class Line_chart_frag extends Fragment {
         //walking
         lines.add(new Line(w).setColor(Color.RED));
         //exercise
-        lines.add(new Line(e).setColor(Color.MAGENTA));
+        lines.add(new Line(e).setColor(Color.parseColor( "#FFD700")));
         //cycling
         lines.add(new Line(c).setColor(Color.parseColor( "#006400" )));
         //Other
