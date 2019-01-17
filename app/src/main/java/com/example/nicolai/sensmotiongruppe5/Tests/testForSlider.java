@@ -66,7 +66,7 @@ public class testForSlider implements IData {
     }
 
     @Override
-    public Double getAllActivityByDate(String activity) {
+    public Double getSumActivity(String activity) {
         return null;
     }
 

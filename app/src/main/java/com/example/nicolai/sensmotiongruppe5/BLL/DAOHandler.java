@@ -268,7 +268,7 @@ public class DAOHandler implements IData {
      * @return
      */
     @Override
-    public Double getAllActivityByDate(String activity) {
+    public Double getSumActivity(String activity) {
 
         ArrayList<JSONData> valuesArray;
         valuesArray = userDAO.getData(project_key, patient_key, 7);

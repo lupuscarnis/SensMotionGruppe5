@@ -70,6 +70,6 @@ public interface IData {
      * @param activity
      * @return
      */
-    Double getAllActivityByDate(String activity);
+    Double getSumActivity(String activity);
 
 }
