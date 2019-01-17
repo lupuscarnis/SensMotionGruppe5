@@ -21,12 +21,11 @@ import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
+import com.example.nicolai.sensmotiongruppe5.Rute.Highlight;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
@@ -63,27 +62,22 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         run.setOnClickListener(this);
         walk.setOnClickListener(this);
         ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
-        Rutevector ruteVector = new Rutevector();
-
-        ruteVector.setStartX(50);
-        ruteVector.setStartY(60);
-        ruteVector.setEndX(300);
-        ruteVector.setEndY(60);
+        Rutevector ruteVector = new Rutevector(50, 60, 300, 60);
         ruteVectorsList.add(ruteVector);
-
-        Rutevector steve = new Rutevector();
-        steve.setStartX(300);
-        steve.setStartY(60);
-        steve.setEndX(300);
-        steve.setEndY(200);
+        Rutevector steve = new Rutevector(300, 60, 300, 200);
         ruteVectorsList.add(steve);
-
-
+        ArrayList<Highlight> highlights = new ArrayList<>();
+        Highlight start = new Highlight(50, 60, 10);
+        Highlight middle = new Highlight(300, 60, 10);
+        Highlight end = new Highlight(300, 200, 10);
+        highlights.add(start);
+        highlights.add(middle);
+        highlights.add(end);
         // Inflate the layout for this fragment
 
         new GetJSON().execute();
 
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
+        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList, highlights);
 
 
         Achieve_Activity.completed(0);

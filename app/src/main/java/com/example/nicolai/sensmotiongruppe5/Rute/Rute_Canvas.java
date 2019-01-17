@@ -10,7 +10,6 @@ import android.graphics.Path;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.support.annotation.Nullable;
-import android.support.graphics.drawable.VectorDrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -42,7 +41,7 @@ public class Rute_Canvas extends View {
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.BLUE);
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setStrokeWidth(12f);
+        mPaint.setStrokeWidth(5f);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
         bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
@@ -64,6 +63,7 @@ public class Rute_Canvas extends View {
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
         canvas.drawPath(path, mPaint);
         canvas.drawBitmap(bitmap, 0 ,0,null);
         canvas.drawBitmap(bitmap1, mx ,my,null);
@@ -72,8 +72,8 @@ public class Rute_Canvas extends View {
 
     }
     public void drawMan(float endX, float endY) {
-        mx=endX;
-        my=endY;
+        mx = endX - 20;
+        my = endY - 20;
         invalidate();
 
 
@@ -82,6 +82,15 @@ public class Rute_Canvas extends View {
 
     public void drawRute(float startX, float startY,float endX,float endY) {
         canvas.drawLine(startX, startY,endX,endY,mPaint);
+        invalidate();
+    }
+
+    public void drawHighLight(float endX, float endY, float radius) {
+        mBitmapPaint.setAlpha(200);
+        //mBitmapPaint.setShadowLayer(radius+3, endX, endY,Color.DKGRAY );
+        mBitmapPaint.setColor(Color.RED);
+
+        canvas.drawCircle(endX, endY, radius, mBitmapPaint);
         invalidate();
     }
 

@@ -1,6 +1,5 @@
 package com.example.nicolai.sensmotiongruppe5.Rute;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
 
@@ -12,15 +11,16 @@ public class Rute {
     private float distance;
     private Bitmap bitmap;
     private float walked = 0;
-    private ArrayList highLights;
+    private ArrayList<Highlight> highLights;
     private Rute_Canvas canvas;
     private ArrayList<Float> roadDistances;
     private ArrayList<Rutevector> cords;
 
-    public Rute(View ctx, ArrayList<Rutevector> matrix) {
+    public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights) {
         canvas = (Rute_Canvas) ctx;
         cords = matrix;
         roadDistances = new ArrayList<>();
+        this.highLights = highLights;
         calculateDistance(matrix);
 
 
@@ -32,6 +32,12 @@ public class Rute {
         for(Rutevector s: cords)
         {
             canvas.drawRute(s.getStartX(),s.getStartY(),s.getEndX(),s.getEndY());
+        }
+
+        for (Highlight b : highLights) {
+
+            canvas.drawHighLight(b.getX(), b.getY(), b.getRadius());
+
         }
         int i = 0;
         walked = calculateMovement(movemnt) + walked;
