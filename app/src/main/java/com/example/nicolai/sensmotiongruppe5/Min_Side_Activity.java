@@ -55,7 +55,6 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         }
 
 
-
         walk = rootView.findViewById(R.id.button_walk);
         run = rootView.findViewById(R.id.button_running);
         cycling = rootView.findViewById(R.id.button_bike);
@@ -97,6 +96,10 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         Fragment childFragment = new Text_fragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.text_fragment, childFragment).commit();
+
+
+
+
     }
 
 

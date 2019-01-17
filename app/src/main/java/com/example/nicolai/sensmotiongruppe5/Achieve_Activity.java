@@ -87,18 +87,27 @@ if (achiAL.get(n).getCompleted()== false) {
     completedachi.setCompleted(true);
     saveArrayList(achiAL, "key");
 
+    notifications("Channel_ID123", "Achivement gennemført!", "Du har fuldført achievementen' " + completedachi.getName()+"'");
 
-    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "Channel_ID123")
+}
+
+}
+
+public static void notifications (String id, String title, String text){
+
+    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
             .setSmallIcon(R.drawable.achi)
-            .setContentTitle("Achivement gennemført!")
-            .setContentText("Du har fuldført en ny achievement")
+            .setContentTitle(title)
+            .setContentText(text)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-           // .setContentIntent(pendingIntent);
+    // .setContentIntent(pendingIntent);
 
     NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
     notificationManager2.notify(1, mBuilder.build());
 
-}
+
+
+
 
 }
 
