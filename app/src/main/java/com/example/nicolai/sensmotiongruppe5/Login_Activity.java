@@ -73,6 +73,10 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         createChannel();
+        startService(new Intent(this, backgroundService.class));
+
+
+
 
         addIfEmty(getAchivements(), "key");
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);

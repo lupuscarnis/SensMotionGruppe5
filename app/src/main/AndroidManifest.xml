@@ -36,6 +36,21 @@
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
                    android:value="@string/facebook_app_id"/>
+
+
+        <service
+            android:name= ".backgroundService"
+            android:enabled="true" >
+    </service>
+
+        <receiver
+            android:name="com.example.nicolai.sensmotiongruppe5.broadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped">
+        </receiver>
+
+
     </application>
 
 </manifest>
