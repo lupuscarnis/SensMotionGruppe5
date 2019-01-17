@@ -16,12 +16,10 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class DAOHandler implements IData {
 
-    DAO userDAO = DAO.getInstance();
+    static DAO userDAO = DAO.getInstance();
 
-    private static final String TAG = DAO.class.getSimpleName();
-
-    private String project_key;
-    private String patient_key;
+    private static String project_key;
+    private static String patient_key;
 
     //private ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
 
@@ -43,34 +41,29 @@ public class DAOHandler implements IData {
     public ArrayList<String> setCurrentData(String startDate, String endDate) {
 
         ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+
         ArrayList<String> dataArray = new ArrayList<String>();
 
-        try {
-            valuesArray = userDAO.getData(project_key, patient_key, 7);
+        int dateSumStart = Integer.parseInt(startDate.replaceAll("-", ""));
+        int dateSumEnd = Integer.parseInt(endDate.replaceAll("-", ""));
 
-            int dateSumStart = Integer.parseInt(startDate.replaceAll("-", ""));
-            int dateSumEnd = Integer.parseInt(endDate.replaceAll("-", ""));
+        // Loop to get all json objects from data json array
+        // Iterate over valuesArray
+        for (int i = 0; i < valuesArray.size(); i++) {
 
-            // Loop to get all json objects from data json array
-            // Iterate over valuesArray
-            for (int i = 0; i < valuesArray.size(); i++) {
+            int dateSumV = Integer.parseInt(valuesArray.get(i).getStartDate().replaceAll("-", ""));
 
-                int dateSumV = Integer.parseInt(valuesArray.get(i).getStartDate().replaceAll("-", ""));
+            if (dateSumV >= dateSumStart && dateSumV <= dateSumEnd) {
 
-                if (dateSumV >= dateSumStart && dateSumV <= dateSumEnd) {
-
-                    dataArray.add(Double.toString(valuesArray.get(i).getResting()));
-
-                }
+                dataArray.add(Double.toString(valuesArray.get(i).getResting()));
 
             }
-
-        } catch (Exception e) {
-            Log.d("Error in " + TAG, e + "");
 
         }
 
         return dataArray;
+
     }
 
     /**
@@ -107,8 +100,8 @@ public class DAOHandler implements IData {
     }
 
     /**
-     * Note: Not the most elegant solution :-(
      *
+     * Note: Not the most elegant solution :-(
      * @return All json data as object within a given date range
      */
     @Override
@@ -125,30 +118,30 @@ public class DAOHandler implements IData {
 
         // Split and reverse order of start date
         String[] startDate = dates[0].split("-");
-        String sDate = startDate[2] + startDate[1] + startDate[0];
+        String sDate = startDate[2]+startDate[1]+startDate[0];
         //Converts date string to int ex. 2019-01-01 to 20190101
         int sYMD = Integer.parseInt(sDate);
 
         // Split and reverse order of end date
         String[] endDate = dates[1].split("-");
-        String eDate = endDate[2] + endDate[1] + endDate[0];
+        String eDate = endDate[2]+endDate[1]+endDate[0];
         //Converts date string to int ex. 2019-01-01 to 20190101
         int eYMD = Integer.parseInt(eDate);
 
-        Log.d("startDate ", sYMD + "");
-        Log.d("endDate ", eYMD + "");
+        Log.d("startDate ", sYMD+"");
+        Log.d("endDate ", eYMD+"");
 
         for (int i = 0; i < valuesArray.size(); i++) {
 
             // Split and reverse order of date
             String[] jDateArr = valuesArray.get(i).getStartDate().split("-");
-            String jDate = jDateArr[2] + jDateArr[1] + jDateArr[0];
+            String jDate = jDateArr[2]+jDateArr[1]+jDateArr[0];
             //Converts date string to int ex. 2019-01-01 to 20190101
             int jYMD = Integer.parseInt(jDate);
 
             if (sYMD >= jYMD | eYMD <= jYMD) {
 
-                Log.d("Condition ", jYMD + ">=" + sYMD + "|" + jYMD + "<=" + eYMD + "");
+                Log.d("Condition ", jYMD +">="+ sYMD +"|"+ jYMD +"<="+ eYMD+"");
                 dataArray.add(valuesArray.get(i));
 
             }
@@ -165,32 +158,25 @@ public class DAOHandler implements IData {
     public ArrayList<String> getAllActivitiesByDate(String date) {
 
         ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+
         // Create string array
         ArrayList<String> dataArray = new ArrayList<>();
 
-        try {
+        // Iterate over valuesArray
+        for (int i = 0; i < valuesArray.size(); i++) {
 
-            valuesArray = userDAO.getData(project_key, patient_key, 7);
+            if (valuesArray.get(i).getStartDate().equals(date)) {
 
-            // Iterate over valuesArray
-            for (int i = 0; i < valuesArray.size(); i++) {
+                dataArray.add(Double.toString(valuesArray.get(i).getResting()));
+                dataArray.add(Double.toString(valuesArray.get(i).getStanding()));
+                dataArray.add(Double.toString(valuesArray.get(i).getWalking()));
+                dataArray.add(Double.toString(valuesArray.get(i).getCycling()));
+                dataArray.add(Double.toString(valuesArray.get(i).getExercise()));
+                dataArray.add(Double.toString(valuesArray.get(i).getOtherd()));
+                dataArray.add(Double.toString(valuesArray.get(i).getSteps()));
 
-                if (valuesArray.get(i).getStartDate().equals(date)) {
-
-                    dataArray.add(Double.toString(valuesArray.get(i).getResting()));
-                    dataArray.add(Double.toString(valuesArray.get(i).getStanding()));
-                    dataArray.add(Double.toString(valuesArray.get(i).getWalking()));
-                    dataArray.add(Double.toString(valuesArray.get(i).getCycling()));
-                    dataArray.add(Double.toString(valuesArray.get(i).getExercise()));
-                    dataArray.add(Double.toString(valuesArray.get(i).getOtherd()));
-                    dataArray.add(Double.toString(valuesArray.get(i).getSteps()));
-
-                }
             }
-
-        } catch (Exception e) {
-            Log.d("Error in " + TAG, e.getMessage());
-
         }
 
         return dataArray;
@@ -210,44 +196,37 @@ public class DAOHandler implements IData {
 
         String data = "";
 
-        try {
+        for (int i = 0; i < valuesArray.size(); i++) {
 
-            for (int i = 0; i < valuesArray.size(); i++) {
+            if (valuesArray.get(i).getStartDate().equals(date)) {
 
-                if (valuesArray.get(i).getStartDate().equals(date)) {
-
-                    switch (activity) {
-                        case "resting":
-                            data = Double.toString(valuesArray.get(i).getResting());
-                            break;
-                        case "standing":
-                            data = Double.toString(valuesArray.get(i).getStanding());
-                            break;
-                        case "walking":
-                            data = Double.toString(valuesArray.get(i).getWalking());
-                            break;
-                        case "cycling":
-                            data = Double.toString(valuesArray.get(i).getCycling());
-                            break;
-                        case "exercise":
-                            data = Double.toString(valuesArray.get(i).getExercise());
-                            break;
-                        case "other":
-                            data = Double.toString(valuesArray.get(i).getOtherd());
-                            break;
-                        case "steps":
-                            data = Double.toString(valuesArray.get(i).getSteps());
-                            break;
-                        default:
-                            data = "Invalid activity or date";
-                    }
-
+                switch (activity) {
+                    case "resting":
+                        data = Double.toString(valuesArray.get(i).getResting());
+                        break;
+                    case "standing":
+                        data = Double.toString(valuesArray.get(i).getStanding());
+                        break;
+                    case "walking":
+                        data = Double.toString(valuesArray.get(i).getWalking());
+                        break;
+                    case "cycling":
+                        data = Double.toString(valuesArray.get(i).getCycling());
+                        break;
+                    case "exercise":
+                        data = Double.toString(valuesArray.get(i).getExercise());
+                        break;
+                    case "other":
+                        data = Double.toString(valuesArray.get(i).getOtherd());
+                        break;
+                    case "steps":
+                        data = Double.toString(valuesArray.get(i).getSteps());
+                        break;
+                    default:
+                        data = "Invalid activity or date";
                 }
+
             }
-
-        } catch (Exception e) {
-            Log.d("Error in " + TAG, e.getMessage());
-
         }
 
         return data;
@@ -256,27 +235,18 @@ public class DAOHandler implements IData {
 
     /**
      * Sets the "master" dates in DAO
-     *
      * @param startDate
      * @param endDate
      */
     @Override
     public void setDAOCurrentDates(String startDate, String endDate) {
 
-        try {
-
-            userDAO.setCurrentStartDate(startDate);
-            userDAO.setCurrentEndDate(endDate);
-
-        } catch (Exception e) {
-            Log.d("Error in " + TAG, e.getMessage());
-
-        }
+        userDAO.setCurrentStartDate(startDate);
+        userDAO.setCurrentEndDate(endDate);
     }
 
     /**
      * Gets the "master" dates in DAO
-     *
      * @return
      */
     @Override
@@ -294,7 +264,6 @@ public class DAOHandler implements IData {
 
     /**
      * Returns a sum of a given activity
-     *
      * @param activity
      * @return
      */
@@ -306,9 +275,7 @@ public class DAOHandler implements IData {
 
         double data = 0;
 
-        try {
-
-            for (int i = 0; i < valuesArray.size(); i++) {
+        for (int i = 0; i < valuesArray.size(); i++) {
 
                 switch (activity) {
                     case "resting":
@@ -333,15 +300,10 @@ public class DAOHandler implements IData {
                         data += valuesArray.get(i).getSteps();
                         break;
                     default:
-                        data = 666.666;
+                        data = 0;
 
 
-                }
             }
-
-        } catch (Exception e) {
-            Log.d("Error in " + TAG, e.getMessage());
-
         }
 
         return data;

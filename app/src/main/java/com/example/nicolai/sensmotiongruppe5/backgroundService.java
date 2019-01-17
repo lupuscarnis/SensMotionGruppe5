@@ -3,12 +3,28 @@ package com.example.nicolai.sensmotiongruppe5;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+
+
+import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
+import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
+
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
+
+
 public class backgroundService extends Service {
 private Timer mTimer;
+double walking;
+double resting;
+double standing;
+double cycling;
+double exercise;
+
+
+ArrayList<JSONData> data;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -32,11 +48,29 @@ mTimer.schedule(timertask,2000, 2*1000);
         @Override
         public void run(){
 
-//Achieve_Activity.completed(1);
+            walking = getSum("walking");
+            resting = getSum("resting");
+            cycling = getSum("cycling");
+            standing = getSum("standing");
+            exercise = getSum("exercise");
+
+
+//Testing purpose
+ // Achieve_Activity.notifications("Channel_ID123", Double.toString(walking), Double.toString(walking));
+
+
+                if (walking >= 60) {
+                    Achieve_Activity.completed(4); }
+
+                if (walking >= 60*10) {
+                    Achieve_Activity.completed(5); }
+
+                if (walking >= 60*1000) {
+                    Achieve_Activity.completed(6); }
 
 
 
-        }};
+  }};
 
     @Override
     public void onDestroy() {
@@ -46,6 +80,45 @@ mTimer.schedule(timertask,2000, 2*1000);
 
     }
 
+    public static Double getSum(String activity) {
+
+        ArrayList<JSONData> valuesArray;
+        valuesArray = DAO.getData("k5W2uX", "6rT39u", 7);
+
+        double data = 0;
+
+        for (int i = 0; i < valuesArray.size(); i++) {
+
+            switch (activity) {
+                case "resting":
+                    data += valuesArray.get(i).getResting();
+                    break;
+                case "standing":
+                    data += valuesArray.get(i).getStanding();
+                    break;
+                case "walking":
+                    data += valuesArray.get(i).getWalking();
+                    break;
+                case "cycling":
+                    data += valuesArray.get(i).getCycling();
+                    break;
+                case "exercise":
+                    data += valuesArray.get(i).getExercise();
+                    break;
+                case "other":
+                    data += valuesArray.get(i).getOtherd();
+                    break;
+                case "steps":
+                    data += valuesArray.get(i).getSteps();
+                    break;
+                default:
+                    data = 0;
 
 
-}
+            }
+        }
+
+        return data;
+
+
+}}
