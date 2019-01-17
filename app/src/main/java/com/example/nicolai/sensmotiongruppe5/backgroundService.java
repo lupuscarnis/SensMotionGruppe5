@@ -56,7 +56,7 @@ mTimer.schedule(timertask,2000, 2*1000);
 
 
 //Testing purpose
- // Achieve_Activity.notifications("Channel_ID123", Double.toString(walking), Double.toHexString(walking));
+ // Achieve_Activity.notifications("Channel_ID123", Double.toString(walking), Double.toString(walking));
 
 
                 if (walking >= 60) {
