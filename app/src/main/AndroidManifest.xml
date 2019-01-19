@@ -50,6 +50,8 @@
             android:label="RestartServiceWhenStopped">
         </receiver>
 
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBFNiRN8eeo9pWBMdOiISbjvkj53vfz3ms"/>
+
 
     </application>
 

@@ -1,5 +1,7 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+import android.graphics.Color;
+import android.graphics.Point;
 import android.location.Location;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -15,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.GoogleMap.CancelableCallback;
 
@@ -35,6 +39,7 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
 
     // Keep track of our markers
     private List<Marker> markers = new ArrayList<Marker>();
+    private List<LatLng> points = new ArrayList<LatLng>();
     private Marker selectedMarker;
 
     private Polyline polyLine;
@@ -89,18 +94,22 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
         gMap.getUiSettings().setMapToolbarEnabled(false);
         gMap.getUiSettings().setAllGesturesEnabled(false);
 
-        //gMap.setMapType(gMap.MAP_TYPE_NORMAL);
-        gMap.setMapType(gMap.MAP_TYPE_SATELLITE);
+        gMap.setMapType(gMap.MAP_TYPE_NORMAL);
+        //gMap.setMapType(gMap.MAP_TYPE_SATELLITE);
         // Add a marker in Sydney and move the camera
         /*LatLng copenhagen = new LatLng(55.643032, 12.080570);
         gMap.addMarker(new MarkerOptions().position(copenhagen).title("Et sted i Danmark"));
         gMap.moveCamera(CameraUpdateFactory.newLatLng(copenhagen));*/
 
-        polyLine = initializePolyLine();
+        if (googleMap!=null) {
 
-        addDefaultLocations();
+            polyLine = initializePolyLine();
 
-        startAnimation();
+            addDefaultLocations();
+
+            startAnimation();
+        }
+
 
         //gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(55.675835, 12.569203), zoomLevel));
         //googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(copenhagen, zoomLevel));
@@ -125,17 +134,28 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
 
     private void addDefaultLocations() {
         clearMarkers();
-        addMarkerToMap(new LatLng(50.961813797827055, 3.5168474167585373), "Her starter du");
-        addMarkerToMap(new LatLng(50.96085423274633, 3.517405651509762), "Wow! nu er du kommet hertil");
-        addMarkerToMap(new LatLng(50.96020550146382, 3.5177918896079063), "Hvis du kigger til venstre kan du se en måge");
-        addMarkerToMap(new LatLng(50.95936754348453, 3.518972061574459), "Godt gået!");
-        addMarkerToMap(new LatLng(50.95877285446026, 3.5199161991477013), "");
-        addMarkerToMap(new LatLng(50.958179213755905, 3.520646095275879), "");
-        addMarkerToMap(new LatLng(50.95901719316589, 3.5222768783569336), "");
-        addMarkerToMap(new LatLng(50.95954430150347, 3.523542881011963), "");
-        addMarkerToMap(new LatLng(50.95873336312275, 3.5244011878967285), "");
-        addMarkerToMap(new LatLng(50.95955781702322, 3.525688648223877), "");
-        addMarkerToMap(new LatLng(50.958855004782116, 3.5269761085510254), "Du er nu ankommet til den lille havfrue");
+        addMarkerToMap(new LatLng(55.6914211, 12.5949792), "Her starter ruten.", true);
+        addMarkerToMap(new LatLng(55.6914302, 12.5949792), "Har du husket vandrestøvlerne?", false);
+        addMarkerToMap(new LatLng(55.6923343, 12.5949524), "Hvis du kigger til venstre kan du se en måge", false);
+        addMarkerToMap(new LatLng(55.6928694, 12.5951777), "Godt gået!", true);
+        addMarkerToMap(new LatLng(55.6934016, 12.5954513), "", false);
+        addMarkerToMap(new LatLng(55.6935618, 12.5956605), "", false);
+        addMarkerToMap(new LatLng(55.6935104, 12.5958322), "Godt gået!", false);
+        addMarkerToMap(new LatLng(55.6935346, 12.5965457), "", true);
+        addMarkerToMap(new LatLng(55.6936283, 12.5972538), "Move it!", false);
+        addMarkerToMap(new LatLng(55.6936314, 12.5977634), "", false);
+        addMarkerToMap(new LatLng(55.6935316, 12.5984768), "", true);
+
+        addMarkerToMap(new LatLng(55.6934288, 12.5989435), "Godt gået!", false);
+        addMarkerToMap(new LatLng(55.6933955, 12.599083), "", false);
+        addMarkerToMap(new LatLng(55.6932232, 12.5990562), "Godt gået!", true);
+        addMarkerToMap(new LatLng(55.6931325, 12.5992171), "", false);
+        addMarkerToMap(new LatLng(55.6930841, 12.5991849), "", false);
+        addMarkerToMap(new LatLng(55.6930267, 12.5992118), "", true);
+        addMarkerToMap(new LatLng(55.6929843, 12.599244), "", false);
+        addMarkerToMap(new LatLng(55.6929178, 12.5992064), "Du er nu ankommet til den lille havfrue", true);
+
+        drawPolyLineOnMap(points);
     }
 
 
@@ -184,6 +204,28 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
                 }
             };
 
+    // Draw polyline on map
+    public void drawPolyLineOnMap(List<LatLng> list) {
+        PolylineOptions polyOptions = new PolylineOptions();
+        polyOptions.color(Color.RED);
+        polyOptions.width(5);
+        polyOptions.addAll(list);
+
+        //gMap.clear();
+        gMap.addPolyline(polyOptions);
+
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (LatLng latLng : list) {
+            builder.include(latLng);
+        }
+
+        final LatLngBounds bounds = builder.build();
+
+        //BOUND_PADDING is an int to specify padding of bound.. try 100.
+        /*CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, BOUND_PADDING);
+        googleMap.animateCamera(cu);*/
+    }
+
     private Location convertLatLngToLocation(LatLng latLng) {
         Location loc = new Location("someLoc");
         loc.setLatitude(latLng.latitude);
@@ -223,12 +265,14 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
     /**
      * Adds a marker to the map.
      */
-    public void addMarkerToMap(LatLng latLng, String title) {
+    public void addMarkerToMap(LatLng latLng, String title, boolean markerVisible) {
+
         Marker marker = gMap.addMarker(new MarkerOptions().position(latLng)
                 .title(title)
                 .snippet("snippet"));
+        marker.setVisible(markerVisible);
+        points.add(latLng);
         markers.add(marker);
-
 
     }
 
