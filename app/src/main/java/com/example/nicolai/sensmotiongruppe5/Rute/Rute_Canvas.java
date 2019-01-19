@@ -87,10 +87,7 @@ public class Rute_Canvas extends View {
     }
 
     public void drawHighLight(float endX, float endY, float radius) {
-        mBitmapPaint.setAlpha(200);
-        mBitmapPaint.setShadowLayer(radius+3, endX, endY,Color.DKGRAY );
         mBitmapPaint.setColor(Color.RED);
-
         canvas.drawCircle(endX, endY, radius, mBitmapPaint);
         invalidate();
     }

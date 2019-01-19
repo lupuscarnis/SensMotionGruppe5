@@ -81,7 +81,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         new GetJSON().execute();
 
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights);
+        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager(),getParentFragment());
 
 
         Achieve_Activity.completed(0);
@@ -93,7 +93,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         // Begin the transaction
         Fragment childFragment = new Text_fragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.text_fragment, childFragment).commit();
+        transaction.replace(R.id.text_fragment, childFragment,"Pernus").commit();
 
 
 

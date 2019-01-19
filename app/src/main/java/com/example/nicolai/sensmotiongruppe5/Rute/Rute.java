@@ -2,8 +2,14 @@ package com.example.nicolai.sensmotiongruppe5.Rute;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+
+import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;
 
@@ -18,13 +24,17 @@ public class Rute {
     private ArrayList<Float> roadDistances;
     private ArrayList<Rutevector> cords;
     private Context context;
-    public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights) {
+    private FragmentManager fragmentManager;
+    private Fragment fragment;
+    public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights, FragmentManager fragmentManager, Fragment fragment) {
 
         context = ctx.getRootView().getContext();
         canvas = (Rute_Canvas) ctx;
         cords = matrix;
         roadDistances = new ArrayList<>();
         this.highLights = highLights;
+        this.fragmentManager = fragmentManager;
+        this.fragment = fragment;
         calculateDistance(matrix);
 
 
@@ -70,6 +80,18 @@ public class Rute {
                             y.setRevealed(true);
                             //TODO reveal the highlight........
                             Log.v("Ahahahahaha", "" + y.getName());
+
+
+                            Fragment ft = fragmentManager.findFragmentById(R.id.text_fragment);
+                            TextView st =  ft.getView().findViewById(R.id.textbox);
+                            st.setText("");
+                            st.setText("Penis " +y.getName());
+
+                            FragmentTransaction sb = fragmentManager.beginTransaction();
+                            sb.detach(ft);
+                            sb.attach(ft);
+                            sb.commit();
+
                         }
                     }
                 }
