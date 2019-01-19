@@ -87,7 +87,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
 
 
-        Achieve_Activity.completed(0);
+       // Achieve_Activity.completed(0);
         return rootView;
     }
 

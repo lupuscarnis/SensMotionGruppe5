@@ -31,9 +31,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
+/*
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+*/
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +104,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(view.getContext(), Help_Activity.class));
+                startActivity(new Intent(view.getContext(), Score_Activity.class));
 
 
             }
@@ -135,6 +136,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
         }
     }
+
     public void saveArrayList(ArrayList<Achievements> list, String key){
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();

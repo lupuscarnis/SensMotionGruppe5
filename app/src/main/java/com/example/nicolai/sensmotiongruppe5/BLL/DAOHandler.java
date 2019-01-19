@@ -1,18 +1,14 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 
-import android.icu.text.SimpleDateFormat;
 import android.util.Log;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
+//import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class DAOHandler implements IData {
 
@@ -25,8 +21,9 @@ public class DAOHandler implements IData {
 
     public DAOHandler() {
 
-        this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
-        this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
+       // this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
+        //this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
+        Log.i("wazzup", patient_key+" og projekt  "+ project_key);
 
         // Testing
         setDAOCurrentDates("11-01-2019", "14-01-2019");
