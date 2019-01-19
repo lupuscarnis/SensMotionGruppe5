@@ -9,6 +9,17 @@ public class Text_Highlight implements IHighlight {
     private float y;
     private float radius;
     private Enum type;
+    private String text = "hello Im the begining";
+
+    @Override
+    public String getText() {
+        return text;
+    }
+
+    @Override
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public Text_Highlight(float x, float y, float radius, Enum type, String name, boolean revealed) {
         this.x = x;

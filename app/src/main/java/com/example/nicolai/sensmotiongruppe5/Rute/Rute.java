@@ -7,8 +7,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.Fragments.Quiz_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class Rute {
     private Context context;
     private FragmentManager fragmentManager;
     private Fragment fragment;
+
     public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights, FragmentManager fragmentManager, Fragment fragment) {
 
         context = ctx.getRootView().getContext();
@@ -41,14 +44,12 @@ public class Rute {
     }
 
 
-
     public void draw(int[] movemnt) {
-        for(Rutevector s: cords)
-        {
-            canvas.drawRute(s.getStartX(),s.getStartY(),s.getEndX(),s.getEndY());
+        for (Rutevector s : cords) {
+            canvas.drawRute(s.getStartX(), s.getStartY(), s.getEndX(), s.getEndY());
         }
 
-        for (Text_Highlight b : highLights) {
+        for (IHighlight b : highLights) {
 
             canvas.drawHighLight(b.getX(), b.getY(), b.getRadius());
 
@@ -73,26 +74,34 @@ public class Rute {
                 yvector = ratio * yvector;
                 xvector = xvector + startX;
                 yvector = yvector + startY;
-                for (Text_Highlight y : highLights) {
+                for (IHighlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
+                        if (y instanceof Text_Highlight) {
 
-                        if (y.isRevealed() == false) {
-                            y.setRevealed(true);
+
                             //TODO reveal the highlight........
                             Log.v("Ahahahahaha", "" + y.getName());
-
-
-                            Fragment ft = fragmentManager.findFragmentById(R.id.text_fragment);
-                            TextView st =  ft.getView().findViewById(R.id.textbox);
-                            st.setText("");
-                            st.setText("Penis " +y.getName());
-
                             FragmentTransaction sb = fragmentManager.beginTransaction();
-                            sb.detach(ft);
-                            sb.attach(ft);
+                            Fragment ft = Text_fragment.newInstance(y.getText());
+                            sb.replace(R.id.highlight_frame, ft);
                             sb.commit();
 
+
                         }
+                        if (y instanceof Quiz_Highlight) {
+                            FragmentTransaction sb = fragmentManager.beginTransaction();
+                            ArrayList<String> b = new ArrayList<>();
+                            b.add("yes");
+                            b.add("no");
+                            b.add("yes your mom!");
+                            Fragment ft = Quiz_fragment.newInstance("", y.getText(), ((Quiz_Highlight) y).getAnswers());
+
+                            sb.replace(R.id.highlight_frame, ft);
+                            sb.commit();
+
+
+                        }
+
                     }
                 }
                 canvas.drawMan(xvector, yvector);
@@ -162,7 +171,6 @@ Calculateing the the ammount of meters traversed since we last checked
 
         return pixels;
     }
-
 
 
 }
