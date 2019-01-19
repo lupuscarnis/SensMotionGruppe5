@@ -7,6 +7,28 @@ public class Rutevector {
     private float endY;
 
 
+    private float radius;
+
+    public Rutevector(float sx, float sy, float ex, float ey) {
+        startX = sx;
+        startY = sy;
+        endX = ex;
+        endY = ey;
+    }
+
+    public Rutevector() {
+
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
+    }
+
+
     public float getStartX() {
         return startX;
     }

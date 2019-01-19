@@ -65,5 +65,10 @@ public class testForSlider implements IData {
         return null;
     }
 
+    @Override
+    public Double getSumActivity(String activity) {
+        return null;
+    }
+
 
 }

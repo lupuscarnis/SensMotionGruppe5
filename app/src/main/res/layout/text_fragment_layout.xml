@@ -5,12 +5,13 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textbox"
         android:layout_width="325dp"
         android:layout_height="52dp"
         android:layout_marginStart="31dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="27dp"
-        android:text="The more you weigh the harder you are to kidnap. Stay safe, eat cake."
+        android:text=""
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

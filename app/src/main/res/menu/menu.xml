@@ -26,6 +26,9 @@
                 android:title="Hjælp" />
 
             <item
+                android:id="@+id/nav_map"
+                android:title="Kort" />
+            <item
                 android:id="@+id/nav_logud"
                 android:title="Log ud" />
 

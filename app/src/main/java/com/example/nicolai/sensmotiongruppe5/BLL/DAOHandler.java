@@ -16,10 +16,10 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class DAOHandler implements IData {
 
-    DAO userDAO = DAO.getInstance();
+    static DAO userDAO = DAO.getInstance();
 
-    private String project_key;
-    private String patient_key;
+    private static String project_key;
+    private static String patient_key;
 
     //private ArrayList<DAO.jsonArray> valuesArray = userDAO.getData(project_key, patient_key, 7);
 
@@ -260,6 +260,54 @@ public class DAOHandler implements IData {
     @Override
     public ArrayList<String> getIntervalDates() {
         return null;
+    }
+
+    /**
+     * Returns a sum of a given activity
+     * @param activity
+     * @return
+     */
+    @Override
+    public Double getSumActivity(String activity) {
+
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+
+        double data = 0;
+
+        for (int i = 0; i < valuesArray.size(); i++) {
+
+                switch (activity) {
+                    case "resting":
+                        data += valuesArray.get(i).getResting();
+                        break;
+                    case "standing":
+                        data += valuesArray.get(i).getStanding();
+                        break;
+                    case "walking":
+                        data += valuesArray.get(i).getWalking();
+                        break;
+                    case "cycling":
+                        data += valuesArray.get(i).getCycling();
+                        break;
+                    case "exercise":
+                        data += valuesArray.get(i).getExercise();
+                        break;
+                    case "other":
+                        data += valuesArray.get(i).getOtherd();
+                        break;
+                    case "steps":
+                        data += valuesArray.get(i).getSteps();
+                        break;
+                    default:
+                        data = 0;
+
+
+            }
+        }
+
+        return data;
+
     }
 
 }

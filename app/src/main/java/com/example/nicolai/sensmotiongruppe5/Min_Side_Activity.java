@@ -2,6 +2,7 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,13 +20,14 @@ import android.widget.Toast;
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
+import com.example.nicolai.sensmotiongruppe5.Rute.Quiz_Highlight;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
+import com.example.nicolai.sensmotiongruppe5.Rute.Text_Highlight;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
@@ -54,38 +56,13 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
         }
 
-
-
+        getActivity().startService(new Intent(getActivity(), backgroundService.class));
         walk = rootView.findViewById(R.id.button_walk);
-        run = rootView.findViewById(R.id.button_running);
-        cycling = rootView.findViewById(R.id.button_bike);
-        cycling.setOnClickListener(this);
-        run.setOnClickListener(this);
+
         walk.setOnClickListener(this);
 
-        ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
-        Rutevector ruteVector = new Rutevector();
-
-        ruteVector.setStartX(50);
-        ruteVector.setStartY(60);
-        ruteVector.setEndX(400);
-        ruteVector.setEndY(60);
-        ruteVectorsList.add(ruteVector);
-
-        Rutevector steve = new Rutevector();
-        steve.setStartX(400);
-        steve.setStartY(60);
-        steve.setEndX(400);
-        steve.setEndY(200);
-        ruteVectorsList.add(steve);
-
-
-        // Inflate the layout for this fragment
 
         new GetJSON().execute();
-
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
-
 
         Achieve_Activity.completed(0);
         return rootView;
@@ -93,28 +70,61 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
+
+        // creates the rute and its shit
+        ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
+        Rutevector ruteVector = new Rutevector(50, 60, 300, 60);
+        ruteVectorsList.add(ruteVector);
+        Rutevector steve = new Rutevector(300, 60, 300, 200);
+        ruteVectorsList.add(steve);
+
+        Rutevector dave = new Rutevector(300, 200, 200, 100);
+        ruteVectorsList.add(dave);
+        ArrayList<IHighlight> textHighlights = new ArrayList<>();
+        Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
+        start.setText("A new Beginning");
+        Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Whats a mix between Bear and Deer");
+        ArrayList<String> s = new ArrayList();
+        s.add("Dear");
+        s.add("Beer");
+        s.add("BearDear");
+        middle.setAnswers(s);
+
+        Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
+        end.setText("I See dead People!!!!!");
+        Quiz_Highlight secret = new Quiz_Highlight(200, 100, 10, "secret", "Do i look fat in this ?");
+        ArrayList<String> a = new ArrayList();
+        a.add("Yes ");
+        a.add("Yes really fat");
+        a.add("Wow it still \"fits\" you !?");
+        secret.setAnswers(a);
+        textHighlights.add(start);
+        textHighlights.add(middle);
+        textHighlights.add(end);
+        textHighlights.add(secret);
+
+        // the end of rute creation
+
+        int[] values = {0, 0, 0, 0};
+        hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager(), getParentFragment());
+        hello.draw(values);
+
+        // Inflate the layout for this fragment
         // Begin the transaction
-        Fragment childFragment = new Text_fragment();
+        Fragment childFragment = Text_fragment.newInstance("");
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.text_fragment, childFragment).commit();
+        transaction.add(R.id.highlight_frame, childFragment, "dave").commit();
+
+
     }
 
 
     @Override
     public void onClick(View v) {
         int[] values = {0, 0, 0, 0};
-
-        if (v == walk) {
             values[0] = 5;
-            hello.drawRute(values);
-        }
-        if (v == run) {
-            hello.drawRute(values);
-        }
-        if (v == cycling) {
-            values[2] = 10;
-            hello.drawRute(values);
-        }
+            hello.draw(values);
 
 
     }

@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.facebook.share.model.ShareLinkContent;
@@ -32,6 +33,7 @@ public class Achieve_Activity extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     static ArrayList<Achievements> data;
     TextView achiView;
+    private Button share;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
@@ -44,6 +46,22 @@ public class Achieve_Activity extends Fragment {
 
         achiView = rootView.findViewById(R.id.achiText);
 
+
+        share = rootView.findViewById( R.id.share );
+        share.setText( "Del" );
+        share.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "Du har fuldført achievementen.";
+            String shareSub = "Achivement gennemført!";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Share using"));
+        }
+    });
         //facebook share button
         /*ShareButton fbShareButton =  rootView.findViewById(R.id.fb_share_button);
         ShareLinkContent content = new ShareLinkContent.Builder()
@@ -87,18 +105,34 @@ if (achiAL.get(n).getCompleted()== false) {
     completedachi.setCompleted(true);
     saveArrayList(achiAL, "key");
 
+    notifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
 
-    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "Channel_ID123")
+}
+
+}
+
+public static void notifications (String id, String title, String text){
+
+
+   Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+   PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
             .setSmallIcon(R.drawable.achi)
-            .setContentTitle("Achivement gennemført!")
-            .setContentText("Du har fuldført en ny achievement")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-           // .setContentIntent(pendingIntent);
+            .setContentTitle(title)
+            .setContentText(text)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+            .setContentIntent(notiPendingIntent);
 
     NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
     notificationManager2.notify(1, mBuilder.build());
 
-}
+
+
+
+
 
 }
 
