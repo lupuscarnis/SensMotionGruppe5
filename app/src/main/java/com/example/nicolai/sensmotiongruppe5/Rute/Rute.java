@@ -13,7 +13,7 @@ public class Rute {
     private float distance;
     private Bitmap bitmap;
     private float walked = 0;
-    private ArrayList<Highlight> highLights;
+    private ArrayList<Text_Highlight> highLights;
     private Rute_Canvas canvas;
     private ArrayList<Float> roadDistances;
     private ArrayList<Rutevector> cords;
@@ -38,7 +38,7 @@ public class Rute {
             canvas.drawRute(s.getStartX(),s.getStartY(),s.getEndX(),s.getEndY());
         }
 
-        for (Highlight b : highLights) {
+        for (Text_Highlight b : highLights) {
 
             canvas.drawHighLight(b.getX(), b.getY(), b.getRadius());
 
@@ -63,7 +63,7 @@ public class Rute {
                 yvector = ratio * yvector;
                 xvector = xvector + startX;
                 yvector = yvector + startY;
-                for (Highlight y : highLights) {
+                for (Text_Highlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
 
                         if (y.isRevealed() == false) {

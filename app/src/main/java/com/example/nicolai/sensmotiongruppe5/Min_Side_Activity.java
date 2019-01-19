@@ -21,7 +21,8 @@ import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
-import com.example.nicolai.sensmotiongruppe5.Rute.Highlight;
+import com.example.nicolai.sensmotiongruppe5.Rute.Text_Highlight;
+import com.example.nicolai.sensmotiongruppe5.Rute.Highlight_type;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
@@ -69,18 +70,18 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         Rutevector dave = new Rutevector(300, 200, 200, 100);
         ruteVectorsList.add(dave);
-        ArrayList<Highlight> highlights = new ArrayList<>();
-        Highlight start = new Highlight(50, 60, 10, "start", false);
-        Highlight middle = new Highlight(300, 60, 10, "middle", false);
-        Highlight end = new Highlight(300, 200, 10, "end", false);
-        highlights.add(start);
-        highlights.add(middle);
-        highlights.add(end);
+        ArrayList<Text_Highlight> textHighlights = new ArrayList<>();
+        Text_Highlight start = new Text_Highlight(50, 60, 10, Highlight_type.STORY,"start", false );
+        Text_Highlight middle = new Text_Highlight(300, 60, 10,Highlight_type.STORY, "middle", false);
+        Text_Highlight end = new Text_Highlight(300, 200, 10,Highlight_type.QUIZ, "end", false);
+        textHighlights.add(start);
+        textHighlights.add(middle);
+        textHighlights.add(end);
         // Inflate the layout for this fragment
 
         new GetJSON().execute();
 
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList, highlights);
+        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights);
 
 
         Achieve_Activity.completed(0);
@@ -111,7 +112,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         if (v == run) {
             hello.draw(values);
         }
-        if (v == cycling) {
+            if (v == cycling) {
             values[2] = 10;
             hello.draw(values);
         }
