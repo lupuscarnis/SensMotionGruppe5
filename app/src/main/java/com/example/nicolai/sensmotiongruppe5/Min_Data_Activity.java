@@ -2,6 +2,7 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.net.ProxyInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -14,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
@@ -39,7 +41,8 @@ public class Min_Data_Activity extends Fragment {
     private IParent_OnFragmentInteractionListener mListener;
     private View rootView;
     private ViewPager pager;
-    TextView textView1, textView2, textView3,textView4, textView5,textView6, textView7;
+    private TextView textView1, textView2, textView3,textView4, textView5,textView6, textView7;
+    private Button button1, button2, button3, button4, button5, button6, button7;
 
 
     @Override
@@ -58,8 +61,15 @@ public class Min_Data_Activity extends Fragment {
 
         IData s = new DAOHandler();
 
+        button1 = rootView.findViewById( R.id.button1 );
+        button2 = rootView.findViewById( R.id.button2 );
+        button3 = rootView.findViewById( R.id.button3 );
+        button4 = rootView.findViewById( R.id.button4 );
+        button5 = rootView.findViewById( R.id.button5 );
+        button6 = rootView.findViewById( R.id.button6 );
+        button7 = rootView.findViewById( R.id.button7 );
 
-        textView1 = rootView.findViewById( R.id.textView );
+        textView1 = rootView.findViewById( R.id.textView1 );
         textView2 =rootView.findViewById( R.id.textView2 );
         textView3 =rootView.findViewById( R.id.textView3 );
         textView4 =rootView.findViewById( R.id.textView4);
@@ -75,13 +85,24 @@ public class Min_Data_Activity extends Fragment {
         textView6.setText( "Other");
         textView7.setText( "Ingen Data");
 
-        textView1.setTextColor(Color.BLUE);
-        textView2.setTextColor(Color.GRAY);
-        textView3.setTextColor(Color.RED);
+
+        button1.setBackgroundColor(Color.BLUE);
+        button2.setBackgroundColor(Color.GRAY);
+        button3.setBackgroundColor(Color.RED);
+        button4.setBackgroundColor(Color.BLACK);
+        button5.setBackgroundColor(Color.parseColor( "#006400" ));//GREEN
+        button6.setBackgroundColor(Color.parseColor( "#FFD700")); //GOLD
+        button7.setBackgroundColor(Color.parseColor( "#9932CC" ));//PURPLE
+
+        textView1.setTextColor(Color.BLACK);
+        textView2.setTextColor(Color.BLACK);
+        textView3.setTextColor(Color.BLACK);
         textView4.setTextColor(Color.BLACK);
-        textView5.setTextColor(Color.parseColor( "#006400" ));//GREEN
-        textView6.setTextColor(Color.MAGENTA);
-        textView7.setTextColor(Color.parseColor( "#9932CC" ));//PURPLE
+        textView5.setTextColor(Color.BLACK);
+        textView6.setTextColor(Color.BLACK);
+        textView7.setTextColor(Color.BLACK);
+
+
 
 
 

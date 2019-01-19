@@ -75,6 +75,10 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         setContentView(R.layout.activity_login);
         createChannel();
 
+
+
+
+
         addIfEmty(getAchivements(), "key");
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -166,9 +170,9 @@ public ArrayList<Achievements> getAchivements(){
     achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
     achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute"));
     achi.add(new Achievements("3 ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter"));
-    achi.add(new Achievements("5 km", false, "Du har nu bevæget dig 5km", "Bevæg dig 5km"));
-    achi.add(new Achievements("15 km", false, "Du har nu bevæget dig 15km", "Bevæg dig 15km"));
-    achi.add(new Achievements("test", false, "test", "test"));
+    achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, op dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time"));
+    achi.add(new Achievements("Gående i 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer"));
+    achi.add(new Achievements("Gående i 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer"));
     achi.add(new Achievements("test2", false, "test", "test"));
 
 

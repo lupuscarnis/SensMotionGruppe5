@@ -2,6 +2,7 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,12 +21,11 @@ import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
+import com.example.nicolai.sensmotiongruppe5.Rute.Highlight;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
@@ -54,37 +54,33 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
         }
 
-
-
+        getActivity().startService(new Intent(getActivity(), backgroundService.class));
         walk = rootView.findViewById(R.id.button_walk);
         run = rootView.findViewById(R.id.button_running);
         cycling = rootView.findViewById(R.id.button_bike);
         cycling.setOnClickListener(this);
         run.setOnClickListener(this);
         walk.setOnClickListener(this);
-
         ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
-        Rutevector ruteVector = new Rutevector();
-
-        ruteVector.setStartX(50);
-        ruteVector.setStartY(60);
-        ruteVector.setEndX(400);
-        ruteVector.setEndY(60);
+        Rutevector ruteVector = new Rutevector(50, 60, 300, 60);
         ruteVectorsList.add(ruteVector);
-
-        Rutevector steve = new Rutevector();
-        steve.setStartX(400);
-        steve.setStartY(60);
-        steve.setEndX(400);
-        steve.setEndY(200);
+        Rutevector steve = new Rutevector(300, 60, 300, 200);
         ruteVectorsList.add(steve);
 
-
+        Rutevector dave = new Rutevector(300, 200, 200, 100);
+        ruteVectorsList.add(dave);
+        ArrayList<Highlight> highlights = new ArrayList<>();
+        Highlight start = new Highlight(50, 60, 10, "start", false);
+        Highlight middle = new Highlight(300, 60, 10, "middle", false);
+        Highlight end = new Highlight(300, 200, 10, "end", false);
+        highlights.add(start);
+        highlights.add(middle);
+        highlights.add(end);
         // Inflate the layout for this fragment
 
         new GetJSON().execute();
 
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
+        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList, highlights);
 
 
        // Achieve_Activity.completed(0);
@@ -97,6 +93,10 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         Fragment childFragment = new Text_fragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.text_fragment, childFragment).commit();
+
+
+
+
     }
 
 
@@ -106,14 +106,14 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         if (v == walk) {
             values[0] = 5;
-            hello.drawRute(values);
+            hello.draw(values);
         }
         if (v == run) {
-            hello.drawRute(values);
+            hello.draw(values);
         }
         if (v == cycling) {
             values[2] = 10;
-            hello.drawRute(values);
+            hello.draw(values);
         }
 
 

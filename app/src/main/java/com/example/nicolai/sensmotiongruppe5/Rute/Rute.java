@@ -2,42 +2,47 @@ package com.example.nicolai.sensmotiongruppe5.Rute;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.View;
-
-import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;
 
 
 public class Rute {
-    Context context;
-    View view;
+
     private float distance;
     private Bitmap bitmap;
     private float walked = 0;
-    private ArrayList highLights;
+    private ArrayList<Highlight> highLights;
     private Rute_Canvas canvas;
     private ArrayList<Float> roadDistances;
     private ArrayList<Rutevector> cords;
+    private Context context;
+    public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights) {
 
-    public Rute(View ctx, ArrayList<Rutevector> matrix) {
-        view = ctx;
-        context = view.getContext();
+        context = ctx.getRootView().getContext();
         canvas = (Rute_Canvas) ctx;
         cords = matrix;
         roadDistances = new ArrayList<>();
+        this.highLights = highLights;
         calculateDistance(matrix);
 
 
     }
 
-    public void draw() {
-
-    }
 
 
-    public void drawRute(int[] movemnt) {
+    public void draw(int[] movemnt) {
+        for(Rutevector s: cords)
+        {
+            canvas.drawRute(s.getStartX(),s.getStartY(),s.getEndX(),s.getEndY());
+        }
+
+        for (Highlight b : highLights) {
+
+            canvas.drawHighLight(b.getX(), b.getY(), b.getRadius());
+
+        }
         int i = 0;
         walked = calculateMovement(movemnt) + walked;
         float remainder = walked;
@@ -58,10 +63,18 @@ public class Rute {
                 yvector = ratio * yvector;
                 xvector = xvector + startX;
                 yvector = yvector + startY;
-                canvas.Draw(startX, startY, xvector, yvector);
+                for (Highlight y : highLights) {
+                    if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
 
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icons8running480);
-                canvas.drawBitmap(bitmap, xvector, yvector);
+                        if (y.isRevealed() == false) {
+                            y.setRevealed(true);
+                            //TODO reveal the highlight........
+                            Log.v("Ahahahahaha", "" + y.getName());
+                        }
+                    }
+                }
+                canvas.drawMan(xvector, yvector);
+
 
             }
 
@@ -77,10 +90,6 @@ public class Rute {
     }
 
 
-    public void drawMan() {
-
-
-    }
     private void calculateDistance(ArrayList<Rutevector> matrix) {
         float result = 0;
         for (Rutevector a : matrix) {
@@ -132,9 +141,6 @@ Calculateing the the ammount of meters traversed since we last checked
         return pixels;
     }
 
-    public void drawHighLights() {
-
-    }
 
 
 }
