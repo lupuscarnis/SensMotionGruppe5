@@ -31,10 +31,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
-/*
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-*/
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +95,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         Button helpButton = (Button) findViewById(R.id.helpBtn);
 
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +109,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             public void onClick(View view) {
 
                 startActivity(new Intent(view.getContext(), Score_Activity.class));
+                //startActivity(new Intent(view.getContext(), Score_Activity.class));
 
 
             }
