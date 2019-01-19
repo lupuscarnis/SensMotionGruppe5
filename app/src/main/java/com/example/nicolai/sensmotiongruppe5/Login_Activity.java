@@ -169,9 +169,11 @@ public ArrayList<Achievements> getAchivements(){
     achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute"));
     achi.add(new Achievements("3 ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter"));
     achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, op dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time"));
-    achi.add(new Achievements("Gående i 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer"));
-    achi.add(new Achievements("Gående i 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer"));
-    achi.add(new Achievements("test2", false, "test", "test"));
+    achi.add(new Achievements("Gå i 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer"));
+    achi.add(new Achievements("Gå i 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer"));
+    achi.add(new Achievements("cykle en time", false, "test", "test"));
+    achi.add(new Achievements("cykle i 10 timer", false, "test", "test"));
+    achi.add(new Achievements("cykle i 100 timer", false, "test", "test"));
 
 
   return achi;

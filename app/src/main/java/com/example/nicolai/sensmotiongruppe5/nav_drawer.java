@@ -67,8 +67,15 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        toolbar.setTitle("Min side");
-        loadFragment(new Min_Side_Activity());
+
+
+
+
+
+    toolbar.setTitle("Min side");
+    loadFragment(new Min_Side_Activity());
+
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
