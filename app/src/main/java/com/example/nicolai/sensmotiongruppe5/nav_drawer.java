@@ -46,6 +46,11 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
                 return true;
+            case R.id.nav_map:
+                toolbar.setTitle("Kort");
+                fragment = new GMapsActivity();
+                loadFragment(fragment);
+                return true;
 
             case R.id.nav_logud:
                 Intent intentUd = new Intent(nav_drawer.this, Login_Activity.class);
