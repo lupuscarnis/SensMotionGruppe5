@@ -2,8 +2,8 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.net.ProxyInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Bar_graph_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
@@ -31,13 +30,12 @@ import com.jaygoo.widget.SeekBar;
 import java.util.ArrayList;
 import java.util.List;
 
-import lecho.lib.hellocharts.model.SliceValue;
-
 
 public class Min_Data_Activity extends Fragment {
 
     MyPageAdapter pageAdapter;
     RangeSeekBar bar;
+    private String[] strigns;
     private IParent_OnFragmentInteractionListener mListener;
     private View rootView;
     private ViewPager pager;
@@ -55,12 +53,10 @@ public class Min_Data_Activity extends Fragment {
 
 
         }
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
-
-        IData s = new DAOHandler();
-
         button1 = rootView.findViewById( R.id.button1 );
         button2 = rootView.findViewById( R.id.button2 );
         button3 = rootView.findViewById( R.id.button3 );
@@ -119,17 +115,21 @@ public class Min_Data_Activity extends Fragment {
         rightSeekBar.setThumbDrawableId(R.drawable.blackline);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
 
-
-        final String[] Str;
-        // s.getALLDate() TODO: set that method in a asyncTask
-        Str = s.getAllDates();
-        s.setDAOCurrentDates(Str[0], Str[6]);
-
-        bar.setTickMarkTextArray(formatString(Str));
-
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
         bar.setRange(0, 6, 1);
         bar.setValue(0, 6);
+        bar.setTickMarkTextArray(new String[]{"Getting Data", "Getting Data", "Getting Data", "Getting Data"});
+        IData s = new DAOHandler();
+        new GetData(new GetData.AsyncResponse() {
+            @Override
+            public void processFinish(String[] output) {
+                strigns = output;
+                bar.setTickMarkTextArray(formatString(output));
+                bar.invalidate();
+            }
+        }).execute(s);
+
+
         bar.setOnRangeChangedListener(new OnRangeChangedListener() {
             float left,right;
 
@@ -151,8 +151,8 @@ public class Min_Data_Activity extends Fragment {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {
 
                 bar.setValue(Math.round(left), Math.round(right));
-                IData s = new DAOHandler();
-                s.setDAOCurrentDates(Str[Math.round(left)], Str[Math.round(right)]);
+                new DAOHandler().setDAOCurrentDates(strigns[Math.round(left)], strigns[Math.round(right)]);
+
             }
         });
         // Range Seekerbar end
@@ -170,6 +170,12 @@ public class Min_Data_Activity extends Fragment {
         pageAdapter = new MyPageAdapter(getChildFragmentManager(), fragments);
         pager = rootView.findViewById(R.id.min_data_fragment_pager);
         pager.setAdapter(pageAdapter);
+
+        pager.setClipToPadding(false);
+        // set padding manually, the more you set the padding the more you see of prev & next page
+        pager.setPadding(100, 0, 100, 0);
+        // sets a margin b/w individual pages to ensure that there is a gap b/w them
+
     }
 
 
@@ -189,6 +195,8 @@ public class Min_Data_Activity extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void messageFromParentFragment(Uri uri);
@@ -202,7 +210,7 @@ public class Min_Data_Activity extends Fragment {
 
         fList.add(Line_chart_frag.newInstance("Fragment 1"));
         fList.add(Pie_chart_frag.newInstance("Fragment 2"));
-        fList.add(Bar_graph_frag.newInstance("Fragment 3"));
+        // fList.add(Bar_graph_frag.newInstance("Fragment 3"));
 
 
         return fList;
@@ -223,6 +231,48 @@ public class Min_Data_Activity extends Fragment {
 
 
 }
+
+class GetData extends AsyncTask<IData, Void, String[]> {
+    public AsyncResponse delegate = null;
+    private String[] str;
+
+    public GetData(AsyncResponse delegate) {
+        this.delegate = delegate;
+    }
+
+    @Override
+    protected String[] doInBackground(IData... iData) {
+
+        str = iData[0].getAllDates();
+        iData[0].setDAOCurrentDates(str[0], str[6]);
+
+        return str;
+    }
+
+    @Override
+    protected void onPostExecute(String[] strings) {
+        super.onPostExecute(strings);
+        delegate.processFinish(strings);
+
+    }
+
+    @Override
+    protected void onPreExecute() {
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+    }
+
+
+    public interface AsyncResponse {
+        void processFinish(String[] output);
+    }
+}
+
+
+
+
 
 
 class MyPageAdapter extends FragmentPagerAdapter {
@@ -256,4 +306,5 @@ class MyPageAdapter extends FragmentPagerAdapter {
 
 
 }
+
 
