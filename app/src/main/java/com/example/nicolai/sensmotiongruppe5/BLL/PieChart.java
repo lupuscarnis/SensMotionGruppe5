@@ -32,14 +32,13 @@ public class PieChart implements IChart {
             sum += 1440;
         }
 
-        arrays[0] = (100 * (array[0] / sum));
-        arrays[1] = 100 * (array[1] / sum);
-        arrays[2] = 100 * (array[2] / sum);
-        arrays[3] = 100 * (array[3] / sum);
-        arrays[4] = 100 * (array[4] / sum);
-        arrays[5] = 100 * (array[5] / sum);
-        arrays[6] = 100 * (array[6] / sum);
-
+        arrays[0] = (int) (100 * ((array[0] + 0.0) / (sum + 0.0)));
+        arrays[1] = (int) (100 * ((array[1] + 0.0) / (sum + 0.0)));
+        arrays[2] = (int) (100 * ((array[2] + 0.0) / (sum + 0.0)));
+        arrays[3] = (int) (100 * ((array[3] + 0.0) / (sum + 0.0)));
+        arrays[4] = (int) (100 * ((array[4] + 0.0) / (sum + 0.0)));
+        arrays[5] = (int) (100 * ((array[5] + 0.0) / (sum + 0.0)));
+        arrays[6] = (int) (100 * ((array[6] + 0.0) / (sum + 0.0)));
         return arrays;
 
     }
