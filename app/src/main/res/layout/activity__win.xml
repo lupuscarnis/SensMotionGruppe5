@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.luolc.emojirain.EmojiRainLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_win"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".Win_Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="117dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginLeft="88dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="88dp"
+            android:layout_marginRight="88dp"
+            android:layout_marginBottom="81dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+
+            android:id="@+id/share"
+
+            android:layout_width="142dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="82dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginRight="82dp"
+            android:layout_marginBottom="14dp"
+            android:textColor="#000"
+            android:text="Del"
+            app:layout_constraintBottom_toTopOf="@+id/goBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+
+            android:id="@+id/goBack"
+
+            android:layout_width="142dp"
+            android:layout_height="36dp"
+            android:textColor="#000"
+            android:layout_gravity="center"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="82dp"
+            android:layout_marginEnd="83dp"
+            android:layout_marginRight="82dp"
+            android:layout_marginBottom="164dp"
+            android:text="..."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+
+</com.luolc.emojirain.EmojiRainLayout>
