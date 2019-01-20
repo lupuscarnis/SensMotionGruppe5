@@ -12,8 +12,8 @@
 
     <com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas
         android:id="@+id/canvas_rute"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="360dp"
+        android:layout_height="270dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -23,16 +23,18 @@
 
     <Button
         android:id="@+id/button_walk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="34dp"
         android:layout_marginStart="148dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
         android:text="walk"
         app:layout_constraintBottom_toTopOf="@+id/canvas_rute"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <FrameLayout
         android:id="@+id/highlight_frame"
