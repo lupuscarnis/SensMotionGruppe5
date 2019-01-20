@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Bar_graph_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
@@ -211,7 +210,7 @@ public class Min_Data_Activity extends Fragment {
 
         fList.add(Line_chart_frag.newInstance("Fragment 1"));
         fList.add(Pie_chart_frag.newInstance("Fragment 2"));
-        fList.add(Bar_graph_frag.newInstance("Fragment 3"));
+        // fList.add(Bar_graph_frag.newInstance("Fragment 3"));
 
 
         return fList;
