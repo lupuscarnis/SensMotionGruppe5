@@ -142,25 +142,25 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
     }*/
 
     private void addDefaultLocations() {
-        addMarkerToMap(new LatLng(55.6914211, 12.5949792), "Her starter ruten.", true);
-        addMarkerToMap(new LatLng(55.6914302, 12.5949792), "Har du husket vandrestøvlerne?", false);
-        addMarkerToMap(new LatLng(55.6923343, 12.5949524), "Hvis du kigger til venstre kan du se en måge", false);
-        addMarkerToMap(new LatLng(55.6928694, 12.5951777), "Godt gået!", true);
-        addMarkerToMap(new LatLng(55.6934016, 12.5954513), "", false);
-        addMarkerToMap(new LatLng(55.6935618, 12.5956605), "", false);
-        addMarkerToMap(new LatLng(55.6935104, 12.5958322), "Godt gået!", false);
-        addMarkerToMap(new LatLng(55.6935346, 12.5965457), "", true);
-        addMarkerToMap(new LatLng(55.6936283, 12.5972538), "Move it!", false);
-        addMarkerToMap(new LatLng(55.6936314, 12.5977634), "", false);
-        addMarkerToMap(new LatLng(55.6935316, 12.5984768), "", false);
-        addMarkerToMap(new LatLng(55.6934288, 12.5989435), "Godt gået!", false);
-        addMarkerToMap(new LatLng(55.6933955, 12.599083), "", false);
-        addMarkerToMap(new LatLng(55.6932232, 12.5990562), "Godt gået!", false);
-        addMarkerToMap(new LatLng(55.6931325, 12.5992171), "", false);
-        addMarkerToMap(new LatLng(55.6930841, 12.5991849), "", false);
-        addMarkerToMap(new LatLng(55.6930267, 12.5992118), "", false);
-        addMarkerToMap(new LatLng(55.6929843, 12.599244), "", false);
-        addMarkerToMap(new LatLng(55.6929178, 12.5992064), "Du er nu ankommet til den lille havfrue", true);
+        addMarkerToMap(new LatLng(55.6914211, 12.5949792), "Her starter ruten.","" , true);
+        addMarkerToMap(new LatLng(55.6914302, 12.5949792), "Har du husket vandrestøvlerne?","" , false);
+        addMarkerToMap(new LatLng(55.6923343, 12.5949524), "Hvis du kigger til venstre kan du se en måge","" , false);
+        addMarkerToMap(new LatLng(55.6928694, 12.5951777), "Godt gået!","" , true);
+        addMarkerToMap(new LatLng(55.6934016, 12.5954513), "","" , false);
+        addMarkerToMap(new LatLng(55.6935618, 12.5956605), "","" , false);
+        addMarkerToMap(new LatLng(55.6935104, 12.5958322), "Godt gået!","" , false);
+        addMarkerToMap(new LatLng(55.6935346, 12.5965457), "","" , true);
+        addMarkerToMap(new LatLng(55.6936283, 12.5972538), "Move it!","" , false);
+        addMarkerToMap(new LatLng(55.6936314, 12.5977634), "","" , false);
+        addMarkerToMap(new LatLng(55.6935316, 12.5984768), "","" , false);
+        addMarkerToMap(new LatLng(55.6934288, 12.5989435), "Godt gået!","" , false);
+        addMarkerToMap(new LatLng(55.6933955, 12.599083), "","" , false);
+        addMarkerToMap(new LatLng(55.6932232, 12.5990562), "Godt gået!","" , false);
+        addMarkerToMap(new LatLng(55.6931325, 12.5992171), "","" , false);
+        addMarkerToMap(new LatLng(55.6930841, 12.5991849), "","" , false);
+        addMarkerToMap(new LatLng(55.6930267, 12.5992118), "","" , false);
+        addMarkerToMap(new LatLng(55.6929843, 12.599244), "","" , false);
+        addMarkerToMap(new LatLng(55.6929178, 12.5992064), "Du er nu ankommet til den lille havfrue","Vidste du at " , true);
     }
 
     private Animator animator = new Animator();
@@ -507,11 +507,11 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
     /**
      * Adds a marker to the map.
      */
-    public void addMarkerToMap(LatLng latLng, String title, boolean markerVisible) {
+    public void addMarkerToMap(LatLng latLng, String title, String snippet, boolean markerVisible) {
 
         Marker marker = gMap.addMarker(new MarkerOptions().position(latLng)
                 .title(title)
-                .snippet("snippet"));
+                .snippet(snippet));
         marker.setVisible(markerVisible);
         markers.add(marker);
         /*
