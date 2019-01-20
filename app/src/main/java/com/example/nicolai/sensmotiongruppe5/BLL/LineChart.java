@@ -35,7 +35,7 @@ public class LineChart implements IChart {
             cycling[i] = (int) currentData.getCycling();
             other[i] = (int) currentData.getOtherd();
             noData[i] = (int) currentData.getNodata();
-            sum += 1440;
+            sum = 1440;
             i++;
         }
 
@@ -53,12 +53,14 @@ public class LineChart implements IChart {
     }
 
     public int[] getValueArray() {
-        int[] s = new int[10];
+        int[] s = new int[6];
 
-
-        for (int i = 1; i <= 10; i++) {
-            s[i - 1] = sum / i;
-        }
+        s[0] = 1440;
+        s[1] = 1000;
+        s[2] = 700;
+        s[3] = 400;
+        s[4] = 200;
+        s[5] = 0;
 
         return s;
 

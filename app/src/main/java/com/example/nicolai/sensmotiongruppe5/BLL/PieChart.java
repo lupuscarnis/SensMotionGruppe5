@@ -12,6 +12,7 @@ public class PieChart implements IChart {
     public int[] getData() {
 
         int[] array = new int[7];
+        int[] arrays = new int[7];
         IData data = new DAOHandler();
         ArrayList<JSONData> s;
         int sum = 0;
@@ -31,15 +32,15 @@ public class PieChart implements IChart {
             sum += 1440;
         }
 
-        array[0] = array[0] / sum;
-        array[1] = array[1] / sum;
-        array[2] = array[2] / sum;
-        array[3] = array[3] / sum;
-        array[4] = array[4] / sum;
-        array[5] = array[5] / sum;
-        array[6] = array[6] / sum;
+        arrays[0] = (100 * (array[0] / sum));
+        arrays[1] = 100 * (array[1] / sum);
+        arrays[2] = 100 * (array[2] / sum);
+        arrays[3] = 100 * (array[3] / sum);
+        arrays[4] = 100 * (array[4] / sum);
+        arrays[5] = 100 * (array[5] / sum);
+        arrays[6] = 100 * (array[6] / sum);
 
-        return array;
+        return arrays;
 
     }
 
