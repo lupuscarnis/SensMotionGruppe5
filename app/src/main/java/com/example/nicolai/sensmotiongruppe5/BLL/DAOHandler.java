@@ -1,16 +1,25 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 
+
 import android.icu.text.SimpleDateFormat;
 import android.util.Log;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 
 import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -28,8 +37,16 @@ public class DAOHandler implements IData {
         this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
         this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
 
+        setDefaults();
         // Testing
-        setDAOCurrentDates("11-01-2019", "14-01-2019");
+        //setDAOCurrentDates("11-01-2019", "14-01-2019");
+
+    }
+
+    public void setDefaults() {
+
+        String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
+        setDAOCurrentDates(date, date);
 
     }
 
