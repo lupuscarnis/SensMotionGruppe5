@@ -30,26 +30,31 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 toolbar.setTitle("Achievements");
                 fragment = new Achieve_Activity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_set:
                 toolbar.setTitle("Indstillinger");
                 fragment = new Setting_Activity();
+                mDrawerLayout.closeDrawers();
                 loadFragment(fragment);
                 return true;
             case R.id.nav_data:
                 toolbar.setTitle("Min data");
                 fragment = new Min_Data_Activity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_side:
                 toolbar.setTitle("Min side");
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_map:
                 toolbar.setTitle("Kort");
                 fragment = new GMapsActivity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
 
             case R.id.nav_logud:
