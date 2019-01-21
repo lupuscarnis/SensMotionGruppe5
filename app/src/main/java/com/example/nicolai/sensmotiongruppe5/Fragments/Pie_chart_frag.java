@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.PieChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
@@ -67,6 +68,9 @@ public class Pie_chart_frag extends Fragment {
         pieChartView = view.findViewById(R.id.pieChart);
         IChart chart = new LiePie();
         int[] data = chart.getData();
+
+        final TextView loading = view.findViewById(R.id.loading_pie);
+        loading.setVisibility(View.VISIBLE);
         new GetDataPie(new GetDataPie.AsyncResponse() {
             @Override
             public void processFinish(int[] values) {
@@ -86,6 +90,7 @@ public class Pie_chart_frag extends Fragment {
                 pieChartData.setHasCenterCircle(true).setCenterText1("SENS motion").setCenterText1FontSize(17).setCenterText1Color(Color.parseColor("#0097A7"));
                 pieChartData.setHasLabels(true);
                 pieChartView.setPieChartData(pieChartData);
+                loading.setVisibility(View.INVISIBLE);
                 pieChartView.invalidate();
             }
         }).execute();

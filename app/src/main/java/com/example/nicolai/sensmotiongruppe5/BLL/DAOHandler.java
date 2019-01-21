@@ -94,8 +94,8 @@ public class DAOHandler implements IData {
     }
 
     /**
-     *
      * Note: Not the most elegant solution :-(
+     *
      * @return All json data as object within a given date range
      */
     @Override
@@ -112,31 +112,34 @@ public class DAOHandler implements IData {
 
         // Split and reverse order of start date
         String[] startDate = dates[0].split("-");
-        String sDate = startDate[2]+startDate[1]+startDate[0];
+        String sDate = startDate[2] + startDate[1] + startDate[0];
         //Converts date string to int ex. 2019-01-01 to 20190101
         int sYMD = Integer.parseInt(sDate);
 
         // Split and reverse order of end date
         String[] endDate = dates[1].split("-");
-        String eDate = endDate[2]+endDate[1]+endDate[0];
+        String eDate = endDate[2] + endDate[1] + endDate[0];
         //Converts date string to int ex. 2019-01-01 to 20190101
         int eYMD = Integer.parseInt(eDate);
 
-        Log.d("startDate ", sYMD+"");
-        Log.d("endDate ", eYMD+"");
+        Log.d("startDate ", sYMD + "");
+        Log.d("endDate ", eYMD + "");
 
         for (int i = 0; i < valuesArray.size(); i++) {
 
             // Split and reverse order of date
             String[] jDateArr = valuesArray.get(i).getStartDate().split("-");
-            String jDate = jDateArr[2]+jDateArr[1]+jDateArr[0];
+            String jDate = jDateArr[2] + jDateArr[1] + jDateArr[0];
             //Converts date string to int ex. 2019-01-01 to 20190101
             int jYMD = Integer.parseInt(jDate);
 
-            if (sYMD >= jYMD | eYMD <= jYMD) {
+            if (jYMD <= sYMD) {
 
-                Log.d("Condition ", jYMD +">="+ sYMD +"|"+ jYMD +"<="+ eYMD+"");
-                dataArray.add(valuesArray.get(i));
+                if (eYMD <= jYMD) {
+
+                    Log.d("Condition2 ", (eYMD + "<=" + jYMD + ""));
+                    dataArray.add(valuesArray.get(i));
+                }
 
             }
         }
@@ -229,6 +232,7 @@ public class DAOHandler implements IData {
 
     /**
      * Sets the "master" dates in DAO
+     *
      * @param startDate
      * @param endDate
      */
@@ -241,6 +245,7 @@ public class DAOHandler implements IData {
 
     /**
      * Gets the "master" dates in DAO
+     *
      * @return
      */
     @Override
@@ -279,6 +284,7 @@ public class DAOHandler implements IData {
 
     /**
      * Returns a sum of a given activity
+     *
      * @param activity
      * @return
      */
@@ -292,30 +298,30 @@ public class DAOHandler implements IData {
 
         for (int i = 0; i < valuesArray.size(); i++) {
 
-                switch (activity) {
-                    case "resting":
-                        data += valuesArray.get(i).getResting();
-                        break;
-                    case "standing":
-                        data += valuesArray.get(i).getStanding();
-                        break;
-                    case "walking":
-                        data += valuesArray.get(i).getWalking();
-                        break;
-                    case "cycling":
-                        data += valuesArray.get(i).getCycling();
-                        break;
-                    case "exercise":
-                        data += valuesArray.get(i).getExercise();
-                        break;
-                    case "other":
-                        data += valuesArray.get(i).getOtherd();
-                        break;
-                    case "steps":
-                        data += valuesArray.get(i).getSteps();
-                        break;
-                    default:
-                        data = 0;
+            switch (activity) {
+                case "resting":
+                    data += valuesArray.get(i).getResting();
+                    break;
+                case "standing":
+                    data += valuesArray.get(i).getStanding();
+                    break;
+                case "walking":
+                    data += valuesArray.get(i).getWalking();
+                    break;
+                case "cycling":
+                    data += valuesArray.get(i).getCycling();
+                    break;
+                case "exercise":
+                    data += valuesArray.get(i).getExercise();
+                    break;
+                case "other":
+                    data += valuesArray.get(i).getOtherd();
+                    break;
+                case "steps":
+                    data += valuesArray.get(i).getSteps();
+                    break;
+                default:
+                    data = 0;
 
 
             }
