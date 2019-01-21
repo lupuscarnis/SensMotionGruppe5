@@ -71,6 +71,8 @@ public class Min_Data_Activity extends Fragment {
         DotIndicatorPagerAdapter adapter = new DotIndicatorPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        viewPager.setClipToPadding(false);
+        viewPager.setPadding(30, 0, 30, 0);
         springDotsIndicator.setViewPager(viewPager);
 
         button1 = rootView.findViewById( R.id.button1 );
