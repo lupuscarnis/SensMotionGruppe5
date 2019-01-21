@@ -44,7 +44,7 @@ public class Rute_Canvas extends View {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeWidth(5f);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.massivemap);
         bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         canvas = new Canvas(bitmap);
         bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.icons8running480);
@@ -55,7 +55,7 @@ public class Rute_Canvas extends View {
 
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.fossball);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.massivemap);
         bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         canvas = new Canvas(bitmap);
 
