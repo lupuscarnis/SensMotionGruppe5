@@ -256,7 +256,7 @@ class GetData extends AsyncTask<IData, Void, String[]> {
     protected String[] doInBackground(IData... iData) {
 
         str = iData[0].getAllDates();
-        iData[0].setDAOCurrentDates(str[0], str[6]);
+
 
         return str;
     }

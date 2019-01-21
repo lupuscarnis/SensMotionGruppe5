@@ -15,14 +15,15 @@ public class LineChart implements IChart {
         IData data = new DAOHandler();
         ArrayList<JSONData> s;
         s = data.getCurrentSelectDatesDataAsObject();
+
         int i = 0;
-        int[] resting = new int[7];
-        int[] standing = new int[7];
-        int[] walking = new int[7];
-        int[] exercise = new int[7];
-        int[] cycling = new int[7];
-        int[] other = new int[7];
-        int[] noData = new int[7];
+        int[] resting = new int[s.size()];
+        int[] standing = new int[s.size()];
+        int[] walking = new int[s.size()];
+        int[] exercise = new int[s.size()];
+        int[] cycling = new int[s.size()];
+        int[] other = new int[s.size()];
+        int[] noData = new int[s.size()];
 
 
         for (JSONData currentData : s) {

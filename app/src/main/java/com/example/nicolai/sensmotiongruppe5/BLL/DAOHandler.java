@@ -1,15 +1,12 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 
-
-import android.icu.text.SimpleDateFormat;
 import android.util.Log;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -248,14 +245,35 @@ public class DAOHandler implements IData {
     @Override
     public String[] getDAOCurrentDates() {
 
-        String[] dates = {userDAO.getCurrentStartDate(), userDAO.setCurrentEndDate()};
+        String[] dates = {userDAO.getCurrentStartDate(), userDAO.getCurrentEndDate()};
         return dates;
     }
 
 
     @Override
     public ArrayList<String> getIntervalDates() {
-        return null;
+        ArrayList<JSONData> valuesArray;
+        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        ArrayList<String> dataArray = new ArrayList<>();
+
+
+        boolean foundStart = false;
+
+        // Iterate over valuesArray
+        for (int i = 0; i < valuesArray.size(); i++) {
+            if (valuesArray.get(i).getStartDate().equals(userDAO.getCurrentStartDate()) || foundStart) {
+                foundStart = true;
+                dataArray.add(valuesArray.get(i).getStartDate());
+
+                if (valuesArray.get(i).getStartDate().equals(userDAO.getCurrentEndDate())) {
+                    foundStart = false;
+                }
+            }
+
+        }
+
+
+        return dataArray;
     }
 
     /**

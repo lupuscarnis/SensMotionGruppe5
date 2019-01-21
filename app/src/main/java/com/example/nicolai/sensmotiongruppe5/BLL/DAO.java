@@ -36,7 +36,7 @@ public class DAO {
 
     public void setDefaults() {
 
-        String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
+        String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date(new java.util.Date().getTime() - (24 * 60 * 60 * 1000))));
         currentStartDate = date;
         currentEndDate = "01-01-2019";
 
@@ -54,7 +54,7 @@ public class DAO {
         return currentStartDate;
     }
 
-    public String setCurrentEndDate() {
+    public String getCurrentEndDate() {
         return currentEndDate;
     }
 
