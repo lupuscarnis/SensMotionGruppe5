@@ -69,3 +69,6 @@ dependencies {
 dependencies {
     implementation 'com.luolc:emoji-rain:0.1.1'
 }
+dependencies {
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
+}

@@ -6,17 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".Min_Data_Activity">
 
+    <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+        android:id="@+id/spring_dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="23dp"
+        app:dampingRatio="0.5"
+        app:dotsColor="#000000"
+        app:dotsCornerRadius="2dp"
+        app:dotsSize="16dp"
+        app:dotsSpacing="6dp"
+        app:dotsStrokeColor="@color/colorPrimaryDark"
+        app:dotsStrokeWidth="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/min_data_fragment_pager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:stiffness="300" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/min_data_fragment_pager"
         android:layout_width="373dp"
         android:layout_height="221dp"
-        android:layout_marginTop="98dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.jaygoo.widget.RangeSeekBar
         android:id="@+id/Min_data_range_silder"
@@ -196,6 +212,8 @@
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button7" />
+
+
 
 
     </android.support.constraint.ConstraintLayout>
