@@ -15,6 +15,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,6 +29,9 @@ import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInterac
 import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 import com.jaygoo.widget.SeekBar;
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +49,18 @@ public class Min_Data_Activity extends Fragment {
     private Button button1, button2, button3, button4, button5, button6, button7;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
+
+
+
+
+
+
+
+
 
 
         if (rootView == null) {
@@ -54,7 +69,21 @@ public class Min_Data_Activity extends Fragment {
 
         }
 
+
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+
+
+        //View pager dots
+        SpringDotsIndicator springDotsIndicator = rootView.findViewById(R.id.spring_dots_indicator);
+        ViewPager viewPager = rootView.findViewById(R.id.min_data_fragment_pager);
+        DotIndicatorPagerAdapter adapter = new DotIndicatorPagerAdapter();
+        viewPager.setAdapter(adapter);
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        springDotsIndicator.setViewPager(viewPager);
+
+
 
         StrictMode.setThreadPolicy(policy);
         button1 = rootView.findViewById( R.id.button1 );

@@ -48,18 +48,13 @@ public class Achieve_Activity extends Fragment {
 
 
         share = rootView.findViewById( R.id.share );
-        share.setText( "Del" );
+        share.setText( "Test" );
         share.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-            sharingIntent.setType("text/plain");
-            String shareBody = "Du har fuldført achievementen.";
-            String shareSub = "Achivement gennemført!";
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            startActivity(Intent.createChooser(sharingIntent, "Share using"));
+           Intent intent =new Intent( getActivity(), Win_Activity.class );
+           startActivity( intent );
         }
     });
         //facebook share button
