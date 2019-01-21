@@ -14,7 +14,7 @@ import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;
 
-public class Quiz_fragment extends android.support.v4.app.Fragment {
+public class Quiz_fragment extends android.support.v4.app.Fragment implements View.OnClickListener {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     View view;
     private IChild_OnFragmentInteractionListener mListener;
@@ -52,6 +52,24 @@ public class Quiz_fragment extends android.support.v4.app.Fragment {
         c1.setText(b.get(0));
         c2.setText(b.get(1));
         c3.setText(b.get(2));
+        c1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        c2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        c3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }
@@ -84,4 +102,9 @@ public class Quiz_fragment extends android.support.v4.app.Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onClick(View v) {
+
+
+    }
 }

@@ -108,7 +108,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         int[] values = {1, 0, 0, 0};
         hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager(), getParentFragment());
-        hello.draw(values);
+        hello.draw(values, 0f);
 
         // Inflate the layout for this fragment
         // Begin the transaction
@@ -124,7 +124,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         int[] values = {0, 0, 0, 0};
             values[0] = 5;
-            hello.draw(values);
+        hello.draw(values, 0);
 
 
     }

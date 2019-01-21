@@ -28,6 +28,15 @@ public class Rute {
     private FragmentManager fragmentManager;
     private Fragment fragment;
 
+    public float getWalked() {
+
+        return walked;
+    }
+
+    public void setWalked(float walked) {
+        this.walked = walked;
+    }
+
     public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights, FragmentManager fragmentManager, Fragment fragment) {
 
         context = ctx.getRootView().getContext();
@@ -42,8 +51,10 @@ public class Rute {
 
     }
 
-
-    public void draw(int[] movemnt) {
+    public void draw(int[] movemnt, float storedWalk) {
+        if (this.walked == 0) {
+            this.walked = storedWalk;
+        }
         for (Rutevector s : cords) {
             canvas.drawRute(s.getStartX(), s.getStartY(), s.getEndX(), s.getEndY());
         }
