@@ -33,8 +33,8 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_set:
-                toolbar.setTitle("Indstillinger");
-                fragment = new Setting_Activity();
+                toolbar.setTitle("Highscore");
+                fragment = new Score_Activity();
                 mDrawerLayout.closeDrawers();
                 loadFragment(fragment);
                 return true;
