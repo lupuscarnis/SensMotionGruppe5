@@ -94,7 +94,7 @@ public static void completed (int n){
 
 
 
-if (achiAL.get(n).getCompleted()== false) {
+if (!achiAL.get(n).getCompleted()) {
     Achievements completedachi;
     completedachi = achiAL.get(n);
     completedachi.setCompleted(true);
@@ -110,6 +110,7 @@ public static void notifications (String id, String title, String text){
 
 
    Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+   notiIntent.putExtra("achi", "achi");
    PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 

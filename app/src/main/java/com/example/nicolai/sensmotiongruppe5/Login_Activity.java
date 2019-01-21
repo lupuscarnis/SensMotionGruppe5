@@ -68,12 +68,14 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     ArrayList<Achievements> achi;
     private Button help;
     private Intent i;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         createChannel();
+
+
+
 
 
         addIfEmty(getAchivements(), "key");
@@ -93,6 +95,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         Button helpButton = (Button) findViewById(R.id.helpBtn);
 
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +108,8 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(view.getContext(), Help_Activity.class));
+                startActivity(new Intent(view.getContext(), Score_Activity.class));
+                //startActivity(new Intent(view.getContext(), Score_Activity.class));
 
 
             }
@@ -119,8 +123,8 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //     CharSequence name = getString(R.string.channel_name);
-            //  String description = getString(R.string.channel_description);
+       //     CharSequence name = getString(R.string.channel_name);
+          //  String description = getString(R.string.channel_description);
             String CHANNEL_ID = "Channel_ID123";
             String description = "Beskrivelse";
             String name = "android_channel";
@@ -138,7 +142,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         }
     }
 
-    public void saveArrayList(ArrayList<Achievements> list, String key) {
+    public void saveArrayList(ArrayList<Achievements> list, String key){
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
@@ -148,37 +152,42 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     }
 
 
-    private void addIfEmty(ArrayList<Achievements> list, String key) {
+    private void addIfEmty(ArrayList<Achievements> list, String key){
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = prefs.getString(key, null);
-        Type type = new TypeToken<ArrayList<Achievements>>() {
-        }.getType();
+        Type type = new TypeToken<ArrayList<Achievements>>() {}.getType();
 
-        if (gson.fromJson(json, type) == null) {
+       if (gson.fromJson(json, type) == null){
 
-            saveArrayList(list, key);
-        }
+           saveArrayList(list,key);
+           }
 
 
+}
+public ArrayList<Achievements> getAchivements(){
+
+    achi = new ArrayList<>();
+    achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
+    achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute"));
+    achi.add(new Achievements("3 ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter"));
+    achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, op dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time"));
+    achi.add(new Achievements("Gående i 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer"));
+    achi.add(new Achievements("Gående i 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer"));
+    achi.add(new Achievements("test2", false, "test", "test"));
+
+
+  return achi;
     }
 
-    public ArrayList<Achievements> getAchivements() {
-
-        achi = new ArrayList<>();
-        achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
-        achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute"));
-        achi.add(new Achievements("3 ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter"));
-        achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, op dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time"));
-        achi.add(new Achievements("Gå i 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer"));
-        achi.add(new Achievements("Gå i 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer"));
-        achi.add(new Achievements("cykle en time", false, "test", "test"));
-        achi.add(new Achievements("cykle i 10 timer", false, "test", "test"));
-        achi.add(new Achievements("cykle i 100 timer", false, "test", "test"));
 
 
-        return achi;
-    }
+
+
+
+
+
+
 
 
     /**
@@ -202,8 +211,6 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         boolean cancel = false;
         View focusView = null;
 
-        // disabled user login conditions below, for exam purposes
-/*
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
@@ -233,20 +240,16 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
-
-        */
-
-        showProgress(true);
-        mAuthTask = new UserLoginTask(email, password);
-        mAuthTask.execute((Void) null);
     }
 
     private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
         //return email.contains("@");
         return email.length() > 4;
     }
 
     private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -384,9 +387,9 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
             if (success) {
                 Log.d("Login", "Login Succesful");
-                SharedPrefs.getInstance().saveString(Login_Activity.this, "6rT39u", "patientKey", true);
-                SharedPrefs.getInstance().saveString(Login_Activity.this, "k5W2uX", "projectKey", true);
-                Intent i = new Intent(Login_Activity.this, nav_drawer.class);
+                SharedPrefs.getInstance().saveString(Login_Activity.this,"6rT39u","patientKey", true);
+                SharedPrefs.getInstance().saveString(Login_Activity.this,"k5W2uX","projectKey", true);
+                Intent i = new Intent(Login_Activity.this,nav_drawer.class);
                 finish();
                 startActivity(i);
             } else {
@@ -402,6 +405,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             showProgress(false);
         }
     }
+
 
 
 }
