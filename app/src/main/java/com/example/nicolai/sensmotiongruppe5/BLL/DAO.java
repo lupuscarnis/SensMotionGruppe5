@@ -20,6 +20,8 @@ public class DAO {
     private static DAO instance;
 
     private DAO() {
+
+        setDefaults();
     }
 
     public static DAO getInstance() {
@@ -29,6 +31,14 @@ public class DAO {
         }
 
         return instance;
+
+    }
+
+    public void setDefaults() {
+
+        String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
+        currentStartDate = date;
+        currentEndDate = "01-01-2019";
 
     }
 
