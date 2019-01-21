@@ -59,6 +59,17 @@ dependencies {
 }
 
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.luolc:emoji-rain:0.1.1'
+}
+dependencies {
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
+}
+
+dependencies {
     implementation 'com.google.android.gms:play-services-maps:+'
     implementation 'com.android.support:appcompat-v7:28.+'
     implementation 'com.google.firebase:firebase-database:16.0.1'

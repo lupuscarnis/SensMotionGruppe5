@@ -4,21 +4,19 @@ package com.example.nicolai.sensmotiongruppe5.Fragments;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
+import com.example.nicolai.sensmotiongruppe5.BLL.LineChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 import com.example.nicolai.sensmotiongruppe5.R;
-import com.example.nicolai.sensmotiongruppe5.Tests.FakeLinechart;
-import com.github.mikephil.charting.charts.Chart;
-import com.github.mikephil.charting.components.Legend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,103 +67,97 @@ public class Line_chart_frag extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         lineChartView = view.findViewById(R.id.chart);
 
-        IData ed = new DAOHandler();
-        IChart b = new FakeLinechart();
+
+        new GetDataLine(new GetDataLine.AsyncResponse() {
+
+            @Override
+            public void processFinish(ArrayList<String> Dates, ArrayList list, int[] values) {
+
+                //initialize the data for Y-Axis.
+                int[] yData = values;
+
+                ArrayList<int[]> valuesOfLines = list;
+                //declare List
+                List y = new ArrayList();
+                List x = new ArrayList();
+                List r = new ArrayList();
+                List s = new ArrayList();
+                List w = new ArrayList();
+                List e = new ArrayList();
+                List c = new ArrayList();
+                List o = new ArrayList();
+                List no = new ArrayList();
+                //Declare and initialize y line
+                for (int p = 0; p < valuesOfLines.get(1).length; p++) {
+
+                    r.add(new PointValue(p, valuesOfLines.get(0)[p]));
+                    s.add(new PointValue(p, valuesOfLines.get(1)[p]));
+                    w.add(new PointValue(p, valuesOfLines.get(2)[p]));
+                    e.add(new PointValue(p, valuesOfLines.get(3)[p]));
+                    c.add(new PointValue(p, valuesOfLines.get(4)[p]));
+                    o.add(new PointValue(p, valuesOfLines.get(5)[p]));
+                    no.add(new PointValue(p, valuesOfLines.get(6)[p]));
+
+                }
+                String[] date = new String[Dates.size()];
+                int g = 0;
+                for (String mb : Dates) {
+                    date[g] = mb;
+                    g++;
+
+                }
+
+                String[] xDates = formatString(date);
+                //add x and y data inside yValues and xValues lists.
+                for (int i = 0; i < date.length; i++) {
+                    x.add(i, new AxisValue(i).setLabel(xDates[i]));
+                }
+
+                for (int i = 0; i < yData.length; i++) {
+                    y.add(new AxisValue(yData[i]));
+                }
+
+                //This list will hold the line of the graph chart.
+                List lines = new ArrayList();
+                //resting
+                lines.add(new Line(r).setColor(Color.BLUE));
+                //standing
+                lines.add(new Line(s).setColor(Color.GRAY));
+                //walking
+                lines.add(new Line(w).setColor(Color.RED));
+                //exercise
+                lines.add(new Line(e).setColor(Color.parseColor("#FFD700")));
+                //cycling
+                lines.add(new Line(c).setColor(Color.parseColor("#006400")));
+                //Other
+                lines.add(new Line(o).setColor(Color.BLACK));
+                //no data
+                lines.add(new Line(no).setColor(Color.parseColor("#9932CC")));
 
 
+                //add graph line to the overall data chart.
+                LineChartData data = new LineChartData();
+                data.setLines(lines);
 
 
+                //Show x values in the line chart graph.
+                Axis axis = new Axis();
+                axis.setValues(x);
+                axis.setTextColor(Color.parseColor("#03A9F4"));
+                data.setAxisXBottom(axis);
+                //Show y values in the line chart graph.
+                Axis yAxis = new Axis();
+                yAxis.setValues(y);
+                yAxis.setTextColor(Color.parseColor("#03A9F4"));
+                yAxis.setTextSize(7);
+                data.setAxisYLeft(yAxis);
+                lineChartView.setLineChartData(data);
+                lineChartView.invalidate();
 
+
+            }
+        }).execute();
         //initialize the data for X-Axis.
-
-        ArrayList<String> xData = new ArrayList<>();
-
-        xData.add("Dato");
-        xData.add("Dato");
-        xData.add("Dato");
-        xData.add("Dato");
-        xData.add("Dato");
-        xData.add("Dato");
-        xData.add("Dato");
-
-        //initialize the data for Y-Axis.
-        int[] yData = ((FakeLinechart) b).getValueArray();
-
-        ArrayList<int[]> valuesOfLines = ((FakeLinechart) b).getLineValues();
-        //declare List
-        List y = new ArrayList();
-        List x = new ArrayList();
-        List r = new ArrayList();
-        List s = new ArrayList();
-        List w = new ArrayList();
-        List e = new ArrayList();
-        List c = new ArrayList();
-        List o = new ArrayList();
-        List no = new ArrayList();
-        //Declare and initialize y line
-        for (int p = 0; p < valuesOfLines.get(1).length; p++) {
-
-            r.add(new PointValue(p, valuesOfLines.get(0)[p]));
-            s.add(new PointValue(p, valuesOfLines.get(1)[p]));
-            w.add(new PointValue(p, valuesOfLines.get(2)[p]));
-            e.add(new PointValue(p, valuesOfLines.get(3)[p]));
-            c.add(new PointValue(p, valuesOfLines.get(4)[p]));
-            o.add(new PointValue(p, valuesOfLines.get(5)[p]));
-            no.add(new PointValue(p, valuesOfLines.get(6)[p]));
-
-        }
-
-
-
-        //add x and y data inside yValues and xValues lists.
-        for (int i = 0; i < xData.size(); i++) {
-            x.add(i, new AxisValue(i).setLabel(xData.get(i)));
-        }
-
-        for (int i = 0; i < yData.length; i++) {
-            y.add(new AxisValue(yData[i]));
-        }
-
-        //This list will hold the line of the graph chart.
-        List lines = new ArrayList();
-        //resting
-        lines.add(new Line(r).setColor(Color.BLUE));
-        //standing
-        lines.add(new Line(s).setColor(Color.GRAY));
-        //walking
-        lines.add(new Line(w).setColor(Color.RED));
-        //exercise
-        lines.add(new Line(e).setColor(Color.parseColor( "#FFD700")));
-        //cycling
-        lines.add(new Line(c).setColor(Color.parseColor( "#006400" )));
-        //Other
-        lines.add(new Line(o).setColor(Color.BLACK));
-        //no data
-        lines.add(new Line(no).setColor(Color.parseColor( "#9932CC" )));
-
-
-
-
-
-        //add graph line to the overall data chart.
-        LineChartData data = new LineChartData();
-        data.setLines(lines);
-
-        lineChartView.setLineChartData(data);
-
-        //Show x values in the line chart graph.
-        Axis axis = new Axis();
-        axis.setValues(x);
-        data.setAxisXBottom(axis);
-        axis.setTextColor(Color.parseColor("#03A9F4"));
-
-        //Show y values in the line chart graph.
-        Axis yAxis = new Axis();
-        yAxis.setValues(y);
-        data.setAxisYLeft(yAxis);
-        yAxis.setTextColor(Color.parseColor("#03A9F4"));
-        yAxis.setTextSize(13);
-
 
 
 
@@ -192,5 +184,61 @@ public class Line_chart_frag extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void messageFromChildFragment(Uri uri);
+    }
+
+    private String[] formatString(String[] Array) {
+        String[] s = new String[7];
+        for (int i = 0; i < Array.length; i++) {
+
+            s[i] = Array[i].substring(0, 5);
+
+        }
+
+
+        return s;
+    }
+}
+
+class GetDataLine extends AsyncTask<Void, Void, Void> {
+    public AsyncResponse delegate = null;
+    private ArrayList<String> fa;
+    private ArrayList<int[]> list;
+    private int[] values;
+
+    public GetDataLine(AsyncResponse delegate) {
+        this.delegate = delegate;
+    }
+
+    @Override
+    protected Void doInBackground(Void... Void) {
+
+        IData ed = new DAOHandler();
+        IChart b = new LineChart();
+        fa = ed.getIntervalDates();
+        list = ((LineChart) b).getLineValues();
+        values = ((LineChart) b).getValueArray();
+
+
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+
+        delegate.processFinish(fa, list, values);
+    }
+
+    @Override
+    protected void onPreExecute() {
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+    }
+
+
+    public interface AsyncResponse {
+        void processFinish(ArrayList<String> Dates, ArrayList list, int[] values);
     }
 }

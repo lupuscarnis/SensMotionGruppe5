@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 
 import com.example.nicolai.sensmotiongruppe5.Fragments.Quiz_fragment;
@@ -77,10 +76,6 @@ public class Rute {
                 for (IHighlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
                         if (y instanceof Text_Highlight) {
-
-
-                            //TODO reveal the highlight........
-                            Log.v("Ahahahahaha", "" + y.getName());
                             FragmentTransaction sb = fragmentManager.beginTransaction();
                             Fragment ft = Text_fragment.newInstance(y.getText());
                             sb.replace(R.id.highlight_frame, ft);
@@ -90,10 +85,6 @@ public class Rute {
                         }
                         if (y instanceof Quiz_Highlight) {
                             FragmentTransaction sb = fragmentManager.beginTransaction();
-                            ArrayList<String> b = new ArrayList<>();
-                            b.add("yes");
-                            b.add("no");
-                            b.add("yes your mom!");
                             Fragment ft = Quiz_fragment.newInstance("", y.getText(), ((Quiz_Highlight) y).getAnswers());
 
                             sb.replace(R.id.highlight_frame, ft);

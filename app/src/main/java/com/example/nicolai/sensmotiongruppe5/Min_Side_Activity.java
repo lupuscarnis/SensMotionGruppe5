@@ -106,7 +106,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         // the end of rute creation
 
-        int[] values = {0, 0, 0, 0};
+        int[] values = {1, 0, 0, 0};
         hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager(), getParentFragment());
         hello.draw(values);
 
