@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nicolai.sensmotiongruppe5">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -33,10 +31,12 @@
         <activity android:name=".Min_Data_Activity" />
         <activity android:name=".nav_drawer" />
         <activity android:name=".Achieve_Activity" />
+        <activity android:name=".Win_Activity"></activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
 
         <service
             android:name=".backgroundService"
@@ -49,10 +49,11 @@
             android:label="RestartServiceWhenStopped"></receiver>
 
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBFNiRN8eeo9pWBMdOiISbjvkj53vfz3ms" />
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCRv4TiHwMopd6xr_NGAsSZXJeg6MruEk8"/>
 
-        <activity android:name=".Win_Activity"></activity>
+
     </application>
 
 </manifest>
