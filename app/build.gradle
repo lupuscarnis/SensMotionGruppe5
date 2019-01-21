@@ -58,11 +58,6 @@ dependencies {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-maps:+'
-    implementation 'com.android.support:appcompat-v7:28.+'
-}
-
-dependencies {
     implementation 'com.android.support.constraint:constraint-layout:+'
 }
 
@@ -71,4 +66,9 @@ dependencies {
 }
 dependencies {
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-maps:+'
+    implementation 'com.android.support:appcompat-v7:28.+'
 }
