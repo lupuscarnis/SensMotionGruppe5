@@ -20,10 +20,12 @@ import android.widget.Toast;
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
-import com.example.nicolai.sensmotiongruppe5.Rute.Highlight;
+import com.example.nicolai.sensmotiongruppe5.Rute.Quiz_Highlight;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
+import com.example.nicolai.sensmotiongruppe5.Rute.Text_Highlight;
 
 import java.util.ArrayList;
 
@@ -56,11 +58,21 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         getActivity().startService(new Intent(getActivity(), backgroundService.class));
         walk = rootView.findViewById(R.id.button_walk);
-        run = rootView.findViewById(R.id.button_running);
-        cycling = rootView.findViewById(R.id.button_bike);
-        cycling.setOnClickListener(this);
-        run.setOnClickListener(this);
+
         walk.setOnClickListener(this);
+
+
+        new GetJSON().execute();
+
+        Achieve_Activity.completed(0);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+
+
+        // creates the rute and its shit
         ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
         Rutevector ruteVector = new Rutevector(50, 60, 300, 60);
         ruteVectorsList.add(ruteVector);
@@ -69,32 +81,40 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         Rutevector dave = new Rutevector(300, 200, 200, 100);
         ruteVectorsList.add(dave);
-        ArrayList<Highlight> highlights = new ArrayList<>();
-        Highlight start = new Highlight(50, 60, 10, "start", false);
-        Highlight middle = new Highlight(300, 60, 10, "middle", false);
-        Highlight end = new Highlight(300, 200, 10, "end", false);
-        highlights.add(start);
-        highlights.add(middle);
-        highlights.add(end);
+        ArrayList<IHighlight> textHighlights = new ArrayList<>();
+        Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
+        start.setText("A new Beginning");
+        Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Whats a mix between Bear and Deer");
+        ArrayList<String> s = new ArrayList();
+        s.add("Dear");
+        s.add("Beer");
+        s.add("BearDear");
+        middle.setAnswers(s);
+
+        Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
+        end.setText("I See dead People!!!!!");
+        Quiz_Highlight secret = new Quiz_Highlight(200, 100, 10, "secret", "Do i look fat in this ?");
+        ArrayList<String> a = new ArrayList();
+        a.add("Yes ");
+        a.add("Yes really fat");
+        a.add("Wow it still \"fits\" you !?");
+        secret.setAnswers(a);
+        textHighlights.add(start);
+        textHighlights.add(middle);
+        textHighlights.add(end);
+        textHighlights.add(secret);
+
+        // the end of rute creation
+
+        int[] values = {0, 0, 0, 0};
+        hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager(), getParentFragment());
+        hello.draw(values);
+
         // Inflate the layout for this fragment
-
-        new GetJSON().execute();
-
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList, highlights);
-
-
-       // Achieve_Activity.completed(0);
-        return rootView;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
         // Begin the transaction
-        Fragment childFragment = new Text_fragment();
+        Fragment childFragment = Text_fragment.newInstance("");
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.text_fragment, childFragment).commit();
-
-
+        transaction.add(R.id.highlight_frame, childFragment, "dave").commit();
 
 
     }
@@ -103,18 +123,8 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         int[] values = {0, 0, 0, 0};
-
-        if (v == walk) {
             values[0] = 5;
             hello.draw(values);
-        }
-        if (v == run) {
-            hello.draw(values);
-        }
-        if (v == cycling) {
-            values[2] = 10;
-            hello.draw(values);
-        }
 
 
     }

@@ -37,6 +37,7 @@ public class Rute_Canvas extends View {
         this.context = context;
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
         path = new Path();
+
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.BLUE);
@@ -86,10 +87,7 @@ public class Rute_Canvas extends View {
     }
 
     public void drawHighLight(float endX, float endY, float radius) {
-        mBitmapPaint.setAlpha(200);
-        //mBitmapPaint.setShadowLayer(radius+3, endX, endY,Color.DKGRAY );
         mBitmapPaint.setColor(Color.RED);
-
         canvas.drawCircle(endX, endY, radius, mBitmapPaint);
         invalidate();
     }

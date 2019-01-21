@@ -105,7 +105,7 @@ if (achiAL.get(n).getCompleted()== false) {
     completedachi.setCompleted(true);
     saveArrayList(achiAL, "key");
 
-    notifications("Channel_ID123", "Achivement gennemført!", "Du har fuldført achievementen' " + completedachi.getName()+"'");
+    notifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
 
 }
 
@@ -113,15 +113,22 @@ if (achiAL.get(n).getCompleted()== false) {
 
 public static void notifications (String id, String title, String text){
 
+
+   Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+   PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
             .setSmallIcon(R.drawable.achi)
             .setContentTitle(title)
             .setContentText(text)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-    // .setContentIntent(pendingIntent);
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+            .setContentIntent(notiPendingIntent);
 
     NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
     notificationManager2.notify(1, mBuilder.build());
+
 
 
 

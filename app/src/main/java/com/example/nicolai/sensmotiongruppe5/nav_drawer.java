@@ -46,6 +46,11 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
                 return true;
+            case R.id.nav_map:
+                toolbar.setTitle("Kort");
+                fragment = new GMapsActivity();
+                loadFragment(fragment);
+                return true;
 
             case R.id.nav_logud:
                 Intent intentUd = new Intent(nav_drawer.this, Login_Activity.class);
@@ -67,8 +72,15 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        toolbar.setTitle("Min side");
-        loadFragment(new Min_Side_Activity());
+
+
+
+
+
+    toolbar.setTitle("Min side");
+    loadFragment(new Min_Side_Activity());
+
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

@@ -35,7 +35,7 @@ ArrayList<JSONData> data;
     public void onCreate(){
 super.onCreate();
 mTimer = new Timer();
-mTimer.schedule(timertask,2000, 2*1000);
+mTimer.schedule(timertask,10000, 10*1000);
 
     }
     @Override
@@ -57,7 +57,7 @@ mTimer.schedule(timertask,2000, 2*1000);
 
 
 //Testing purpose
-// Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har gået " + Double.toString(walking));
+//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har gået " + Double.toString(walking));
 
 
                 if (walking >= 60) {
@@ -68,6 +68,17 @@ mTimer.schedule(timertask,2000, 2*1000);
 
                 if (walking >= 60*1000) {
                     Achieve_Activity.completed(6); }
+
+
+
+            if (cycling >= 60) {
+                Achieve_Activity.completed(4); }
+
+            if (cycling >= 60*10) {
+                Achieve_Activity.completed(5); }
+
+            if (cycling >= 60*1000) {
+                Achieve_Activity.completed(6); }
 
 
 
