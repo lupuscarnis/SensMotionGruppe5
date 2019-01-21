@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.LineChart;
@@ -66,7 +67,8 @@ public class Line_chart_frag extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lineChartView = view.findViewById(R.id.chart);
-
+        final TextView loading = view.findViewById(R.id.loading_linechart);
+        loading.setVisibility(View.VISIBLE);
 
         new GetDataLine(new GetDataLine.AsyncResponse() {
 
@@ -152,6 +154,7 @@ public class Line_chart_frag extends Fragment {
                 yAxis.setTextSize(7);
                 data.setAxisYLeft(yAxis);
                 lineChartView.setLineChartData(data);
+                loading.setVisibility(View.INVISIBLE);
                 lineChartView.invalidate();
 
 

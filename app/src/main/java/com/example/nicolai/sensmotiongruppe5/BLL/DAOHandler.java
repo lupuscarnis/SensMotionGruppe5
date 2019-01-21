@@ -132,12 +132,12 @@ public class DAOHandler implements IData {
             //Converts date string to int ex. 2019-01-01 to 20190101
             int jYMD = Integer.parseInt(jDate);
 
-            if (jYMD >= sYMD) {
+            if (jYMD <= sYMD) {
 
                 Log.d("Condition ", (jYMD +">="+ sYMD +""));
                 dataArray.add(valuesArray.get(i));
 
-            } else if (eYMD <= jYMD) {
+            } else if (eYMD >= jYMD) {
 
                 Log.d("Condition2 ", (eYMD +"<="+ jYMD +""));
                 dataArray.add(valuesArray.get(i));
