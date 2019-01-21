@@ -32,8 +32,8 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 loadFragment(fragment);
                 return true;
             case R.id.nav_set:
-                toolbar.setTitle("Indstillinger");
-                fragment = new Setting_Activity();
+                toolbar.setTitle("Highscore");
+                fragment = new Score_Activity();
                 loadFragment(fragment);
                 return true;
             case R.id.nav_data:

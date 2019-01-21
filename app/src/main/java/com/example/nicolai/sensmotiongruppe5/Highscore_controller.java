@@ -2,6 +2,7 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.util.Log;
 
+import com.example.nicolai.sensmotiongruppe5.Tests.Entry;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -15,49 +16,14 @@ public class Highscore_controller {
     }
 
 
-    private class entry{
-     String name, id;
-     int score;
 
 
-        public entry(String name, int score, String id) {
-            this.name = name;
-            this.score = score;
-            this.id = id;
-        }
 
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public int getScore() {
-            return score;
-        }
-
-        public void setScore(int score) {
-            this.score = score;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-    }
-
-
-    public void addScore(entry ent){
-
+    public void addScore(Entry ent){
+// id does not seem necessary, as firebase uses its own id system.
       String id =  dbr.push().getKey();
 
-      entry newEntry = ent;
+      Entry newEntry = ent;
       dbr.child(id).setValue(newEntry);
     }
 

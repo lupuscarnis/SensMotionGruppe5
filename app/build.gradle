@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -60,4 +61,7 @@ dependencies {
 dependencies {
     implementation 'com.google.android.gms:play-services-maps:+'
     implementation 'com.android.support:appcompat-v7:28.+'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
 }
+
+
