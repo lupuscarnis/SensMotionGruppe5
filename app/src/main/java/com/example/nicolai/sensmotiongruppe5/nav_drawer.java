@@ -78,14 +78,22 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
+        Intent intent = getIntent();
+        String achi = intent.getStringExtra("achi");
+        String achi2 = "achi";
 
 
+        if (achi2.equals(achi)){
+    toolbar.setTitle("Achievements");
+    loadFragment(new Achieve_Activity());
+}
+else {
 
 
     toolbar.setTitle("Min side");
     loadFragment(new Min_Side_Activity());
 
-
+}
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
