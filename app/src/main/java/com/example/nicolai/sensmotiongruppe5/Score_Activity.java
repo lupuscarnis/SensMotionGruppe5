@@ -57,7 +57,7 @@ public class Score_Activity extends Fragment {
         entryAList = new ArrayList<>();
         nameList = new ArrayList<String>();
         scorList = new ArrayList<>();
-        scoreList = superView.findViewById(R.id.ScoreList);
+        scoreList = superView.findViewById(R.id.ScoreListx);
 
 
         hsc = new Highscore_controller(FirebaseDatabase.getInstance().getReference("scores"));
@@ -112,7 +112,7 @@ public class Score_Activity extends Fragment {
                     scorList.add(text2);
 
                     }
-                    adapter = new ScoreAdapter(getActivity(),entryAList );
+                    ScoreAdapter adapter = new ScoreAdapter(getActivity(), entryAList );
                     scoreList.setAdapter(adapter);
                 }
                 if (!Strings.isEmptyOrWhitespace(nameList.get(0))) {
