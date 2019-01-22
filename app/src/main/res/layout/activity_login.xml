@@ -117,9 +117,11 @@
 
     <Button
         android:id="@+id/helpBtn"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
+        style="android:textAppearanceSmall"
+        android:layout_width="171dp"
+        android:layout_height="53dp"
         android:layout_marginTop="45dp"
+        android:shape="rectangle"
         android:gravity="center"
         android:text="@string/text_help"
         app:layout_constraintBottom_toBottomOf="parent"

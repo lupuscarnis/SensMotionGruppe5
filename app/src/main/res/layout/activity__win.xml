@@ -35,41 +35,30 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-
             android:id="@+id/share"
-
-            android:layout_width="142dp"
-            android:layout_height="36dp"
+            style="android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/misc"
             android:layout_gravity="center"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="82dp"
-            android:layout_marginEnd="84dp"
-            android:layout_marginRight="82dp"
-            android:layout_marginBottom="14dp"
-            android:textColor="#000"
-            android:text="Del"
-            app:layout_constraintBottom_toTopOf="@+id/goBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
+            android:textColor="#FFF"
+            android:textStyle="bold" />
 
         <Button
-
             android:id="@+id/goBack"
-
-            android:layout_width="142dp"
-            android:layout_height="36dp"
-            android:textColor="#000"
+            style="android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_gravity="center"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="82dp"
-            android:layout_marginEnd="83dp"
-            android:layout_marginRight="82dp"
-            android:layout_marginBottom="164dp"
-            android:text="..."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.515"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:background="@drawable/misc"
+
+            android:textColor="#FFF"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
 
 
