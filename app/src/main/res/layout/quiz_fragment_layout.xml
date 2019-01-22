@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_quiz"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="270dp"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
@@ -12,11 +12,12 @@
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:padding="8dp"
         android:text="do u even lift bro?"
+        android:textColor="#000000"
         android:textSize="20sp" />
 
 
@@ -25,7 +26,7 @@
         android:layout_width="229dp"
         android:layout_height="37dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="15dp"
         android:background="#0091EA"
         android:padding="8dp"
         android:text="A"
@@ -39,7 +40,7 @@
         android:background="#0091EA"
         android:textColor="#fff"
         android:padding="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="15dp"
         android:id="@+id/choice2"/>
 
     <Button

@@ -1,6 +1,7 @@
 package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -9,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.luolc.emojirain.EmojiRainLayout;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class Win_Activity extends AppCompatActivity implements View.OnClickListener {
     private TextView textview;
@@ -55,7 +59,7 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
             share.setText("Del");
 
             goBack = findViewById(R.id.goBack);
-            goBack.setText("");
+            goBack.setText("Ny rute");
 
 
 
@@ -66,12 +70,23 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
         public void onClick(View v) {
             if(v == share){
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+                Uri screenshotUri = Uri.parse("android.resource://com.example.nicolai.sensmotiongruppe5/drawable/achi");
+                try {
+                    InputStream stream = getContentResolver().openInputStream(screenshotUri);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                sharingIntent.setType("image/jpeg");
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+                startActivity(Intent.createChooser(sharingIntent, "Share image using"));
+               /* Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = "Du har fuldført achievementen.";
                 String shareSub = "Achivement gennemført!";
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                startActivity(Intent.createChooser(sharingIntent, "Share using"));*/
 
             }
 

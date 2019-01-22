@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -24,6 +25,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -76,9 +78,12 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         createChannel();
 
 
+
+
+
         addIfEmty(getAchivements(), "key");
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mEmailView =  findViewById(R.id.email);
+        mPasswordView =  findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -90,8 +95,9 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        Button helpButton = (Button) findViewById(R.id.helpBtn);
+        Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
+        Button helpButton =  findViewById(R.id.helpBtn);
+
 
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -99,6 +105,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
                 attemptLogin();
             }
         });
+
 
 
         helpButton.setOnClickListener(new OnClickListener() {
@@ -111,9 +118,13 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             }
         });
 
+
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
+
+
 
     public void createChannel() {
         // Create the NotificationChannel, but only on API 26+ because
