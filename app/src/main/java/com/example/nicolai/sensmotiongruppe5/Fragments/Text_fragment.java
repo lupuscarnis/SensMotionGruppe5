@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
+import com.example.nicolai.sensmotiongruppe5.Rute.Rute_queue;
 
 public class Text_fragment extends android.support.v4.app.Fragment {
 
@@ -37,6 +39,13 @@ public class Text_fragment extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView s = view.findViewById(R.id.textbox);
         s.setText(getArguments().getString(EXTRA_MESSAGE));
+        Button next = view.findViewById(R.id.text_button);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Rute_queue.getInstance(null).replaceFragment(null, true);
+            }
+        });
     }
 
     @Override

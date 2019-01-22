@@ -8,6 +8,8 @@ import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 //import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class DAOHandler implements IData {
@@ -21,8 +23,8 @@ public class DAOHandler implements IData {
 
     public DAOHandler() {
 
-       // this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
-        //this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
+        this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
+        this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
         Log.i("wazzup", patient_key+" og projekt  "+ project_key);
 
     }

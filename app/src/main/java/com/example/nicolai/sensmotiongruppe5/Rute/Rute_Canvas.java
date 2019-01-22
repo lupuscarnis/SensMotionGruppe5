@@ -7,8 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -17,11 +15,8 @@ import com.example.nicolai.sensmotiongruppe5.R;
 
 public class Rute_Canvas extends View {
 
-    int width;
-    int hight;
-    private LayerDrawable layer;
-    Context context;
 
+    Context context;
     private Bitmap bitmap;
     private Bitmap bitmap1;
     private Canvas canvas;
@@ -29,10 +24,8 @@ public class Rute_Canvas extends View {
     private Paint mPaint;
     private float mx, my;
     private Paint mBitmapPaint;
-    private Drawable man;
 
-    // https://varun.ca/polar-coords/       good for something like this
-    public Rute_Canvas(Context context, @Nullable AttributeSet attrs ) {
+    public Rute_Canvas(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
@@ -64,7 +57,7 @@ public class Rute_Canvas extends View {
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        canvas.getWidth();
         canvas.drawPath(path, mPaint);
         canvas.drawBitmap(bitmap, 0 ,0,null);
         canvas.drawBitmap(bitmap1, mx ,my,null);
