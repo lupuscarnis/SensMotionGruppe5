@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
+import com.example.nicolai.sensmotiongruppe5.Rute.Rute_queue;
 
 import java.util.ArrayList;
 
@@ -55,19 +56,19 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
         c3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
 

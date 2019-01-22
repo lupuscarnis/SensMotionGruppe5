@@ -4,13 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.example.nicolai.sensmotiongruppe5.Fragments.Quiz_fragment;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
-import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;
 
@@ -27,6 +25,7 @@ public class Rute {
     private Context context;
     private FragmentManager fragmentManager;
     private Fragment fragment;
+    private Rute_queue rq;
 
     public float getWalked() {
 
@@ -47,7 +46,7 @@ public class Rute {
         this.fragmentManager = fragmentManager;
         this.fragment = fragment;
         calculateDistance(matrix);
-
+        rq = Rute_queue.getInstance(fragmentManager);
 
     }
 
@@ -84,22 +83,22 @@ public class Rute {
                 yvector = ratio * yvector;
                 xvector = xvector + startX;
                 yvector = yvector + startY;
+
+                // checks highlights
                 for (IHighlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
-                        if (y instanceof Text_Highlight) {
-                            FragmentTransaction sb = fragmentManager.beginTransaction();
+                        if (y instanceof Text_Highlight && y.isRevealed() == false) {
+                            y.setRevealed(true);
                             Fragment ft = Text_fragment.newInstance(y.getText());
-                            sb.replace(R.id.highlight_frame, ft);
-                            sb.commit();
+                            rq.replaceFragment(ft, false);
 
 
                         }
-                        if (y instanceof Quiz_Highlight) {
-                            FragmentTransaction sb = fragmentManager.beginTransaction();
+                        if (y instanceof Quiz_Highlight && y.isRevealed() == false) {
+                            y.setRevealed(true);
                             Fragment ft = Quiz_fragment.newInstance("", y.getText(), ((Quiz_Highlight) y).getAnswers());
+                            rq.replaceFragment(ft, false);
 
-                            sb.replace(R.id.highlight_frame, ft);
-                            sb.commit();
 
 
                         }

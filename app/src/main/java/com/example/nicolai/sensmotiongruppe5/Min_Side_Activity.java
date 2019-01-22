@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Rute.Quiz_Highlight;
@@ -109,13 +107,6 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         int[] values = {1, 0, 0, 0};
         hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager(), getParentFragment());
         hello.draw(values, 0f);
-
-        // Inflate the layout for this fragment
-        // Begin the transaction
-        Fragment childFragment = Text_fragment.newInstance("");
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.add(R.id.highlight_frame, childFragment, "dave").commit();
-
 
     }
 
