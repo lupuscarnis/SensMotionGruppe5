@@ -30,26 +30,31 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 toolbar.setTitle("Achievements");
                 fragment = new Achieve_Activity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_set:
-                toolbar.setTitle("Indstillinger");
-                fragment = new Setting_Activity();
+                toolbar.setTitle("Highscore");
+                fragment = new Score_Activity();
+                mDrawerLayout.closeDrawers();
                 loadFragment(fragment);
                 return true;
             case R.id.nav_data:
                 toolbar.setTitle("Min data");
                 fragment = new Min_Data_Activity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_side:
                 toolbar.setTitle("Min side");
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_map:
                 toolbar.setTitle("Kort");
                 fragment = new GMapsActivity();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
 
             case R.id.nav_logud:
@@ -73,14 +78,22 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
+        Intent intent = getIntent();
+        String achi = intent.getStringExtra("achi");
+        String achi2 = "achi";
 
 
+        if (achi2.equals(achi)){
+    toolbar.setTitle("Achievements");
+    loadFragment(new Achieve_Activity());
+}
+else {
 
 
     toolbar.setTitle("Min side");
     loadFragment(new Min_Side_Activity());
 
-
+}
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

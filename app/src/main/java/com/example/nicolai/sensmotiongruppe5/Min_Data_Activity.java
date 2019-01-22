@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,9 +14,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -29,9 +25,7 @@ import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInterac
 import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 import com.jaygoo.widget.SeekBar;
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,21 +65,16 @@ public class Min_Data_Activity extends Fragment {
 
 
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-
-
         //View pager dots
         SpringDotsIndicator springDotsIndicator = rootView.findViewById(R.id.spring_dots_indicator);
-        ViewPager viewPager = rootView.findViewById(R.id.min_data_fragment_pager);
+        final ViewPager viewPager = rootView.findViewById(R.id.min_data_fragment_pager);
         DotIndicatorPagerAdapter adapter = new DotIndicatorPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        viewPager.setClipToPadding(false);
+        viewPager.setPadding(30, 0, 30, 0);
         springDotsIndicator.setViewPager(viewPager);
 
-
-
-        StrictMode.setThreadPolicy(policy);
         button1 = rootView.findViewById( R.id.button1 );
         button2 = rootView.findViewById( R.id.button2 );
         button3 = rootView.findViewById( R.id.button3 );
@@ -181,6 +170,7 @@ public class Min_Data_Activity extends Fragment {
 
                 bar.setValue(Math.round(left), Math.round(right));
                 new DAOHandler().setDAOCurrentDates(strigns[Math.round(left)], strigns[Math.round(right)]);
+                viewPager.getAdapter().notifyDataSetChanged();
 
             }
         });
@@ -199,11 +189,6 @@ public class Min_Data_Activity extends Fragment {
         pageAdapter = new MyPageAdapter(getChildFragmentManager(), fragments);
         pager = rootView.findViewById(R.id.min_data_fragment_pager);
         pager.setAdapter(pageAdapter);
-
-        pager.setClipToPadding(false);
-        // set padding manually, the more you set the padding the more you see of prev & next page
-        pager.setPadding(100, 0, 100, 0);
-        // sets a margin b/w individual pages to ensure that there is a gap b/w them
 
     }
 
@@ -273,7 +258,7 @@ class GetData extends AsyncTask<IData, Void, String[]> {
     protected String[] doInBackground(IData... iData) {
 
         str = iData[0].getAllDates();
-        iData[0].setDAOCurrentDates(str[0], str[6]);
+
 
         return str;
     }
@@ -333,7 +318,10 @@ class MyPageAdapter extends FragmentPagerAdapter {
 
     }
 
-
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
+    }
 }
 
 

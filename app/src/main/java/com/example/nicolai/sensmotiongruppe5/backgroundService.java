@@ -57,7 +57,7 @@ mTimer.schedule(timertask,10000, 10*1000);
 
 
 //Testing purpose
-//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har gået " + Double.toString(walking));
+//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har fedet den " + Double.toString(resting));
 
 
                 if (walking >= 60) {
@@ -72,13 +72,13 @@ mTimer.schedule(timertask,10000, 10*1000);
 
 
             if (cycling >= 60) {
-                Achieve_Activity.completed(4); }
+                Achieve_Activity.completed(7); }
 
             if (cycling >= 60*10) {
-                Achieve_Activity.completed(5); }
+                Achieve_Activity.completed(8); }
 
             if (cycling >= 60*1000) {
-                Achieve_Activity.completed(6); }
+                Achieve_Activity.completed(9); }
 
 
 

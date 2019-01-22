@@ -22,6 +22,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -87,17 +91,19 @@ public static void completed (int n){
     ArrayList<Achievements> achiAL;
     achiAL = getArrayList("key");
 
-  //  Intent intent = new Intent(getApplicationContext(), Achieve_Activity.class);
-  //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-  //  PendingIntent pendingIntent = PendingIntent.(getApplicationContext(), 0, intent, 0);
+    Instant instant = Instant.now();
+    ZoneId zoneId = ZoneId.of("Europe/Copenhagen");
+    ZonedDateTime zdt = ZonedDateTime.ofInstant( instant , zoneId );
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "dd/MM/yyyy" );
+    String output = zdt.format(formatter);
 
 
 
-
-if (achiAL.get(n).getCompleted()== false) {
+if (!achiAL.get(n).getCompleted()) {
     Achievements completedachi;
     completedachi = achiAL.get(n);
     completedachi.setCompleted(true);
+    completedachi.setDate(output);
     saveArrayList(achiAL, "key");
 
     notifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
@@ -110,6 +116,7 @@ public static void notifications (String id, String title, String text){
 
 
    Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+   notiIntent.putExtra("achi", "achi");
    PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
@@ -166,7 +173,7 @@ return count;
         Gson gson = new Gson();
         String json = gson.toJson(list);
         editor.putString(key, json);
-        editor.apply();     // This line is IMPORTANT !!!
+        editor.apply();
     }
 
 

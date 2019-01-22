@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.LineChart;
@@ -66,12 +67,13 @@ public class Line_chart_frag extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lineChartView = view.findViewById(R.id.chart);
-
+        final TextView loading = view.findViewById(R.id.loading_linechart);
+        loading.setVisibility(View.VISIBLE);
 
         new GetDataLine(new GetDataLine.AsyncResponse() {
 
             @Override
-            public void processFinish(String[] Dates, ArrayList list, int[] values) {
+            public void processFinish(ArrayList<String> Dates, ArrayList list, int[] values) {
 
                 //initialize the data for Y-Axis.
                 int[] yData = values;
@@ -99,11 +101,17 @@ public class Line_chart_frag extends Fragment {
                     no.add(new PointValue(p, valuesOfLines.get(6)[p]));
 
                 }
+                String[] date = new String[Dates.size()];
+                int g = 0;
+                for (String mb : Dates) {
+                    date[g] = mb;
+                    g++;
 
+                }
 
-                String[] xDates = formatString(Dates);
+                String[] xDates = formatString(date);
                 //add x and y data inside yValues and xValues lists.
-                for (int i = 0; i < xDates.length; i++) {
+                for (int i = 0; i < date.length; i++) {
                     x.add(i, new AxisValue(i).setLabel(xDates[i]));
                 }
 
@@ -146,6 +154,7 @@ public class Line_chart_frag extends Fragment {
                 yAxis.setTextSize(7);
                 data.setAxisYLeft(yAxis);
                 lineChartView.setLineChartData(data);
+                loading.setVisibility(View.INVISIBLE);
                 lineChartView.invalidate();
 
 
@@ -195,7 +204,7 @@ public class Line_chart_frag extends Fragment {
 
 class GetDataLine extends AsyncTask<Void, Void, Void> {
     public AsyncResponse delegate = null;
-    private String[] str;
+    private ArrayList<String> fa;
     private ArrayList<int[]> list;
     private int[] values;
 
@@ -208,9 +217,10 @@ class GetDataLine extends AsyncTask<Void, Void, Void> {
 
         IData ed = new DAOHandler();
         IChart b = new LineChart();
-        str = ed.getAllDates();
+        fa = ed.getIntervalDates();
         list = ((LineChart) b).getLineValues();
         values = ((LineChart) b).getValueArray();
+
 
         return null;
     }
@@ -219,7 +229,7 @@ class GetDataLine extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        delegate.processFinish(str, list, values);
+        delegate.processFinish(fa, list, values);
     }
 
     @Override
@@ -232,6 +242,6 @@ class GetDataLine extends AsyncTask<Void, Void, Void> {
 
 
     public interface AsyncResponse {
-        void processFinish(String[] Dates, ArrayList list, int[] values);
+        void processFinish(ArrayList<String> Dates, ArrayList list, int[] values);
     }
 }

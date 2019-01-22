@@ -20,4 +20,6 @@ public class Setting_Activity extends Fragment {
 
     }
 
+
+
 }
