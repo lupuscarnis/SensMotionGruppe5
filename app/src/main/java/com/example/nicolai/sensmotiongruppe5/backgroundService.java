@@ -57,7 +57,7 @@ mTimer.schedule(timertask,10000, 10*1000);
 
 
 //Testing purpose
-//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har fedet den " + Double.toString(resting));
+Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har fedet den " + Double.toString(resting));
 
 
                 if (walking >= 60) {
