@@ -81,7 +81,6 @@ public class DAO {
                 int currTries = 0;
 
                 do {
-
                     String jsonStr = jsonConnection.getJSON(url);
                     jsonObject = new JSONObject(jsonStr);
                     jsonStatusCode = jsonObject.getString("status_code");
