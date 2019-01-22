@@ -90,7 +90,7 @@ public static void completed (int n){
 
     ArrayList<Achievements> achiAL;
     achiAL = getArrayList("key");
-
+/*
     Instant instant = Instant.now();
     ZoneId zoneId = ZoneId.of("Europe/Copenhagen");
     ZonedDateTime zdt = ZonedDateTime.ofInstant( instant , zoneId );
@@ -109,7 +109,7 @@ if (!achiAL.get(n).getCompleted()) {
     notifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
 
 }
-
+*/
 }
 
 public static void notifications (String id, String title, String text){

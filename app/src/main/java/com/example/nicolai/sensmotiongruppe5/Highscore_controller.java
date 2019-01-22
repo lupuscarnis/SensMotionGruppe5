@@ -9,12 +9,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Highscore_controller {
 
-    DatabaseReference dbr = FirebaseDatabase.getInstance().getReference("scores");
+    DatabaseReference dbr ;
 
-    public Highscore_controller(DatabaseReference dbr) {
-        this.dbr = dbr;
+
+
+    public void createDatabaseReference(){
+     dbr  = FirebaseDatabase.getInstance().getReference("scores");
+     this.dbr = FirebaseDatabase.getInstance().getReference("scores");
     }
-
 
 
 
