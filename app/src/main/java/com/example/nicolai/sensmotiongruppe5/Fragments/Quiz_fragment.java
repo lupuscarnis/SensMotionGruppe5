@@ -49,10 +49,12 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         Button c1 = view.findViewById(R.id.choice1);
         Button c2 = view.findViewById(R.id.choice2);
         Button c3 = view.findViewById(R.id.choice3);
+        Button c4 = view.findViewById(R.id.choice4);
         ArrayList<String> b = getArguments().getStringArrayList("choices");
         c1.setText(b.get(0));
         c2.setText(b.get(1));
         c3.setText(b.get(2));
+        c4.setText(b.get(3));
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +68,12 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
             }
         });
         c3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Rute_queue.getInstance(null).replaceFragment(null, true);
+            }
+        });
+        c4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Rute_queue.getInstance(null).replaceFragment(null, true);

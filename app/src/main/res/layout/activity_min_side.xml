@@ -10,8 +10,8 @@
 
     <FrameLayout
         android:id="@+id/highlight_frame"
-        android:layout_width="368dp"
-        android:layout_height="224dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:layout_weight="1"></FrameLayout>
 
@@ -24,7 +24,7 @@
 
     <com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas
         android:id="@+id/canvas_rute"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="270dp"
         android:layout_margin="10dp" />
 

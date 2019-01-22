@@ -87,6 +87,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         s.add("Dear");
         s.add("Beer");
         s.add("BearDear");
+        s.add("Non of the above");
         middle.setAnswers(s);
 
         Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
@@ -96,6 +97,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         a.add("Yes ");
         a.add("Yes really fat");
         a.add("Wow it still \"fits\" you !?");
+        a.add("Bitch Please!");
         secret.setAnswers(a);
         textHighlights.add(start);
         textHighlights.add(middle);
