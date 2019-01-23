@@ -6,5 +6,34 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GMapsActivity"
-    android:layout_marginTop="?android:attr/actionBarSize"/>
+    android:layout_marginTop="?android:attr/actionBarSize"
+    tools:context=".GMapsActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/animStartBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+
+            android:padding="10dp"
+            android:paddingRight="10dp"
+            android:text="Start" />
+
+        <Button
+            android:id="@+id/animStopBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+
+            android:padding="10dp"
+            android:paddingRight="10dp"
+            android:text="Genstart" />
+
+    </LinearLayout>
+</fragment>

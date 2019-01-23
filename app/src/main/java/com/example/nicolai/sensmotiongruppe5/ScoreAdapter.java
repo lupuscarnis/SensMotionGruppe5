@@ -35,20 +35,27 @@ public class ScoreAdapter extends ArrayAdapter<Entry> {
 
         TextView nameView = (TextView) listEntry.findViewById(R.id.nameView);
         TextView scoreView = (TextView) listEntry.findViewById(R.id.scoreView);
+
+        /*
         for (int i = 0; i < entList.size(); i++) {
+
             for (int j = i + 1; j < entList.size(); j++) {
-                if (entList.get(i).getScore().compareTo(entList.get(i).getScore()) > 0) {
+
+                Integer temp1 = Integer.parseInt(entList.get(i).getScore());
+                Integer temp2 = Integer.parseInt(entList.get(j).getScore());
+                if (temp1 > temp2) {
+               // if (entList.get(i).getScore().compareTo(entList.get(j).getScore()) > 0) {
                     Entry enTemp = entList.get(i);
                     entList.set(i,entList.get(i) );
                     entList.set(i, enTemp);
                 }
             }
         }
-
+*/
         String name = entList.get(position).getName();
-        String score =entList.get(position).getScore();
-        nameView.setText("hej");
-        // nameView.setText(ent.getName());
+        String score =entList.get(position).getScore().toString();
+       // nameView.setText("hej");
+         nameView.setText(name);
         scoreView.setText(score);
         Log.i("adapter", name);
 

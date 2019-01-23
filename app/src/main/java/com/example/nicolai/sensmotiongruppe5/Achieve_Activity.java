@@ -22,11 +22,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.DateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -91,11 +93,8 @@ public static void completed (int n){
     ArrayList<Achievements> achiAL;
     achiAL = getArrayList("key");
 
-    Instant instant = Instant.now();
-    ZoneId zoneId = ZoneId.of("Europe/Copenhagen");
-    ZonedDateTime zdt = ZonedDateTime.ofInstant( instant , zoneId );
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "dd/MM/yyyy" );
-    String output = zdt.format(formatter);
+    Calendar calendar = Calendar.getInstance();
+    String currentDate = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
 
 
 
@@ -103,7 +102,7 @@ if (!achiAL.get(n).getCompleted()) {
     Achievements completedachi;
     completedachi = achiAL.get(n);
     completedachi.setCompleted(true);
-    completedachi.setDate(output);
+    completedachi.setDate(currentDate);
     saveArrayList(achiAL, "key");
 
     notifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
