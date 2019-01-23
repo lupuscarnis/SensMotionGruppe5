@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -57,9 +58,13 @@ public class Rute_Canvas extends View {
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.getWidth();
+        int width = getWidth();
+        int height = getHeight();
+        Rect src = new Rect(0, 0, bitmap.getWidth() - 1, bitmap.getHeight() - 1);
+        Rect dest = new Rect(0, 0, width - 1, height - 1);
+        canvas.drawBitmap(bitmap, src, dest, null);
         canvas.drawPath(path, mPaint);
-        canvas.drawBitmap(bitmap, 0 ,0,null);
+
         canvas.drawBitmap(bitmap1, mx ,my,null);
 
         
