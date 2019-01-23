@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:paddingTop="?attr/actionBarSize"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".nav_drawer" >
+        android:paddingTop="?attr/actionBarSize"
+        tools:context=".nav_drawer">
 
 
         <FrameLayout
@@ -26,8 +27,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            app:menu="@menu/menu"
-            app:headerLayout="@layout/nav_header" />
+            android:layout_marginTop="25dp"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/menu" />
 
     </android.support.v4.widget.DrawerLayout>
 
@@ -35,12 +37,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
         android:layout_marginTop="20dp"
+        android:background="?attr/colorPrimary"
         android:elevation="5dp"
-        app:title="Min side"
         app:layout_constraintTop_toTopOf="parent"
-        />
-
+        app:title="Min side" />
 
 </FrameLayout>
