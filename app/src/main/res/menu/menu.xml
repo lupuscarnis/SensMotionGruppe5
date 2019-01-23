@@ -21,9 +21,6 @@
 
     <item android:title="andet">
         <menu>
-            <item
-                android:id="@+id/nav_help"
-                android:title="Hjælp" />
 
             <item
                 android:id="@+id/nav_map"
