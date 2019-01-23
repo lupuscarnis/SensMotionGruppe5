@@ -48,14 +48,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Min_Side_Activity"
-            android:label="@string/title_activity_login" />
         <activity android:name=".Help_Activity" />
-        <activity android:name=".Setting_Activity" />
-        <activity android:name=".Min_Data_Activity" />
         <activity android:name=".nav_drawer" />
-        <activity android:name=".Achieve_Activity" />
         <activity android:name=".Win_Activity" />
 
         <meta-data
