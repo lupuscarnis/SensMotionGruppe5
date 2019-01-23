@@ -1,3 +1,4 @@
+//noinspection GradleCompatible
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
