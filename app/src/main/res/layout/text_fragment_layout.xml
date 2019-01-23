@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-
+        android:elevation="10dp"
 
         android:background="#0091EA"
         android:gravity="center"

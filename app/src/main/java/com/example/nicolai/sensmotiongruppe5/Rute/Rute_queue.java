@@ -46,9 +46,9 @@ public class Rute_queue {
             fraList.add(fra);
 
             FragmentTransaction sb = fragmentManager.beginTransaction();
-
+            sb.addToBackStack(null);
             sb.replace(R.id.highlight_frame, fraList.get(fraList.size() - 1));
-            sb.commit();
+            sb.commitAllowingStateLoss();
 
 
         } else if (fra != null && !(replace)) {
@@ -59,17 +59,17 @@ public class Rute_queue {
         if (replace && fraList.size() > 0) {
 
             FragmentTransaction sb = fragmentManager.beginTransaction();
-
             sb.replace(R.id.highlight_frame, fraList.get(fraList.size() - 1));
-            sb.commit();
+            sb.addToBackStack(null);
+            sb.commitAllowingStateLoss();
             fraList.remove(0);
 
 
         } else if (fraList.size() == 0) {
             FragmentTransaction sb = fragmentManager.beginTransaction();
-
+            sb.addToBackStack(null);
             sb.replace(R.id.highlight_frame, Default_fragment.newInstance("h", "gh"));
-            sb.commit();
+            sb.commitAllowingStateLoss();
 
 
         }

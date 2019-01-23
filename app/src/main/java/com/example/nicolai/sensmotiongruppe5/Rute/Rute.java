@@ -24,7 +24,6 @@ public class Rute {
     private ArrayList<Rutevector> cords;
     private Context context;
     private FragmentManager fragmentManager;
-    private Fragment fragment;
     private Rute_queue rq;
 
     public float getWalked() {
@@ -36,7 +35,7 @@ public class Rute {
         this.walked = walked;
     }
 
-    public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights, FragmentManager fragmentManager, Fragment fragment) {
+    public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights, FragmentManager fragmentManager) {
 
         context = ctx.getRootView().getContext();
         canvas = (Rute_Canvas) ctx;
@@ -44,7 +43,7 @@ public class Rute {
         roadDistances = new ArrayList<>();
         this.highLights = highLights;
         this.fragmentManager = fragmentManager;
-        this.fragment = fragment;
+
         calculateDistance(matrix);
         rq = Rute_queue.getInstance(fragmentManager);
 

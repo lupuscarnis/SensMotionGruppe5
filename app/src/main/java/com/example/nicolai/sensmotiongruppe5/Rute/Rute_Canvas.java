@@ -22,7 +22,7 @@ public class Rute_Canvas extends View {
     private Canvas canvas;
     private Path path;
     private Paint mPaint;
-    private float mx, my;
+    private float mx = 50, my = 60;
     private Paint mBitmapPaint;
 
     public Rute_Canvas(Context context, @Nullable AttributeSet attrs) {

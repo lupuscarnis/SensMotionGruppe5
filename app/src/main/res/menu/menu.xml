@@ -15,7 +15,7 @@
             android:title="Achievements" />
         <item
             android:id="@+id/nav_set"
-            android:title="Indstillinger" />
+            android:title="Highscore" />
 
     </group>
 
