@@ -6,8 +6,8 @@
     <!-- Strings related to login -->
     <string name="text_username">Patient Nøgle</string>
     <string name="text_password">Projekt Nøgle</string>
-    <string name="prompt_email">Indtast nøgle (Eks. 6rT39u)</string>
-    <string name="prompt_password">Indtast nøgle</string>
+    <string name="prompt_email">Indtast nøgle (ikke påkrævet for demo)</string>
+    <string name="prompt_password">Indtast nøgle (ikke påkrævet for demo)</string>
     <string name="action_sign_in">Log ind / Registrér</string>
     <string name="action_sign_in_short">Log ind</string>
     <string name="error_invalid_email">Patient Nøgle ugyldig</string>

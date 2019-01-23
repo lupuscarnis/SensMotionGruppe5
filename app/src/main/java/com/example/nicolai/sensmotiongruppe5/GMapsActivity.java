@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -53,7 +54,6 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap gMap;
     private final Handler mHandler = new Handler();
-
     private Marker selectedMarker;
 
     Handler handler = new Handler();
@@ -70,11 +70,30 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
 
 
-
-
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.activity_gmaps, drawer_layout, false);
         }
+
+        Button animStop = (Button) rootView.findViewById(R.id.animStopBtn);
+        animStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                animator.stopAnimation();
+
+            }
+        });
+
+        Button animStart = (Button) rootView.findViewById(R.id.animStartBtn);
+        animStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                animator.startAnimation(true);
+
+            }
+        });
+
 
         handler.postDelayed(runner, random.nextInt(2000));
 
@@ -257,6 +276,7 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
 
         public void initialize(boolean showPolyLine) {
             reset();
+
             this.showPolyline = showPolyLine;
 
             highLightMarker(0);
@@ -333,6 +353,8 @@ public class GMapsActivity extends Fragment implements OnMapReadyCallback {
 
         public void stopAnimation() {
             animator.stop();
+            polyLine.remove();
+            reset();
         }
 
         public void startAnimation(boolean showPolyLine) {
