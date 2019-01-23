@@ -57,29 +57,33 @@ mTimer.schedule(timertask,10000, 10*1000);
 
 
 //Testing purpose
-//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(walking), "Elias har fedet den " + Double.toString(resting));
-
-
-                if (walking >= 60) {
-                    Achieve_Activity.completed(4); }
-
-                if (walking >= 60*10) {
-                    Achieve_Activity.completed(5); }
-
-                if (walking >= 60*1000) {
-                    Achieve_Activity.completed(6); }
+//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(exercise), "Elias har fedet den " + Double.toString(resting));
 
 
 
-            if (cycling >= 60) {
-                Achieve_Activity.completed(7); }
+            if (walking >= 60) {
+                Achieve_Activity.completed(3); }
+
+            if (walking >= 60*10) {
+                 Achieve_Activity.completed(4);
+            }
+
+            if (walking >= 60*1000) {
+                Achieve_Activity.completed(5); }
+
+                /*
+
+
+
+            if (exercise >= 3) {
+                Achieve_Activity.completed(6); }
 
             if (cycling >= 60*10) {
-                Achieve_Activity.completed(8); }
+                Achieve_Activity.completed(6); }
 
             if (cycling >= 60*1000) {
-                Achieve_Activity.completed(9); }
-
+                Achieve_Activity.completed(6); }
+*/
 
 
   }};
@@ -95,7 +99,7 @@ mTimer.schedule(timertask,10000, 10*1000);
     public static Double getSum(String activity) {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData("k5W2uX", "6rT39u", 7);
+        valuesArray = userDAO.getData("k5W2uX", "u7tRx9", 7);
 
         double data = 0;
 
