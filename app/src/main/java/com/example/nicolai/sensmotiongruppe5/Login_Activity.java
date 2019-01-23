@@ -189,15 +189,6 @@ public ArrayList<Achievements> getAchivements(){
     }
 
 
-
-
-
-
-
-
-
-
-
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
@@ -219,6 +210,8 @@ public ArrayList<Achievements> getAchivements(){
         boolean cancel = false;
         View focusView = null;
 
+        // Disabled condition for login for exam purposes
+/*
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
@@ -248,6 +241,10 @@ public ArrayList<Achievements> getAchivements(){
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
+*/
+        showProgress(true);
+        mAuthTask = new UserLoginTask(email, password);
+        mAuthTask.execute((Void) null);
     }
 
     private boolean isEmailValid(String email) {
