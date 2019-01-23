@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +19,12 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Default_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Rute.Quiz_Highlight;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
+import com.example.nicolai.sensmotiongruppe5.Rute.Rute_queue;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 import com.example.nicolai.sensmotiongruppe5.Rute.Text_Highlight;
 
@@ -35,7 +38,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
     // Sets the default keys for the logged in patient
     DAOHandler daoHandler = new DAOHandler();
-
+    private ArrayList<IHighlight> textHighlights;
     // For storing the values from JSON
     public String[] allDates;
     public String numSteps;
@@ -44,7 +47,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     public int helpCounter = 0;
     String dialogueMessage = "here is some nice help";
     int dialogImage = R.drawable.setting;
-    Rute hello;
+    private Rute hello;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
@@ -53,11 +56,8 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
         }
-
         getActivity().startService(new Intent(getActivity(), backgroundService.class));
-        walk = rootView.findViewById(R.id.button_walk);
 
-        walk.setOnClickListener(this);
 
 
         new GetJSON().execute();
@@ -68,8 +68,10 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-
-
+        setRetainInstance(true);
+        walk = rootView.findViewById(R.id.button_walk);
+        walk.setOnClickListener(this);
+        getChildFragmentManager().popBackStack();
         // creates the rute and its shit
         ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
         Rutevector ruteVector = new Rutevector(50, 60, 300, 60);
@@ -79,25 +81,24 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         Rutevector dave = new Rutevector(300, 200, 200, 100);
         ruteVectorsList.add(dave);
-        ArrayList<IHighlight> textHighlights = new ArrayList<>();
+        textHighlights = new ArrayList<>();
         Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
         start.setText("A new Beginning");
-        Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Whats a mix between Bear and Deer");
+        Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Whats a mix between Bear and Deer?");
         ArrayList<String> s = new ArrayList();
         s.add("Dear");
         s.add("Beer");
         s.add("BearDear");
         s.add("Non of the above");
         middle.setAnswers(s);
-
         Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
         end.setText("I See dead People!!!!!");
-        Quiz_Highlight secret = new Quiz_Highlight(200, 100, 10, "secret", "Do i look fat in this ?");
+        Quiz_Highlight secret = new Quiz_Highlight(200, 100, 10, "secret", "Winnig ?");
         ArrayList<String> a = new ArrayList();
-        a.add("Yes ");
-        a.add("Yes really fat");
-        a.add("Wow it still \"fits\" you !?");
-        a.add("Bitch Please!");
+        a.add("Yes?");
+        a.add("Yes!?!");
+        a.add("Wow it still you !?");
+        a.add("Bitch Please!?");
         secret.setAnswers(a);
         textHighlights.add(start);
         textHighlights.add(middle);
@@ -107,10 +108,24 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         // the end of rute creation
 
         int[] values = {1, 0, 0, 0};
-        hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager(), getParentFragment());
+        if (hello == null) {
+            hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager());
+        }
         hello.draw(values, 0f);
 
+        Fragment f = getChildFragmentManager().findFragmentById(R.id.highlight_frame);
+        if (f == null) {
+
+            FragmentTransaction sb = getChildFragmentManager().beginTransaction();
+            sb.addToBackStack(null);
+            sb.add(R.id.highlight_frame, Default_fragment.newInstance("", ""));
+            sb.commit();
+            Rute_queue.getInstance(null).replaceFragment(null, true);
+        } else {
+            Rute_queue.getInstance(null).replaceFragment(null, true);
+        }
     }
+
 
 
     @Override
@@ -119,6 +134,12 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             values[0] = 5;
         hello.draw(values, 0);
 
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
     }
 
