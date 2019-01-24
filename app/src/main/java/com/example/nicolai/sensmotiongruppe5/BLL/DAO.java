@@ -67,20 +67,19 @@ public class DAO {
         JSONConnection jsonConnection = new JSONConnection();
         // Making a request to url and getting response
         String url = "https://beta.sens.dk/exapi/1.0/patients/data/external/overview?project_key=" + project_key + "&patient_key=" + patient_key + "&day_count=" + dayCount + "";
-        JSONObject jsonObject;
-        String jsonStatusCode;
-        JSONArray jsonArray = null;
 
         // Try to process JSON data (String)
-
         try {
 
             //Check for status code here. 0 = "OK", 13 = "Analysis in progress"
 
             String jsonStr = jsonConnection.getJSON(url);
-            jsonObject = new JSONObject(jsonStr);
-            jsonStatusCode = jsonObject.getString("status_code");
-            jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
+            JSONObject jsonObject = new JSONObject(jsonStr);
+            String jsonStatusCode = jsonObject.getString("status_code");
+
+            Log.d("status_code was: ", jsonStatusCode+"");
+
+            JSONArray jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
 
             try {
 
@@ -100,7 +99,6 @@ public class DAO {
 
                     Log.d("JSON data updated!", "");
 
-
                     jsonData.get(i).setYear(Integer.parseInt(datesArr[0]));
                     jsonData.get(i).setMonth(Integer.parseInt(datesArr[1]));
                     jsonData.get(i).setDay(Integer.parseInt(datesArr[2]));
@@ -110,7 +108,6 @@ public class DAO {
 
                     //Split values from string by comma
                     String[] valuesArray = values.split(",");
-
 
                     jsonData.get(i).setResting(Double.parseDouble(valuesArray[0].replaceAll("[^0-9.]", "")));
                     jsonData.get(i).setStanding(Double.parseDouble(valuesArray[1].replaceAll("[^0-9.]", "")));
