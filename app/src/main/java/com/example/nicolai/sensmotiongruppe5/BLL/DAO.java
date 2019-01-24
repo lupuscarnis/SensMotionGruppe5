@@ -2,7 +2,6 @@ package com.example.nicolai.sensmotiongruppe5.BLL;
 
 import android.util.Log;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
@@ -70,7 +69,6 @@ public class DAO {
         try {
 
             //Check for status code here. 0 = "OK", 13 = "Analysis in progress"
-
             String jsonStr = jsonConnection.getJSON(url);
             JSONObject jsonObject = new JSONObject(jsonStr);
             String jsonStatusCode = jsonObject.getString("status_code");
@@ -116,6 +114,11 @@ public class DAO {
                     jsonData.get(i).setNodata(Double.parseDouble(valuesArray[6].replaceAll("[^0-9.]", "")));
                     jsonData.get(i).setSteps(Double.parseDouble(valuesArray[7].replaceAll("[^0-9.]", "")));
 
+                    if (jsonData.isEmpty()) {
+
+                        jsonData.add(new JSONData());
+                    }
+
                 }
 
             } catch (Exception e) {
@@ -126,14 +129,6 @@ public class DAO {
         } catch (Exception e) {
 
             Log.e(TAG, "Json parsing error 2: " + e.getMessage());
-        }
-
-        boolean isEmpty = jsonData.isEmpty();
-
-        if (isEmpty) {
-
-            Log.d("isEmptyisEmptyisEmpty","isEmpty");
-
         }
 
         return jsonData;
