@@ -29,11 +29,11 @@
                 android:id="@+id/choice1"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+
                 android:layout_weight="1"
                 android:background="@drawable/misc"
-                android:padding="8dp"
+                android:padding="1dp"
                 android:text="A"
                 android:textColor="#fff" />
 
@@ -41,13 +41,14 @@
                 android:id="@+id/choice2"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
-                android:layout_marginHorizontal="10dp"
-
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/misc"
-                android:padding="8dp"
+                android:padding="1dp"
                 android:text="B"
                 android:textColor="#fff" />
+
 
         </TableRow>
 
@@ -59,11 +60,10 @@
                 android:id="@+id/choice3"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
+
                 android:layout_weight="1"
                 android:background="@drawable/misc"
-                android:padding="8dp"
+                android:padding="1dp"
                 android:text="C"
                 android:textColor="#fff" />
 
@@ -71,12 +71,11 @@
                 android:id="@+id/choice4"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/misc"
-                android:padding="8dp"
-                android:text="C"
+                android:padding="1dp"
+                android:text="D"
                 android:textColor="#fff" />
         </TableRow>
 
