@@ -62,21 +62,39 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstGuess==false){firstGuess=true;}
+                if(firstGuess==false){firstGuess=true;}else{
+                    Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
+                    Highscore_controller  hsc = new Highscore_controller();
+                    hsc.createDatabaseReference();
+                    //  Highscore_controller hsc = new Highscore_controller();
+                    hsc.addScore(ent);
+                }
                 Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstGuess==false){firstGuess=true;}
+                if(firstGuess==false){firstGuess=true;}else{
+                    Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
+                    Highscore_controller  hsc = new Highscore_controller();
+                    hsc.createDatabaseReference();
+                    //  Highscore_controller hsc = new Highscore_controller();
+                    hsc.addScore(ent);
+                }
                 Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
         c3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstGuess==false){firstGuess=true;}
+                if(firstGuess==false){firstGuess=true;}else{
+                    Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
+                    Highscore_controller  hsc = new Highscore_controller();
+                    hsc.createDatabaseReference();
+                    //  Highscore_controller hsc = new Highscore_controller();
+                    hsc.addScore(ent);
+                }
                 Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });

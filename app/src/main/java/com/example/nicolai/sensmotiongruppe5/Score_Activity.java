@@ -121,7 +121,7 @@ public class Score_Activity extends Fragment {
 
                             Integer temp1 = Integer.parseInt(entryAList.get(i).getScore());
                             Integer temp2 = Integer.parseInt(entryAList.get(j).getScore());
-                            if (temp1 > temp2) {
+                            if (temp1 < temp2) {
                                 // if (entList.get(i).getScore().compareTo(entList.get(j).getScore()) > 0) {
                                 Entry enTemp = entryAList.get(i);
                                 entryAList.set(i, entryAList.get(j));
