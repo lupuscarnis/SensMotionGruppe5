@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -31,8 +30,8 @@ public class Achieve_Activity extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     static ArrayList<Achievements> data;
-    TextView achiView;
-    private Button share;
+    private TextView achiView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
