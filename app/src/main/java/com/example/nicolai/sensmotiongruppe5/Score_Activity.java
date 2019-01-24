@@ -54,6 +54,8 @@ public class Score_Activity extends Fragment {
         hsc.createDatabaseReference();
         b12 = superView.findViewById(R.id.button2);
         tv10 = superView.findViewById(R.id.textView10);
+        b12.setVisibility(View.GONE);
+        tv10.setVisibility(View.GONE);
         titleView = (TextView) superView.findViewById(R.id.textView11);
 
         String message = hsc.getKey(1);
@@ -61,14 +63,13 @@ public class Score_Activity extends Fragment {
         Log.i("message", message);
 
 
-
         b12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Entry ent = new Entry("Maj",  "2", "11");
+                Entry ent = new Entry("Maj", "2", "11");
                 hsc.addScore(ent);
                 Log.i("added to database", ent.toString());
-                adapter = new ScoreAdapter(getActivity(),entryAList );
+                adapter = new ScoreAdapter(getActivity(), entryAList);
                 scoreList.setAdapter(adapter);
             }
         });
@@ -80,73 +81,68 @@ public class Score_Activity extends Fragment {
 
                 Log.i("data change detected", dataSnapshot.toString());
                 entryAList.clear();
-               // Entry[] entArray = new Entry[(int) dataSnapshot.getChildrenCount()];
+                // Entry[] entArray = new Entry[(int) dataSnapshot.getChildrenCount()];
                 // for(int i = 0 ; dataSnapshot.getChildrenCount()>i; i++ )
                 for (DataSnapshot entrySnap : dataSnapshot.getChildren()) {
 
                     //  Entry ent = entrySnap.getValue(Entry.class);
-                   String[] tempArray ;
-                   String[] finArray = new String[3];
-                    if(!(entrySnap.getValue().toString().equals("navn")  ) && !entrySnap.getValue().toString().equals("point") ) {
-                    tempArray = entrySnap.getValue().toString().split("=");
+
+                    String[] tempArray;
+                    String[] finArray = new String[3];
+                    if (!(entrySnap.getValue().toString().equals("navn")) && !entrySnap.getValue().toString().equals("point")) {
+                        tempArray = entrySnap.getValue().toString().split("=");
+
+                        finArray[0] = tempArray[1].substring(0, tempArray[1].indexOf(","));
+                        finArray[1] = tempArray[2].substring(0, tempArray[2].indexOf(","));
+                        finArray[2] = tempArray[3].substring(0, tempArray[3].indexOf("}"));
 
 
-                       finArray[0] = tempArray[1].substring(0, tempArray[1].indexOf(","));
-                       finArray[1] = tempArray[2].substring(0, tempArray[2].indexOf(","));
-                       finArray[2] = tempArray[3].substring(0, tempArray[3].indexOf("}"));
-
-
-                       // finArray = tempArray[1].split(",").;
-                       Entry tempEnt = new Entry(finArray[0], finArray[2], finArray[1]);
-                       entryAList.add(tempEnt);
-                   }
+                        // finArray = tempArray[1].split(",").;
+                        Entry tempEnt = new Entry(finArray[0], finArray[2], finArray[1]);
+                        entryAList.add(tempEnt);
+                    }
                     //  nameList.add(entrySnap.getValue(String.class));
-
 
 
                     if (Strings.isEmptyOrWhitespace(text) && Strings.isEmptyOrWhitespace(text2)) {
 
-                    text = entrySnap.child("name").getValue(String.class);
+                        text = entrySnap.child("name").getValue(String.class);
 
-                    text2 =  entrySnap.child("score").getValue(Long.class).toString();
-                       
-                    nameList.add(text);
-                    scorList.add(text2);
+                        text2 = entrySnap.child("score").getValue(Long.class).toString();
+
+                        nameList.add(text);
+                        scorList.add(text2);
 
                     }
 
-                    for (int i = 0; i <entryAList.size(); i++) {
+                    for (int i = 0; i < entryAList.size(); i++) {
 
-                        for (int j = i + 1; j <entryAList.size(); j++) {
+                        for (int j = i + 1; j < entryAList.size(); j++) {
 
                             Integer temp1 = Integer.parseInt(entryAList.get(i).getScore());
                             Integer temp2 = Integer.parseInt(entryAList.get(j).getScore());
                             if (temp1 > temp2) {
                                 // if (entList.get(i).getScore().compareTo(entList.get(j).getScore()) > 0) {
                                 Entry enTemp = entryAList.get(i);
-                                entryAList.set(i,entryAList.get(j) );
+                                entryAList.set(i, entryAList.get(j));
                                 entryAList.set(j, enTemp);
                             }
                         }
                     }
 
 
-                    ScoreAdapter adapter = new ScoreAdapter(getActivity(), entryAList );
+                    ScoreAdapter adapter = new ScoreAdapter(getActivity(), entryAList);
                     scoreList.setAdapter(adapter);
                 }
                 if (!Strings.isEmptyOrWhitespace(nameList.get(0))) {
-                    Log.i("for loop ended", " here");
+
                     Log.i("data shows data", nameList.get(0));
                     tv10.setText(nameList.get(0));
                     tv10.setVisibility(View.GONE);
                     b12.setVisibility(View.GONE);
                     String tempText = "";
-                   /* for( int i = 0; 20>i ; i++){
-                        tempText+=entryAList.get(i).getName();
-                    }
-                tv10.setText(entryAList.get(0).getName());
-                */
-                    adapter = new ScoreAdapter(getActivity(),entryAList );
+
+                    adapter = new ScoreAdapter(getActivity(), entryAList);
                     scoreList.setAdapter(adapter);
                     //  tv10.setText(name);
                     //  Log.i("Data was changed", name);
@@ -155,7 +151,7 @@ public class Score_Activity extends Fragment {
             }
 
             @Override
-            public void onCancelled( DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
                 Log.i("Datacancel", "onCancelled: happened in score activity");
             }
         });
@@ -163,8 +159,6 @@ public class Score_Activity extends Fragment {
 
         return superView;
     }
-
-
 
 
 }
