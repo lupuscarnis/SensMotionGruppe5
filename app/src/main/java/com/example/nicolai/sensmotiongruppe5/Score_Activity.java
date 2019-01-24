@@ -36,18 +36,7 @@ public class Score_Activity extends Fragment {
     ListView scoreList;
     ScoreAdapter adapter;
 
-    /*
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_highscore);
 
-
-
-            // getReference("scores"));
-
-
-    */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
@@ -71,8 +60,7 @@ public class Score_Activity extends Fragment {
         tv10.setText(message);
         Log.i("message", message);
 
-       // adapter = new ScoreAdapter(getActivity(), entryAList );
-       // scoreList.setAdapter(adapter);
+
 
         b12.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,33 +78,24 @@ public class Score_Activity extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                Log.i("data change detected", " number 1");
+                Log.i("data change detected", dataSnapshot.toString());
                 entryAList.clear();
                // Entry[] entArray = new Entry[(int) dataSnapshot.getChildrenCount()];
                 // for(int i = 0 ; dataSnapshot.getChildrenCount()>i; i++ )
                 for (DataSnapshot entrySnap : dataSnapshot.getChildren()) {
-                    Log.i("data change detected", dataSnapshot.getChildren().toString());
 
-
-                    Log.i("new entry name is", entrySnap.getValue().toString());
                     //  Entry ent = entrySnap.getValue(Entry.class);
                    String[] tempArray ;
                    String[] finArray = new String[3];
                     if(!(entrySnap.getValue().toString().equals("navn")  ) && !entrySnap.getValue().toString().equals("point") ) {
                     tempArray = entrySnap.getValue().toString().split("=");
 
-                       Log.i("the last one is", entrySnap.getValue().toString());
+
                        finArray[0] = tempArray[1].substring(0, tempArray[1].indexOf(","));
                        finArray[1] = tempArray[2].substring(0, tempArray[2].indexOf(","));
                        finArray[2] = tempArray[3].substring(0, tempArray[3].indexOf("}"));
 
-                       Log.i("splitted 1", tempArray[0].toString());
-                       Log.i("splitted 2", tempArray[1].toString());
-                       Log.i("splitted 3", tempArray[2].toString());
-                       Log.i("splitted 4", tempArray[3].toString());
-                       Log.i("splitted 1", finArray[0].toString());
-                       Log.i("splitted 2", finArray[1].toString());
-                       Log.i("splitted 3", finArray[2].toString());
+
                        // finArray = tempArray[1].split(",").;
                        Entry tempEnt = new Entry(finArray[0], finArray[2], finArray[1]);
                        entryAList.add(tempEnt);
@@ -124,16 +103,13 @@ public class Score_Activity extends Fragment {
                     //  nameList.add(entrySnap.getValue(String.class));
 
 
-                   // long test = entrySnap.child("score").getValue(long.class);
 
-                    //Entry ent = entrySnap.getValue(Entry.class);
-//text2 = "hej";
                     if (Strings.isEmptyOrWhitespace(text) && Strings.isEmptyOrWhitespace(text2)) {
 
                     text = entrySnap.child("name").getValue(String.class);
-                    Log.i("found name", "here");
+
                     text2 =  entrySnap.child("score").getValue(Long.class).toString();
-                        Log.i("found number", "et tal");
+                       
                     nameList.add(text);
                     scorList.add(text2);
 
