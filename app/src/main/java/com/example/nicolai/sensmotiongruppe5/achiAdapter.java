@@ -73,6 +73,7 @@ public class achiAdapter extends RecyclerView.Adapter<achiAdapter.MyViewHolder> 
             if (!item.get(position).getCompleted()){
                 holder.aImage.setImageResource(R.drawable.achinot);
                 holder.achiDes.setText(item.get(position).getNotDes());
+                holder.date.setText("");
             }
             holder.achiName.setText(item.get(position).getName());
         }
