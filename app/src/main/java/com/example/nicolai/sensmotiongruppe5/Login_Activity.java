@@ -97,7 +97,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         });
 
         Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
-        Button helpButton =  findViewById(R.id.helpBtn);
+        //Button helpButton =  findViewById(R.id.helpBtn);
 
 
 
@@ -110,7 +110,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
 
 
-        helpButton.setOnClickListener(new OnClickListener() {
+        /*helpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -119,7 +119,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
 
             }
-        });
+        });*/
 
 
 
