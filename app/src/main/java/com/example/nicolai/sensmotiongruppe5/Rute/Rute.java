@@ -88,12 +88,12 @@ public class Rute {
                 // checks highlights
                 for (IHighlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
+                       // Her?
                         Achieve_Activity.Rutenotifications("Channel_ID321", "Her?", "Nico?");
                         if (y instanceof Text_Highlight && y.isRevealed() == false) {
                             y.setRevealed(true);
                             Fragment ft = Text_fragment.newInstance(y.getText());
                             rq.replaceFragment(ft, false);
-
 
                         }
                         if (y instanceof Quiz_Highlight && y.isRevealed() == false) {
