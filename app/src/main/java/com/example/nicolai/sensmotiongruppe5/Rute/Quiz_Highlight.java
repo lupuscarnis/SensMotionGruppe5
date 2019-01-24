@@ -5,6 +5,7 @@ import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import java.util.ArrayList;
 
 public class Quiz_Highlight implements IHighlight {
+    private boolean end = false;
     private float x;
     private float y;
     private float radius;
@@ -117,6 +118,16 @@ public class Quiz_Highlight implements IHighlight {
     @Override
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public boolean isEnd() {
+        return end;
+    }
+
+    @Override
+    public void setEnd(boolean end) {
+        this.end = end;
     }
 
 }

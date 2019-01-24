@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
@@ -101,6 +100,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         a.add("Wow it still you !?");
         a.add("Bitch Please!?");
         secret.setAnswers(a);
+        secret.setEnd(true);
         textHighlights.add(start);
         textHighlights.add(middle);
         textHighlights.add(end);

@@ -4,7 +4,7 @@ package com.example.nicolai.sensmotiongruppe5.Rute;
 import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 
 public class Text_Highlight implements IHighlight {
-
+    private boolean end = false;
     private float x;
     private float y;
     private float radius;
@@ -19,6 +19,16 @@ public class Text_Highlight implements IHighlight {
     @Override
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public boolean isEnd() {
+        return end;
+    }
+
+    @Override
+    public void setEnd(boolean end) {
+        this.end = end;
     }
 
     public Text_Highlight(float x, float y, float radius, Enum type, String name, boolean revealed) {

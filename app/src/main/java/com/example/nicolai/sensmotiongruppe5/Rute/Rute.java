@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
+import com.example.nicolai.sensmotiongruppe5.Fragments.End_fragment;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Quiz_fragment;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
@@ -26,15 +27,6 @@ public class Rute {
     private FragmentManager fragmentManager;
     private Rute_queue rq;
 
-    public float getWalked() {
-
-        return walked;
-    }
-
-    public void setWalked(float walked) {
-        this.walked = walked;
-    }
-
     public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights, FragmentManager fragmentManager) {
 
         context = ctx.getRootView().getContext();
@@ -47,6 +39,15 @@ public class Rute {
         calculateDistance(matrix);
         rq = Rute_queue.getInstance(fragmentManager);
 
+    }
+
+    public float getWalked() {
+
+        return walked;
+    }
+
+    public void setWalked(float walked) {
+        this.walked = walked;
     }
 
     public void draw(int[] movemnt, float storedWalk) {
@@ -98,9 +99,12 @@ public class Rute {
                             Fragment ft = Quiz_fragment.newInstance("", y.getText(), ((Quiz_Highlight) y).getAnswers());
                             rq.replaceFragment(ft, false);
 
-
-
                         }
+                        if (y.isEnd() == true) {
+                            Fragment ft = End_fragment.newInstance();
+                            rq.replaceFragment(ft, false);
+                        }
+
 
                     }
                 }
