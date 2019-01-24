@@ -59,7 +59,7 @@ mTimer.schedule(timertask,30000, 10*3000);
 
 
 //Testing purpose
-Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(steps), "Elias har fedet den " + Double.toString(exercise));
+//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(steps), "Elias har fedet den " + Double.toString(exercise));
 
 
 
