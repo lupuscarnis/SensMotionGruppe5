@@ -1,7 +1,11 @@
 package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -19,6 +23,7 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
     private TextView textview;
     private Button share, goBack;
     int n;
+    MediaPlayer winSound;
 
     EmojiRainLayout mContainer;
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+        winSound = MediaPlayer.create(this, R.raw.accelerate);
+        winSound.start();
 
 
             mContainer = findViewById(R.id.activity_win);

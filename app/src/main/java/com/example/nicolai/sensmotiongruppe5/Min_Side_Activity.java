@@ -45,7 +45,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
     ArrayList<JSONData> dataArray = new ArrayList<JSONData>();
     private Button walk, run, cycling;
     public int helpCounter = 0;
-    String dialogueMessage = "here is some nice help";
+    String dialogueMessage = "Her er noget hjælp";
     int dialogImage = R.drawable.setting;
     private Rute hello;
 
@@ -83,14 +83,14 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         ruteVectorsList.add(dave);
         textHighlights = new ArrayList<>();
         Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
-        start.setText("A new Beginning");
+        start.setText("En ny begyndelse");
         start.setStart(true);
         Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Hvor mange mennesker er der i fællesskabet om ringen?");
         ArrayList<String> s = new ArrayList();
-        s.add("0 humans ");
-        s.add("3 humans");
-        s.add("1 human");
-        s.add("2 humans");
+        s.add("0 Mennesker ");
+        s.add("3 Mennesker");
+        s.add("1 Mennesker");
+        s.add("2 Mennesker");
         middle.setAnswers(s);
         Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
         end.setText("Den første ringenes herre bog blev skrevet af Tolkien i 1954");
@@ -120,7 +120,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             FragmentTransaction sb = getChildFragmentManager().beginTransaction();
             sb.addToBackStack(null);
-            sb.add(R.id.highlight_frame, Default_fragment.newInstance("", ""));
+            sb.add(R.id.highlight_frame, Default_fragment.newInstance("0", "0", "0", "0"));
             sb.commit();
             Rute_queue.getInstance(null).replaceFragment(null, true);
         } else {
@@ -157,11 +157,11 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         View view1;    view1 = LayoutInflater.from(getActivity()).inflate(R.layout.activity_dialog_picture, null);
         TextView title = (TextView) view1.findViewById(R.id.title);
         ImageButton imageButton = (ImageButton) view1.findViewById(R.id.image);
-        title.setText("i'm here to help ");
+        title.setText("Jeg er her for at hjælpe ");
         builder.setMessage(dialogueMessage);
         view1.findViewById(R.id.dialogTv);
         imageButton.setImageResource(dialogImage);
-        builder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Begynd", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
                 //Toast.makeText(Min_Side_Activity.this, "Next", Toast.LENGTH_SHORT).show();
 
@@ -190,7 +190,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Annuller", new DialogInterface.OnClickListener() {
             @Override        public void onClick(DialogInterface dialogInterface, int i) {
                 //  Toast.makeText(Min_Side_Activity.this, "Cancel", Toast.LENGTH_SHORT).show();
                 helpCounter = 0;
