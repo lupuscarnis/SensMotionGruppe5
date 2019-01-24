@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Sens Motion Gruppe 5</string>
+    <string name="app_name">Gruppe 5 - Sens Motion</string>
     <string name="facebook_app_id">305895120059354</string>
     <string name="title_activity_login">Log Ind</string>
     <!-- Strings related to login -->
@@ -19,7 +19,7 @@
     <string name="text_user_login_help_button">Næste</string>
     <string name="text_user_return_button">Tilbage til login</string>
     <string name="text_user_password">Her skal du indtaste Projekt Nøgle</string>
-    <string name="group_members">Grp. 5 | Elias Valdemar Poulsen - s163312 | Nicolai Barnett - s163344 | Alan Jafi - s122417 | Sophus H. B. Weirsøe - s165485 | Kasper Mørk Valente - s163286</string>
+    <string name="group_members">Grp. 5 | Elias Valdemar Poulsen - s163312 | Nicolai Barnett - s163344 | Alan Jafi - s122417 | Sophus H. B. Weirsøe - s165485 | Kasper M. Valente - s163286</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
