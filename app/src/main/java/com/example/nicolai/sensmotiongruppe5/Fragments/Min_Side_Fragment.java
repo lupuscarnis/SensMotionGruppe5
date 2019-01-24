@@ -61,7 +61,6 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
         getActivity().startService(new Intent(getActivity(), backgroundService.class));
 
 
-
         new GetJSON().execute();
 
         Achieve_Fragment.completed(0);
@@ -131,11 +130,10 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
     }
 
 
-
     @Override
     public void onClick(View v) {
         int[] values = {0, 0, 0, 0};
-            values[0] = 5;
+        values[0] = 5;
         hello.draw(values, 0);
 
 
@@ -152,11 +150,12 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
      * Prompts to screen
      */
 
-    public void onHelp (final View view){
+    public void onHelp(final View view) {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View view1;    view1 = LayoutInflater.from(getActivity()).inflate(R.layout.activity_dialog_picture, null);
+        View view1;
+        view1 = LayoutInflater.from(getActivity()).inflate(R.layout.activity_dialog_picture, null);
         TextView title = view1.findViewById(R.id.title);
         ImageButton imageButton = view1.findViewById(R.id.image);
         title.setText("Jeg er her for at hjælpe ");
@@ -164,12 +163,13 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
         view1.findViewById(R.id.dialogTv);
         imageButton.setImageResource(dialogImage);
         builder.setPositiveButton("Begynd", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialogInterface, int i) {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
                 //Toast.makeText(Min_Side_Fragment.this, "Next", Toast.LENGTH_SHORT).show();
 
                 View vew = view;
 
-                switch (helpCounter){
+                switch (helpCounter) {
                     case 0:
                         dialogueMessage = " hjaelp nummer 2";
                         dialogImage = R.drawable.star2;
@@ -193,12 +193,14 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
             }
         });
         builder.setNegativeButton("Annuller", new DialogInterface.OnClickListener() {
-            @Override        public void onClick(DialogInterface dialogInterface, int i) {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
                 //  Toast.makeText(Min_Side_Fragment.this, "Cancel", Toast.LENGTH_SHORT).show();
                 helpCounter = 0;
             }
         });
-        builder.setView(view1);    builder.show();
+        builder.setView(view1);
+        builder.show();
 
 
     }
@@ -232,7 +234,7 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
         protected void onPreExecute() {
 
             super.onPreExecute();
-            Toast.makeText(getActivity(),"Opdaterer data...",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Opdaterer data...", Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -253,7 +255,7 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
 
             super.onPostExecute(result);
 
-            Toast.makeText(getActivity(),"Opdatering fuldført...",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Opdatering fuldført...", Toast.LENGTH_LONG).show();
 
             // For debugging
             //Toast.makeText(getActivity(), "Dates: " + Arrays.toString(allDates) +"", Toast.LENGTH_LONG).show();

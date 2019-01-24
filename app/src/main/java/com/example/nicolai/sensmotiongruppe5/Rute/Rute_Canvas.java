@@ -70,9 +70,9 @@ public class Rute_Canvas extends View {
 
         canvas.drawBitmap(bitmap1, mx, my, null);
 
-        
 
     }
+
     public void drawMan(float endX, float endY) {
         mx = endX - 20;
         my = endY - 20;
@@ -82,8 +82,8 @@ public class Rute_Canvas extends View {
     }
 
 
-    public void drawRute(float startX, float startY,float endX,float endY) {
-        canvas.drawLine(startX, startY,endX,endY,mPaint);
+    public void drawRute(float startX, float startY, float endX, float endY) {
+        canvas.drawLine(startX, startY, endX, endY, mPaint);
         invalidate();
     }
 
@@ -92,7 +92,6 @@ public class Rute_Canvas extends View {
         canvas.drawCircle(endX, endY, radius, mBitmapPaint);
         invalidate();
     }
-
 
 
 }

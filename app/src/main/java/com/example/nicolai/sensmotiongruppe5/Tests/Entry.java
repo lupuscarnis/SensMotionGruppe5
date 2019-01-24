@@ -1,8 +1,7 @@
 package com.example.nicolai.sensmotiongruppe5.Tests;
 
-public class Entry{
+public class Entry {
     String name, id, score;
-
 
 
     public Entry(String name, String score, String id) {
@@ -11,7 +10,8 @@ public class Entry{
         this.id = id;
     }
 
-    public Entry() {}
+    public Entry() {
+    }
 
 
     public String getName() {

@@ -230,8 +230,6 @@
             app:layout_constraintStart_toEndOf="@+id/button7" />
 
 
-
-
     </android.support.constraint.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

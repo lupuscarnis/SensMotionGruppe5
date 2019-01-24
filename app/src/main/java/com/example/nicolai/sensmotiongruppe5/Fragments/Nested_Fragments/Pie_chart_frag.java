@@ -96,9 +96,6 @@ public class Pie_chart_frag extends Fragment {
         }).execute();
 
 
-
-
-
     }
 
     @Override

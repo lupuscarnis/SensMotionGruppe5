@@ -1,8 +1,10 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class DAO {
@@ -73,7 +75,7 @@ public class DAO {
             JSONObject jsonObject = new JSONObject(jsonStr);
             String jsonStatusCode = jsonObject.getString("status_code");
 
-            Log.d("status_code was: ", jsonStatusCode+"");
+            Log.d("status_code was: ", jsonStatusCode + "");
 
             JSONArray jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
 

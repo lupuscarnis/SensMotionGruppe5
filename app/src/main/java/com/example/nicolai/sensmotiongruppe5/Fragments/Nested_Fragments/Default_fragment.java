@@ -77,10 +77,6 @@ public class Default_fragment extends Fragment implements IChild_OnFragmentInter
     }
 
 
-
-
-
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

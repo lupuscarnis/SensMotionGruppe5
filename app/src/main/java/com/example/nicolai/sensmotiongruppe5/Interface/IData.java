@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public interface IData {
 
     /**
-     *
      * @param startDate
      * @param endDate
      * @return all available data in date range as a String array
@@ -15,13 +14,11 @@ public interface IData {
     ArrayList<String> setCurrentData(String startDate, String endDate);
 
     /**
-     *
      * @return all available dates as a String array
      */
     String[] getAllDates();
 
     /**
-     *
      * @return all information
      */
     ArrayList<JSONData> getAllInfoAsObjects();
@@ -61,12 +58,14 @@ public interface IData {
 
     /**
      * Returns dates in interval set in DAO
+     *
      * @return
      */
     ArrayList<String> getIntervalDates();
 
     /**
      * Returns a sum of a given activity
+     *
      * @param activity
      * @return
      */

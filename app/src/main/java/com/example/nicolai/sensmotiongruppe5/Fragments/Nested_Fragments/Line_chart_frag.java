@@ -35,6 +35,7 @@ public class Line_chart_frag extends Fragment {
     private LineChartView lineChartView;
     private IChild_OnFragmentInteractionListener mListener;
     private View view;
+
     public Line_chart_frag() {
 
 
@@ -161,7 +162,6 @@ public class Line_chart_frag extends Fragment {
             }
         }).execute();
         //initialize the data for X-Axis.
-
 
 
     }

@@ -1,9 +1,9 @@
 package com.example.nicolai.sensmotiongruppe5.Interface;
 
- public interface IHighlight {
+public interface IHighlight {
 
 
-     Enum getType();
+    Enum getType();
 
     void setType(Enum type);
 
@@ -27,19 +27,18 @@ package com.example.nicolai.sensmotiongruppe5.Interface;
 
     void setRadius(float radius);
 
-     String getText();
+    String getText();
 
-     void setText(String text);
-
-
-     boolean isEnd();
-
-     void setEnd(boolean end);
-
-     boolean isStart();
-
-     void setStart(boolean start);
+    void setText(String text);
 
 
+    boolean isEnd();
 
- }
+    void setEnd(boolean end);
+
+    boolean isStart();
+
+    void setStart(boolean start);
+
+
+}

@@ -14,32 +14,32 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-
-
 public class backgroundService extends Service {
-private Timer mTimer;
-static DAO userDAO = DAO.getInstance();
-double walking;
-double resting;
-double standing;
-double cycling;
-double exercise;
-double steps;
+    private Timer mTimer;
+    static DAO userDAO = DAO.getInstance();
+    double walking;
+    double resting;
+    double standing;
+    double cycling;
+    double exercise;
+    double steps;
 
 
-ArrayList<JSONData> data;
+    ArrayList<JSONData> data;
 
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
+
     @Override
-    public void onCreate(){
-super.onCreate();
-mTimer = new Timer();
-mTimer.schedule(timertask,30000, 10*3000);
+    public void onCreate() {
+        super.onCreate();
+        mTimer = new Timer();
+        mTimer.schedule(timertask, 30000, 10 * 3000);
 
     }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
@@ -49,7 +49,7 @@ mTimer.schedule(timertask,30000, 10*3000);
     TimerTask timertask = new TimerTask() {
 
         @Override
-        public void run(){
+        public void run() {
 
             walking = getSum("walking");
             resting = getSum("resting");
@@ -63,16 +63,15 @@ mTimer.schedule(timertask,30000, 10*3000);
 //Achieve_Fragment.notifications("Channel_ID123", "Elias har gået " + Double.toString(steps), "Elias har fedet den " + Double.toString(exercise));
 
 
-
             if (walking >= 60) {
                 Achieve_Fragment.completed(4);
             }
 
-            if (walking >= 60*10) {
+            if (walking >= 60 * 10) {
                 Achieve_Fragment.completed(5);
             }
 
-            if (walking >= 60*1000) {
+            if (walking >= 60 * 1000) {
                 Achieve_Fragment.completed(6);
             }
 
@@ -80,11 +79,11 @@ mTimer.schedule(timertask,30000, 10*3000);
                 Achieve_Fragment.completed(7);
             }
 
-            if (cycling >= 60*10) {
+            if (cycling >= 60 * 10) {
                 Achieve_Fragment.completed(8);
             }
 
-            if (cycling >= 60*1000) {
+            if (cycling >= 60 * 1000) {
                 Achieve_Fragment.completed(9);
             }
 
@@ -92,11 +91,11 @@ mTimer.schedule(timertask,30000, 10*3000);
                 Achieve_Fragment.completed(10);
             }
 
-            if (exercise >= 60*10) {
+            if (exercise >= 60 * 10) {
                 Achieve_Fragment.completed(11);
             }
 
-            if (exercise >= 60*1000) {
+            if (exercise >= 60 * 1000) {
                 Achieve_Fragment.completed(12);
             }
 
@@ -113,7 +112,8 @@ mTimer.schedule(timertask,30000, 10*3000);
             }
 
 
-  }};
+        }
+    };
 
     @Override
     public void onDestroy() {
@@ -164,7 +164,8 @@ mTimer.schedule(timertask,30000, 10*3000);
         return data;
 
 
-}}
+    }
+}
 
 /*package com.example.nicolai.sensmotiongruppe5;
 

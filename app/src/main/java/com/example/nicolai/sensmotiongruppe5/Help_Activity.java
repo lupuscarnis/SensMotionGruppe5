@@ -39,7 +39,7 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
         writtenText = findViewById(R.id.help_textbox);
         input = findViewById(R.id.help_input);
         mp = MediaPlayer.create(getApplicationContext(), R.raw.bruger_id);
-       
+
 
         //Sets the Text on screen
         writtenText.setText(R.string.text_user_login_help);
@@ -54,7 +54,6 @@ public class Help_Activity extends AppCompatActivity implements View.OnClickList
         play.setOnClickListener(this);
         next.setOnClickListener(this);
         mp.setOnCompletionListener(this);
-
 
 
     }

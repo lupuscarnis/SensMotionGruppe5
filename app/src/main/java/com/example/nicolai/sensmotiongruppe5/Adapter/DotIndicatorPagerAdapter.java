@@ -17,7 +17,9 @@ public class DotIndicatorPagerAdapter extends PagerAdapter {
     private static final List<Item> items =
             Arrays.asList(new Item(R.color.colorAccent), new Item(R.color.colorPrimary));
 
-    @NonNull @Override public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    @NonNull
+    @Override
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View item = LayoutInflater.from(container.getContext())
                 .inflate(R.layout.activity_min__data, container, false);
         //CardView cardView = item.findViewById(R.id.card_view);
@@ -27,11 +29,13 @@ public class DotIndicatorPagerAdapter extends PagerAdapter {
         return item;
     }
 
-    @Override public int getCount() {
+    @Override
+    public int getCount() {
         return items.size();
     }
 
-    @Override public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+    @Override
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object;
     }
 

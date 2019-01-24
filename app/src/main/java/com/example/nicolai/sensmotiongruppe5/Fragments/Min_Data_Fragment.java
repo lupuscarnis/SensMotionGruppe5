@@ -43,9 +43,8 @@ public class Min_Data_Fragment extends Fragment {
     private IParent_OnFragmentInteractionListener mListener;
     private View rootView;
     private ViewPager pager;
-    private TextView textView1, textView2, textView3,textView4, textView5,textView6, textView7;
+    private TextView textView1, textView2, textView3, textView4, textView5, textView6, textView7;
     private Button button1, button2, button3, button4, button5, button6, button7;
-
 
 
     @Override
@@ -53,20 +52,11 @@ public class Min_Data_Fragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-
-
-
-
-
-
-
-
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.activity_min__data, drawer_layout, false);
 
 
         }
-
 
 
         //View pager dots
@@ -79,38 +69,38 @@ public class Min_Data_Fragment extends Fragment {
         viewPager.setPadding(30, 0, 30, 0);
         springDotsIndicator.setViewPager(viewPager);
 
-        button1 = rootView.findViewById( R.id.button1 );
-        button2 = rootView.findViewById( R.id.button2 );
-        button3 = rootView.findViewById( R.id.button3 );
-        button4 = rootView.findViewById( R.id.button4 );
-        button5 = rootView.findViewById( R.id.button5 );
-        button6 = rootView.findViewById( R.id.button6 );
-        button7 = rootView.findViewById( R.id.button7 );
+        button1 = rootView.findViewById(R.id.button1);
+        button2 = rootView.findViewById(R.id.button2);
+        button3 = rootView.findViewById(R.id.button3);
+        button4 = rootView.findViewById(R.id.button4);
+        button5 = rootView.findViewById(R.id.button5);
+        button6 = rootView.findViewById(R.id.button6);
+        button7 = rootView.findViewById(R.id.button7);
 
-        textView1 = rootView.findViewById( R.id.textView1 );
-        textView2 =rootView.findViewById( R.id.textView2 );
-        textView3 =rootView.findViewById( R.id.textView3 );
-        textView4 =rootView.findViewById( R.id.textView4);
-        textView5=rootView.findViewById( R.id.textView5 );
-        textView6 =rootView.findViewById( R.id.textView6 );
-        textView7 =rootView.findViewById( R.id.textView7 );
+        textView1 = rootView.findViewById(R.id.textView1);
+        textView2 = rootView.findViewById(R.id.textView2);
+        textView3 = rootView.findViewById(R.id.textView3);
+        textView4 = rootView.findViewById(R.id.textView4);
+        textView5 = rootView.findViewById(R.id.textView5);
+        textView6 = rootView.findViewById(R.id.textView6);
+        textView7 = rootView.findViewById(R.id.textView7);
 
-        textView1.setText( "I ro");
-        textView2.setText( "Stående");
-        textView3.setText( "Gående");
-        textView4.setText( "Trænende");
-        textView5.setText( "Cyklende");
-        textView6.setText( "Anden bevægelse");
-        textView7.setText( "Ingen Data");
+        textView1.setText("I ro");
+        textView2.setText("Stående");
+        textView3.setText("Gående");
+        textView4.setText("Trænende");
+        textView5.setText("Cyklende");
+        textView6.setText("Anden bevægelse");
+        textView7.setText("Ingen Data");
 
 
         button1.setBackgroundColor(Color.BLUE);
         button2.setBackgroundColor(Color.GRAY);
         button3.setBackgroundColor(Color.RED);
         button4.setBackgroundColor(Color.BLACK);
-        button5.setBackgroundColor(Color.parseColor( "#006400" ));//GREEN
-        button6.setBackgroundColor(Color.parseColor( "#FFD700")); //GOLD
-        button7.setBackgroundColor(Color.parseColor( "#9932CC" ));//PURPLE
+        button5.setBackgroundColor(Color.parseColor("#006400"));//GREEN
+        button6.setBackgroundColor(Color.parseColor("#FFD700")); //GOLD
+        button7.setBackgroundColor(Color.parseColor("#9932CC"));//PURPLE
 
         textView1.setTextColor(Color.BLACK);
         textView2.setTextColor(Color.BLACK);
@@ -121,13 +111,7 @@ public class Min_Data_Fragment extends Fragment {
         textView7.setTextColor(Color.BLACK);
 
 
-
-
-
-
-
         // Range Seekerbar start
-
 
 
         bar = rootView.findViewById(R.id.Min_data_range_silder);
@@ -155,7 +139,7 @@ public class Min_Data_Fragment extends Fragment {
 
 
         bar.setOnRangeChangedListener(new OnRangeChangedListener() {
-            float left,right;
+            float left, right;
 
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
@@ -184,7 +168,6 @@ public class Min_Data_Fragment extends Fragment {
             }
         });
         // Range Seekerbar end
-
 
 
         return rootView;
@@ -292,10 +275,6 @@ class GetData extends AsyncTask<IData, Void, String[]> {
         void processFinish(String[] output);
     }
 }
-
-
-
-
 
 
 class MyPageAdapter extends FragmentPagerAdapter {

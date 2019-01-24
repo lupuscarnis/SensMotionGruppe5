@@ -73,6 +73,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     ArrayList<Achievements> achi;
     private Button help;
     private Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,12 +83,9 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         createChannel("Channel_ID321");
 
 
-
-
-
         addIfEmty(getAchivements(), "key");
-        mEmailView =  findViewById(R.id.email);
-        mPasswordView =  findViewById(R.id.password);
+        mEmailView = findViewById(R.id.email);
+        mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -101,7 +99,6 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
         Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
         //Button helpButton =  findViewById(R.id.helpBtn);
-
 
 
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -125,19 +122,17 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         });*/
 
 
-
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
-
 
 
     public void createChannel(String CHANNEL_ID) {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-       //     CharSequence name = getString(R.string.channel_name);
-          //  String description = getString(R.string.channel_description);
+            //     CharSequence name = getString(R.string.channel_name);
+            //  String description = getString(R.string.channel_description);
             String description = "Beskrivelse";
             String name = "android_channel";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
@@ -154,7 +149,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         }
     }
 
-    public void saveArrayList(ArrayList<Achievements> list, String key){
+    public void saveArrayList(ArrayList<Achievements> list, String key) {
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
@@ -164,44 +159,43 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     }
 
 
-    private void addIfEmty(ArrayList<Achievements> list, String key){
+    private void addIfEmty(ArrayList<Achievements> list, String key) {
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = prefs.getString(key, null);
-        Type type = new TypeToken<ArrayList<Achievements>>() {}.getType();
+        Type type = new TypeToken<ArrayList<Achievements>>() {
+        }.getType();
 
-       if (gson.fromJson(json, type) == null){
+        if (gson.fromJson(json, type) == null) {
 
-           saveArrayList(list,key);
-           }
-
-
-}
-public ArrayList<Achievements> getAchivements(){
-
-    achi = new ArrayList<>();
-    achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang", ""));
-    achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute", ""));
-    achi.add(new Achievements("3x Ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter", ""));
-    achi.add(new Achievements("10x Ruter", false, "Du har nu gennemført 10 ruter", "For at opnå denne achievement, skal du gennemføre 10 ruter", ""));
-    achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time", ""));
-    achi.add(new Achievements("Gå 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer", ""));
-    achi.add(new Achievements("Gå 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer", ""));
-    achi.add(new Achievements("Cyklet en time", false, "Flot! du har cyklet en time, og dermed gjort dig fortjent til denne achievement. cykel endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have cyklet i mindst en time", ""));
-    achi.add(new Achievements("Cyklet 10 timer", false, "Du har nu cyklet i 10 timer", "cyklet 10 timer", ""));
-    achi.add(new Achievements("Cyklet 100 timer", false, "Du har nu cyklet i 10 timer", "cyklet 100 timer", ""));
-    achi.add(new Achievements("Træn en time", false, "Flot! du har trænet en time, og dermed gjort dig fortjent til denne achievement. Træn endnu mere for flere achievements", "For at opnå denne achievement, skal du samlet have trænet i mindst en time", ""));
-    achi.add(new Achievements("Træn 10 timer", false, "Du har nu trænet i 10 timer", "trænet 10 timer", ""));
-    achi.add(new Achievements("Træn 100 timer", false, "Du har nu trænet i 10 timer", "trænet 100 timer", ""));
-    achi.add(new Achievements("Gå 2500 skridt", false, "Flot! du har gået 2500 skridt, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet gå 2500", ""));
-    achi.add(new Achievements("Gå 10000 skridt", false, "Du har nu gået 10000 skridt", "gå 10000 skridt", ""));
-    achi.add(new Achievements("Gå 25000 skridt", false, "Du har nu gået 25000 skridt", "gå 25000 skridt", ""));
+            saveArrayList(list, key);
+        }
 
 
+    }
+
+    public ArrayList<Achievements> getAchivements() {
+
+        achi = new ArrayList<>();
+        achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang", ""));
+        achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute", ""));
+        achi.add(new Achievements("3x Ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter", ""));
+        achi.add(new Achievements("10x Ruter", false, "Du har nu gennemført 10 ruter", "For at opnå denne achievement, skal du gennemføre 10 ruter", ""));
+        achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time", ""));
+        achi.add(new Achievements("Gå 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer", ""));
+        achi.add(new Achievements("Gå 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer", ""));
+        achi.add(new Achievements("Cyklet en time", false, "Flot! du har cyklet en time, og dermed gjort dig fortjent til denne achievement. cykel endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have cyklet i mindst en time", ""));
+        achi.add(new Achievements("Cyklet 10 timer", false, "Du har nu cyklet i 10 timer", "cyklet 10 timer", ""));
+        achi.add(new Achievements("Cyklet 100 timer", false, "Du har nu cyklet i 10 timer", "cyklet 100 timer", ""));
+        achi.add(new Achievements("Træn en time", false, "Flot! du har trænet en time, og dermed gjort dig fortjent til denne achievement. Træn endnu mere for flere achievements", "For at opnå denne achievement, skal du samlet have trænet i mindst en time", ""));
+        achi.add(new Achievements("Træn 10 timer", false, "Du har nu trænet i 10 timer", "trænet 10 timer", ""));
+        achi.add(new Achievements("Træn 100 timer", false, "Du har nu trænet i 10 timer", "trænet 100 timer", ""));
+        achi.add(new Achievements("Gå 2500 skridt", false, "Flot! du har gået 2500 skridt, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet gå 2500", ""));
+        achi.add(new Achievements("Gå 10000 skridt", false, "Du har nu gået 10000 skridt", "gå 10000 skridt", ""));
+        achi.add(new Achievements("Gå 25000 skridt", false, "Du har nu gået 25000 skridt", "gå 25000 skridt", ""));
 
 
-
-    return achi;
+        return achi;
     }
 
 
@@ -408,9 +402,9 @@ public ArrayList<Achievements> getAchivements(){
 
             if (success) {
                 Log.d("Login", "Login Succesful");
-                SharedPrefs.getInstance().saveString(Login_Activity.this,"u7tRx9","patientKey", true);
-                SharedPrefs.getInstance().saveString(Login_Activity.this,"k5W2uX","projectKey", true);
-                Intent i = new Intent(Login_Activity.this,nav_drawer.class);
+                SharedPrefs.getInstance().saveString(Login_Activity.this, "u7tRx9", "patientKey", true);
+                SharedPrefs.getInstance().saveString(Login_Activity.this, "k5W2uX", "projectKey", true);
+                Intent i = new Intent(Login_Activity.this, nav_drawer.class);
                 finish();
                 startActivity(i);
             } else {
@@ -426,7 +420,6 @@ public ArrayList<Achievements> getAchivements(){
             showProgress(false);
         }
     }
-
 
 
 }

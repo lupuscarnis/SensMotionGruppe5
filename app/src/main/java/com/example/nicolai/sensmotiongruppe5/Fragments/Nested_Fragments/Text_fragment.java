@@ -25,6 +25,7 @@ public class Text_fragment extends android.support.v4.app.Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     public Text_fragment() {
 
     }
@@ -34,6 +35,7 @@ public class Text_fragment extends android.support.v4.app.Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

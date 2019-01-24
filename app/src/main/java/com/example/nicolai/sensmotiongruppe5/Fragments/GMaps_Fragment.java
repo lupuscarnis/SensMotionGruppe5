@@ -36,7 +36,6 @@ import java.util.Random;
 
 /**
  * Made with help from https://github.com/ddewaele/GoogleMapsV2WithActionBarSherlock
- *
  */
 public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
 
@@ -129,25 +128,25 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void addDefaultLocations() {
-        addMarkerToMap(new LatLng(55.6914211, 12.5949792), "Her starter ruten.","" , true);
-        addMarkerToMap(new LatLng(55.6914302, 12.5949792), "Har du husket vandrestøvlerne?","" , false);
-        addMarkerToMap(new LatLng(55.6923343, 12.5949524), "Hvis du kigger til venstre kan du se en måge","" , false);
-        addMarkerToMap(new LatLng(55.6928694, 12.5951777), "Godt gået!","" , true);
-        addMarkerToMap(new LatLng(55.6934016, 12.5954513), "","" , false);
-        addMarkerToMap(new LatLng(55.6935618, 12.5956605), "","" , false);
-        addMarkerToMap(new LatLng(55.6935104, 12.5958322), "Godt gået!","" , false);
-        addMarkerToMap(new LatLng(55.6935346, 12.5965457), "","" , false);
-        addMarkerToMap(new LatLng(55.6936283, 12.5972538), "Move it!","" , true);
-        addMarkerToMap(new LatLng(55.6936314, 12.5977634), "","" , false);
-        addMarkerToMap(new LatLng(55.6935316, 12.5984768), "","" , false);
-        addMarkerToMap(new LatLng(55.6934288, 12.5989435), "Godt gået!","" , false);
-        addMarkerToMap(new LatLng(55.6933955, 12.599083), "","" , false);
-        addMarkerToMap(new LatLng(55.6932232, 12.5990562), "Godt gået!","" , false);
-        addMarkerToMap(new LatLng(55.6931325, 12.5992171), "","" , false);
-        addMarkerToMap(new LatLng(55.6930841, 12.5991849), "","" , false);
-        addMarkerToMap(new LatLng(55.6930267, 12.5992118), "","" , false);
-        addMarkerToMap(new LatLng(55.6929843, 12.599244), "","" , false);
-        addMarkerToMap(new LatLng(55.6929178, 12.5992064), "Du er nu ankommet til den lille havfrue","Vidste du at den lille havfrue..." , true);
+        addMarkerToMap(new LatLng(55.6914211, 12.5949792), "Her starter ruten.", "", true);
+        addMarkerToMap(new LatLng(55.6914302, 12.5949792), "Har du husket vandrestøvlerne?", "", false);
+        addMarkerToMap(new LatLng(55.6923343, 12.5949524), "Hvis du kigger til venstre kan du se en måge", "", false);
+        addMarkerToMap(new LatLng(55.6928694, 12.5951777), "Godt gået!", "", true);
+        addMarkerToMap(new LatLng(55.6934016, 12.5954513), "", "", false);
+        addMarkerToMap(new LatLng(55.6935618, 12.5956605), "", "", false);
+        addMarkerToMap(new LatLng(55.6935104, 12.5958322), "Godt gået!", "", false);
+        addMarkerToMap(new LatLng(55.6935346, 12.5965457), "", "", false);
+        addMarkerToMap(new LatLng(55.6936283, 12.5972538), "Move it!", "", true);
+        addMarkerToMap(new LatLng(55.6936314, 12.5977634), "", "", false);
+        addMarkerToMap(new LatLng(55.6935316, 12.5984768), "", "", false);
+        addMarkerToMap(new LatLng(55.6934288, 12.5989435), "Godt gået!", "", false);
+        addMarkerToMap(new LatLng(55.6933955, 12.599083), "", "", false);
+        addMarkerToMap(new LatLng(55.6932232, 12.5990562), "Godt gået!", "", false);
+        addMarkerToMap(new LatLng(55.6931325, 12.5992171), "", "", false);
+        addMarkerToMap(new LatLng(55.6930841, 12.5991849), "", "", false);
+        addMarkerToMap(new LatLng(55.6930267, 12.5992118), "", "", false);
+        addMarkerToMap(new LatLng(55.6929843, 12.599244), "", "", false);
+        addMarkerToMap(new LatLng(55.6929178, 12.5992064), "Du er nu ankommet til den lille havfrue", "Vidste du at den lille havfrue...", true);
     }
 
     private Animator animator = new Animator();
@@ -156,7 +155,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
     int currentPt;
 
     CancelableCallback MyCancelableCallback =
-            new CancelableCallback(){
+            new CancelableCallback() {
 
                 @Override
                 public void onCancel() {
@@ -167,21 +166,21 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
                 public void onFinish() {
 
 
-                    if(++currentPt < markers.size()){
+                    if (++currentPt < markers.size()) {
 
-                        float targetBearing = bearingBetweenLatLngs( gMap.getCameraPosition().target, markers.get(currentPt).getPosition());
+                        float targetBearing = bearingBetweenLatLngs(gMap.getCameraPosition().target, markers.get(currentPt).getPosition());
 
                         LatLng targetLatLng = markers.get(currentPt).getPosition();
                         //float targetZoom = zoomBar.getProgress();
 
 
-                        System.out.println("currentPt  = " + currentPt  );
+                        System.out.println("currentPt  = " + currentPt);
                         System.out.println("size  = " + markers.size());
                         //Create a new CameraPosition
                         CameraPosition cameraPosition =
                                 new CameraPosition.Builder()
                                         .target(targetLatLng)
-                                        .tilt(currentPt<markers.size()-1 ? 90 : 0)
+                                        .tilt(currentPt < markers.size() - 1 ? 90 : 0)
                                         .bearing(targetBearing)
                                         .zoom(gMap.getCameraPosition().zoom)
                                         .build();
@@ -196,7 +195,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
 
                         markers.get(currentPt).showInfoWindow();
 
-                    }else{
+                    } else {
                         //info.setText("onFinish()");
                     }
 
@@ -216,7 +215,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
 
         float tilt = 90;
         float zoom = 15.5f;
-        boolean upward=true;
+        boolean upward = true;
 
         long start = SystemClock.uptimeMillis();
 
@@ -264,7 +263,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
         private void setupCameraPositionForMovement(LatLng markerPos,
                                                     LatLng secondPos) {
 
-            float bearing = bearingBetweenLatLngs(markerPos,secondPos);
+            float bearing = bearingBetweenLatLngs(markerPos, secondPos);
 
             trackingMarker = gMap.addMarker(new MarkerOptions().position(markerPos)
                     .title("")
@@ -275,7 +274,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
                             .target(markerPos)
                             .bearing(bearing + BEARING_OFFSET)
                             .tilt(90)
-                            .zoom(gMap.getCameraPosition().zoom >=16 ? gMap.getCameraPosition().zoom : 16)
+                            .zoom(gMap.getCameraPosition().zoom >= 16 ? gMap.getCameraPosition().zoom : 16)
                             .build();
 
             gMap.animateCamera(
@@ -326,7 +325,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
         }
 
         public void startAnimation(boolean showPolyLine) {
-            if (markers.size()>2) {
+            if (markers.size() > 2) {
                 animator.initialize(showPolyLine);
             }
         }
@@ -336,13 +335,13 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
         public void run() {
 
             long elapsed = SystemClock.uptimeMillis() - start;
-            double t = interpolator.getInterpolation((float)elapsed/ANIMATE_SPEEED);
+            double t = interpolator.getInterpolation((float) elapsed / ANIMATE_SPEEED);
 
 //			LatLng endLatLng = getEndLatLng();
 //			LatLng beginLatLng = getBeginLatLng();
 
-            double lat = t * endLatLng.latitude + (1-t) * beginLatLng.latitude;
-            double lng = t * endLatLng.longitude + (1-t) * beginLatLng.longitude;
+            double lat = t * endLatLng.latitude + (1 - t) * beginLatLng.latitude;
+            double lng = t * endLatLng.longitude + (1 - t) * beginLatLng.longitude;
             LatLng newPosition = new LatLng(lat, lng);
 
             trackingMarker.setPosition(newPosition);
@@ -355,13 +354,13 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
             //navigateToPoint(newPosition,tilt,bearing,currentZoom,false);
             //navigateToPoint(newPosition,false);
 
-            if (t< 1) {
+            if (t < 1) {
                 mHandler.postDelayed(this, 16);
             } else {
 
                 System.out.println("Move to next marker.... current = " + currentIndex + " and size = " + markers.size());
                 // imagine 5 elements -  0|1|2|3|4 currentindex must be smaller than 4
-                if (currentIndex<markers.size()-2) {
+                if (currentIndex < markers.size() - 2) {
 
                     currentIndex++;
 
@@ -381,7 +380,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
                     CameraPosition cameraPosition =
                             new CameraPosition.Builder()
                                     .target(end) // changed this...
-                                    .bearing(bearingL  + BEARING_OFFSET)
+                                    .bearing(bearingL + BEARING_OFFSET)
                                     .tilt(tilt)
                                     .zoom(gMap.getCameraPosition().zoom)
                                     .build();
@@ -406,10 +405,8 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
         }
 
 
-
-
         private LatLng getEndLatLng() {
-            return markers.get(currentIndex+1).getPosition();
+            return markers.get(currentIndex + 1).getPosition();
         }
 
         private LatLng getBeginLatLng() {
@@ -422,19 +419,19 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
             //System.out.println("zoom = " + zoom);
             if (upward) {
 
-                if (tilt<90) {
-                    tilt ++;
-                    zoom-=0.01f;
+                if (tilt < 90) {
+                    tilt++;
+                    zoom -= 0.01f;
                 } else {
-                    upward=false;
+                    upward = false;
                 }
 
             } else {
-                if (tilt>0) {
-                    tilt --;
-                    zoom+=0.01f;
+                if (tilt > 0) {
+                    tilt--;
+                    zoom += 0.01f;
                 } else {
-                    upward=true;
+                    upward = true;
                 }
             }
         }
@@ -443,7 +440,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
     /**
      * Allows us to navigate to a certain point.
      */
-    public void navigateToPoint(LatLng latLng,float tilt, float bearing, float zoom,boolean animate) {
+    public void navigateToPoint(LatLng latLng, float tilt, float bearing, float zoom, boolean animate) {
         CameraPosition position =
                 new CameraPosition.Builder().target(latLng)
                         .zoom(zoom)
@@ -478,9 +475,9 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
         return loc;
     }
 
-    private float bearingBetweenLatLngs(LatLng begin,LatLng end) {
-        Location beginL= convertLatLngToLocation(begin);
-        Location endL= convertLatLngToLocation(end);
+    private float bearingBetweenLatLngs(LatLng begin, LatLng end) {
+        Location beginL = convertLatLngToLocation(begin);
+        Location endL = convertLatLngToLocation(end);
 
         return beginL.bearingTo(endL);
     }
@@ -555,7 +552,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
 
         //Utils.bounceMarker(googleMap, marker);
 
-        this.selectedMarker=marker;
+        this.selectedMarker = marker;
     }
 
     private void resetMarkers() {

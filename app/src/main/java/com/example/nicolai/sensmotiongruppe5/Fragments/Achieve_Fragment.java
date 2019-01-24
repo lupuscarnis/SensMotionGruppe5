@@ -49,11 +49,7 @@ public class Achieve_Fragment extends Fragment {
         achiView = rootView.findViewById(R.id.achiText);
 
 
-
-
-
-data = getArrayList("key");
-
+        data = getArrayList("key");
 
 
         mAdapter = new achiAdapter(data);
@@ -62,64 +58,59 @@ data = getArrayList("key");
         achiView.setText(completedCount() + "/" + data.size());
 
 
-
         return rootView;
+
+    }
+
+    public static void completed(int n) {
+
+        ArrayList<Achievements> achiAL;
+        achiAL = getArrayList("key");
+
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
+
+
+        if (!achiAL.get(n).getCompleted()) {
+            Achievements completedachi;
+            completedachi = achiAL.get(n);
+            completedachi.setCompleted(true);
+            completedachi.setDate(currentDate);
+            saveArrayList(achiAL, "key");
+
+            Achinotifications("Channel_ID123", "Achivement gennemført!", completedachi.getName() + " gennemført!");
 
         }
 
-public static void completed (int n){
+    }
 
-    ArrayList<Achievements> achiAL;
-    achiAL = getArrayList("key");
-
-    Calendar calendar = Calendar.getInstance();
-    String currentDate = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
-
-
-
-if (!achiAL.get(n).getCompleted()) {
-    Achievements completedachi;
-    completedachi = achiAL.get(n);
-    completedachi.setCompleted(true);
-    completedachi.setDate(currentDate);
-    saveArrayList(achiAL, "key");
-
-    Achinotifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
-
-}
-
-}
-
-public static void Achinotifications (String id, String title, String text){
-
-
-   Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
-   notiIntent.putExtra("achi", "achi");
-   PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
-            .setSmallIcon(R.drawable.achi)
-            .setContentTitle(title)
-            .setContentText(text)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setAutoCancel(true)
-            .setContentIntent(notiPendingIntent);
-
-    NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
-    notificationManager2.notify(1, mBuilder.build());
-
-
-
-
-
-
-}
-public static void Rutenotifications (String id, String title, String text){
+    public static void Achinotifications(String id, String title, String text) {
 
 
         Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
-        PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notiIntent.putExtra("achi", "achi");
+        PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
+                .setSmallIcon(R.drawable.achi)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true)
+                .setContentIntent(notiPendingIntent);
+
+        NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
+        notificationManager2.notify(1, mBuilder.build());
+
+
+    }
+
+    public static void Rutenotifications(String id, String title, String text) {
+
+
+        Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+        PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
@@ -134,42 +125,37 @@ public static void Rutenotifications (String id, String title, String text){
         notificationManager2.notify(1, mBuilder.build());
 
 
-
-
-
-
     }
 
-public String completedCount(){
+    public String completedCount() {
 
         int n = 0;
 
-for (int i = 0; i < data.size(); i++){
+        for (int i = 0; i < data.size(); i++) {
 
-   if (data.get(i).getCompleted()){
+            if (data.get(i).getCompleted()) {
 
-n = n + 1;
+                n = n + 1;
 
-   }
-}
-String count = Integer.toString(n);
-return count;
-
-
-
-}
+            }
+        }
+        String count = Integer.toString(n);
+        return count;
 
 
+    }
 
-    private static ArrayList<Achievements> getArrayList( String key){
+
+    private static ArrayList<Achievements> getArrayList(String key) {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = prefs.getString(key, null);
-        Type type = new TypeToken<ArrayList<Achievements>>() {}.getType();
+        Type type = new TypeToken<ArrayList<Achievements>>() {
+        }.getType();
         return gson.fromJson(json, type);
     }
 
-    public static void saveArrayList(ArrayList<Achievements> list, String key){
+    public static void saveArrayList(ArrayList<Achievements> list, String key) {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
@@ -177,9 +163,6 @@ return count;
         editor.putString(key, json);
         editor.apply();
     }
-
-
-
 
 
 }

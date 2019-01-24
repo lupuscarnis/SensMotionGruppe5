@@ -88,7 +88,7 @@ public class Rute {
                 // checks highlights
                 for (IHighlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
-                       // Her?
+                        // Her?
                         if (!(y.isStart()) && !(y.isEnd())) {
                             Achieve_Fragment.Rutenotifications("Channel_ID321", "Event!", "Handling");
                         }

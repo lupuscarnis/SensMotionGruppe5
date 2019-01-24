@@ -21,7 +21,6 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.util.ArrayList;
 
 
-
 public class Bar_graph_frag extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private View view;
@@ -56,7 +55,6 @@ public class Bar_graph_frag extends Fragment {
     }
 
 
-
     BarChart barChart;
 
     @Override
@@ -76,7 +74,7 @@ public class Bar_graph_frag extends Fragment {
         barEntries.add(new BarEntry((float) data[5], 3));
         barEntries.add(new BarEntry((float) data[6], 3));
 
-        BarDataSet barDataSet = new BarDataSet (barEntries, "Activity");
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Activity");
 
 
         ArrayList<String> theDates = new ArrayList<>();
@@ -88,7 +86,7 @@ public class Bar_graph_frag extends Fragment {
         theDates.add("Other");
         theDates.add("Ingen Data");
 
-        BarData theData = new BarData(theDates,barDataSet);
+        BarData theData = new BarData(theDates, barDataSet);
 
 
         barChart.setData(theData);

@@ -25,88 +25,80 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
     MediaPlayer winSound;
 
     EmojiRainLayout mContainer;
+
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity__win );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity__win);
 
-       n = SharedPrefs.getInt("intKey");
-       n = n +1;
-       if (n >= 1){
-           Achieve_Fragment.completed(1);
-       }
-
-       if (n >= 3){
-           Achieve_Fragment.completed(2);
+        n = SharedPrefs.getInt("intKey");
+        n = n + 1;
+        if (n >= 1) {
+            Achieve_Fragment.completed(1);
         }
-        if (n >= 10){
+
+        if (n >= 3) {
+            Achieve_Fragment.completed(2);
+        }
+        if (n >= 10) {
             Achieve_Fragment.completed(3);
         }
 
         SharedPrefs.saveInt(n, "intKey");
 
 
-
-
-
-
         winSound = MediaPlayer.create(this, R.raw.accelerate);
         winSound.start();
 
 
-            mContainer = findViewById(R.id.activity_win);
-            mContainer.addEmoji(R.drawable.achi);
-            mContainer.addEmoji(R.drawable.sens_logo);
+        mContainer = findViewById(R.id.activity_win);
+        mContainer.addEmoji(R.drawable.achi);
+        mContainer.addEmoji(R.drawable.sens_logo);
 
-            mContainer.stopDropping();
-            mContainer.setPer(10);
-            mContainer.setDuration(7200);
-            mContainer.setDropDuration(2400);
-            mContainer.setDropFrequency(500);
-            mContainer.startDropping();
-
-
+        mContainer.stopDropping();
+        mContainer.setPer(10);
+        mContainer.setDuration(7200);
+        mContainer.setDropDuration(2400);
+        mContainer.setDropFrequency(500);
+        mContainer.startDropping();
 
 
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-            DisplayMetrics dm = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
 
-            int width = dm.widthPixels;
-            int height = dm.heightPixels;
-
-            getWindow().setLayout((int)(width*.7), (int)(height*.8));
-
+        getWindow().setLayout((int) (width * .7), (int) (height * .8));
 
 
+        textview = findViewById(R.id.text);
+        textview.setText("Tillykke!!!");
 
-            textview = findViewById(R.id.text);
-            textview.setText("Tillykke!!!");
+        share = findViewById(R.id.share);
+        share.setText("Del");
 
-            share = findViewById(R.id.share);
-            share.setText("Del");
-
-            goBack = findViewById(R.id.goBack);
-            goBack.setText("Ny rute");
-
+        goBack = findViewById(R.id.goBack);
+        goBack.setText("Ny rute");
 
 
-            share.setOnClickListener(this);
-            goBack.setOnClickListener(this);
-        }
-        @Override
-        public void onClick(View v) {
-            if(v == share){
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        share.setOnClickListener(this);
+        goBack.setOnClickListener(this);
+    }
 
-                Uri screenshotUri = Uri.parse("android.resource://com.example.nicolai.sensmotiongruppe5/drawable/achi");
-                try {
-                    InputStream stream = getContentResolver().openInputStream(screenshotUri);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                sharingIntent.setType("image/jpeg");
-                sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
-                startActivity(Intent.createChooser(sharingIntent, "Share image using"));
+    @Override
+    public void onClick(View v) {
+        if (v == share) {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+            Uri screenshotUri = Uri.parse("android.resource://com.example.nicolai.sensmotiongruppe5/drawable/achi");
+            try {
+                InputStream stream = getContentResolver().openInputStream(screenshotUri);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            sharingIntent.setType("image/jpeg");
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+            startActivity(Intent.createChooser(sharingIntent, "Share image using"));
                /* Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = "Du har fuldført achievementen.";
@@ -115,9 +107,9 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Share using"));*/
 
-            }
-
         }
+
+    }
 
       /*  @Override
         public void onBackPressed() {
@@ -125,4 +117,4 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
             startActivity(i);
             finish();
         }*/
-    }
+}

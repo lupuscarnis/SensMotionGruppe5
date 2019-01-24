@@ -62,9 +62,11 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstGuess==false){firstGuess=true;}else{
+                if (firstGuess == false) {
+                    firstGuess = true;
+                } else {
                     Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
-                    Highscore_controller  hsc = new Highscore_controller();
+                    Highscore_controller hsc = new Highscore_controller();
                     hsc.createDatabaseReference();
                     //  Highscore_controller hsc = new Highscore_controller();
                     hsc.addScore(ent);
@@ -75,9 +77,11 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstGuess==false){firstGuess=true;}else{
+                if (firstGuess == false) {
+                    firstGuess = true;
+                } else {
                     Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
-                    Highscore_controller  hsc = new Highscore_controller();
+                    Highscore_controller hsc = new Highscore_controller();
                     hsc.createDatabaseReference();
                     //  Highscore_controller hsc = new Highscore_controller();
                     hsc.addScore(ent);
@@ -88,9 +92,11 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         c3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstGuess==false){firstGuess=true;}else{
+                if (firstGuess == false) {
+                    firstGuess = true;
+                } else {
                     Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
-                    Highscore_controller  hsc = new Highscore_controller();
+                    Highscore_controller hsc = new Highscore_controller();
                     hsc.createDatabaseReference();
                     //  Highscore_controller hsc = new Highscore_controller();
                     hsc.addScore(ent);
@@ -101,13 +107,15 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         c4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                corrects+=1;
-                if(firstGuess==false){firstGuess=true;}else{
+                corrects += 1;
+                if (firstGuess == false) {
+                    firstGuess = true;
+                } else {
                     Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
-                    Highscore_controller  hsc = new Highscore_controller();
+                    Highscore_controller hsc = new Highscore_controller();
                     hsc.createDatabaseReference();
-                  //  Highscore_controller hsc = new Highscore_controller();
-            hsc.addScore(ent);
+                    //  Highscore_controller hsc = new Highscore_controller();
+                    hsc.addScore(ent);
                 }
                 Rute_queue.getInstance(null).replaceFragment(null, true);
 

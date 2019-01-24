@@ -29,7 +29,9 @@ public class JSONData {
         this.year = year;
     }
 
-    public void setMonth(int month) { this.month = month; }
+    public void setMonth(int month) {
+        this.month = month;
+    }
 
     public void setDay(int day) {
         this.day = day;
@@ -84,7 +86,9 @@ public class JSONData {
         return day;
     }
 
-    public double getResting() { return resting; }
+    public double getResting() {
+        return resting;
+    }
 
     public double getStanding() {
         return standing;

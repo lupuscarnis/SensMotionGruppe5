@@ -2,13 +2,13 @@ package com.example.nicolai.sensmotiongruppe5;
 
 public class Achievements {
 
-private String achiName;
-private boolean completed;
-private String doneDescription;
-private String notDescription;
-private String date;
+    private String achiName;
+    private boolean completed;
+    private String doneDescription;
+    private String notDescription;
+    private String date;
 
-    public Achievements(String achiName, boolean completed, String doneDescription, String notDectription, String date){
+    public Achievements(String achiName, boolean completed, String doneDescription, String notDectription, String date) {
 
         this.achiName = achiName;
         this.completed = completed;
@@ -16,28 +16,30 @@ private String date;
         this.notDescription = notDectription;
         this.date = date;
     }
+
     public boolean getCompleted() {
 
         return completed;
-        }
-
-   public boolean setCompleted(boolean completed) {
-
-       this.completed = completed;
-
-    return true;
     }
 
+    public boolean setCompleted(boolean completed) {
+
+        this.completed = completed;
+
+        return true;
+    }
 
 
     public String getName() {
 
         return achiName;
     }
+
     public String getDoneDes() {
 
         return doneDescription;
     }
+
     public String getNotDes() {
 
         return notDescription;
@@ -52,15 +54,6 @@ private String date;
         this.date = date;
 
     }
-
-
-
-
-
-
-
-
-    
 
 
 }
