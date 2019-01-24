@@ -20,7 +20,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
-        android:text="walk" />
+        android:text="test Gå" />
 
     <com.example.nicolai.sensmotiongruppe5.Rute.Rute_Canvas
         android:id="@+id/canvas_rute"

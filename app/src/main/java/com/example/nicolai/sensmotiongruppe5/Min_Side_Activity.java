@@ -84,12 +84,13 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         textHighlights = new ArrayList<>();
         Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
         start.setText("A new Beginning");
+        start.setStart(true);
         Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Hvor mange mennesker er der i fællesskabet om ringen?");
         ArrayList<String> s = new ArrayList();
-        s.add("0 mennesker");
-        s.add("3 mennesker");
-        s.add("1 mennesker");
-        s.add("2 mennesker");
+        s.add("0 humans ");
+        s.add("3 humans");
+        s.add("1 human");
+        s.add("2 humans");
         middle.setAnswers(s);
         Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
         end.setText("Den første ringenes herre bog blev skrevet af Tolkien i 1954");

@@ -14,7 +14,7 @@
         android:id="@+id/loading_linechart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Loading Chart..."
+        android:text="Indlæser Graf..."
         android:textAlignment="center" />
 
 

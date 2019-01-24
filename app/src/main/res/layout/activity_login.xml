@@ -66,7 +66,8 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColorLink="@color/colorPrimaryBlue" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -79,7 +80,8 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/text_password"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -97,7 +99,8 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColorLink="@color/colorPrimaryBlue" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -114,20 +117,6 @@
         android:text="@string/action_sign_in_short"
         android:textColor="#FFF"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/helpBtn"
-        style="android:textAppearanceSmall"
-        android:layout_width="171dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="45dp"
-        android:shape="rectangle"
-        android:gravity="center"
-        android:text="@string/text_help"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        tools:text="Hjælp" />
 
     <TextView
         android:id="@+id/textView9"
