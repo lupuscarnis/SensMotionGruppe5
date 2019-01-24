@@ -25,7 +25,6 @@ public class DAOHandler implements IData {
 
         this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
         this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
-        Log.i("wazzup", patient_key+" og projekt  "+ project_key);
 
     }
 
