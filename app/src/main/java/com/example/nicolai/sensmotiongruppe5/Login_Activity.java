@@ -184,12 +184,21 @@ public ArrayList<Achievements> getAchivements(){
     achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time", ""));
     achi.add(new Achievements("Gå 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer", ""));
     achi.add(new Achievements("Gå 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer", ""));
-    achi.add(new Achievements("Cyklet en time", false, "Flot! du har cyklet en time, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have cyklet i mindst en time", ""));
+    achi.add(new Achievements("Cyklet en time", false, "Flot! du har cyklet en time, og dermed gjort dig fortjent til denne achievement. cykel endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have cyklet i mindst en time", ""));
     achi.add(new Achievements("Cyklet 10 timer", false, "Du har nu cyklet i 10 timer", "cyklet 10 timer", ""));
     achi.add(new Achievements("Cyklet 100 timer", false, "Du har nu cyklet i 10 timer", "cyklet 100 timer", ""));
+    achi.add(new Achievements("Træn en time", false, "Flot! du har trænet en time, og dermed gjort dig fortjent til denne achievement. Træn endnu mere for flere achievements", "For at opnå denne achievement, skal du samlet have cyklet i mindst en time", ""));
+    achi.add(new Achievements("Træn 10 timer", false, "Du har nu trænet i 10 timer", "trænet 10 timer", ""));
+    achi.add(new Achievements("Træn 100 timer", false, "Du har nu trænet i 10 timer", "trænet 100 timer", ""));
+    achi.add(new Achievements("Gå 2500 skridt", false, "Flot! du har cyklet en time, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have cyklet i mindst en time", ""));
+    achi.add(new Achievements("Gå 10000 skridt", false, "Du har nu cyklet i 10 timer", "cyklet 10 timer", ""));
+    achi.add(new Achievements("Gå 25000 skridt", false, "Du har nu cyklet i 10 timer", "cyklet 100 timer", ""));
 
 
-  return achi;
+
+
+
+    return achi;
     }
 
 
