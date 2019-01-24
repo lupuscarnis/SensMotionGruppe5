@@ -85,7 +85,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
         start.setText("A new Beginning");
         start.setStart(true);
-        Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "How many humans participated in the fellowship of the ring?");
+        Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Hvor mange mennesker er der i fællesskabet om ringen?");
         ArrayList<String> s = new ArrayList();
         s.add("0 humans ");
         s.add("3 humans");
@@ -93,13 +93,13 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         s.add("2 humans");
         middle.setAnswers(s);
         Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
-        end.setText("I See dead People!!!!!");
-        Quiz_Highlight secret = new Quiz_Highlight(200, 100, 10, "secret", "Do Balrogs have wings?");
+        end.setText("Den første ringenes herre bog blev skrevet af Tolkien i 1954");
+        Quiz_Highlight secret = new Quiz_Highlight(200, 100, 10, "secret", "Hvilken race fik 7 af Sauron ringe?");
         ArrayList<String> a = new ArrayList();
-        a.add("Yes, big fleshy batwings!");
-        a.add("No, definietly not!");
-        a.add("It has wings made of fire");
-        a.add("It has wings made of shadows");
+        a.add("Menneskerne");
+        a.add("Elverne");
+        a.add("Hobitterne");
+        a.add("Dværgene");
         secret.setAnswers(a);
         secret.setEnd(true);
         textHighlights.add(start);
