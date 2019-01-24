@@ -12,4 +12,4 @@ public class broadcastReceiver extends BroadcastReceiver {
         Log.i(broadcastReceiver.class.getSimpleName(), "Service Stops! Oooooooooooooppppssssss!!!!");
         context.startService(new Intent(context, backgroundService.class));
     }
-
+}
