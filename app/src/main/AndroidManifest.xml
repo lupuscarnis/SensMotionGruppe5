@@ -51,9 +51,6 @@
         <activity android:name=".nav_drawer" />
         <activity android:name=".Win_Activity" />
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
 
         <service
             android:name=".backgroundService"
@@ -81,8 +78,6 @@
                    android:value="@string/facebook_app_id"/>
 
 
-        <service
-            android:name= ".backgroundService" />
 
     </application>
 
