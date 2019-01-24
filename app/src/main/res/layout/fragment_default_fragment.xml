@@ -20,7 +20,7 @@
                 android:layout_marginVertical="10dp"
                 android:layout_weight="1"
                 android:padding="8dp"
-                android:text="Time since Start"
+                android:text="Tid siden start"
                 android:textColor="#000" />
 
 
@@ -33,7 +33,7 @@
                 android:layout_weight="1"
 
                 android:padding="8dp"
-                android:text="Kilometers walked"
+                android:text="Kilometer gået:"
                 android:textColor="#000" />
 
         </TableRow>
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
 
                 android:padding="8dp"
-                android:text="Distance to next Goal"
+                android:text="Distance til næste mål"
                 android:textColor="#000" />
 
 
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
 
                 android:padding="8dp"
-                android:text="Attractions seen: 2/5"
+                android:text="Highlights Set: 2/5"
                 android:textColor="#000" />
 
         </TableRow>
