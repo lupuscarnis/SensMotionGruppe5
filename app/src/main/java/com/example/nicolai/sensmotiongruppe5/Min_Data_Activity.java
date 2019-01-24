@@ -139,7 +139,7 @@ public class Min_Data_Activity extends Fragment {
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
         bar.setRange(0, 6, 1);
         bar.setValue(0, 6);
-        bar.setTickMarkTextArray(new String[]{"Getting Data", "Getting Data", "Getting Data", "Getting Data"});
+        bar.setTickMarkTextArray(new String[]{"Henter Data", "Henterg Data", "Henter Data", "Henter Data"});
         IData s = new DAOHandler();
         new GetData(new GetData.AsyncResponse() {
             @Override
