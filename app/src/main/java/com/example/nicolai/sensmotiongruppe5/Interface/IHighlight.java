@@ -36,5 +36,10 @@ package com.example.nicolai.sensmotiongruppe5.Interface;
 
      void setEnd(boolean end);
 
+     boolean isStart();
+
+     void setStart(boolean start);
+
+
 
  }

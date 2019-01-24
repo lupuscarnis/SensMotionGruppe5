@@ -75,7 +75,8 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_login);
-        createChannel();
+        createChannel("Channel_ID123");
+        createChannel("Channel_ID321");
 
 
 
@@ -128,13 +129,12 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
 
 
-    public void createChannel() {
+    public void createChannel(String CHANNEL_ID) {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
        //     CharSequence name = getString(R.string.channel_name);
           //  String description = getString(R.string.channel_description);
-            String CHANNEL_ID = "Channel_ID123";
             String description = "Beskrivelse";
             String name = "android_channel";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
