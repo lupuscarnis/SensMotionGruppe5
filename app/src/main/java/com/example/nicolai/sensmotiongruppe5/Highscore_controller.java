@@ -25,8 +25,8 @@ public class Highscore_controller {
 // id does not seem necessary, as firebase uses its own id system.
       String id =  dbr.push().getKey();
 
-      Entry newEntry = ent;
-      dbr.child(id).setValue(newEntry);
+      //Entry newEntry = ent;
+      dbr.child(id).setValue(ent);
     }
 
     public String getKey(int id){
