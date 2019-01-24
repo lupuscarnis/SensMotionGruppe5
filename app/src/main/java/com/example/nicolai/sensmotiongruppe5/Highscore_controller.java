@@ -1,15 +1,12 @@
 package com.example.nicolai.sensmotiongruppe5;
 
-import android.util.Log;
-
 import com.example.nicolai.sensmotiongruppe5.Tests.Entry;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Highscore_controller {
 
-    DatabaseReference dbr ;
+    public DatabaseReference dbr;
 
 
 

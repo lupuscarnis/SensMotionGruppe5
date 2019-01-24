@@ -1,6 +1,5 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -8,22 +7,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.Adapter.ScoreAdapter;
+import com.example.nicolai.sensmotiongruppe5.Highscore_controller;
+import com.example.nicolai.sensmotiongruppe5.R;
 import com.example.nicolai.sensmotiongruppe5.Tests.Entry;
 import com.google.android.gms.common.util.Strings;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Score_Activity extends Fragment {
+public class Score_Fragment extends Fragment {
 
 
     Highscore_controller hsc;

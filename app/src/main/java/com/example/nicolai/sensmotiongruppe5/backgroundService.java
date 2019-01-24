@@ -5,9 +5,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-
 import com.example.nicolai.sensmotiongruppe5.BLL.DAO;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Achieve_Fragment;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -60,45 +60,57 @@ mTimer.schedule(timertask,30000, 10*3000);
 
 
 //Testing purpose
-//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(steps), "Elias har fedet den " + Double.toString(exercise));
+//Achieve_Fragment.notifications("Channel_ID123", "Elias har gået " + Double.toString(steps), "Elias har fedet den " + Double.toString(exercise));
 
 
 
             if (walking >= 60) {
-                Achieve_Activity.completed(4); }
+                Achieve_Fragment.completed(4);
+            }
 
             if (walking >= 60*10) {
-                 Achieve_Activity.completed(5); }
+                Achieve_Fragment.completed(5);
+            }
 
             if (walking >= 60*1000) {
-                Achieve_Activity.completed(6); }
+                Achieve_Fragment.completed(6);
+            }
 
             if (cycling >= 60) {
-                Achieve_Activity.completed(7); }
+                Achieve_Fragment.completed(7);
+            }
 
             if (cycling >= 60*10) {
-                Achieve_Activity.completed(8); }
+                Achieve_Fragment.completed(8);
+            }
 
             if (cycling >= 60*1000) {
-                Achieve_Activity.completed(9); }
+                Achieve_Fragment.completed(9);
+            }
 
             if (exercise >= 60) {
-                Achieve_Activity.completed(10); }
+                Achieve_Fragment.completed(10);
+            }
 
             if (exercise >= 60*10) {
-                Achieve_Activity.completed(11); }
+                Achieve_Fragment.completed(11);
+            }
 
             if (exercise >= 60*1000) {
-                Achieve_Activity.completed(12); }
+                Achieve_Fragment.completed(12);
+            }
 
             if (steps >= 2500) {
-                Achieve_Activity.completed(13); }
+                Achieve_Fragment.completed(13);
+            }
 
             if (steps >= 10000) {
-                Achieve_Activity.completed(14); }
+                Achieve_Fragment.completed(14);
+            }
 
             if (steps >= 25000) {
-                Achieve_Activity.completed(15); }
+                Achieve_Fragment.completed(15);
+            }
 
 
   }};
@@ -169,7 +181,7 @@ public class backgroundService extends IntentService {
       walking = JSONData.getWalking();
 
 if (walking >= 60){
-    Achieve_Activity.completed(1);
+    Achieve_Fragment.completed(1);
 }
 
 

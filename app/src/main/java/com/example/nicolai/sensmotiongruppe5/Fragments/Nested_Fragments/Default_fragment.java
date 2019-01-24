@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5.Fragments;
+package com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments;
 
 import android.content.Context;
 import android.net.Uri;

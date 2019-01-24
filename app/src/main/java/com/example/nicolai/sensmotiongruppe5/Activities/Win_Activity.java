@@ -1,19 +1,18 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Activities;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Achieve_Fragment;
+import com.example.nicolai.sensmotiongruppe5.R;
 import com.luolc.emojirain.EmojiRainLayout;
 
 import java.io.FileNotFoundException;
@@ -33,14 +32,14 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
        n = SharedPrefs.getInt("intKey");
        n = n +1;
        if (n >= 1){
-           Achieve_Activity.completed(1);
+           Achieve_Fragment.completed(1);
        }
 
        if (n >= 3){
-            Achieve_Activity.completed(2);
+           Achieve_Fragment.completed(2);
         }
         if (n >= 10){
-            Achieve_Activity.completed(3);
+            Achieve_Fragment.completed(3);
         }
 
         SharedPrefs.saveInt(n, "intKey");

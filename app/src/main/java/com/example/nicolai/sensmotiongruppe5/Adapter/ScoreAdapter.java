@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Adapter;
 
 import android.app.Activity;
 import android.util.Log;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.R;
 import com.example.nicolai.sensmotiongruppe5.Tests.Entry;
 
 import java.util.ArrayList;

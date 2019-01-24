@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.Activities.Login_Activity;
+
 public class Help_Activity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
 
     private TextView writtenText;

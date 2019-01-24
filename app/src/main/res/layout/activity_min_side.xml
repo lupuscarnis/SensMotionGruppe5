@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
     android:orientation="vertical"
-    tools:context=".Min_Side_Activity">
+    tools:context=".Fragments.Min_Side_Fragment">
 
 
     <FrameLayout

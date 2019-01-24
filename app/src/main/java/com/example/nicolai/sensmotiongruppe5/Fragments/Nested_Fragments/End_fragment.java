@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5.Fragments;
+package com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.Activities.Win_Activity;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
-import com.example.nicolai.sensmotiongruppe5.Win_Activity;
 
 public class End_fragment extends Fragment implements IChild_OnFragmentInteractionListener {
     private String mParam1;

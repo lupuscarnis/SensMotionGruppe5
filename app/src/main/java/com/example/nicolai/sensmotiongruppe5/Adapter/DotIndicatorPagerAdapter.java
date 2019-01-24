@@ -1,13 +1,14 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Adapter;
 
 
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.nicolai.sensmotiongruppe5.R;
+
 import java.util.Arrays;
 import java.util.List;
 

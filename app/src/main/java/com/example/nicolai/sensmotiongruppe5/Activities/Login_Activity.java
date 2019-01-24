@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -30,7 +30,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.example.nicolai.sensmotiongruppe5.Achievements;
 import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
+import com.example.nicolai.sensmotiongruppe5.R;
+import com.example.nicolai.sensmotiongruppe5.nav_drawer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -114,8 +117,8 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(view.getContext(), Score_Activity.class));
-                //startActivity(new Intent(view.getContext(), Score_Activity.class));
+                startActivity(new Intent(view.getContext(), Score_Fragment.class));
+                //startActivity(new Intent(view.getContext(), Score_Fragment.class));
 
 
             }

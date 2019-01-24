@@ -1,11 +1,5 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Fragments;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,9 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.LayoutParams;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
@@ -24,6 +15,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.nicolai.sensmotiongruppe5.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,11 +30,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * Made with help from https://github.com/ddewaele/GoogleMapsV2WithActionBarSherlock
  *
  */
-public class GMapsActivity extends Fragment implements OnMapReadyCallback {
+public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
 
     View rootView;
 

@@ -6,10 +6,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
-import com.example.nicolai.sensmotiongruppe5.Achieve_Activity;
-import com.example.nicolai.sensmotiongruppe5.Fragments.End_fragment;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Quiz_fragment;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Achieve_Fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments.End_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments.Quiz_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments.Text_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class Rute {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
                        // Her?
                         if (!(y.isStart()) && !(y.isEnd())) {
-                            Achieve_Activity.Rutenotifications("Channel_ID321", "Event!", "Handling");
+                            Achieve_Fragment.Rutenotifications("Channel_ID321", "Event!", "Handling");
                         }
                         if (y instanceof Text_Highlight && y.isRevealed() == false) {
                             y.setRevealed(true);
@@ -107,7 +107,7 @@ public class Rute {
                         if (y.isEnd() == true) {
                             Fragment ft = End_fragment.newInstance();
                             rq.replaceFragment(ft, false);
-                            Achieve_Activity.Rutenotifications("Channel_ID321", "Event!", "The End");
+                            Achieve_Fragment.Rutenotifications("Channel_ID321", "Event!", "The End");
                         }
 
 

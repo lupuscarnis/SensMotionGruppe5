@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Min_Side_Activity">
+    tools:context=".Fragments.Min_Side_Fragment">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

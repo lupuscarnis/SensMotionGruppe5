@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.example.nicolai.sensmotiongruppe5.Fragments.Default_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments.Default_fragment;
 import com.example.nicolai.sensmotiongruppe5.R;
 
 import java.util.ArrayList;

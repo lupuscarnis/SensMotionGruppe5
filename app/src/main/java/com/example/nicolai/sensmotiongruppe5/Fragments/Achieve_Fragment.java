@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Fragments;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -14,6 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.Achievements;
+import com.example.nicolai.sensmotiongruppe5.Adapter.achiAdapter;
+import com.example.nicolai.sensmotiongruppe5.R;
+import com.example.nicolai.sensmotiongruppe5.nav_drawer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -25,7 +29,7 @@ import java.util.Calendar;
 import static android.content.Context.MODE_PRIVATE;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class Achieve_Activity extends Fragment {
+public class Achieve_Fragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;

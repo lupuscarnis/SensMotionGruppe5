@@ -41,7 +41,9 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-        <activity android:name=".Login_Activity" android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".Activities.Login_Activity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -49,7 +51,7 @@
         </activity>
         <activity android:name=".Help_Activity" />
         <activity android:name=".nav_drawer" />
-        <activity android:name=".Win_Activity" />
+        <activity android:name=".Activities.Win_Activity" />
 
 
         <service

@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Fragments;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -18,11 +18,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nicolai.sensmotiongruppe5.Adapter.DotIndicatorPagerAdapter;
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Pie_chart_frag;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments.Line_chart_frag;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments.Pie_chart_frag;
 import com.example.nicolai.sensmotiongruppe5.Interface.IData;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
+import com.example.nicolai.sensmotiongruppe5.R;
+import com.example.nicolai.sensmotiongruppe5.ZoomOutPageTransformer;
 import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 import com.jaygoo.widget.SeekBar;
@@ -32,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Min_Data_Activity extends Fragment {
+public class Min_Data_Fragment extends Fragment {
 
     MyPageAdapter pageAdapter;
     RangeSeekBar bar;

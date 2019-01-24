@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,18 +19,20 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Default_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Nested_Fragments.Default_fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
+import com.example.nicolai.sensmotiongruppe5.R;
 import com.example.nicolai.sensmotiongruppe5.Rute.Quiz_Highlight;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute_queue;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 import com.example.nicolai.sensmotiongruppe5.Rute.Text_Highlight;
+import com.example.nicolai.sensmotiongruppe5.backgroundService;
 
 import java.util.ArrayList;
 
-public class Min_Side_Activity extends Fragment implements View.OnClickListener {
+public class Min_Side_Fragment extends Fragment implements View.OnClickListener {
 
     View rootView;
     private IParent_OnFragmentInteractionListener mListener;
@@ -62,7 +64,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
         new GetJSON().execute();
 
-        Achieve_Activity.completed(0);
+        Achieve_Fragment.completed(0);
         return rootView;
     }
 
@@ -163,7 +165,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         imageButton.setImageResource(dialogImage);
         builder.setPositiveButton("Begynd", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
-                //Toast.makeText(Min_Side_Activity.this, "Next", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Min_Side_Fragment.this, "Next", Toast.LENGTH_SHORT).show();
 
                 View vew = view;
 
@@ -192,7 +194,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         });
         builder.setNegativeButton("Annuller", new DialogInterface.OnClickListener() {
             @Override        public void onClick(DialogInterface dialogInterface, int i) {
-                //  Toast.makeText(Min_Side_Activity.this, "Cancel", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(Min_Side_Fragment.this, "Cancel", Toast.LENGTH_SHORT).show();
                 helpCounter = 0;
             }
         });

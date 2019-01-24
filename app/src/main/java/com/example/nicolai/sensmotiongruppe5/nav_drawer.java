@@ -15,6 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.nicolai.sensmotiongruppe5.Activities.Login_Activity;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Achieve_Fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.GMaps_Fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Min_Data_Fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Min_Side_Fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Score_Fragment;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
 
@@ -28,33 +34,33 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         switch (item.getItemId()) {
             case R.id.nav_achie:
                 toolbar.setTitle("Achievements");
-                fragment = new Achieve_Activity();
+                fragment = new Achieve_Fragment();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_set:
                 toolbar.setTitle("Highscore");
-                fragment = new Score_Activity();
+                fragment = new Score_Fragment();
                 mDrawerLayout.closeDrawers();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_data:
                 toolbar.setTitle("Min data");
-                fragment = new Min_Data_Activity();
+                fragment = new Min_Data_Fragment();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_side:
                 toolbar.setTitle("Min side");
-                fragment = new Min_Side_Activity();
+                fragment = new Min_Side_Fragment();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
 
                 return true;
             case R.id.nav_map:
                 toolbar.setTitle("Kort");
-                fragment = new GMapsActivity();
+                fragment = new GMaps_Fragment();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
 
@@ -88,14 +94,14 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
 
         if (achi2.equals(achi)){
     toolbar.setTitle("Achievements");
-    loadFragment(new Achieve_Activity());
+            loadFragment(new Achieve_Fragment());
 }
 else {
 
 
     toolbar.setTitle("Min side");
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_container, new Min_Side_Activity());
+            transaction.replace(R.id.frame_container, new Min_Side_Fragment());
             transaction.commit();
 }
 

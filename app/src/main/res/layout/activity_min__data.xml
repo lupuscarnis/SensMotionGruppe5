@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Min_Data_Activity">
+    tools:context=".Fragments.Min_Data_Fragment">
 
     <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
         android:id="@+id/spring_dots_indicator"

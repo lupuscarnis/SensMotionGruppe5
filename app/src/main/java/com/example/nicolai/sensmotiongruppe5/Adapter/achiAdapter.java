@@ -1,4 +1,4 @@
-package com.example.nicolai.sensmotiongruppe5;
+package com.example.nicolai.sensmotiongruppe5.Adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,12 +8,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import com.example.nicolai.sensmotiongruppe5.Achievements;
+import com.example.nicolai.sensmotiongruppe5.R;
+
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class achiAdapter extends RecyclerView.Adapter<achiAdapter.MyViewHolder> {
         private ArrayList<Achievements> item;
