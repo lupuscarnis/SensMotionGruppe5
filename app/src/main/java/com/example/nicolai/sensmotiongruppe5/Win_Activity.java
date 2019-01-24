@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
 import com.luolc.emojirain.EmojiRainLayout;
 
 import java.io.FileNotFoundException;
@@ -17,11 +18,30 @@ import java.io.InputStream;
 public class Win_Activity extends AppCompatActivity implements View.OnClickListener {
     private TextView textview;
     private Button share, goBack;
+    int n;
 
     EmojiRainLayout mContainer;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity__win );
+
+       n = SharedPrefs.getInt("intKey");
+       n = n +1;
+       if (n >= 1){
+           Achieve_Activity.completed(1);
+       }
+
+       if (n >= 3){
+            Achieve_Activity.completed(2);
+        }
+        if (n >= 10){
+            Achieve_Activity.completed(3);
+        }
+
+        SharedPrefs.saveInt(n, "intKey");
+
+
+
 
 
 

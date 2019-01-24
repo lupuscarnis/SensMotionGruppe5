@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
@@ -101,6 +100,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         a.add("It has wings made of fire");
         a.add("It has wings made of shadows");
         secret.setAnswers(a);
+        secret.setEnd(true);
         textHighlights.add(start);
         textHighlights.add(middle);
         textHighlights.add(end);

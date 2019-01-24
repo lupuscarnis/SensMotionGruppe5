@@ -23,6 +23,7 @@ double resting;
 double standing;
 double cycling;
 double exercise;
+double steps;
 
 
 ArrayList<JSONData> data;
@@ -35,7 +36,7 @@ ArrayList<JSONData> data;
     public void onCreate(){
 super.onCreate();
 mTimer = new Timer();
-mTimer.schedule(timertask,10000, 10*1000);
+mTimer.schedule(timertask,30000, 10*3000);
 
     }
     @Override
@@ -54,36 +55,49 @@ mTimer.schedule(timertask,10000, 10*1000);
             cycling = getSum("cycling");
             standing = getSum("standing");
             exercise = getSum("exercise");
+            steps = getSum("steps");
 
 
 //Testing purpose
-//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(exercise), "Elias har fedet den " + Double.toString(resting));
+//Achieve_Activity.notifications("Channel_ID123", "Elias har gået " + Double.toString(steps), "Elias har fedet den " + Double.toString(exercise));
 
 
 
             if (walking >= 60) {
-                Achieve_Activity.completed(3); }
+                Achieve_Activity.completed(4); }
 
             if (walking >= 60*10) {
-                 Achieve_Activity.completed(4);
-            }
+                 Achieve_Activity.completed(5); }
 
             if (walking >= 60*1000) {
-                Achieve_Activity.completed(5); }
-
-                /*
-
-
-
-            if (exercise >= 3) {
                 Achieve_Activity.completed(6); }
+
+            if (cycling >= 60) {
+                Achieve_Activity.completed(7); }
 
             if (cycling >= 60*10) {
-                Achieve_Activity.completed(6); }
+                Achieve_Activity.completed(8); }
 
             if (cycling >= 60*1000) {
-                Achieve_Activity.completed(6); }
-*/
+                Achieve_Activity.completed(9); }
+
+            if (exercise >= 60) {
+                Achieve_Activity.completed(10); }
+
+            if (exercise >= 60*10) {
+                Achieve_Activity.completed(11); }
+
+            if (exercise >= 60*1000) {
+                Achieve_Activity.completed(12); }
+
+            if (steps >= 2500) {
+                Achieve_Activity.completed(13); }
+
+            if (steps >= 10000) {
+                Achieve_Activity.completed(14); }
+
+            if (steps >= 25000) {
+                Achieve_Activity.completed(15); }
 
 
   }};

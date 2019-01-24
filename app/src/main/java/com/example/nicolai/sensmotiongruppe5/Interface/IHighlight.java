@@ -31,4 +31,10 @@ package com.example.nicolai.sensmotiongruppe5.Interface;
 
      void setText(String text);
 
-}
+
+     boolean isEnd();
+
+     void setEnd(boolean end);
+
+
+ }

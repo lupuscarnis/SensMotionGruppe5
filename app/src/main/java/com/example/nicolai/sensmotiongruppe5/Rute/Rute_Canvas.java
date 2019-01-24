@@ -60,12 +60,15 @@ public class Rute_Canvas extends View {
         super.onDraw(canvas);
         int width = getWidth();
         int height = getHeight();
+        int bwidth = bitmap.getWidth();
+        int bhight = bitmap.getHeight();
+
         Rect src = new Rect(0, 0, bitmap.getWidth() - 1, bitmap.getHeight() - 1);
         Rect dest = new Rect(0, 0, width - 1, height - 1);
         canvas.drawBitmap(bitmap, src, dest, null);
         canvas.drawPath(path, mPaint);
 
-        canvas.drawBitmap(bitmap1, mx ,my,null);
+        canvas.drawBitmap(bitmap1, mx, my, null);
 
         
 
