@@ -1,11 +1,9 @@
 package com.example.nicolai.sensmotiongruppe5.BLL;
 
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class DAO {
@@ -128,6 +126,14 @@ public class DAO {
         } catch (Exception e) {
 
             Log.e(TAG, "Json parsing error 2: " + e.getMessage());
+        }
+
+        boolean isEmpty = jsonData.isEmpty();
+
+        if (isEmpty) {
+
+            Log.d("isEmptyisEmptyisEmpty","isEmpty");
+
         }
 
         return jsonData;

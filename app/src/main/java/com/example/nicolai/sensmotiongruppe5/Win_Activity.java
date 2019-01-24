@@ -81,7 +81,7 @@ public class Win_Activity extends AppCompatActivity implements View.OnClickListe
 
 
             textview = findViewById(R.id.text);
-            textview.setText("Tillykkee!!!");
+            textview.setText("Tillykke!!!");
 
             share = findViewById(R.id.share);
             share.setText("Del");
