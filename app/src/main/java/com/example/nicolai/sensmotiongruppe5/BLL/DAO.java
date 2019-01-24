@@ -60,6 +60,8 @@ public class DAO {
 
     public static ArrayList<JSONData> getData(String project_key, String patient_key, int dayCount) {
 
+        Log.d("Hello from getData", "getData was called");
+
         ArrayList<JSONData> jsonData = new ArrayList<JSONData>();
 
         JSONConnection jsonConnection = new JSONConnection();
@@ -69,44 +71,18 @@ public class DAO {
         String jsonStatusCode;
         JSONArray jsonArray = null;
 
-        boolean hasData = false;
-
-        int maxTries = 25;
-
         // Try to process JSON data (String)
 
         try {
 
-                //Check for status code here. 0 = "OK", 13 = "Analysis in progress"
-                int currTries = 0;
+            //Check for status code here. 0 = "OK", 13 = "Analysis in progress"
 
-                do {
-                    String jsonStr = jsonConnection.getJSON(url);
-                    jsonObject = new JSONObject(jsonStr);
-                    jsonStatusCode = jsonObject.getString("status_code");
-                    jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
+            String jsonStr = jsonConnection.getJSON(url);
+            jsonObject = new JSONObject(jsonStr);
+            jsonStatusCode = jsonObject.getString("status_code");
+            jsonArray = jsonObject.getJSONObject("value").getJSONArray("data");
 
-                    if (jsonStatusCode.equals("0")) {
-
-                        hasData = true;
-                        break;
-
-                    } else {
-
-                        try {
-                            Thread.sleep(5000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        currTries += 1;
-
-                    }
-
-                } while (jsonStatusCode.equals("13") && currTries < maxTries);
-
-
-
-            if (hasData) {
+            try {
 
                 // Loop to get all json objects from data json array
                 for (int i = 0; i < jsonArray.length(); i++) {
@@ -122,7 +98,7 @@ public class DAO {
                     //jsonData.get(i).setStartDate(e.getString("start_time").substring(0, 10));
                     jsonData.get(i).setStartDate(datesArr[2] + "-" + datesArr[1] + "-" + datesArr[0]);
 
-                    Log.d("JSON data updated!","");
+                    Log.d("JSON data updated!", "");
 
 
                     jsonData.get(i).setYear(Integer.parseInt(datesArr[0]));
@@ -147,20 +123,17 @@ public class DAO {
 
                 }
 
-            } else {
+            } catch (Exception e) {
 
-                Log.e(TAG, "JSON parsing error: Max number of connection tries exceeded!");
-
+                Log.e(TAG, "Json parsing error 1: " + e.getMessage());
             }
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
 
-            Log.e(TAG, "Json parsing error: " + e.getMessage());
-
+            Log.e(TAG, "Json parsing error 2: " + e.getMessage());
         }
 
         return jsonData;
-
     }
 
 }
