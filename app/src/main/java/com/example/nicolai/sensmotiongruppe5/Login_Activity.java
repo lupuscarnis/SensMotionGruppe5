@@ -212,6 +212,7 @@ public ArrayList<Achievements> getAchivements(){
             return;
         }
 
+
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
