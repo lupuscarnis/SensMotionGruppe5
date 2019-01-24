@@ -94,9 +94,9 @@ public class Min_Data_Activity extends Fragment {
         textView1.setText( "I ro");
         textView2.setText( "Stående");
         textView3.setText( "Gående");
-        textView4.setText( "Exercise");
+        textView4.setText( "Trænende");
         textView5.setText( "Cyklende");
-        textView6.setText( "Other");
+        textView6.setText( "Anden bevægelse");
         textView7.setText( "Ingen Data");
 
 
@@ -139,7 +139,7 @@ public class Min_Data_Activity extends Fragment {
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
         bar.setRange(0, 6, 1);
         bar.setValue(0, 6);
-        bar.setTickMarkTextArray(new String[]{"Getting Data", "Getting Data", "Getting Data", "Getting Data"});
+        bar.setTickMarkTextArray(new String[]{"Henter Data", "Henterg Data", "Henter Data", "Henter Data"});
         IData s = new DAOHandler();
         new GetData(new GetData.AsyncResponse() {
             @Override
