@@ -57,10 +57,10 @@ public class LineChart implements IChart {
         int[] s = new int[6];
 
         s[0] = 1440;
-        s[1] = 1000;
-        s[2] = 700;
-        s[3] = 400;
-        s[4] = 200;
+        s[1] = 1200;
+        s[2] = 900;
+        s[3] = 600;
+        s[4] = 300;
         s[5] = 0;
 
         return s;
