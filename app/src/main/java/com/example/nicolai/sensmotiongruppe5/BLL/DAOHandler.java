@@ -23,8 +23,8 @@ public class DAOHandler implements IData {
 
     public DAOHandler() {
 
-        this.patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
-        this.project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
+        patient_key = SharedPrefs.getInstance().getString(getApplicationContext(), "patientKey", true);
+        project_key = SharedPrefs.getInstance().getString(getApplicationContext(), "projectKey", true);
 
     }
 
@@ -36,7 +36,7 @@ public class DAOHandler implements IData {
     public ArrayList<String> setCurrentData(String startDate, String endDate) {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
 
         ArrayList<String> dataArray = new ArrayList<String>();
 
@@ -70,7 +70,7 @@ public class DAOHandler implements IData {
     public String[] getAllDates() {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
         String[] dataArray = new String[valuesArray.size()];
 
         // Iterate over valuesArray
@@ -89,7 +89,7 @@ public class DAOHandler implements IData {
     public ArrayList<JSONData> getAllInfoAsObjects() {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
 
         return valuesArray;
     }
@@ -103,7 +103,7 @@ public class DAOHandler implements IData {
     public ArrayList<JSONData> getCurrentSelectDatesDataAsObject() {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
 
         ArrayList<JSONData> dataArray = new ArrayList<JSONData>();
 
@@ -156,7 +156,7 @@ public class DAOHandler implements IData {
     public ArrayList<String> getAllActivitiesByDate(String date) {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
 
         // Create string array
         ArrayList<String> dataArray = new ArrayList<>();
@@ -190,7 +190,7 @@ public class DAOHandler implements IData {
     public String getActivityByDate(String date, String activity) {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
 
         String data = "";
 
@@ -260,7 +260,7 @@ public class DAOHandler implements IData {
     @Override
     public ArrayList<String> getIntervalDates() {
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
         ArrayList<String> dataArray = new ArrayList<>();
 
 
@@ -293,7 +293,7 @@ public class DAOHandler implements IData {
     public Double getSumActivity(String activity) {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData(project_key, patient_key, 7);
+        valuesArray = DAO.getData(project_key, patient_key, 7);
 
         double data = 0;
 

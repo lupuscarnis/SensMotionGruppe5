@@ -55,7 +55,7 @@ public class Score_Fragment extends Fragment {
         tv10 = superView.findViewById(R.id.textView10);
         b12.setVisibility(View.GONE);
         tv10.setVisibility(View.GONE);
-        titleView = (TextView) superView.findViewById(R.id.textView11);
+        titleView = superView.findViewById(R.id.textView11);
 
         String message = hsc.getKey(1);
         tv10.setText(message);

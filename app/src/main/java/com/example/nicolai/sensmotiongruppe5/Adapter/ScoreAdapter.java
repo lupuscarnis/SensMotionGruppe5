@@ -32,12 +32,12 @@ public class ScoreAdapter extends ArrayAdapter<Entry> {
 
         View listEntry = inflater.inflate(R.layout.score_layout, null, true);
 
-        TextView nameView = (TextView) listEntry.findViewById(R.id.nameView);
-        TextView scoreView = (TextView) listEntry.findViewById(R.id.scoreView);
+        TextView nameView = listEntry.findViewById(R.id.nameView);
+        TextView scoreView = listEntry.findViewById(R.id.scoreView);
 
 
         String name = entList.get(position).getName();
-        String score = entList.get(position).getScore().toString();
+        String score = entList.get(position).getScore();
 
         nameView.setText(name);
         scoreView.setText(score);

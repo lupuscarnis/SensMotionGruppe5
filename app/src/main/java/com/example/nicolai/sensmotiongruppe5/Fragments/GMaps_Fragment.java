@@ -67,7 +67,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
             rootView = inflater.inflate(R.layout.activity_gmaps, drawer_layout, false);
         }
 
-        Button animStop = (Button) rootView.findViewById(R.id.animStopBtn);
+        Button animStop = rootView.findViewById(R.id.animStopBtn);
         animStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        Button animStart = (Button) rootView.findViewById(R.id.animStartBtn);
+        Button animStart = rootView.findViewById(R.id.animStartBtn);
         animStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +106,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
 
         gMap.getUiSettings().setMapToolbarEnabled(false);
         gMap.getUiSettings().setAllGesturesEnabled(false);
-        gMap.setMapType(googleMap.MAP_TYPE_NORMAL);
+        gMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         //gMap.setMapType(gMap.MAP_TYPE_SATELLITE);
 
         if (googleMap != null) {
@@ -438,7 +438,7 @@ public class GMaps_Fragment extends Fragment implements OnMapReadyCallback {
                 }
             }
         }
-    };
+    }
 
     /**
      * Allows us to navigate to a certain point.

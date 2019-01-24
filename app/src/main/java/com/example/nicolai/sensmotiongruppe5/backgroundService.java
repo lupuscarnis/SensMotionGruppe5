@@ -126,7 +126,7 @@ mTimer.schedule(timertask,30000, 10*3000);
     public static Double getSum(String activity) {
 
         ArrayList<JSONData> valuesArray;
-        valuesArray = userDAO.getData("k5W2uX", "u7tRx9", 7);
+        valuesArray = DAO.getData("k5W2uX", "u7tRx9", 7);
 
         double data = 0;
 

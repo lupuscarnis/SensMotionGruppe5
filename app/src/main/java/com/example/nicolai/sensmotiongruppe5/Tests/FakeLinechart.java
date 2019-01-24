@@ -29,7 +29,7 @@ public class FakeLinechart implements IChart {
 
 
         for (int i = 1; i <= 10; i++) {
-            s[i - 1] = (int) 1440 / i;
+            s[i - 1] = 1440 / i;
         }
 
         return s;

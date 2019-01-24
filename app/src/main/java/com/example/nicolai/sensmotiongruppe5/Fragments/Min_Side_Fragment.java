@@ -157,8 +157,8 @@ public class Min_Side_Fragment extends Fragment implements View.OnClickListener 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view1;    view1 = LayoutInflater.from(getActivity()).inflate(R.layout.activity_dialog_picture, null);
-        TextView title = (TextView) view1.findViewById(R.id.title);
-        ImageButton imageButton = (ImageButton) view1.findViewById(R.id.image);
+        TextView title = view1.findViewById(R.id.title);
+        ImageButton imageButton = view1.findViewById(R.id.image);
         title.setText("Jeg er her for at hjælpe ");
         builder.setMessage(dialogueMessage);
         view1.findViewById(R.id.dialogTv);
