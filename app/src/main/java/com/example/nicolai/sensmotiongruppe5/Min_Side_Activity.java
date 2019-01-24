@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
@@ -26,7 +27,6 @@ import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute_queue;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
 import com.example.nicolai.sensmotiongruppe5.Rute.Text_Highlight;
-import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 import java.util.ArrayList;
 
@@ -230,8 +230,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         protected void onPreExecute() {
 
             super.onPreExecute();
-            //Toast.makeText(getActivity(),"Opdaterer data...",Toast.LENGTH_LONG).show();
-            DynamicToast.makeWarning(getActivity(), "Opdaterer data...").show();
+            Toast.makeText(getActivity(),"Opdaterer data...",Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -242,6 +241,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             allDates = daoHandler.getAllDates();
             numSteps = daoHandler.getActivityByDate("08-01-2019", "steps");*/
             //dataArray = daoHandler.getCurrentSelectDatesDataAsObject();
+
             return null;
 
         }
@@ -251,8 +251,8 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             super.onPostExecute(result);
 
-            //Toast.makeText(getActivity(),"Opdatering fuldført...",Toast.LENGTH_LONG).show();
-            DynamicToast.makeSuccess(getActivity(), "Opdatering fuldført!").show();
+            Toast.makeText(getActivity(),"Opdatering fuldført...",Toast.LENGTH_LONG).show();
+
             // For debugging
             //Toast.makeText(getActivity(), "Dates: " + Arrays.toString(allDates) +"", Toast.LENGTH_LONG).show();
             //Toast.makeText(getActivity(), "Steps: " + numSteps +"", Toast.LENGTH_LONG).show();
