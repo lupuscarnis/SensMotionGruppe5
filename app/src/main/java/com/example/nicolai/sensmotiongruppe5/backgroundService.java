@@ -81,6 +81,24 @@ mTimer.schedule(timertask,30000, 10*3000);
             if (cycling >= 60*1000) {
                 Achieve_Activity.completed(9); }
 
+            if (exercise >= 60) {
+                Achieve_Activity.completed(10); }
+
+            if (exercise >= 60*10) {
+                Achieve_Activity.completed(11); }
+
+            if (exercise >= 60*1000) {
+                Achieve_Activity.completed(12); }
+
+            if (steps >= 2500) {
+                Achieve_Activity.completed(13); }
+
+            if (steps >= 10000) {
+                Achieve_Activity.completed(14); }
+
+            if (steps >= 25000) {
+                Achieve_Activity.completed(15); }
+
 
   }};
 
