@@ -105,13 +105,13 @@ if (!achiAL.get(n).getCompleted()) {
     completedachi.setDate(currentDate);
     saveArrayList(achiAL, "key");
 
-    notifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
+    Achinotifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
 
 }
 
 }
 
-public static void notifications (String id, String title, String text){
+public static void Achinotifications (String id, String title, String text){
 
 
    Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
@@ -136,6 +136,30 @@ public static void notifications (String id, String title, String text){
 
 
 }
+public static void Rutenotifications (String id, String title, String text){
+
+
+        Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+        PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
+                .setSmallIcon(R.drawable.senslogogreybg)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true)
+                .setContentIntent(notiPendingIntent);
+
+        NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
+        notificationManager2.notify(1, mBuilder.build());
+
+
+
+
+
+
+    }
 
 public String completedCount(){
 
