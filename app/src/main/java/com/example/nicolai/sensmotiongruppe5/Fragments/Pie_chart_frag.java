@@ -3,12 +3,15 @@ package com.example.nicolai.sensmotiongruppe5.Fragments;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.BLL.PieChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChart;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
@@ -65,24 +68,34 @@ public class Pie_chart_frag extends Fragment {
         pieChartView = view.findViewById(R.id.pieChart);
         IChart chart = new LiePie();
         int[] data = chart.getData();
-        List<SliceValue> pieData = new ArrayList<>();
+
+        final TextView loading = view.findViewById(R.id.loading_pie);
+        loading.setVisibility(View.VISIBLE);
+        new GetDataPie(new GetDataPie.AsyncResponse() {
+            @Override
+            public void processFinish(int[] values) {
+
+                List<SliceValue> pieData = new ArrayList<>();
+
+                pieData.add(new SliceValue(values[0], Color.BLUE).setLabel(""));
+                pieData.add(new SliceValue(values[1], Color.GRAY).setLabel(""));
+                pieData.add(new SliceValue(values[2], Color.RED).setLabel(""));
+                pieData.add(new SliceValue(values[3], Color.BLACK).setLabel(""));
+                pieData.add(new SliceValue(values[4], Color.parseColor("#006400")).setLabel(""));
+                pieData.add(new SliceValue(values[5], Color.parseColor("#FFD700")).setLabel(""));
+                pieData.add(new SliceValue(values[6], Color.parseColor("#9932CC")).setLabel(""));
 
 
-        pieData.add(new SliceValue(data[0], Color.BLUE).setLabel(""));
-        pieData.add(new SliceValue(data[1], Color.GRAY).setLabel(""));
-        pieData.add(new SliceValue(data[2], Color.RED).setLabel(""));
-        pieData.add(new SliceValue(data[3], Color.BLACK).setLabel(""));
-        pieData.add(new SliceValue(data[4], Color.parseColor("#006400")).setLabel(""));
-        pieData.add(new SliceValue(data[5], Color.MAGENTA).setLabel(""));
-        pieData.add(new SliceValue(data[6], Color.parseColor( "#9932CC" )).setLabel(""));
+                PieChartData pieChartData = new PieChartData(pieData);
+                pieChartData.setHasCenterCircle(true).setCenterText1("SENS motion").setCenterText1FontSize(17).setCenterText1Color(Color.parseColor("#0097A7"));
+                pieChartData.setHasLabels(true);
+                pieChartView.setPieChartData(pieChartData);
+                loading.setVisibility(View.INVISIBLE);
+                pieChartView.invalidate();
+            }
+        }).execute();
 
 
-
-
-        PieChartData pieChartData = new PieChartData(pieData);
-        pieChartData.setHasCenterCircle(true).setCenterText1("SENS motion").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#0097A7"));
-        pieChartData.setHasLabels(true);
-        pieChartView.setPieChartData(pieChartData);
 
 
 
@@ -111,4 +124,43 @@ public class Pie_chart_frag extends Fragment {
     }
 
 
+}
+
+class GetDataPie extends AsyncTask<Void, Void, Void> {
+    public AsyncResponse delegate = null;
+    private int[] values;
+
+    public GetDataPie(AsyncResponse delegate) {
+        this.delegate = delegate;
+    }
+
+    @Override
+    protected Void doInBackground(Void... Void) {
+
+        IChart chart = new PieChart();
+        values = chart.getData();
+
+
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+
+        delegate.processFinish(values);
+    }
+
+    @Override
+    protected void onPreExecute() {
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+    }
+
+
+    public interface AsyncResponse {
+        void processFinish(int[] values);
+    }
 }

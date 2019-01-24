@@ -1,12 +1,13 @@
 <resources>
+
     <string name="app_name">Sens Motion Gruppe 5</string>
     <string name="facebook_app_id">305895120059354</string>
     <string name="title_activity_login">Log Ind</string>
     <!-- Strings related to login -->
     <string name="text_username">Patient Nøgle</string>
     <string name="text_password">Projekt Nøgle</string>
-    <string name="prompt_email">Indtast nøgle (Eks. 6rT39u)</string>
-    <string name="prompt_password">Indtast nøgle</string>
+    <string name="prompt_email">Indtast nøgle (ikke påkrævet for demo)</string>
+    <string name="prompt_password">Indtast nøgle (ikke påkrævet for demo)</string>
     <string name="action_sign_in">Log ind / Registrér</string>
     <string name="action_sign_in_short">Log ind</string>
     <string name="error_invalid_email">Patient Nøgle ugyldig</string>
@@ -28,4 +29,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="DialogText">Here is some help</string>
+    <string name="score_title">Score:      Navn:</string>
+
 </resources>

@@ -4,6 +4,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 
+import com.example.nicolai.sensmotiongruppe5.Achievements;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 public class SharedPrefs {
 
     private static SharedPrefs   sharedPreference;
@@ -86,6 +96,47 @@ public class SharedPrefs {
         editor.clear();
         editor.apply();
     }
+
+    public static int getInt(String key){
+        int n;
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString(key, null);
+        Type type = new TypeToken<Integer>() {}.getType();
+
+
+        if (gson.fromJson(json, type) == null){
+            n=0;
+        }
+   else {
+
+       n = gson.fromJson(json, type);
+        }
+        return n;
+    }
+
+    public static void saveInt(int n, String key){
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(n);
+        editor.putString(key, json);
+        editor.apply();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Removes a value from shared prefs.

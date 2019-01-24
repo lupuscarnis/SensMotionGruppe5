@@ -2,42 +2,68 @@ package com.example.nicolai.sensmotiongruppe5.Rute;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 
-import com.example.nicolai.sensmotiongruppe5.R;
+import com.example.nicolai.sensmotiongruppe5.Achieve_Activity;
+import com.example.nicolai.sensmotiongruppe5.Fragments.End_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Quiz_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 
 import java.util.ArrayList;
 
 
 public class Rute {
-    Context context;
-    View view;
+
     private float distance;
     private Bitmap bitmap;
     private float walked = 0;
-    private ArrayList highLights;
+    private ArrayList<Text_Highlight> highLights;
     private Rute_Canvas canvas;
     private ArrayList<Float> roadDistances;
     private ArrayList<Rutevector> cords;
+    private Context context;
+    private FragmentManager fragmentManager;
+    private Rute_queue rq;
 
-    public Rute(View ctx, ArrayList<Rutevector> matrix) {
-        view = ctx;
-        context = view.getContext();
+    public Rute(View ctx, ArrayList<Rutevector> matrix, ArrayList highLights, FragmentManager fragmentManager) {
+
+        context = ctx.getRootView().getContext();
         canvas = (Rute_Canvas) ctx;
         cords = matrix;
         roadDistances = new ArrayList<>();
+        this.highLights = highLights;
+        this.fragmentManager = fragmentManager;
+
         calculateDistance(matrix);
-
-
-    }
-
-    public void draw() {
+        rq = Rute_queue.getInstance(fragmentManager);
 
     }
 
+    public float getWalked() {
 
-    public void drawRute(int[] movemnt) {
+        return walked;
+    }
+
+    public void setWalked(float walked) {
+        this.walked = walked;
+    }
+
+    public void draw(int[] movemnt, float storedWalk) {
+        if (this.walked == 0) {
+            this.walked = storedWalk;
+        }
+        for (Rutevector s : cords) {
+            canvas.drawRute(s.getStartX(), s.getStartY(), s.getEndX(), s.getEndY());
+        }
+
+        for (IHighlight b : highLights) {
+
+            canvas.drawHighLight(b.getX(), b.getY(), b.getRadius());
+
+        }
         int i = 0;
         walked = calculateMovement(movemnt) + walked;
         float remainder = walked;
@@ -58,10 +84,37 @@ public class Rute {
                 yvector = ratio * yvector;
                 xvector = xvector + startX;
                 yvector = yvector + startY;
-                canvas.Draw(startX, startY, xvector, yvector);
 
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icons8running480);
-                canvas.drawBitmap(bitmap, xvector, yvector);
+                // checks highlights
+                for (IHighlight y : highLights) {
+                    if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
+                       // Her?
+                        if (!(y.isStart()) && !(y.isEnd())) {
+                            Achieve_Activity.Rutenotifications("Channel_ID321", "Event!", "Handling");
+                        }
+                        if (y instanceof Text_Highlight && y.isRevealed() == false) {
+                            y.setRevealed(true);
+                            Fragment ft = Text_fragment.newInstance(y.getText());
+                            rq.replaceFragment(ft, false);
+
+                        }
+                        if (y instanceof Quiz_Highlight && y.isRevealed() == false) {
+                            y.setRevealed(true);
+                            Fragment ft = Quiz_fragment.newInstance("", y.getText(), ((Quiz_Highlight) y).getAnswers());
+                            rq.replaceFragment(ft, false);
+
+                        }
+                        if (y.isEnd() == true) {
+                            Fragment ft = End_fragment.newInstance();
+                            rq.replaceFragment(ft, false);
+                            Achieve_Activity.Rutenotifications("Channel_ID321", "Event!", "The End");
+                        }
+
+
+                    }
+                }
+                canvas.drawMan(xvector, yvector);
+
 
             }
 
@@ -77,10 +130,6 @@ public class Rute {
     }
 
 
-    public void drawMan() {
-
-
-    }
     private void calculateDistance(ArrayList<Rutevector> matrix) {
         float result = 0;
         for (Rutevector a : matrix) {
@@ -130,10 +179,6 @@ Calculateing the the ammount of meters traversed since we last checked
 
 
         return pixels;
-    }
-
-    public void drawHighLights() {
-
     }
 
 

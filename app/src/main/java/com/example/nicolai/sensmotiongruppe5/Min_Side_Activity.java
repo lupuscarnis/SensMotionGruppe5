@@ -2,6 +2,7 @@ package com.example.nicolai.sensmotiongruppe5;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,14 +19,16 @@ import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.BLL.JSONData;
-import com.example.nicolai.sensmotiongruppe5.Fragments.Text_fragment;
+import com.example.nicolai.sensmotiongruppe5.Fragments.Default_fragment;
+import com.example.nicolai.sensmotiongruppe5.Interface.IHighlight;
 import com.example.nicolai.sensmotiongruppe5.Interface.IParent_OnFragmentInteractionListener;
+import com.example.nicolai.sensmotiongruppe5.Rute.Quiz_Highlight;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute;
+import com.example.nicolai.sensmotiongruppe5.Rute.Rute_queue;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rutevector;
+import com.example.nicolai.sensmotiongruppe5.Rute.Text_Highlight;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Min_Side_Activity extends Fragment implements View.OnClickListener {
 
@@ -35,16 +38,16 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
     // Sets the default keys for the logged in patient
     DAOHandler daoHandler = new DAOHandler();
-
+    private ArrayList<IHighlight> textHighlights;
     // For storing the values from JSON
     public String[] allDates;
     public String numSteps;
     ArrayList<JSONData> dataArray = new ArrayList<JSONData>();
     private Button walk, run, cycling;
     public int helpCounter = 0;
-    String dialogueMessage = "here is some nice help";
+    String dialogueMessage = "Her er noget hjælp";
     int dialogImage = R.drawable.setting;
-    Rute hello;
+    private Rute hello;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
@@ -53,39 +56,11 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.activity_min_side, drawer_layout, false);
         }
+        getActivity().startService(new Intent(getActivity(), backgroundService.class));
 
 
-
-        walk = rootView.findViewById(R.id.button_walk);
-        run = rootView.findViewById(R.id.button_running);
-        cycling = rootView.findViewById(R.id.button_bike);
-        cycling.setOnClickListener(this);
-        run.setOnClickListener(this);
-        walk.setOnClickListener(this);
-
-        ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
-        Rutevector ruteVector = new Rutevector();
-
-        ruteVector.setStartX(50);
-        ruteVector.setStartY(60);
-        ruteVector.setEndX(400);
-        ruteVector.setEndY(60);
-        ruteVectorsList.add(ruteVector);
-
-        Rutevector steve = new Rutevector();
-        steve.setStartX(400);
-        steve.setStartY(60);
-        steve.setEndX(400);
-        steve.setEndY(200);
-        ruteVectorsList.add(steve);
-
-
-        // Inflate the layout for this fragment
 
         new GetJSON().execute();
-
-        hello = new Rute(rootView.findViewById(R.id.canvas_rute), ruteVectorsList);
-
 
         Achieve_Activity.completed(0);
         return rootView;
@@ -93,29 +68,80 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Begin the transaction
-        Fragment childFragment = new Text_fragment();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.text_fragment, childFragment).commit();
+        setRetainInstance(true);
+        walk = rootView.findViewById(R.id.button_walk);
+        walk.setOnClickListener(this);
+        getChildFragmentManager().popBackStack();
+        // creates the rute and its shit
+        ArrayList<Rutevector> ruteVectorsList = new ArrayList<>();
+        Rutevector ruteVector = new Rutevector(50, 60, 300, 60);
+        ruteVectorsList.add(ruteVector);
+        Rutevector steve = new Rutevector(300, 60, 300, 200);
+        ruteVectorsList.add(steve);
+
+        Rutevector dave = new Rutevector(300, 200, 200, 100);
+        ruteVectorsList.add(dave);
+        textHighlights = new ArrayList<>();
+        Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
+        start.setText("En ny begyndelse");
+        start.setStart(true);
+        Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "Hvor mange mennesker er der i fællesskabet om ringen?");
+        ArrayList<String> s = new ArrayList();
+        s.add("0 Mennesker ");
+        s.add("3 Mennesker");
+        s.add("1 Mennesker");
+        s.add("2 Mennesker");
+        middle.setAnswers(s);
+        Text_Highlight end = new Text_Highlight(300, 200, 10, "end");
+        end.setText("Den første ringenes herre bog blev skrevet af Tolkien i 1954");
+        Quiz_Highlight secret = new Quiz_Highlight(200, 100, 10, "secret", "Hvilken race fik 7 af Sauron ringe?");
+        ArrayList<String> a = new ArrayList();
+        a.add("Menneskerne");
+        a.add("Elverne");
+        a.add("Hobitterne");
+        a.add("Dværgene");
+        secret.setAnswers(a);
+        secret.setEnd(true);
+        textHighlights.add(start);
+        textHighlights.add(middle);
+        textHighlights.add(end);
+        textHighlights.add(secret);
+
+        // the end of rute creation
+
+        int[] values = {1, 0, 0, 0};
+        if (hello == null) {
+            hello = new Rute(view.findViewById(R.id.canvas_rute), ruteVectorsList, textHighlights, getChildFragmentManager());
+        }
+        hello.draw(values, 0f);
+
+        Fragment f = getChildFragmentManager().findFragmentById(R.id.highlight_frame);
+        if (f == null) {
+
+            FragmentTransaction sb = getChildFragmentManager().beginTransaction();
+            sb.addToBackStack(null);
+            sb.add(R.id.highlight_frame, Default_fragment.newInstance("0", "0", "0", "0"));
+            sb.commit();
+            Rute_queue.getInstance(null).replaceFragment(null, true);
+        } else {
+            Rute_queue.getInstance(null).replaceFragment(null, true);
+        }
     }
+
 
 
     @Override
     public void onClick(View v) {
         int[] values = {0, 0, 0, 0};
-
-        if (v == walk) {
             values[0] = 5;
-            hello.drawRute(values);
-        }
-        if (v == run) {
-            hello.drawRute(values);
-        }
-        if (v == cycling) {
-            values[2] = 10;
-            hello.drawRute(values);
-        }
+        hello.draw(values, 0);
 
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
     }
 
@@ -131,11 +157,11 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         View view1;    view1 = LayoutInflater.from(getActivity()).inflate(R.layout.activity_dialog_picture, null);
         TextView title = (TextView) view1.findViewById(R.id.title);
         ImageButton imageButton = (ImageButton) view1.findViewById(R.id.image);
-        title.setText("i'm here to help ");
+        title.setText("Jeg er her for at hjælpe ");
         builder.setMessage(dialogueMessage);
         view1.findViewById(R.id.dialogTv);
         imageButton.setImageResource(dialogImage);
-        builder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Begynd", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
                 //Toast.makeText(Min_Side_Activity.this, "Next", Toast.LENGTH_SHORT).show();
 
@@ -164,7 +190,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Annuller", new DialogInterface.OnClickListener() {
             @Override        public void onClick(DialogInterface dialogInterface, int i) {
                 //  Toast.makeText(Min_Side_Activity.this, "Cancel", Toast.LENGTH_SHORT).show();
                 helpCounter = 0;
@@ -204,8 +230,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         protected void onPreExecute() {
 
             super.onPreExecute();
-            Toast.makeText(getActivity(),"Updating data...",Toast.LENGTH_LONG).show();
-
+            Toast.makeText(getActivity(),"Opdaterer data...",Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -216,6 +241,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
             allDates = daoHandler.getAllDates();
             numSteps = daoHandler.getActivityByDate("08-01-2019", "steps");*/
             //dataArray = daoHandler.getCurrentSelectDatesDataAsObject();
+
             return null;
 
         }
@@ -225,7 +251,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             super.onPostExecute(result);
 
-            Toast.makeText(getActivity(),"Update done...",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"Opdatering fuldført...",Toast.LENGTH_LONG).show();
 
             // For debugging
             //Toast.makeText(getActivity(), "Dates: " + Arrays.toString(allDates) +"", Toast.LENGTH_LONG).show();

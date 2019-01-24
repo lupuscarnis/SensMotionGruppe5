@@ -15,16 +15,16 @@
             android:title="Achievements" />
         <item
             android:id="@+id/nav_set"
-            android:title="Indstillinger" />
+            android:title="Highscore" />
 
     </group>
 
     <item android:title="andet">
         <menu>
-            <item
-                android:id="@+id/nav_help"
-                android:title="Hjælp" />
 
+            <item
+                android:id="@+id/nav_map"
+                android:title="Mit Aktivitets Kort" />
             <item
                 android:id="@+id/nav_logud"
                 android:title="Log ud" />

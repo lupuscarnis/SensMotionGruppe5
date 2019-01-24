@@ -3,9 +3,8 @@ package com.example.nicolai.sensmotiongruppe5;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,13 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.widget.ShareButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -31,7 +30,8 @@ public class Achieve_Activity extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     static ArrayList<Achievements> data;
-    TextView achiView;
+    private TextView achiView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
@@ -44,12 +44,6 @@ public class Achieve_Activity extends Fragment {
 
         achiView = rootView.findViewById(R.id.achiText);
 
-        //facebook share button
-        /*ShareButton fbShareButton =  rootView.findViewById(R.id.fb_share_button);
-        ShareLinkContent content = new ShareLinkContent.Builder()
-                .setContentUrl(Uri.parse("http://google.com"))
-                .build();
-        fbShareButton.setShareContent(content);*/
 
 
 
@@ -74,33 +68,73 @@ public static void completed (int n){
     ArrayList<Achievements> achiAL;
     achiAL = getArrayList("key");
 
-  //  Intent intent = new Intent(getApplicationContext(), Achieve_Activity.class);
-  //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-  //  PendingIntent pendingIntent = PendingIntent.(getApplicationContext(), 0, intent, 0);
+    Calendar calendar = Calendar.getInstance();
+    String currentDate = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
 
 
 
-
-if (achiAL.get(n).getCompleted()== false) {
+if (!achiAL.get(n).getCompleted()) {
     Achievements completedachi;
     completedachi = achiAL.get(n);
     completedachi.setCompleted(true);
+    completedachi.setDate(currentDate);
     saveArrayList(achiAL, "key");
 
+    Achinotifications("Channel_ID123", "Achivement gennemført!",  completedachi.getName() + " gennemført!");
 
-    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "Channel_ID123")
+}
+
+}
+
+public static void Achinotifications (String id, String title, String text){
+
+
+   Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+   notiIntent.putExtra("achi", "achi");
+   PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
             .setSmallIcon(R.drawable.achi)
-            .setContentTitle("Achivement gennemført!")
-            .setContentText("Du har fuldført en ny achievement")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-           // .setContentIntent(pendingIntent);
+            .setContentTitle(title)
+            .setContentText(text)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+            .setContentIntent(notiPendingIntent);
 
     NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
     notificationManager2.notify(1, mBuilder.build());
 
-}
+
+
+
+
 
 }
+public static void Rutenotifications (String id, String title, String text){
+
+
+        Intent notiIntent = new Intent(getApplicationContext(), nav_drawer.class);
+        PendingIntent notiPendingIntent = PendingIntent.getActivity(getApplicationContext(),1,notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), id)
+                .setSmallIcon(R.drawable.senslogogreybg)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true)
+                .setContentIntent(notiPendingIntent);
+
+        NotificationManagerCompat notificationManager2 = NotificationManagerCompat.from(getApplicationContext());
+        notificationManager2.notify(1, mBuilder.build());
+
+
+
+
+
+
+    }
 
 public String completedCount(){
 
@@ -137,7 +171,7 @@ return count;
         Gson gson = new Gson();
         String json = gson.toJson(list);
         editor.putString(key, json);
-        editor.apply();     // This line is IMPORTANT !!!
+        editor.apply();
     }
 
 

@@ -6,13 +6,15 @@ private String achiName;
 private boolean completed;
 private String doneDescription;
 private String notDescription;
+private String date;
 
-    public Achievements(String achiName, boolean completed, String doneDescription, String notDectription){
+    public Achievements(String achiName, boolean completed, String doneDescription, String notDectription, String date){
 
         this.achiName = achiName;
         this.completed = completed;
         this.doneDescription = doneDescription;
         this.notDescription = notDectription;
+        this.date = date;
     }
     public boolean getCompleted() {
 
@@ -41,7 +43,15 @@ private String notDescription;
         return notDescription;
     }
 
+    public String getDate() {
 
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+
+    }
 
 
 

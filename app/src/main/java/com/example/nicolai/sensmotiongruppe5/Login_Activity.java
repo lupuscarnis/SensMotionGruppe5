@@ -18,7 +18,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -30,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.nicolai.sensmotiongruppe5.BLL.SharedPrefs;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,6 +37,8 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * A login screen that offers login via email/password.
@@ -71,12 +73,18 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_login);
-        createChannel();
+        createChannel("Channel_ID123");
+        createChannel("Channel_ID321");
+
+
+
+
 
         addIfEmty(getAchivements(), "key");
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mEmailView =  findViewById(R.id.email);
+        mPasswordView =  findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -88,8 +96,10 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        Button helpButton = (Button) findViewById(R.id.helpBtn);
+        Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
+        //Button helpButton =  findViewById(R.id.helpBtn);
+
+
 
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -99,27 +109,32 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
         });
 
 
-        helpButton.setOnClickListener(new OnClickListener() {
+
+        /*helpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(view.getContext(), Help_Activity.class));
+                startActivity(new Intent(view.getContext(), Score_Activity.class));
+                //startActivity(new Intent(view.getContext(), Score_Activity.class));
 
 
             }
-        });
+        });*/
+
+
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    public void createChannel() {
+
+
+    public void createChannel(String CHANNEL_ID) {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
        //     CharSequence name = getString(R.string.channel_name);
           //  String description = getString(R.string.channel_description);
-            String CHANNEL_ID = "Channel_ID123";
             String description = "Beskrivelse";
             String name = "android_channel";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
@@ -135,6 +150,7 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 
         }
     }
+
     public void saveArrayList(ArrayList<Achievements> list, String key){
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -161,26 +177,29 @@ public class Login_Activity extends AppCompatActivity implements LoaderCallbacks
 public ArrayList<Achievements> getAchivements(){
 
     achi = new ArrayList<>();
-    achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang"));
-    achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute"));
-    achi.add(new Achievements("3 ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter"));
-    achi.add(new Achievements("5 km", false, "Du har nu bevæget dig 5km", "Bevæg dig 5km"));
-    achi.add(new Achievements("15 km", false, "Du har nu bevæget dig 15km", "Bevæg dig 15km"));
-    achi.add(new Achievements("test", false, "test", "test"));
-    achi.add(new Achievements("test2", false, "test", "test"));
+    achi.add(new Achievements("Velkommen!", false, "Du er nu logget ind for første gang, og er klar til at benytte sens motion applikationen", "For at opnå denne achivement, skal du logge ind for første gang", ""));
+    achi.add(new Achievements("Første rute", false, "Du har nu gennemført din første rute, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre en rute", ""));
+    achi.add(new Achievements("3x Ruter", false, "Du har nu gennemført 3 ruter, gennemfør flere ruter for at opnå endnu flere achievements", "For at opnå denne achievement, skal du gennemføre 3 ruter", ""));
+    achi.add(new Achievements("10x Ruter", false, "Du har nu gennemført 10 ruter", "For at opnå denne achievement, skal du gennemføre 10 ruter", ""));
+    achi.add(new Achievements("Gå en time", false, "Flot! du har gået en time, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have gået i mindst en time", ""));
+    achi.add(new Achievements("Gå 10 timer", false, "Du har nu gået i 10 timer", "gå 10 timer", ""));
+    achi.add(new Achievements("Gå 100 timer", false, "Du har nu gået i 10 timer", "gå 100 timer", ""));
+    achi.add(new Achievements("Cyklet en time", false, "Flot! du har cyklet en time, og dermed gjort dig fortjent til denne achievement. cykel endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet have cyklet i mindst en time", ""));
+    achi.add(new Achievements("Cyklet 10 timer", false, "Du har nu cyklet i 10 timer", "cyklet 10 timer", ""));
+    achi.add(new Achievements("Cyklet 100 timer", false, "Du har nu cyklet i 10 timer", "cyklet 100 timer", ""));
+    achi.add(new Achievements("Træn en time", false, "Flot! du har trænet en time, og dermed gjort dig fortjent til denne achievement. Træn endnu mere for flere achievements", "For at opnå denne achievement, skal du samlet have trænet i mindst en time", ""));
+    achi.add(new Achievements("Træn 10 timer", false, "Du har nu trænet i 10 timer", "trænet 10 timer", ""));
+    achi.add(new Achievements("Træn 100 timer", false, "Du har nu trænet i 10 timer", "trænet 100 timer", ""));
+    achi.add(new Achievements("Gå 2500 skridt", false, "Flot! du har gået 2500 skridt, og dermed gjort dig fortjent til denne achievement. Gå endnu længere for flere achievements", "For at opnå denne achievement, skal du samlet gå 2500", ""));
+    achi.add(new Achievements("Gå 10000 skridt", false, "Du har nu gået 10000 skridt", "gå 10000 skridt", ""));
+    achi.add(new Achievements("Gå 25000 skridt", false, "Du har nu gået 25000 skridt", "gå 25000 skridt", ""));
 
 
-  return achi;
+
+
+
+    return achi;
     }
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -204,6 +223,8 @@ public ArrayList<Achievements> getAchivements(){
         boolean cancel = false;
         View focusView = null;
 
+        // Disabled condition for login for exam purposes
+/*
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
@@ -233,6 +254,10 @@ public ArrayList<Achievements> getAchivements(){
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
+*/
+        showProgress(true);
+        mAuthTask = new UserLoginTask(email, password);
+        mAuthTask.execute((Void) null);
     }
 
     private boolean isEmailValid(String email) {
@@ -380,7 +405,7 @@ public ArrayList<Achievements> getAchivements(){
 
             if (success) {
                 Log.d("Login", "Login Succesful");
-                SharedPrefs.getInstance().saveString(Login_Activity.this,"6rT39u","patientKey", true);
+                SharedPrefs.getInstance().saveString(Login_Activity.this,"u7tRx9","patientKey", true);
                 SharedPrefs.getInstance().saveString(Login_Activity.this,"k5W2uX","projectKey", true);
                 Intent i = new Intent(Login_Activity.this,nav_drawer.class);
                 finish();

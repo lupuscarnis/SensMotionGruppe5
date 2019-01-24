@@ -8,9 +8,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
-    public class achiAdapter extends RecyclerView.Adapter<achiAdapter.MyViewHolder> {
+public class achiAdapter extends RecyclerView.Adapter<achiAdapter.MyViewHolder> {
         private ArrayList<Achievements> item;
 
         // Provide a reference to the views for each data item
@@ -20,6 +25,7 @@ import java.util.ArrayList;
             ImageView aImage;
             TextView achiName;
             TextView achiDes;
+            TextView date;
             RelativeLayout parent_Layout;
 
 
@@ -29,6 +35,7 @@ import java.util.ArrayList;
                 achiName = itemView.findViewById(R.id.achiName);
                 achiDes = itemView.findViewById(R.id.desText);
                 aImage = itemView.findViewById(R.id.achiLogo);
+                date = itemView.findViewById(R.id.date);
                 parent_Layout = itemView.findViewById(R.id.parent_layout);
             }
         }
@@ -58,14 +65,15 @@ import java.util.ArrayList;
 
 
 
-
             if (item.get(position).getCompleted()){
                 holder.aImage.setImageResource(R.drawable.achi);
                 holder.achiDes.setText(item.get(position).getDoneDes());
+                holder.date.setText(item.get(position).getDate());
             }
             if (!item.get(position).getCompleted()){
                 holder.aImage.setImageResource(R.drawable.achinot);
                 holder.achiDes.setText(item.get(position).getNotDes());
+                holder.date.setText("");
             }
             holder.achiName.setText(item.get(position).getName());
         }

@@ -33,8 +33,9 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_set:
-                toolbar.setTitle("Indstillinger");
-                fragment = new Setting_Activity();
+                toolbar.setTitle("Highscore");
+                fragment = new Score_Activity();
+                mDrawerLayout.closeDrawers();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
                 return true;
@@ -49,6 +50,14 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
+
+                return true;
+            case R.id.nav_map:
+                toolbar.setTitle("Kort");
+                fragment = new GMapsActivity();
+                loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
+
                 return true;
 
             case R.id.nav_logud:
@@ -71,8 +80,24 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        toolbar.setTitle("Min side");
-        loadFragment(new Min_Side_Activity());
+
+        Intent intent = getIntent();
+        String achi = intent.getStringExtra("achi");
+        String achi2 = "achi";
+
+
+        if (achi2.equals(achi)){
+    toolbar.setTitle("Achievements");
+    loadFragment(new Achieve_Activity());
+}
+else {
+
+
+    toolbar.setTitle("Min side");
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, new Min_Side_Activity());
+            transaction.commit();
+}
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -95,7 +120,7 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
+
         transaction.commit();
     }
 

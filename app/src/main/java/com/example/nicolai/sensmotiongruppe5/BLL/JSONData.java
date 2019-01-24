@@ -8,17 +8,17 @@ public class JSONData {
 
     String startDate;
     // The three ints below are a little redundant (because we have startDate), but it makes it easier to work with the data.
-    int year;
-    int month;
-    int day;
-    double resting;
-    double standing;
-    double walking;
-    double cycling;
-    double exercise;
-    double other;
-    double nodata;
-    double steps;
+    int year = 2019;
+    int month = 1;
+    int day = 1;
+    double resting = 0.0;
+    double standing = 0.0;
+    double walking = 0.0;
+    double cycling = 0.0;
+    double exercise = 0.0;
+    double other = 0.0;
+    double nodata = 0.0;
+    double steps = 0.0;
 
     // Setters
     public void setStartDate(String startDate) {
