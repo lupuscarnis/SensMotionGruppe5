@@ -13,6 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/misc"
-        android:text="End Rute"
+        android:text="Afslut Rute"
         android:textColor="#fff" />
 </FrameLayout>

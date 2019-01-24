@@ -13,7 +13,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/Text1"
+                android:id="@+id/tidS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -25,7 +25,7 @@
 
 
             <TextView
-                android:id="@+id/Text2"
+                android:id="@+id/kmWalked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/Text3"
+                android:id="@+id/distancetogoal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -56,7 +56,7 @@
 
 
             <TextView
-                android:id="@+id/Text4"
+                android:id="@+id/highlightseen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
 
                 android:padding="8dp"
-                android:text="Highlights Set: 2/5"
+                android:text="Highlights Set: 0/5"
                 android:textColor="#000" />
 
         </TableRow>

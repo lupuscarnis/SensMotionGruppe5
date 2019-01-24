@@ -120,7 +120,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
 
             FragmentTransaction sb = getChildFragmentManager().beginTransaction();
             sb.addToBackStack(null);
-            sb.add(R.id.highlight_frame, Default_fragment.newInstance("", ""));
+            sb.add(R.id.highlight_frame, Default_fragment.newInstance("0", "0", "0", "0"));
             sb.commit();
             Rute_queue.getInstance(null).replaceFragment(null, true);
         } else {

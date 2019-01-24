@@ -68,7 +68,7 @@ public class Rute_queue {
         } else if (fraList.size() == 0) {
             FragmentTransaction sb = fragmentManager.beginTransaction();
             sb.addToBackStack(null);
-            sb.replace(R.id.highlight_frame, Default_fragment.newInstance("h", "gh"));
+            sb.replace(R.id.highlight_frame, Default_fragment.newInstance("1", "2", "3", "31"));
             sb.commitAllowingStateLoss();
 
 
