@@ -3,9 +3,8 @@ package com.example.nicolai.sensmotiongruppe5;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,20 +12,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.widget.ShareButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.text.DateFormat;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -38,8 +30,8 @@ public class Achieve_Activity extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     static ArrayList<Achievements> data;
-    TextView achiView;
-    private Button share;
+    private TextView achiView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup drawer_layout,
                              Bundle savedInstanceState) {
@@ -52,23 +44,6 @@ public class Achieve_Activity extends Fragment {
 
         achiView = rootView.findViewById(R.id.achiText);
 
-
-        share = rootView.findViewById( R.id.share );
-        share.setText( "Test" );
-        share.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-           Intent intent =new Intent( getActivity(), Win_Activity.class );
-           startActivity( intent );
-        }
-    });
-        //facebook share button
-        /*ShareButton fbShareButton =  rootView.findViewById(R.id.fb_share_button);
-        ShareLinkContent content = new ShareLinkContent.Builder()
-                .setContentUrl(Uri.parse("http://google.com"))
-                .build();
-        fbShareButton.setShareContent(content);*/
 
 
 

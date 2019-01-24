@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nicolai.sensmotiongruppe5.BLL.DAOHandler;
 import com.example.nicolai.sensmotiongruppe5.Fragments.Line_chart_frag;
@@ -169,11 +170,14 @@ public class Min_Data_Activity extends Fragment {
 
             @Override
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {
-
-                bar.setValue(Math.round(left), Math.round(right));
-                new DAOHandler().setDAOCurrentDates(strigns[Math.round(left)], strigns[Math.round(right)]);
-                viewPager.getAdapter().notifyDataSetChanged();
-
+                if (strigns != null) {
+                    bar.setValue(Math.round(left), Math.round(right));
+                    new DAOHandler().setDAOCurrentDates(strigns[Math.round(left)], strigns[Math.round(right)]);
+                    viewPager.getAdapter().notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getActivity(), "To Fast", Toast.LENGTH_LONG);
+                    bar.setValue(0, 6);
+                }
             }
         });
         // Range Seekerbar end

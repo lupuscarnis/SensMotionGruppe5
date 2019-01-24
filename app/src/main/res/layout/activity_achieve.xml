@@ -37,15 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/share"
-        android:layout_width="70dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="59dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
