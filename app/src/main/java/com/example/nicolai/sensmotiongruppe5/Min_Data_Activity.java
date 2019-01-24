@@ -94,9 +94,9 @@ public class Min_Data_Activity extends Fragment {
         textView1.setText( "I ro");
         textView2.setText( "Stående");
         textView3.setText( "Gående");
-        textView4.setText( "Exercise");
+        textView4.setText( "Trænende");
         textView5.setText( "Cyklende");
-        textView6.setText( "Other");
+        textView6.setText( "Anden bevægelse");
         textView7.setText( "Ingen Data");
 
 
