@@ -37,6 +37,7 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 fragment = new Score_Activity();
                 mDrawerLayout.closeDrawers();
                 loadFragment(fragment);
+                mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_data:
                 toolbar.setTitle("Min data");
@@ -49,12 +50,14 @@ private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelecte
                 fragment = new Min_Side_Activity();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
+
                 return true;
             case R.id.nav_map:
                 toolbar.setTitle("Kort");
                 fragment = new GMapsActivity();
                 loadFragment(fragment);
                 mDrawerLayout.closeDrawers();
+
                 return true;
 
             case R.id.nav_logud:

@@ -1,5 +1,6 @@
 package com.example.nicolai.sensmotiongruppe5;
 
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,4 +12,4 @@ public class broadcastReceiver extends BroadcastReceiver {
         Log.i(broadcastReceiver.class.getSimpleName(), "Service Stops! Oooooooooooooppppssssss!!!!");
         context.startService(new Intent(context, backgroundService.class));
     }
-}
+
