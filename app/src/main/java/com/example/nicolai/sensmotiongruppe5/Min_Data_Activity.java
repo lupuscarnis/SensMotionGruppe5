@@ -130,8 +130,9 @@ public class Min_Data_Activity extends Fragment {
         SeekBar leftSeekBar = bar.getLeftSeekBar();
         SeekBar rightSeekBar = bar.getRightSeekBar();
         leftSeekBar.setThumbDrawableId(R.drawable.slider_dot);
-        leftSeekBar.setThumbSize(10);
-        rightSeekBar.setThumbSize(10);
+        leftSeekBar.setThumbSize(35);
+
+        rightSeekBar.setThumbSize(35);
         rightSeekBar.setThumbDrawableId(R.drawable.slider_dot);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
 
