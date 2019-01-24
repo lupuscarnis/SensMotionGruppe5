@@ -23,6 +23,6 @@
 
         android:background="@drawable/misc"
         android:gravity="center"
-        android:text="Next"
+        android:text="Næste"
         android:textColor="#fff" />
 </LinearLayout>
