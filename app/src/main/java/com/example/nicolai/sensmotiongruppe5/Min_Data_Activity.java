@@ -127,7 +127,6 @@ public class Min_Data_Activity extends Fragment {
 
 
         bar = rootView.findViewById(R.id.Min_data_range_silder);
-        bar.setProgressColor(R.color.colorPrimaryBlue);
         SeekBar leftSeekBar = bar.getLeftSeekBar();
         SeekBar rightSeekBar = bar.getRightSeekBar();
         leftSeekBar.setThumbDrawableId(R.drawable.slider_dot);
