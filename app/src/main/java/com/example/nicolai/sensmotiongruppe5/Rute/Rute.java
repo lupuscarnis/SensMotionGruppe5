@@ -89,7 +89,9 @@ public class Rute {
                 for (IHighlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
                        // Her?
-                        Achieve_Activity.Rutenotifications("Channel_ID321", "Her?", "Nico?");
+                        if (!(y.isStart()) && !(y.isEnd())) {
+                            Achieve_Activity.Rutenotifications("Channel_ID321", "Event!", "Handling");
+                        }
                         if (y instanceof Text_Highlight && y.isRevealed() == false) {
                             y.setRevealed(true);
                             Fragment ft = Text_fragment.newInstance(y.getText());
@@ -105,6 +107,7 @@ public class Rute {
                         if (y.isEnd() == true) {
                             Fragment ft = End_fragment.newInstance();
                             rq.replaceFragment(ft, false);
+                            Achieve_Activity.Rutenotifications("Channel_ID321", "Event!", "The End");
                         }
 
 

@@ -84,6 +84,7 @@ public class Min_Side_Activity extends Fragment implements View.OnClickListener 
         textHighlights = new ArrayList<>();
         Text_Highlight start = new Text_Highlight(50, 60, 10, "start");
         start.setText("A new Beginning");
+        start.setStart(true);
         Quiz_Highlight middle = new Quiz_Highlight(300, 60, 10, "middle", "How many humans participated in the fellowship of the ring?");
         ArrayList<String> s = new ArrayList();
         s.add("0 humans ");

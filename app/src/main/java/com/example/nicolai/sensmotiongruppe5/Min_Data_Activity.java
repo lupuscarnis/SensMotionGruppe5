@@ -129,8 +129,10 @@ public class Min_Data_Activity extends Fragment {
         bar = rootView.findViewById(R.id.Min_data_range_silder);
         SeekBar leftSeekBar = bar.getLeftSeekBar();
         SeekBar rightSeekBar = bar.getRightSeekBar();
-        leftSeekBar.setThumbDrawableId(R.drawable.blackline);
-        rightSeekBar.setThumbDrawableId(R.drawable.blackline);
+        leftSeekBar.setThumbDrawableId(R.drawable.slider_dot);
+        leftSeekBar.setThumbSize(10);
+        rightSeekBar.setThumbSize(10);
+        rightSeekBar.setThumbDrawableId(R.drawable.slider_dot);
         bar.setTickMarkMode(RangeSeekBar.TRICK_MARK_MODE_OTHER);
 
         bar.setTickMarkTextColor(Color.parseColor("#03A9F4"));
