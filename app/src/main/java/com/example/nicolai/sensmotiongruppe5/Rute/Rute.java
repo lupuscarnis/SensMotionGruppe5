@@ -87,6 +87,7 @@ public class Rute {
                 // checks highlights
                 for (IHighlight y : highLights) {
                     if (((xvector - 10) <= y.getX() && (xvector + 10) >= y.getX()) && ((yvector - 10) <= y.getY() && (yvector + 10) >= y.getY())) {
+
                         if (y instanceof Text_Highlight && y.isRevealed() == false) {
                             y.setRevealed(true);
                             Fragment ft = Text_fragment.newInstance(y.getText());

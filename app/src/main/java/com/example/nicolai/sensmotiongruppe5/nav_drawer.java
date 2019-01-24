@@ -91,8 +91,9 @@ else {
 
 
     toolbar.setTitle("Min side");
-    loadFragment(new Min_Side_Activity());
-
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, new Min_Side_Activity());
+            transaction.commit();
 }
 
         NavigationView navigationView = findViewById(R.id.nav_view);
