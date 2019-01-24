@@ -15,16 +15,14 @@ import java.util.ArrayList;
 public class ScoreAdapter extends ArrayAdapter<Entry> {
     private Activity context;
     private ArrayList<Entry> entList;
-    //private ArrayList<String> scores;
+
 
     public ScoreAdapter(Activity context1, ArrayList<Entry> entList) {
-        super(context1, R.layout.score_layout, entList );
+        super(context1, R.layout.score_layout, entList);
         this.context = context1;
         this.entList = entList;
-        //this.names= names;
-       // this.scores = scores;
-    }
 
+    }
 
 
     @Override
@@ -36,26 +34,11 @@ public class ScoreAdapter extends ArrayAdapter<Entry> {
         TextView nameView = (TextView) listEntry.findViewById(R.id.nameView);
         TextView scoreView = (TextView) listEntry.findViewById(R.id.scoreView);
 
-        /*
-        for (int i = 0; i < entList.size(); i++) {
 
-            for (int j = i + 1; j < entList.size(); j++) {
-
-                Integer temp1 = Integer.parseInt(entList.get(i).getScore());
-                Integer temp2 = Integer.parseInt(entList.get(j).getScore());
-                if (temp1 > temp2) {
-               // if (entList.get(i).getScore().compareTo(entList.get(j).getScore()) > 0) {
-                    Entry enTemp = entList.get(i);
-                    entList.set(i,entList.get(i) );
-                    entList.set(i, enTemp);
-                }
-            }
-        }
-*/
         String name = entList.get(position).getName();
-        String score =entList.get(position).getScore().toString();
-       // nameView.setText("hej");
-         nameView.setText(name);
+        String score = entList.get(position).getScore().toString();
+
+        nameView.setText(name);
         scoreView.setText(score);
         Log.i("adapter", name);
 

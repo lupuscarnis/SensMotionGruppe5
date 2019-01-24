@@ -9,15 +9,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.nicolai.sensmotiongruppe5.Highscore_controller;
 import com.example.nicolai.sensmotiongruppe5.Interface.IChild_OnFragmentInteractionListener;
 import com.example.nicolai.sensmotiongruppe5.R;
 import com.example.nicolai.sensmotiongruppe5.Rute.Rute_queue;
+import com.example.nicolai.sensmotiongruppe5.Tests.Entry;
 
 import java.util.ArrayList;
 
 public class Quiz_fragment extends android.support.v4.app.Fragment implements View.OnClickListener {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     View view;
+    boolean firstGuess = false;
+    Integer corrects = 0;
     private IChild_OnFragmentInteractionListener mListener;
 
     public Quiz_fragment() {
@@ -58,25 +62,37 @@ public class Quiz_fragment extends android.support.v4.app.Fragment implements Vi
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(firstGuess==false){firstGuess=true;}
                 Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(firstGuess==false){firstGuess=true;}
                 Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
         c3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(firstGuess==false){firstGuess=true;}
                 Rute_queue.getInstance(null).replaceFragment(null, true);
             }
         });
         c4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                corrects+=1;
+                if(firstGuess==false){firstGuess=true;}else{
+                    Entry ent = new Entry("Jens Hansen", corrects.toString(), "3");
+                    Highscore_controller  hsc = new Highscore_controller();
+                    hsc.createDatabaseReference();
+                  //  Highscore_controller hsc = new Highscore_controller();
+            hsc.addScore(ent);
+                }
                 Rute_queue.getInstance(null).replaceFragment(null, true);
+
             }
         });
 
