@@ -25,7 +25,7 @@ double cycling;
 double exercise;
 double steps;
 
-//test
+//test2
 ArrayList<JSONData> data;
 
     @Override
